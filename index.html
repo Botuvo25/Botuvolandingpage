@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTUVO - Your AI Employee Solution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Inline carousel CSS for reliability */
+    .carousel-container {
+      margin-bottom: 2rem;
+      height: 40px;
+    }
+    
+    .carousel-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #8a2be2; /* Purple accent */
+      position: relative;
+      display: inline-block;
+    }
+    
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      width: 2px;
+      height: 1.5rem;
+      background-color: #8a2be2; /* Purple accent */
+      animation: blink 0.7s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="BOTUVO Logo">
+      </div>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Transform your business with your very own AI employee</h1>
+        <!-- Updated Carousel Structure -->
+        <div class="carousel-container">
+          <div class="carousel-text">
+            <span id="static-text"></span><span id="dynamic-text"></span><span class="cursor">|</span>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary btn-large">Get Started</a>
+          <a href="#how-it-works" class="btn btn-secondary btn-large">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="ai-assistant.png" alt="AI Assistant Illustration">
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Building your AI employee is simple and straightforward</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">
+            <img src="step1.png" alt="Step 1">
+          </div>
+          <h3>Tell us about your business</h3>
+          <p>We learn about your needs, goals, and the specific challenges you want your AI employee to solve.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <img src="step2.png" alt="Step 2">
+          </div>
+          <h3>We build your custom AI employee</h3>
+          <p>Our team creates a tailored AI solution that matches your brand voice and business requirements.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <img src="step3.png" alt="Step 3">
+          </div>
+          <h3>Deploy your AI across your platforms</h3>
+          <p>Seamlessly integrate your AI employee with your website, social media, and other communication channels.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <img src="step4.png" alt="Step 4">
+          </div>
+          <h3>Watch your efficiency soar</h3>
+          <p>Enjoy increased productivity, better customer service, and improved business outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose BOTUVO</h2>
+        <p>Experience the advantages of having an AI employee</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <img src="24-7.png" alt="24/7 Availability">
+          </div>
+          <h3>24/7 Availability</h3>
+          <p>Your AI employee never sleeps, ensuring round-the-clock service for your customers.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <img src="cost.png" alt="Cost Efficiency">
+          </div>
+          <h3>Cost Efficiency</h3>
+          <p>Fraction of the cost of hiring additional staff while maintaining high-quality service.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <img src="scale.png" alt="Scalability">
+          </div>
+          <h3>Scalability</h3>
+          <p>Handle unlimited conversations simultaneously without compromising on quality.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <img src="learning.png" alt="Continuous Learning">
+          </div>
+          <h3>Continuous Learning</h3>
+          <p>Your AI employee gets smarter with every interaction, constantly improving its performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get answers to common questions about our AI employee solutions</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is my data protected?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we implement enterprise-grade security protocols to ensure your data remains confidential and protected at all times. All information is encrypted and stored securely following industry best practices.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How efficient is the chatbot?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Our AI employees can handle multiple conversations simultaneously with response times under 1 second, working 24/7 without breaks. They can manage hundreds of customer inquiries at once, ensuring no customer is left waiting.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I customize my AI employee?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We build each AI employee to match your brand voice, knowledge base, and specific business needs. You can customize everything from the conversation style to the specific responses for different scenarios.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How long does implementation take?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Most implementations are completed within 1-2 weeks, depending on complexity and customization requirements. Our streamlined process ensures you can start benefiting from your AI employee as quickly as possible.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Will the AI integrate with my existing systems?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we design our solutions to integrate seamlessly with your website, CRM, and other business tools. Our AI employees can work with most popular platforms and can be customized to work with proprietary systems as well.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p>Ready to transform your business with an AI employee? Contact us today!</p>
+      </div>
+      <div class="contact-container">
+        <button id="openContactForm" class="btn btn-primary btn-large">Contact Us</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact BOTUVO</h2>
+      <form id="contactForm" action="https://formspree.io/f/iqbal@botuvo.co.uk" method="POST">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Simplified Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 BOTUVO. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <!-- Inline Carousel Script for reliability -->
+  <script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if the required elements exist
+      const dynamicTextElement = document.getElementById("dynamic-text");
+      const staticTextElement = document.getElementById("static-text");
+      
+      if (!dynamicTextElement) {
+        console.error("Carousel element 'dynamic-text' not found");
+        return; // Exit if element doesn't exist
+      }
+      
+      const phrases = ["Increase conversions", "Save time", "Solve problems"];
+      let i = 0;
+      let j = 0;
+      let currentPhrase = [];
+      let isDeleting = false;
+      let isEnd = false;
+
+      function loop() {
+        isEnd = false;
+        
+        // If we've reached the end of the phrases array, start over
+        if (i === phrases.length) {
+          i = 0;
+        }
+        
+        // Set the text based on current phrase and whether we're deleting
+        if (j === 0) {
+          currentPhrase = phrases[i].split("");
+        }
+        
+        // If we're not deleting, add a character
+        if (!isDeleting && j <= currentPhrase.length) {
+          dynamicTextElement.textContent = currentPhrase.slice(0, j).join("");
+          j++;
+          
+          // If we've typed the full phrase, start deleting after a delay
+          if (j > currentPhrase.length) {
+            isDeleting = true;
+            isEnd = true;
+            // Wait longer at the end of a complete phrase
+            setTimeout(function() {
+              loop();
+            }, 2000); // Pause at end of phrase
+            return;
+          }
+        }
+        
+        // If we're deleting, remove a character
+        if (isDeleting && j >= 0) {
+          dynamicTextElement.textContent = currentPhrase.slice(0, j).join("");
+          j--;
+          
+          // If we've deleted the entire phrase, move to the next one
+          if (j === 0) {
+            isDeleting = false;
+            i++;
+          }
+        }
+        
+        // Speed adjustments
+        const normalSpeed = 100;
+        const slowDown = 30; // Deleting speed
+        
+        // Calculate the delay based on whether we're at the end, deleting, etc.
+        let time = isEnd ? 2000 : isDeleting ? slowDown : normalSpeed;
+        
+        setTimeout(loop, time);
+      }
+
+      console.log("Carousel initialized");
+      // Start the typing effect
+      setTimeout(loop, 1500);
+    });
+  </script>
+</body>
+</html>
