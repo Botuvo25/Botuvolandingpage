@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTUVO - AI-Powered Chatbot Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #ffffff;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2d2d2d;
+        }
+
+        .carousel {
+            height: 100px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel span {
+            font-size: 1.5em;
+            display: none;
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .contact-button {
+            display: block;
+            margin: 50px auto;
+            padding: 15px 30px;
+            background-color: #6c5ce7;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: #5b4bc4;
+        }
+
+        .how-it-works {
+            padding: 50px 20px;
+            background-color: #f8f8f8;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .faq {
+            padding: 50px 20px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 10px;
+        }
+
+        .faq-answer {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Transform your business with your very own AI employee</h1>
+        <div class="carousel">
+            <span class="active">Increase conversions</span>
+            <span>Save time</span>
+            <span>Solve problems</span>
+        </div>
+    </div>
+
+    <div class="contact-button">
+        <button onclick="window.location.href='contact.html'">Get Started</button>
+    </div>
+
+    <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <i class="fas fa-brain"></i>
+                <h3>AI-Powered</h3>
+                <p>Advanced AI technology that learns and adapts to your business needs.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-cogs"></i>
+                <h3>Customizable</h3>
+                <p>Tailored solutions to match your specific business requirements.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-chart-line"></i>
+                <h3>Scalable</h3>
+                <p>Grows with your business needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Is my data protected?</div>
+                <div class="faq-answer">Yes, your data is encrypted and stored securely according to GDPR guidelines.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How efficient is the chatbot?</div>
+                <div class="faq-answer">Our chatbots are trained on state-of-the-art models to provide accurate and relevant responses.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I customize the chatbot?</div>
+                <div class="faq-answer">Absolutely! Our chatbots are fully customizable to match your brand and business needs.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What industries do you serve?</div>
+                <div class="faq-answer">We serve all industries including e-commerce, healthcare, finance, and more.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long does it take to set up?</div>
+                <div class="faq-answer">Setup typically takes 2-5 business days depending on the complexity of your requirements.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carousel animation
+        const carouselItems = document.querySelectorAll('.carousel span');
+        let current = 0;
+
+        function nextItem() {
+            carouselItems[current].classList.remove('active');
+            current = (current + 1) % carouselItems.length;
+            carouselItems[current].classList.add('active');
+        }
+
+        setInterval(nextItem, 3000);
+    </script>
+</body>
+</html>
