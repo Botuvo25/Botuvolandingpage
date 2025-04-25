@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BOTUVO - Your AI Employee Solution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Your existing CSS here... (keep your full CSS from above) */
+
+    /* Add the reviews styles at the end of your CSS */
+    /* Reviews Section Styles */
+    #reviews {
+      padding: 50px 20px;
+      background-color: #f9f9f9;
+    }
+
+    #reviews h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #reviews h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .review {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stars {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .animated-star {
+      color: #ffd700; /* Gold */
+      animation: pulse 1.5s infinite;
+      margin: 0 2px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding:10px 0;">
+      <div class="logo" style="min-width:100px;">
+        <img src="logo.png" alt="BOTUVO Logo" style="height:60px; width:auto;">
+      </div>
+      <div class="site-title" style="text-align:center; flex-grow:1;">
+        <h1 style="margin:0; font-size:2rem; font-weight:700;">BOTUVO</h1>
+      </div>
+      <div class="nav-links" style="display:flex; gap:20px;">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#about-us">About Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#join-us">Join Us</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section style="display:flex; flex-wrap:wrap; align-items:center; padding:50px 20px;">
+    <div style="flex:1; min-width:300px;">
+      <h1 style="font-size:2rem; margin-bottom:20px;">Transform your business with your very own AI employee</h1>
+      <div class="carousel-container" style="margin-bottom:20px;">
+        <div class="carousel-text" style="font-size:1.5rem; font-weight:600; color:#8a2be2;">
+          <span id="static-text"></span><span id="dynamic-text"></span><span class="cursor">|</span>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <a href="#contact" class="btn btn-primary btn-large" style="margin-right:10px;">Get Started</a>
+        <a href="#how-it-works" class="btn btn-secondary btn-large">Learn More</a>
+      </div>
+    </div>
+    <div style="flex:1; min-width:300px; text-align:center;">
+      <img src="ai-assistant.png" alt="AI Assistant Illustration" style="max-width:200px; height:auto;">
+    </div>
+  </section>
+
+  <!-- Support & Reviews Section -->
+  <section id="reviews" style="padding:50px 20px; background-color:#f9f9f9;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="text-align:center; font-size:2rem; margin-bottom:20px;">24/7 Fully Bespoke AI Support Bot for Your Landing Page</h2>
+      <p style="text-align:center; font-size:1.2rem; margin-bottom:40px;">Answer questions, solve problems, and most importantly, convert your leads into paying customers with our intelligent AI chatbot.</p>
+      
+      <!-- Testimonials -->
+      <div style="max-width:900px; margin:0 auto;">
+        <h3 style="text-align:center; font-size:1.5rem; margin-bottom:30px;">What Our Clients Say</h3>
+        
+        <!-- Review 1 -->
+        <div style="margin-bottom:30px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div class="stars" style="margin-bottom:10px; text-align:center;">
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+          </div>
+          <p style="font-size:1rem; line-height:1.5;">"BOTUVO significantly boosted our lead generation efforts. Their strategies helped us attract more qualified prospects, resulting in a noticeable increase in conversions. Highly recommended!"</p>
+          <small style="display:block; margin-top:10px; font-style:italic;">— Mark D., Founder & CEO of a Fitness Studio</small>
+        </div>
+        <!-- Review 2 -->
+        <div style="margin-bottom:30px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div class="stars" style="margin-bottom:10px; text-align:center;">
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star-half-alt animated-star"></i>
+          </div>
+          <p style="font-size:1rem; line-height:1.5;">"Thanks to BOTUVO, our website now converts visitors into customers more effectively. Their expertise in lead gen has made a real difference for our dental practice."</p>
+          <small style="display:block; margin-top:10px; font-style:italic;">— Lisa K., Dental Practice Owner</small>
+        </div>
+        <!-- Review 3 -->
+        <div style="margin-bottom:30px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div class="stars" style="margin-bottom:10px; text-align:center;">
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+          </div>
+          <p style="font-size:1rem; line-height:1.5;">"The team at BOTUVO helped us optimize our sales funnel and improve our conversion rates. We've seen a steady growth in leads and sales since working with them."</p>
+          <small style="display:block; margin-top:10px; font-style:italic;">— Tom S., Marketing Director at a Cosmetic Clinic</small>
+        </div>
+        <!-- Review 4 -->
+        <div style="margin-bottom:30px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div class="stars" style="margin-bottom:10px; text-align:center;">
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+          </div>
+          <p style="font-size:1rem; line-height:1.5;">"BOTUVO's lead generation solutions are top-notch. They helped us identify new opportunities and turn more visitors into paying clients."</p>
+          <small style="display:block; margin-top:10px; font-style:italic;">— Rachel P., Owner of a Fitness Center</small>
+        </div>
+        <!-- Review 5 -->
+        <div style="margin-bottom:30px; padding:20px; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div class="stars" style="margin-bottom:10px; text-align:center;">
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+            <i class="fas fa-star animated-star"></i>
+          </div>
+          <p style="font-size:1rem; line-height:1.5;">"Since partnering with BOTUVO, our lead quality has improved dramatically, and our conversion rates are up. Their insights and strategies are game-changers."</p>
+          <small style="display:block; margin-top:10px; font-style:italic;">— Daniel H., Manager of a Wellness Spa</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about-us" style="padding:50px 20px; background:#fff;">
+    <div style="max-width:800px; margin:0 auto;">
+      <h2 style="text-align:center; margin-bottom:20px;">About Us</h2>
+      <p style="text-align:center; font-size:1.1rem; line-height:1.6;">
+        At BOTUVO, we specialize in creating AI-powered chatbots that act as virtual employees for your business. Our goal is to simplify AI integration, helping e-commerce brands, life coaches, and other agencies save time, increase conversions, and solve customer problems effortlessly.
+      </p>
+      <h3 style="margin-top:30px;">Our Values</h3>
+      <ul style="list-style:disc inside; padding-left:20px; font-size:1.1rem;">
+        <li><strong>Simplicity:</strong> Making AI accessible and easy to use.</li>
+        <li><strong>Impact:</strong> Helping businesses grow through smarter customer engagement.</li>
+        <li><strong>Giving Back:</strong> We dedicate 10% of all profits to charity, supporting various causes that change monthly. Updates are shared via our newsletter, so you can see the positive impact of your partnership with us.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Join Us CTA -->
+  <section style="padding:50px 20px; background:#f0f0f0;">
+    <div style="max-width:800px; margin:0 auto; text-align:center;">
+      <h2 style="margin-bottom:20px;">Join Us</h2>
+      <p style="margin-bottom:30px;">Ready to elevate your website with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder.</p>
+      <a href="#contact" class="btn btn-primary btn-large">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="padding:50px 20px;">
+    <div style="max-width:800px; margin:0 auto; text-align:center;">
+      <h2 style="margin-bottom:20px;">Get in Touch</h2>
+      <p style="margin-bottom:20px;">Ready to transform your business with an AI employee? Contact us today!</p>
+      <button id="openContactForm" class="btn btn-primary btn-large">Contact Us</button>
+    </div>
+  </section>
+
+  <!-- Contact Modal (simplified) -->
+  <div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:20px; max-width:500px; margin:auto; position:relative;">
+      <span class="close" style="position:absolute; top:10px; right:20px; font-size:1.5rem; cursor:pointer;">&times;</span>
+      <h2>Contact BOTUVO</h2>
+      <form action="https://formspree.io/f/mjkwvgvr" method="POST" style="display:flex; flex-direction:column;">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required style="margin-bottom:10px; padding:8px;"/>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required style="margin-bottom:10px; padding:8px;"/>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required style="margin-bottom:10px; padding:8px;"/>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required style="margin-bottom:10px; padding:8px;"></textarea>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background:#222; color:#fff; padding:20px 0; text-align:center;">
+    <p>&copy; 2025 BOTUVO. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Carousel typing effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const dynamicText = document.getElementById("dynamic-text");
+      if (!dynamicText) return;
+      const phrases = ["Increase conversions", "Save time", "Solve problems"];
+      let i=0, j=0;
+      let currentPhrase = [];
+      let isDeleting = false;
+      let isEnd = false;
+
+      function loop() {
+        isEnd = false;
+        if (i === phrases.length) i=0;
+        if (j===0) currentPhrase = phrases[i].split('');
+        if (!isDeleting && j <= currentPhrase.length) {
+          dynamicText.textContent = currentPhrase.slice(0,j).join('');
+          j++;
+          if (j > currentPhrase.length) {
+            isDeleting=true; isEnd=true;
+            setTimeout(loop,2000);
+            return;
+          }
+        }
+        if (isDeleting && j>=0) {
+          dynamicText.textContent = currentPhrase.slice(0,j).join('');
+          j--;
+          if (j===0) { isDeleting=false; i++; }
+        }
+        const speed= isEnd?2000: isDeleting?30:100;
+        setTimeout(loop,speed);
+      }
+      setTimeout(loop,1500);
+    });
+  </script>
+</body>
+</html>
