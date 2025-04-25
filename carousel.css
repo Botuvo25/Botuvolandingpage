@@ -1,0 +1,27 @@
+/* carousel.css - Updated Carousel CSS to exactly match chatcipher.ai */
+.carousel-container {
+  margin-bottom: 2rem;
+  height: 40px;
+}
+
+.carousel-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #8a2be2; /* Purple accent */
+  position: relative;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  width: 2px;
+  height: 1.5rem;
+  background-color: #8a2be2; /* Purple accent */
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
