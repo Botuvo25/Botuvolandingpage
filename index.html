@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOTUVO - Your AI Employee Solution</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <button onclick="scrollToSection('hero')">Home</button>
+  <button onclick="scrollToSection('mission')">Our Mission</button>
+  <button onclick="scrollToSection('how')">How It Works</button>
+  <button onclick="scrollToSection('benefits')">Benefits</button>
+  <button onclick="scrollToSection('reviews')">Reviews</button>
+  <button onclick="scrollToSection('why')">Why Us?</button>
+  <button onclick="scrollToSection('faqs')">FAQs</button>
+  <button onclick="openContact()">Contact</button>
+</nav>
+
+<!-- Header -->
+<header>
+  <h1 class="title">BOTUVO</h1>
+  <div class="logo">
+    <img src="images/botuvo-logo.jpg" alt="BOTUVO Logo" />
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div class="hero-text">
+    <h2>Transform your business with your own AI employee</h2>
+    <div class="carousel-container">
+      <span class="carousel-text">
+        <span id="static-text"></span>
+        <span id="dynamic-text"></span>
+        <span class="cursor">|</span>
+      </span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="images/chatbot-image.jpg" alt="AI chatbot interacting with a customer" width="400" />
+  </div>
+</section>
+
+<!-- Rest of your content (unchanged, omitted for brevity) -->
+
+<script src="script.js"></script>
+</body>
+</html>

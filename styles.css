@@ -1,0 +1,121 @@
+/* Basic Reset & Variables */
+:root {
+  --primary: #8a2be2;
+  --primary-dark: #6a1cb2;
+  --black: #222;
+  --white: #fff;
+  --gray-light: #f0f0f0;
+  --gray-dark: #999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  line-height: 1.6;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+nav button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+nav button:hover {
+  background: var(--gray-light);
+  color: var(--primary);
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+h1.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.logo img {
+  height: 80px;
+  transition: transform 0.3s;
+}
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+.section {
+  margin-bottom: 40px;
+}
+
+/* Hero Styles */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+.hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.carousel-container {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Additional styles for benefits, reviews, FAQ, footer, etc. (keep your existing styles) */
