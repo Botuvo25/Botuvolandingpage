@@ -1,9 +1,0 @@
-/* Collapsible review text */
-.collapsible {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.collapsible.show {
-  max-height: 300px; /* or auto, but max-height works better for transition */
-}
