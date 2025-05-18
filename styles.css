@@ -5,12 +5,13 @@ body {
   background-color: #fff;
   color: #000;
   line-height: 1.6;
+  font-size: 18px; /* increased font size for better readability */
 }
 
-/* Increase whitespace around sections for a cleaner look */
+/* Reduce spacing between sections */
 section {
-  padding: 80px 20px;
-  margin-bottom: 80px;
+  padding: 50px 20px; /* less padding for tighter spacing */
+  margin-bottom: 50px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -40,7 +41,7 @@ header {
 .site-title {
   flex: 1;
   text-align: center;
-  font-size: 32px;
+  font-size: 36px; /* larger font for main title */
   font-weight: 700;
   margin: 0;
   color: #000;
@@ -88,7 +89,7 @@ nav a {
 }
 
 .main-message {
-  font-size: 36px;
+  font-size: 40px; /* larger font size */
   font-weight: 700;
   margin-bottom: 20px;
   color: #4B0082;
@@ -96,7 +97,7 @@ nav a {
 
 /* Typing container */
 .typing-container {
-  font-size: 28px;
+  font-size: 24px; /* larger font size */
   font-weight: 600;
   color: purple;
   min-height: 40px;
@@ -124,7 +125,7 @@ nav a {
 
 /* Sections */
 section {
-  padding: 80px 20px;
+  padding: 50px 20px; /* less padding for tighter spacing */
 }
 
 /* Headings */
@@ -132,11 +133,11 @@ h2 {
   text-align: center;
   margin-bottom: 40px;
   color: #4B0082;
-  font-size: 45px;
+  font-size: 50px; /* larger font size */
   font-weight: 700;
 }
 
-/* Cards for "How It Works" and "Benefits" - 5 vertical cards */
+/* Cards for "How It Works" and "Benefits" - 6 cards in grid */
 .cards-section {
   display: flex;
   flex-direction: column;
@@ -144,11 +145,11 @@ h2 {
 }
 
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 40px;
+  width: 100%;
 }
 
 .card {
@@ -156,7 +157,6 @@ h2 {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 30px 20px;
-  width: 180px;
   min-height: 250px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -221,7 +221,7 @@ p {
 /* CTA & Modal styles */
 .cta-section {
   text-align: center;
-  padding: 80px 20px;
+  padding: 50px 20px;
   background-color: #f9f9f9;
 }
 #footerGetInContact {
