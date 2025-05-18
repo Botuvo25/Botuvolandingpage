@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Botuvo is an AI Chatbot Agency, helping you automate customer service, increase conversions, and streamline business processes." />
+  <title>Botuvo - AI Chatbot Agency</title>
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Botuvo Logo" class="logo" loading="lazy" />
+    </div>
+    <h1 class="site-title">BOTUVO</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#why-us">Why Us?</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" id="navGetInContact">Get in Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content" style="flex-direction: row; flex-wrap: nowrap;">
+      <div class="hero-text" style="order: 1; flex: 1; min-width: 250px;">
+        <h2 class="main-message">Transform your business with your own AI employee.</h2>
+        <div class="typing-container" id="typing" style="margin-bottom: 20px;">
+          <span id="typed"></span><span class="cursor">|</span>
+        </div>
+        <button id="getStartedBtn" class="styled-btn">Book a free strategy call</button>
+      </div>
+      <div class="hero-image" style="order: 2; flex: 1; min-width: 250px;">
+        <img src="ai-illustration.png" alt="Chatbot Illustration" style="width: 100%; max-width: 500px;" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission -->
+  <section id="mission" class="mission-section">
+    <h2>Our Mission</h2>
+    <p class="mission-text">
+      At BOTUVO, we specialise in creating AI-powered chatbots that act as virtual employees for your business. Our goal is to simplify AI integration, helping e-commerce brands, life coaches, and other agencies save time, increase conversions, and solve customer problems effortlessly.  
+      Typically, your AI employee can be integrated within just 7 days, depending on your project scope.
+    </p>
+    <h3>Our Values</h3>
+    <ul>
+      <li><strong>Simplicity:</strong> Making AI accessible and easy to use.</li>
+      <li><strong>Impact:</strong> Helping businesses grow through smarter customer engagement.</li>
+      <li><strong>Giving Back:</strong> We dedicate 10% of all profits to charity, supporting various causes that change monthly. Updates are shared via our newsletter, so you can see the positive impact of your partnership with us.</li>
+    </ul>
+  </section>
+
+  <!-- What We Offer (Boxes) -->
+  <section id="what-we-offer" class="boxes-section">
+    <h2>What We Offer</h2>
+    <div class="boxes-container">
+      <div class="box">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h3>Customer Support</h3>
+        <p>Handle FAQs, troubleshoot issues, and provide instant answers 24/7.</p>
+      </div>
+      <div class="box">
+        <div class="icon"><i class="fas fa-user-plus"></i></div>
+        <h3>Lead Generation</h3>
+        <p>Collect user information and store it as leads in your dashboard.</p>
+      </div>
+      <div class="box">
+        <div class="icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Appointment Booking</h3>
+        <p>Integrate with Calendly or Cal.com so users can book meetings directly.</p>
+      </div>
+      <div class="box">
+        <div class="icon"><i class="fas fa-cogs"></i></div>
+        <h3>Custom Actions</h3>
+        <p>Connect your AI to external APIs, check order status, update info, and more.</p>
+      </div>
+      <div class="box">
+        <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+        <h3>E-commerce Assistance</h3>
+        <p>Help customers find products, track orders, and answer product questions.</p>
+      </div>
+      <div class="box">
+        <div class="icon"><i class="fas fa-globe"></i></div>
+        <h3>Web Search & Multi-Language</h3>
+        <p>Search the web in real-time and support multiple languages for global reach.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="cards-section">
+    <h2>How It Works</h2>
+    <div class="cards-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-search"></i></div>
+        <h3>Discovery</h3>
+        <p>Identify your needs and define project scope for a tailored AI solution.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-cogs"></i></div>
+        <h3>Set Up</h3>
+        <p>Configure your AI chatbot and integrate it seamlessly with your platforms.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-robot"></i></div>
+        <h3>Development & Testing</h3>
+        <p>Build, test, and refine your AI employee to ensure optimal performance.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-link"></i></div>
+        <h3>Integration</h3>
+        <p>Deploy your AI chatbot across your website, social media, or other channels.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Optimize & Support</h3>
+        <p>Monitor, analyze, and improve your AI employee with ongoing support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="cards-section">
+    <h2>Benefits</h2>
+    <div class="cards-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-clock"></i></div>
+        <h3>Save Time</h3>
+        <p>Automate routine interactions, freeing your team to focus on high-value tasks.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Solve Problems</h3>
+        <p>Provide instant support, resolving customer issues quickly and efficiently.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h3>Increase Conversions</h3>
+        <p>Engage visitors with personalized conversations that turn leads into customers.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-cogs"></i></div>
+        <h3>Boost Efficiency</h3>
+        <p>Streamline your sales and support with AI automation and insights.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-database"></i></div>
+        <h3>Collect Data</h3>
+        <p>Gather valuable insights to inform your business decisions and strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us? -->
+  <section id="why-us" class="why-us-section">
+    <h2>Why Choose BOTUVO?</h2>
+    <div class="cards-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-user-shield"></i></div>
+        <h3>Expertise in AI Virtual Employees</h3>
+        <p>We specialize exclusively in creating AI-powered virtual employees tailored to your business needs. Our team has deep experience in AI, automation, and customer engagement, ensuring you get a solution that truly works.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-cogs"></i></div>
+        <h3>Customized Solutions, Not One-Size-Fits-All</h3>
+        <p>Unlike generic chatbots, our AI employees are fully customizable to match your brand voice, industry, and specific workflows — making your automation seamless and effective.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h3>Dedicated Support & Ongoing Optimization</h3>
+        <p>We don’t just set it and forget it. Our team provides continuous support, updates, and optimization to ensure your AI employee evolves with your business.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+        <h3>Transparent Pricing & No Hidden Fees</h3>
+        <p>We believe in honest, upfront pricing with no surprises. Our packages are designed to fit different budgets and needs, with clear value at every level.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Ethical & Secure AI</h3>
+        <p>Your data security and privacy are our top priorities. We adhere to strict standards and use the latest encryption to protect your information.</p>
+      </div>
+    </div>
+    <div class="values-para" style="max-width:800px; margin:20px auto; font-size:16px; line-height:1.6; color:#333;">
+      <p>At BOTUVO, we believe in making AI accessible and easy to use, helping businesses grow through smarter customer engagement. We are committed to transparency, security, and giving back — dedicating 10% of all profits to charity and supporting causes that change monthly. Together, we’re building a future where technology empowers, uplifts, and makes a difference.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> What AI knowledge base is used?
+      </button>
+      <div class="faq-answer">We use a mix between Chat GPT, Gemini, Claude, and more to ensure your bot is always at the top of its game.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> Where can my chatbot be used?
+      </button>
+      <div class="faq-answer">Your chatbots' integrations can be virtually endless—from your landing page to WhatsApp, Notion, Slack, Zapier, and more!</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> How secure is my data?
+      </button>
+      <div class="faq-answer">We prioritise your data security with end-to-end encryption and strict privacy policies.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> Can I customise my chatbot?
+      </button>
+      <div class="faq-answer">Absolutely! Our chatbots are fully customisable to match your brand voice and needs.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> How easy is it to integrate?
+      </button>
+      <div class="faq-answer">Our integration process is straightforward and supported by detailed guides and support team.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="arrow">&#9654;</span> What support do you offer?
+      </button>
+      <div class="faq-answer">We offer 24/7 support to ensure your chatbot runs smoothly and effectively.</div>
+    </div>
+  </section>
+
+  <!-- Footer with "Get in Contact" -->
+  <section id="footer-cta" class="cta-section">
+    <h2>Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder.</h2>
+    <button id="footerGetInContact" class="footer-btn">Book a free strategy call</button>
+  </section>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3>Contact Us</h3>
+      <form id="contactForm" action="https://formspree.io/f/mjkwvgvr" method="POST">
+        <input type="text" name="First Name" placeholder="First Name" required />
+        <input type="text" name="Last Name" placeholder="Last Name" required />
+        <input type="email" name="_replyto" placeholder="Email" required />
+        <textarea name="Message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="formMessage"></div>
+    </div>
+  </div>
+
+<!-- CHATBOT -->
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="wWbvHrDPDPqsnX1dBfo0f";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+</body>
+</html>
