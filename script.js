@@ -20,6 +20,8 @@ function openModal() {
 function closeModal() {
   modal.style.display = 'none';
 }
+
+// Attach event listeners to buttons
 document.getElementById('navGetInContact').addEventListener('click', (e) => {
   e.preventDefault();
   openModal();
@@ -30,6 +32,11 @@ document.getElementById('getStartedBtn').addEventListener('click', () => {
 document.getElementById('footerGetInContact').addEventListener('click', () => {
   openModal();
 });
+document.getElementById('missionCTA').addEventListener('click', () => {
+  openModal();
+});
+
+// Close modal on clicking close button or outside modal
 closeBtn.onclick = closeModal;
 window.onclick = (e) => {
   if (e.target === modal) closeModal();
