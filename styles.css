@@ -5,12 +5,12 @@ body {
   background-color: #fff;
   color: #000;
   line-height: 1.6;
-  font-size: 18px; /* increased font size for better readability */
+  font-size: 18px; /* larger font for readability */
 }
 
-/* Reduce spacing between sections */
+/* Reduce spacing between sections for a tighter layout */
 section {
-  padding: 50px 20px; /* less padding for tighter spacing */
+  padding: 50px 20px;
   margin-bottom: 50px;
   max-width: 1200px;
   margin-left: auto;
@@ -125,7 +125,7 @@ nav a {
 
 /* Sections */
 section {
-  padding: 50px 20px; /* less padding for tighter spacing */
+  padding: 50px 20px; /* tighter spacing */
 }
 
 /* Headings */
