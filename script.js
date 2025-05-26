@@ -111,4 +111,50 @@ function type() {
     }
   }
 }
+// FAQ Toggle Function
+function toggleFaq(buttonElement) {
+  // The .faq-answer div is the next element sibling to the button
+  const answer = buttonElement.nextElementSibling;
+  // The arrow span is the first child of the button
+  const arrow = buttonElement.querySelector('.arrow');
+
+  if (answer) { // Make sure the answer element exists
+    // Check if the answer is currently displayed (as 'block')
+    // Using getComputedStyle is more robust than checking inline style directly
+    // if you might set display via CSS classes in the future.
+    const isAnswerVisible = getComputedStyle(answer).display === "block";
+
+    if (isAnswerVisible) {
+      answer.style.display = "none";
+      if (arrow) arrow.innerHTML = "&#9654;"; // Pointing right arrow (>)
+      buttonElement.setAttribute('aria-expanded', 'false');
+    } else {
+      answer.style.display = "block";
+      if (arrow) arrow.innerHTML = "&#9660;"; // Pointing down arrow (v)
+      buttonElement.setAttribute('aria-expanded', 'true');
+    }
+  } else {
+    console.error("Could not find the answer element for this FAQ button:", buttonElement);
+  }
+}
+
+// It's good practice to ensure all answers are hidden on page load
+// and ARIA attributes are set correctly.
+document.addEventListener('DOMContentLoaded', () => {
+  const allFaqQuestions = document.querySelectorAll('.faq-question');
+  allFaqQuestions.forEach(questionButton => {
+    const answer = questionButton.nextElementSibling;
+    if (answer && answer.classList.contains('faq-answer')) {
+      // Initially hide the answer (CSS is better for this, see below)
+      // answer.style.display = 'none'; // Can be done here or in CSS
+      questionButton.setAttribute('aria-expanded', 'false');
+
+      // Ensure the arrow is initially correct if answers are hidden by default
+      const arrow = questionButton.querySelector('.arrow');
+      if (arrow) {
+        arrow.innerHTML = "&#9654;";
+      }
+    }
+  });
+});
 type();
