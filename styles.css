@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global Styles (unchanged from previous, with additions for new sections) */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -11,7 +11,16 @@ a {
   color: inherit;
 }
 
-/* Navbar */
+section {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+section.visible {
+  opacity: 1;
+}
+
+/* Navbar (unchanged) */
 .navbar {
   position: fixed;
   top: 0;
@@ -59,12 +68,20 @@ a {
   margin: 4px 0;
 }
 
-/* Hero Section */
+/* Hero Section (unchanged) */
 .hero {
   background-color: #001f3f;
   color: #ffffff;
   text-align: center;
   padding: 150px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero-content {
+  max-width: 600px;
 }
 
 .hero h1 {
@@ -92,7 +109,107 @@ a {
   transform: scale(1.05);
 }
 
-/* Features Section */
+.hero-image {
+  max-width: 300px;
+  height: auto;
+}
+
+/* Benefits Section (unchanged) */
+.benefits {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.benefits h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.benefits-list li {
+  background-color: #f0f0f0;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.benefits-list li:hover {
+  transform: scale(1.05);
+}
+
+.benefits-list .icon {
+  font-size: 2em;
+  color: #39cccc;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* How It Works Section (Expanded) */
+.how-it-works {
+  padding: 80px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.step {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 220px;
+  border-radius: 10px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.step:hover {
+  transform: scale(1.05);
+}
+
+.step-number {
+  font-size: 1.5em;
+  color: #39cccc;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.step .icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.step:not(:last-child)::after {
+  content: '→';
+  font-size: 2em;
+  color: #39cccc;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Features Section (unchanged) */
 .features {
   padding: 80px 20px;
   text-align: center;
@@ -117,13 +234,14 @@ a {
   width: 300px;
   border-radius: 10px;
   transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card:hover {
   transform: scale(1.05);
 }
 
-.icon {
+.feature-card .icon {
   font-size: 3em;
   margin-bottom: 20px;
 }
@@ -132,7 +250,49 @@ a {
   margin-bottom: 10px;
 }
 
-/* Footer */
+/* Services Section (New) */
+.services {
+  padding: 80px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-card .icon {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #39cccc;
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+}
+
+/* Footer (unchanged) */
 .footer {
   background-color: #001f3f;
   color: #ffffff;
@@ -143,18 +303,24 @@ a {
 .social-links a {
   margin: 0 10px;
   color: #39cccc;
+  transition: color 0.3s;
 }
 
 .social-links a:hover {
   color: #ffffff;
 }
 
-/* Responsive */
+/* Responsive Design (updated for new sections) */
 @media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
+    text-align: center;
   }
 
   .nav-links.active {
@@ -170,11 +336,34 @@ a {
   }
 
   .hero {
+    flex-direction: column;
     padding: 100px 20px;
+    gap: 20px;
   }
 
-  .feature-grid {
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  .benefits-list,
+  .steps,
+  .feature-grid,
+  .services-grid {
     flex-direction: column;
     align-items: center;
+    gap: 40px;
+  }
+
+  .step:not(:last-child)::after {
+    content: '↓';
+    right: auto;
+    top: auto;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
