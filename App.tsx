@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import IndexPage from "./pages/Index";       // import directly from Index.tsx
+import NotFoundPage from "./pages/NotFound"; // import directly from NotFound.tsx
 
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<IndexPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );
