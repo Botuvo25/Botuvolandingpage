@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import IndexPage from "./pages/Index";       // import directly from Index.tsx
-import NotFoundPage from "./pages/NotFound"; // import directly from NotFound.tsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { IndexPage, NotFoundPage } from './pages';
 
 const App = () => (
   <BrowserRouter>
