@@ -1,25 +1,8 @@
-import Hero from "@/components/Hero";
-import CTA from "@/components/CTA";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import Benefits from "@/components/Benefits";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-
-const Index = () => {
-  return (
-    <div className="min-h-screen">
-      <Hero />
-      <CTA />
-      <Services />
-      <Process />
-      <Benefits />
-      <WhyChooseUs />
-      <Contact />
-      <Footer />
-    </div>
-  );
-};
+const Index = () => (
+  <div style={{ padding: '20px', textAlign: 'center' }}>
+    <h1>Test Content</h1>
+    <p>If you see this, your React app is rendering.</p>
+  </div>
+);
 
 export default Index;
