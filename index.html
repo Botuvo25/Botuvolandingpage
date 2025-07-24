@@ -1,356 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>BOTUVO - AI Virtual Employee Agency</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 <style>
   body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #222;
-  }
-  a {
-    text-decoration: none;
-  }
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  section {
-    padding: 2rem 0;
-  }
-  /* Hero / Header */
-  .header {
-    background: linear-gradient(135deg, hsl(264, 91%, 58%), hsl(264, 100%, 70%));
-    color: #fff;
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-  .header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  .header p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 1.5rem;
-  }
-  /* Buttons */
-  .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin: 1rem;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, hsl(264, 91%, 58%), hsl(264, 100%, 70%));
-    color: #fff;
-  }
-  .btn-primary:hover {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    transform: translateY(-2px);
-  }
-  .btn-outline {
-    background: transparent;
-    border: 2px solid hsl(264, 91%, 58%);
-    color: hsl(264, 91%, 58%);
-  }
-  .btn-outline:hover {
-    background-color: hsl(264, 91%, 58%);
-    color: #fff;
-  }
-  /* Sections styling */
-  .section {
-    background: #fff;
-    margin: 2rem 0;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-  h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  p {
-    line-height: 1.5;
-  }
-  /* Cards layout */
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-  .card {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 1rem;
-    flex: 1 1 250px;
-    max-width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s, transform 0.3s;
-  }
-  .card:hover {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    transform: translateY(-2px);
-  }
-  /* Benefits items */
-  .benefits-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .benefit-item {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    flex: 1 1 200px;
-    max-width: 250px;
-    margin: 0.5rem;
-  }
-  /* Footer styles */
-  footer {
-    background-color: #222;
-    color: #eee;
-    padding: 2rem;
-  }
-  /* Additional styles for new sections */
-  .section-gradient {
-    background: linear-gradient(135deg, hsl(264, 91%, 58%), hsl(264, 100%, 70%));
-    color: #fff;
-    text-align: center;
-  }
-  .section-gradient h2 {
-    color: #fff;
-  }
-  /* Utility classes */
-  .text-primary {
-    color: hsl(264, 91%, 58%);
-  }
-  .max-w-3xl {
-    max-width: 768px;
-  }
-  .max-w-2xl {
-    max-width: 640px;
-  }
-  .max-w-3xl {
-    max-width: 768px;
-  }
-  /* Responsive adjustments */
-  @media(max-width: 768px) {
-    .benefits-items {
-      flex-direction: column;
-      align-items: center;
-    }
+    font-family: 'Inter', sans-serif;
   }
 </style>
-<!-- Include lucide icons via CDN for icons used -->
-<script src="https://unpkg.com/lucide/dist/lucide.min.js"></script>
 </head>
-<body>
+<body class="bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
 
-<!-- Hero Section -->
-<section class="header">
-  <h1>BOTUVO</h1>
-  <p>Your AI Virtual Employee Agency</p>
-  <p>We build powerful, AI-powered chatbots that act as virtual employees for e-commerce brands, coaches, and agencies. Make AI accessible, human-centric, transparent, and secure.</p>
-  <button onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
-  <button onclick="alert('Free Chatbot Audit!')">Free Chatbot Audit</button>
-  <div style="margin-top:1rem; display:flex; justify-content:center;">
-    <div style="margin:0 1rem;">10% to Charity</div>
-    <div style="margin:0 1rem;">24/7 AI Support</div>
-    <div style="margin:0 1rem;">100% Human Centric</div>
+<!-- Hero Section with floating logo -->
+<section class="relative py-20 px-4 bg-white text-center text-[hsl(var(--foreground))]">
+  <!-- Floating Logo in the middle -->
+  <div class="absolute inset-0 flex items-center justify-center z-10">
+    <div class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg">
+      <!-- Your logo image -->
+      <img src="/logo.png" alt="BOTUVO Logo" class="w-16 h-16 object-contain" />
+    </div>
+  </div>
+  <!-- Content below the logo -->
+  <div class="relative z-0 max-w-4xl mx-auto pt-32">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[hsl(var(--primary))]">BOTUVO</h1>
+    <p class="text-lg mb-4">Your AI Virtual Employee Agency</p>
+    <p class="mb-8 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">We build powerful, AI-powered chatbots that act as virtual employees for e-commerce brands, coaches, and agencies. Make AI accessible, human-centric, transparent, and secure.</p>
+    <div class="flex justify-center space-x-4 mb-8">
+      <button class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white" onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
+      <button class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold" onclick="alert('Free Chatbot Audit!')">Free Chatbot Audit</button>
+    </div>
+    <div class="flex justify-center space-x-8 text-sm text-[hsla(0,0%,0%,0.7)]">
+      <div>10% to Charity</div>
+      <div>24/7 AI Support</div>
+      <div>100% Human Centric</div>
+    </div>
   </div>
 </section>
 
 <!-- Book a free strategy call -->
-<section class="section-gradient">
-  <div class="container">
-    <h2 style="font-size:2.5rem; margin-bottom:1rem;">Book a free <span style="color:#fff;">strategy call</span></h2>
-    <p style="font-size:1.2rem; max-width:600px; margin:auto;">Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder. Our AI virtual employees are designed to seamlessly integrate with your existing operations, providing 24/7 support while maintaining the human touch your customers expect.</p>
-    <button class="btn btn-primary" onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
+<section class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Book a free <span class="text-white">strategy call</span></h2>
+    <p class="mb-8 max-w-2xl mx-auto text-lg">Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder. Our AI virtual employees seamlessly integrate with your operations, providing 24/7 support with a human touch.</p>
+    <button class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition" onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
   </div>
 </section>
 
-<!-- Our Services -->
-<section class="section">
-  <h2>Our Services</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Customer Support</h3>
+<!-- Our Services as Cards -->
+<section class="py-20 bg-white px-4">
+  <div class="max-w-6xl mx-auto mb-12 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Service Card -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Support -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M18 8a6 6 0 0 0-12 0v4a6 6 0 0 0 12 0V8z" />
+          <path d="M12 14v4" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Customer Support</h3>
       <p>AI-powered support agents that handle inquiries 24/7, providing instant, accurate responses to your customers.</p>
     </div>
-    <div class="card">
-      <h3>Lead Generation</h3>
+    <!-- Service 2 -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Target -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Lead Generation</h3>
       <p>Engage visitors and convert them into leads with intelligent chatbots that qualify prospects automatically.</p>
     </div>
-    <div class="card">
-      <h3>Appointment Booking</h3>
+    <!-- Service 3 -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Calendar -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Appointment Booking</h3>
       <p>Seamless scheduling systems that handle bookings, confirmations, and reminders automatically.</p>
     </div>
-    <div class="card">
-      <h3>E-commerce Assistance</h3>
-      <p>Help customers find products, answer questions, and complete purchases with AI support.</p>
-    </div>
-    <div class="card">
-      <h3>Custom API Actions</h3>
-      <p>Integrate your custom APIs with AI chatbots for tailored solutions.</p>
-    </div>
   </div>
 </section>
 
-<!-- Benefits -->
-<section class="section">
-  <h2 style="text-align:center;">Key <span class="text-primary">Benefits</span></h2>
-  <div class="benefits-items">
-    <div class="benefit-item">
-      <h3>Time Savings</h3>
+<!-- Benefits as Cards -->
+<section class="py-20 bg-[hsl(var(--background))] px-4">
+  <div class="max-w-4xl mx-auto mb-12 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Key <span class="text-[hsl(var(--primary)))]">Benefits</span></h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Benefit Card -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Clock -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
       <p>Automate repetitive tasks and free up your team to focus on high-value activities that drive growth.</p>
-      <small style="display:block; text-align:center;">Save 80% of response time</small>
+      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">Save 80% of response time</small>
     </div>
-    <div class="benefit-item">
-      <h3>Improved Customer Resolution</h3>
+    <!-- Benefit 2 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Thumbs Up -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M14 9V5a3 3 0 0 0-6 0v4" />
+          <path d="M5 15h4l3 5v-5h4" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
       <p>Provide instant, accurate responses 24/7, improving customer satisfaction and loyalty.</p>
-      <small style="display:block; text-align:center;">95% customer satisfaction</small>
+      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">95% customer satisfaction</small>
     </div>
-    <div class="benefit-item">
-      <h3>Higher Conversions</h3>
+    <!-- Benefit 3 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Trending Up -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 17l6-6 4 4 8-8" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
       <p>Guide prospects through your sales funnel with personalized interactions that convert.</p>
-      <small style="display:block; text-align:center;">3x conversion increase</small>
-    </div>
-    <div class="benefit-item">
-      <h3>Operational Efficiency</h3>
-      <p>Streamline processes and reduce operational costs while scaling your business effortlessly.</p>
-      <small style="display:block; text-align:center;">60% cost reduction</small>
-    </div>
-    <div class="benefit-item">
-      <h3>Rich Data Collection</h3>
-      <p>Gather valuable insights about customer behavior and preferences to inform business decisions.</p>
-      <small style="display:block; text-align:center;">Real-time analytics</small>
-    </div>
-    <div class="benefit-item">
-      <h3>Scalable Growth</h3>
-      <p>Effortlessly scale your customer service and sales operations as your business grows.</p>
-      <small style="display:block; text-align:center;">Unlimited capacity</small>
+      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">3x conversion increase</small>
     </div>
   </div>
 </section>
 
-<!-- Why Choose Us -->
-<section class="section">
-  <div class="container">
-    <h2 style="text-align:center;">Why Choose <span class="text-primary">BOTUVO</span>?</h2>
-    <p style="text-align:center; max-width:700px; margin:auto; margin-top:1rem;">
-      We stand out in the AI industry through our commitment to quality, transparency, and making AI truly work for your business.
-    </p>
-    <div class="grid" style="margin-top:2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
-      <!-- Repeat for each differentiator -->
-      <div class="card" style="border:1px solid #ddd; padding:1rem; border-radius:8px; transition: all 0.3s;">
-        <div style="display:flex; align-items:center; margin-bottom:1rem;">
-          <div style="width:50px; height:50px; background:#eee; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-right:1rem;">
-            <!-- Icon -->
-            <svg class="lucide" width="24" height="24" fill="none" stroke="hsl(264, 91%, 58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-          </div>
-          <h3 style="margin:0; font-size:1.2rem;">Tailored & Secure Solutions</h3>
-        </div>
-        <p>Every AI solution is custom-built for your brand and secured with enterprise-grade protection.</p>
+<!-- Why Choose Us Cards -->
+<section class="py-20 bg-[hsl(var(--background))] px-4">
+  <div class="max-w-6xl mx-auto text-center mb-16 px-4">
+    <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Choose <span class="text-[hsl(var(--primary)))]">BOTUVO</span>?</h2>
+    <p class="text-lg text-[hsla(0,0%,0%,0.6)] max-w-2xl mx-auto mb-8">We stand out in the AI industry through our commitment to quality, transparency, and making AI truly work for your business.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
+    <!-- Card 1 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Shield -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2l7 4v6c0 5-3 9-7 11s-7-4-7-11V6l7-4z" />
+        </svg>
       </div>
-      <!-- Repeat similar blocks for other differentiators -->
-      <!-- For brevity, only one is shown here. You can duplicate and customize accordingly. -->
+      <h3 class="text-xl font-semibold mb-2">Tailored & Secure Solutions</h3>
+      <p class="text-[hsla(0,0%,0%,0.6)]">Every AI solution is custom-built for your brand and secured with enterprise-grade protection.</p>
     </div>
-    <!-- Mission Statement -->
-    <div style="margin-top:3rem; background:linear-gradient(135deg, hsl(264, 91%, 58%, 0.1), hsl(264, 100%, 70%, 0.1)); padding:2rem; border-radius:16px; border:1px solid rgba(0,0,0,0.1); text-align:center;">
-      <h3 style="font-size:1.8rem; margin-bottom:1rem;">Our Mission</h3>
-      <p>Make AI accessible, human-centric, transparent, and secure for businesses of all sizes. We believe in using technology to empower people, not replace them, while giving back to the community through our charitable commitments.</p>
+    <!-- Card 2 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Dollar Sign -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 1v22" />
+          <path d="M6 12h12" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Ethical Pricing</h3>
+      <p class="text-[hsla(0,0%,0%,0.6)]">Transparent, fair pricing with no hidden costs. Plus, 10% of profits go to charity.</p>
     </div>
+    <!-- Card 3 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Headphones -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 12v-4a8 8 0 0 1 16 0v4" />
+          <path d="M4 12a8 8 0 0 0 16 0" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Continuous Support</h3>
+      <p class="text-[hsla(0,0%,0%,0.6)]">Ongoing optimization, updates, and dedicated support to keep your AI performing at its best.</p>
+    </div>
+    <!-- Card 4 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon: Shield -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2l7 4v6c0 5-3 9-7 11s-7-4-7-11V6l7-4z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Brand-Specific Implementation</h3>
+      <p class="text-[hsla(0,0%,0%,0.6)]">Your AI reflects your brand voice, values, and customer experience standards perfectly.</p>
+    </div>
+  </div>
+  <!-- Mission Statement -->
+  <div class="mt-16 bg-[hsla(264,91%,58%,0.1)] p-8 rounded-2xl border border-[hsla(0,0%,0%,0.1)] text-center max-w-3xl mx-auto">
+    <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+    <p>Make AI accessible, human-centric, transparent, and secure for businesses of all sizes. We believe in using technology to empower people, not replace them, while giving back to the community through our charitable commitments.</p>
   </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact-form" class="py-20" style="background:linear-gradient(135deg, hsl(264, 91%, 58%), hsl(264, 100%, 70%)); color:#fff;">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 style="font-size:2.5rem; margin-bottom:1rem;">Ready to <span style="color:#fff;">Get Started</span>?</h2>
-      <p style="font-size:1.2rem; max-width:600px; margin:auto;">Let's discuss how BOTUVO can transform your business with AI virtual employees. Get in touch for a free consultation.</p>
-    </div>
-    <div class="max-w-2xl mx-auto">
-      <!-- Contact Form -->
-      <div style="background:#fff; padding:2rem; border-radius:8px; color:#222;">
-        <h3 style="text-align:center; margin-bottom:1.5rem;">Send us a Message</h3>
-        <form action="https://formspree.io/f/mjkwvgvr" method="POST" style="display:flex; flex-direction:column; gap:1rem;">
-          <input type="text" name="name" placeholder="Your name" required style="padding:0.75rem; border-radius:4px; border:none;"/>
-          <input type="email" name="email" placeholder="your@email.com" required style="padding:0.75rem; border-radius:4px; border:none;"/>
-          <input type="text" name="company" placeholder="Your company name" style="padding:0.75rem; border-radius:4px; border:none;"/>
-          <textarea name="message" rows="5" placeholder="Tell us about your project and how we can help..." required style="padding:0.75rem; border-radius:4px; border:none;"></textarea>
-          <button type="submit" style="background:linear-gradient(135deg, hsl(264, 91%, 58%), hsl(264, 100%, 70%)); color:#fff; padding:1rem; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">Send Message</button>
-        </form>
-      </div>
-    </div>
+<!-- Contact -->
+<section class="py-20 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] text-white px-4" id="contact-form">
+  <div class="max-w-4xl mx-auto text-center mb-12">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to <span class="text-white">Get Started</span>?</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-8">Let's discuss how BOTUVO can transform your business with AI virtual employees. Get in touch for a free consultation.</p>
+  </div>
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg text-gray-800">
+    <h3 class="text-xl text-center mb-4">Send us a Message</h3>
+    <form class="flex flex-col gap-4" action="https://formspree.io/f/mjkwvgvr" method="POST">
+      <input class="p-3 rounded" type="text" name="name" placeholder="Your name" required />
+      <input class="p-3 rounded" type="email" name="email" placeholder="your@email.com" required />
+      <input class="p-3 rounded" type="text" name="company" placeholder="Your company name" />
+      <textarea class="p-3 rounded" rows="5" name="message" placeholder="Tell us about your project and how we can help..." required></textarea>
+      <button class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition" type="submit">Send Message</button>
+    </form>
   </div>
 </section>
 
 <!-- Footer -->
-<footer style="background-color:#222; color:#eee; padding:2rem;">
-  <div class="container mx-auto px-6">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:1.5rem;">
-      <!-- Brand -->
-      <div style="grid-column: span 2;">
-        <div style="display:flex; align-items:center; margin-bottom:1rem;">
-          <img src="/logo.png" alt="BOTUVO" style="width:50px; height:50px; margin-right:1rem;">
-          <h3 style="font-size:1.5rem; font-weight:bold;">BOTUVO</h3>
-        </div>
-        <p style="max-width:400px;">UK-based AI agency creating virtual employees that transform how businesses interact with customers. Making AI accessible, secure, and human-centric.</p>
+<footer class="bg-[hsl(var(--foreground))] text-[hsl(var(--background))] py-12">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+    <!-- Brand -->
+    <div class="col-span-1 md:col-span-2">
+      <div class="flex items-center mb-4">
+        <img src="/logo.png" alt="BOTUVO" class="w-12 h-12 mr-3" />
+        <h3 class="text-2xl font-bold">BOTUVO</h3>
       </div>
-      <!-- Services -->
-      <div>
-        <h4 style="font-weight:600; margin-bottom:0.5rem;">Services</h4>
-        <ul style="list-style:none; padding:0;">
-          <li>Customer Support</li>
-          <li>Lead Generation</li>
-          <li>Appointment Booking</li>
-          <li>E-commerce Assistance</li>
-          <li>Custom API Actions</li>
-        </ul>
-      </div>
-      <!-- Company -->
-      <div>
-        <h4 style="font-weight:600; margin-bottom:0.5rem;">Company</h4>
-        <ul style="list-style:none; padding:0;">
-          <li>About Us</li>
-          <li>Our Process</li>
-          <li>Case Studies</li>
-          <li>Contact</li>
-          <li>Privacy Policy</li>
-        </ul>
-      </div>
+      <p class="max-w-md">UK-based AI agency creating virtual employees that transform how businesses interact with customers. Making AI accessible, secure, and human-centric.</p>
     </div>
-    <hr style="border-color:rgba(255,255,255,0.2); margin-bottom:1.5rem;">
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;">
-      <p>&copy; 2024 BOTUVO. All rights reserved.</p>
-      <div style="display:flex; gap:1rem; font-size:0.9rem;">
-        <span>🇬🇧 UK-Based Agency</span>
-        <span>❤️ 10% to Charity</span>
-      </div>
+    <!-- Services -->
+    <div>
+      <h4 class="font-semibold mb-2">Services</h4>
+      <ul class="space-y-2 list-none">
+        <li>Customer Support</li>
+        <li>Lead Generation</li>
+        <li>Appointment Booking</li>
+        <li>E-commerce Assistance</li>
+        <li>Custom API Actions</li>
+      </ul>
+    </div>
+    <!-- Company -->
+    <div>
+      <h4 class="font-semibold mb-2">Company</h4>
+      <ul class="space-y-2 list-none">
+        <li>About Us</li>
+        <li>Our Process</li>
+        <li>Case Studies</li>
+        <li>Contact</li>
+        <li>Privacy Policy</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[hsla(0,0%,100%,0.2)] mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm">
+    <p>&copy; 2024 BOTUVO. All rights reserved.</p>
+    <div class="flex space-x-4 mt-2 md:mt-0 text-[hsla(0,0%,100%,0.7)]">
+      <span>🇬🇧 UK-Based Agency</span>
+      <span>❤️ 10% to Charity</span>
     </div>
   </div>
 </footer>
 
-<!-- Include lucide icons -->
+<!-- Scripts for icons -->
+<script src="https://unpkg.com/lucide/dist/lucide.min.js"></script>
 <script>
   lucide.createIcons();
 </script>
