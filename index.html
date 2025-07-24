@@ -50,26 +50,27 @@
     <!-- Floating Logo -->
     <div class="absolute inset-0 flex items-center justify-center z-10">
       <div
-        class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg -mt-12"
+        class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg"
         style="box-shadow: 0 0 20px hsl(var(--primary-glow));"
       >
         <img
-          src="https://via.placeholder.com/60"
+          src="logo.png" <!-- Replace with your actual logo path -->
           alt="Logo"
           class="w-16 h-16 object-contain"
+          onerror="this.onerror=null; this.src='https://via.placeholder.com/60';"
         />
       </div>
     </div>
     <!-- Content -->
-    <div class="relative z-0 max-w-4xl mx-auto pt-16">
+    <div class="relative z-0 max-w-4xl mx-auto pt-24">
       <!-- Main Title -->
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[hsl(var(--primary))]">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
         BOTUVO
       </h1>
       <!-- Subtitle -->
-      <h2 class="text-xl mb-4 text-gray-700">Your AI Virtual Employee Agency</h2>
+      <h2 class="text-2xl md:text-3xl mb-4 text-gray-700 font-semibold">Your AI Virtual Employee Agency</h2>
       <!-- Supporting Text (below subtitle) -->
-      <p class="mb-6 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">
+      <p class="mb-6 max-w-2xl mx-auto text-xl text-[hsla(0,0%,0%,0.7)]">
         We create virtual employees that seamlessly integrate into your business
         operations, handling everything from customer support to sales assistance.
       </p>
@@ -88,11 +89,20 @@
           Free Chatbot Audit
         </button>
       </div>
-      <!-- Info Items -->
-      <div class="flex justify-center space-x-8 text-sm text-[hsla(0,0%,0%,0.7)]">
-        <div>10% profits to charity</div>
-        <div>24/7 AI support</div>
-        <div>100% human centric</div>
+      <!-- Info Items (updated to match image style) -->
+      <div class="flex justify-center space-x-8 md:space-x-12 text-center">
+        <div>
+          <div class="text-2xl font-bold text-[hsl(var(--primary))]">10%</div>
+          <div class="text-sm text-gray-600">Profits to Charity</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-[hsl(var(--primary))]">24/7</div>
+          <div class="text-sm text-gray-600">Ai Support</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-[hsl(var(--primary))]">100%</div>
+          <div class="text-sm text-gray-600">Human Centric</div>
+        </div>
       </div>
     </div>
   </section>
@@ -321,18 +331,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="clock" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
         <p>
           Automate repetitive tasks and free up your team to focus on high-value
           activities that drive growth.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           Save 80% of response time
         </div>
@@ -341,18 +347,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="users-check" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
         <p>
           Provide instant, accurate responses 24/7, improving customer satisfaction
           and loyalty.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           95% customer satisfaction
         </div>
@@ -361,18 +363,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
         <p>
           Guide prospects through your sales funnel with personalized interactions
           that convert.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           3x conversion increase
         </div>
@@ -381,18 +379,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="bar-chart" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
         <p>
           Streamline processes and reduce operational costs while scaling your
           business effortlessly.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           60% cost reduction
         </div>
@@ -401,18 +395,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="database" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Rich Data Collection</h3>
         <p>
           Gather valuable insights about customer behavior and preferences to inform
           decisions.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           Real-time analytics
         </div>
@@ -421,18 +411,14 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="arrow-up-right" class="w-8 h-8 text-white"></i>
-        </div>
+        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
         <h3 class="text-xl font-semibold mb-2">Scalable Growth</h3>
         <p>
           Effortlessly scale your customer service and sales operations as your
           business grows.
         </p>
         <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm"
+          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
         >
           Unlimited capacity
         </div>
@@ -635,10 +621,10 @@
     >
       <p>&copy; 2024 BOTUVO. All rights reserved.</p>
       <div class="flex space-x-4 mt-2 md:mt-0">
-        <a href="https://linkedin.com" class="text-white hover:text-gray-300">
+        <a href="https://www.linkedin.com/company/botuvo/" class="text-white hover:text-gray-300">
           <i data-lucide="linkedin" class="w-5 h-5"></i>
         </a>
-        <a href="https://twitter.com" class="text-white hover:text-gray-300">
+        <a href="https://x.com/BOTUVOAI" class="text-white hover:text-gray-300">
           <i data-lucide="twitter" class="w-5 h-5"></i>
         </a>
       </div>
@@ -652,8 +638,8 @@
   <!-- =========================
        MODAL CONTACT FORM
   ========================= -->
-  <div id="contactModal" class="modal">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative">
+  <div id="contactModal" class="modal" onclick="closeModal()">
+    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative" onclick="event.stopPropagation();">
       <button
         class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
         onclick="closeModal()"
