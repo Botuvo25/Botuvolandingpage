@@ -44,21 +44,21 @@
        HERO SECTION
   ========================= -->
   <section
-    class="relative py-20 px-4 bg-white text-center flex items-center justify-center min-h-screen overflow-hidden"
+    class="py-20 px-4 bg-white text-center flex items-center justify-center min-h-screen overflow-hidden"
     id="hero"
   >
     <!-- Floating Logo (centered above title) -->
-    <div class="flex justify-center mb-4 z-10">
+    <div class="w-full flex justify-center mb-6">
       <!-- Replace 'logo.png' with your actual logo path -->
       <img
         src="logo.png"
         alt="Logo"
-        class="w-16 h-16 object-contain"
+        class="w-16 h-16 object-contain mx-auto"
         onerror="this.onerror=null; this.src='https://via.placeholder.com/60';"
       />
     </div>
     <!-- Content -->
-    <div class="relative z-0 max-w-4xl mx-auto pt-4">
+    <div class="max-w-4xl mx-auto pt-4">
       <!-- Main Title -->
       <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
         BOTUVO
@@ -611,14 +611,9 @@
   ========================= -->
   <footer class="bg-[hsl(var(--foreground))] text-[hsl(var(--background))] py-12">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-      <!-- Logo & Description -->
+      <!-- Description (no logo) -->
       <div class="col-span-1 md:col-span-2">
         <div class="flex items-center mb-4">
-          <img
-            src="https://via.placeholder.com/60"
-            alt="Logo"
-            class="w-12 h-12 mr-3"
-          />
           <h3 class="text-2xl font-bold">BOTUVO</h3>
         </div>
         <p class="max-w-md">
@@ -728,15 +723,19 @@
   ========================= -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script defer>
+    // Global functions for better scope access
+    function scrollToContact() {
+      document
+        .getElementById("contact")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    function closeModal() {
+      document.getElementById("contactModal").classList.remove("show");
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-
-      // Scroll to contact section
-      function scrollToContact() {
-        document
-          .getElementById("contact")
-          .scrollIntoView({ behavior: "smooth" });
-      }
 
       // Modal toggle functions with debug logs
       document.getElementById("btn-virtual").addEventListener("click", () => {
@@ -747,13 +746,17 @@
         console.log("Audit button clicked");
         document.getElementById("contactModal").classList.add("show");
       });
-      function closeModal() {
-        document.getElementById("contactModal").classList.remove("show");
-      }
 
       // Close modal on outside click
       document.getElementById("contactModal").addEventListener("click", (event) => {
         if (event.target === document.getElementById("contactModal")) {
+          closeModal();
+        }
+      });
+
+      // Close modal on Esc key
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && document.getElementById("contactModal").classList.contains("show")) {
           closeModal();
         }
       });
