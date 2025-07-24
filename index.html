@@ -16,42 +16,52 @@
 </head>
 <body class="bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
 
-<!-- Hero Section with floating logo -->
-<section class="relative py-20 px-4 bg-white text-center text-[hsl(var(--foreground))]">
-  <!-- Floating Logo in the middle -->
+<!-- =========================
+     HERO SECTION
+========================= -->
+<section class="relative py-20 px-4 bg-white text-center text-[hsl(var(--foreground))] overflow-hidden">
+  <!-- Floating Logo -->
   <div class="absolute inset-0 flex items-center justify-center z-10">
     <div class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg">
-      <!-- Your logo image -->
       <img src="/logo.png" alt="BOTUVO Logo" class="w-16 h-16 object-contain" />
     </div>
   </div>
-  <!-- Content below the logo -->
+  <!-- Content -->
   <div class="relative z-0 max-w-4xl mx-auto pt-32">
+    <!-- Small descriptive text -->
+    <p class="text-sm mb-2 text-[hsla(0,0%,0%,0.6)]">We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.</p>
+    <!-- Main Title -->
     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[hsl(var(--primary))]">BOTUVO</h1>
-    <p class="text-lg mb-4">Your AI Virtual Employee Agency</p>
-    <p class="mb-8 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">We build powerful, AI-powered chatbots that act as virtual employees for e-commerce brands, coaches, and agencies. Make AI accessible, human-centric, transparent, and secure.</p>
+    <!-- Small description -->
+    <p class="mb-6 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">From initial discovery to ongoing optimization, we ensure your AI virtual employee is perfectly tailored to your business needs.</p>
+    <!-- Buttons -->
     <div class="flex justify-center space-x-4 mb-8">
-      <button class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white" onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
-      <button class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold" onclick="alert('Free Chatbot Audit!')">Free Chatbot Audit</button>
+      <button id="btn-virtual" class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white">Get Your Virtual Employee</button>
+      <button id="btn-audit" class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold">Free Chatbot Audit</button>
     </div>
+    <!-- Info items -->
     <div class="flex justify-center space-x-8 text-sm text-[hsla(0,0%,0%,0.7)]">
-      <div>10% to Charity</div>
-      <div>24/7 AI Support</div>
-      <div>100% Human Centric</div>
+      <div>10% profits to charity</div>
+      <div>24/7 AI support</div>
+      <div>100% human centric</div>
     </div>
   </div>
 </section>
 
-<!-- Book a free strategy call -->
+<!-- =========================
+     CTA Section
+========================= -->
 <section class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-3xl md:text-4xl font-bold mb-4">Book a free <span class="text-white">strategy call</span></h2>
-    <p class="mb-8 max-w-2xl mx-auto text-lg">Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder. Our AI virtual employees seamlessly integrate with your operations, providing 24/7 support with a human touch.</p>
-    <button class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition" onclick="alert('Get Your Virtual Employee!')">Get Started Today</button>
+    <p class="mb-8 max-w-2xl mx-auto text-lg">Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder. Our AI virtual employees are designed to seamlessly integrate with your existing operations, providing 24/7 support while maintaining the human touch your customers expect.</p>
+    <button class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition" onclick="scrollToContact()">Get Started Today</button>
   </div>
 </section>
 
-<!-- Our Services as Cards -->
+<!-- =========================
+     OUR SERVICES
+========================= -->
 <section class="py-20 bg-white px-4">
   <div class="max-w-6xl mx-auto mb-12 text-center">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
@@ -98,13 +108,15 @@
   </div>
 </section>
 
-<!-- Benefits as Cards -->
+<!-- =========================
+     KEY BENEFITS
+========================= -->
 <section class="py-20 bg-[hsl(var(--background))] px-4">
   <div class="max-w-4xl mx-auto mb-12 text-center">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Key <span class="text-[hsl(var(--primary)))]">Benefits</span></h2>
   </div>
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <!-- Benefit Card -->
+    <!-- Benefit 1 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
         <!-- Icon: Clock -->
@@ -115,7 +127,7 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
       <p>Automate repetitive tasks and free up your team to focus on high-value activities that drive growth.</p>
-      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">Save 80% of response time</small>
+      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">Save 80% of response time</small>
     </div>
     <!-- Benefit 2 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
@@ -128,7 +140,7 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
       <p>Provide instant, accurate responses 24/7, improving customer satisfaction and loyalty.</p>
-      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">95% customer satisfaction</small>
+      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">95% customer satisfaction</small>
     </div>
     <!-- Benefit 3 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
@@ -140,18 +152,20 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
       <p>Guide prospects through your sales funnel with personalized interactions that convert.</p>
-      <small class="block mt-2 text-[hsla(0,0%,0%,0.6)]">3x conversion increase</small>
+      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">3x conversion increase</small>
     </div>
   </div>
 </section>
 
-<!-- Why Choose Us Cards -->
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
 <section class="py-20 bg-[hsl(var(--background))] px-4">
-  <div class="max-w-6xl mx-auto text-center mb-16 px-4">
+  <div class="max-w-6xl mx-auto mb-16 text-center px-4">
     <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Choose <span class="text-[hsl(var(--primary)))]">BOTUVO</span>?</h2>
     <p class="text-lg text-[hsla(0,0%,0%,0.6)] max-w-2xl mx-auto mb-8">We stand out in the AI industry through our commitment to quality, transparency, and making AI truly work for your business.</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
     <!-- Card 1 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
@@ -206,28 +220,32 @@
   </div>
 </section>
 
-<!-- Contact -->
-<section class="py-20 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] text-white px-4" id="contact-form">
-  <div class="max-w-4xl mx-auto text-center mb-12">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to <span class="text-white">Get Started</span>?</h2>
-    <p class="text-lg max-w-2xl mx-auto mb-8">Let's discuss how BOTUVO can transform your business with AI virtual employees. Get in touch for a free consultation.</p>
+<!-- =========================
+     CONTACT FORM
+========================= -->
+<section class="py-20 bg-[hsl(var(--background))]" id="contact-section">
+  <div class="max-w-4xl mx-auto text-center mb-8 px-4">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to <span class="text-[hsl(var(--primary)))]">Get Started</span>?</h2>
+    <p class="text-lg mb-4">Let's discuss how BOTUVO can transform your business with AI virtual employees. Get in touch for a free consultation.</p>
   </div>
-  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg text-gray-800">
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-gray-800">
     <h3 class="text-xl text-center mb-4">Send us a Message</h3>
-    <form class="flex flex-col gap-4" action="https://formspree.io/f/mjkwvgvr" method="POST">
-      <input class="p-3 rounded" type="text" name="name" placeholder="Your name" required />
-      <input class="p-3 rounded" type="email" name="email" placeholder="your@email.com" required />
-      <input class="p-3 rounded" type="text" name="company" placeholder="Your company name" />
-      <textarea class="p-3 rounded" rows="5" name="message" placeholder="Tell us about your project and how we can help..." required></textarea>
+    <form class="flex flex-col gap-4" action="https://formspree.io/f/mjkwvgvr" method="POST" id="contact-form">
+      <input class="p-3 rounded" type="text" name="name" placeholder="Your Name" required />
+      <input class="p-3 rounded" type="text" name="company" placeholder="Company Name" />
+      <input class="p-3 rounded" type="email" name="email" placeholder="Your Email" required />
+      <textarea class="p-3 rounded" rows="5" name="message" placeholder="Tell us about your project..." required></textarea>
       <button class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition" type="submit">Send Message</button>
     </form>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- =========================
+     FOOTER
+========================= -->
 <footer class="bg-[hsl(var(--foreground))] text-[hsl(var(--background))] py-12">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-    <!-- Brand -->
+    <!-- Logo & Description -->
     <div class="col-span-1 md:col-span-2">
       <div class="flex items-center mb-4">
         <img src="/logo.png" alt="BOTUVO" class="w-12 h-12 mr-3" />
@@ -235,7 +253,7 @@
       </div>
       <p class="max-w-md">UK-based AI agency creating virtual employees that transform how businesses interact with customers. Making AI accessible, secure, and human-centric.</p>
     </div>
-    <!-- Services -->
+    <!-- Links -->
     <div>
       <h4 class="font-semibold mb-2">Services</h4>
       <ul class="space-y-2 list-none">
@@ -246,7 +264,6 @@
         <li>Custom API Actions</li>
       </ul>
     </div>
-    <!-- Company -->
     <div>
       <h4 class="font-semibold mb-2">Company</h4>
       <ul class="space-y-2 list-none">
@@ -267,10 +284,25 @@
   </div>
 </footer>
 
-<!-- Scripts for icons -->
+<!-- =========================
+     SCRIPTS
+========================= -->
 <script src="https://unpkg.com/lucide/dist/lucide.min.js"></script>
 <script>
   lucide.createIcons();
+
+  // Scroll to contact form
+  function scrollToContact() {
+    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Modal contact form popup
+  document.getElementById('btn-virtual').addEventListener('click', () => {
+    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+  });
+  document.getElementById('btn-audit').addEventListener('click', () => {
+    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+  });
 </script>
 </body>
 </html>
