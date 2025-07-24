@@ -47,25 +47,20 @@
     class="relative py-20 px-4 bg-white text-center flex items-center justify-center min-h-screen overflow-hidden"
     id="hero"
   >
-    <!-- Floating Logo -->
-    <div class="absolute inset-0 flex items-center justify-center z-10">
-      <div
-        class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg"
-        style="box-shadow: 0 0 20px hsl(var(--primary-glow));"
-      >
-        <!-- Replace 'logo.png' with your actual logo path -->
-        <img
-          src="logo.png"
-          alt="Logo"
-          class="w-16 h-16 object-contain"
-          onerror="this.onerror=null; this.src='https://via.placeholder.com/60';"
-        />
-      </div>
+    <!-- Floating Logo (no purple circle, positioned above title) -->
+    <div class="relative z-10 mb-4">
+      <!-- Replace 'logo.png' with your actual logo path -->
+      <img
+        src="logo.png"
+        alt="Logo"
+        class="w-16 h-16 object-contain mx-auto"
+        onerror="this.onerror=null; this.src='https://via.placeholder.com/60';"
+      />
     </div>
     <!-- Content -->
-    <div class="relative z-0 max-w-4xl mx-auto pt-24">
+    <div class="relative z-0 max-w-4xl mx-auto pt-4">
       <!-- Main Title -->
-      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
         BOTUVO
       </h1>
       <!-- Subtitle -->
@@ -139,7 +134,12 @@
   ========================= -->
   <section class="py-20 bg-white px-4" id="services">
     <div class="max-w-6xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        Our <span class="text-[hsl(var(--primary))]">Services</span>
+      </h2>
+      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
+        We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.
+      </p>
     </div>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <!-- Service 1 -->
@@ -237,7 +237,12 @@
   ========================= -->
   <section class="py-20 bg-[hsl(var(--background))]" id="process">
     <div class="max-w-6xl mx-auto mb-12 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Our 5-Step Process</h2>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        Our 5-Step <span class="text-[hsl(var(--primary))]">Process</span>
+      </h2>
+      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
+        From initial discovery to ongoing optimization, we ensure your AI virtual employee is perfectly tailored to your business needs.
+      </p>
     </div>
     <div class="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto px-4">
       <!-- Step 1 -->
@@ -326,13 +331,20 @@
       <h2 class="text-4xl md:text-5xl font-bold mb-4">
         Key <span class="text-[hsl(var(--primary))]">Benefits</span>
       </h2>
+      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
+        Transform your business operations with AI that delivers measurable results and exceptional customer experiences.
+      </p>
     </div>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
       <!-- Benefit 1 -->
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="clock" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
         <p>
           Automate repetitive tasks and free up your team to focus on high-value
@@ -348,7 +360,11 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="users-check" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
         <p>
           Provide instant, accurate responses 24/7, improving customer satisfaction
@@ -364,7 +380,11 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
         <p>
           Guide prospects through your sales funnel with personalized interactions
@@ -380,7 +400,11 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="bar-chart" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
         <p>
           Streamline processes and reduce operational costs while scaling your
@@ -396,7 +420,11 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="database" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Rich Data Collection</h3>
         <p>
           Gather valuable insights about customer behavior and preferences to inform
@@ -412,7 +440,11 @@
       <div
         class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
       >
-        <div class="w-8 h-8 bg-[hsl(var(--primary))] rounded-full mb-4"></div>
+        <div
+          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
+        >
+          <i data-lucide="arrow-up-right" class="w-8 h-8 text-white"></i>
+        </div>
         <h3 class="text-xl font-semibold mb-2">Scalable Growth</h3>
         <p>
           Effortlessly scale your customer service and sales operations as your
@@ -694,27 +726,31 @@
   <!-- =========================
        SCRIPTS
   ========================= -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
 
-    // Scroll to contact section
-    function scrollToContact() {
-      document
-        .getElementById("contact")
-        .scrollIntoView({ behavior: "smooth" });
-    }
+      // Scroll to contact section
+      function scrollToContact() {
+        document
+          .getElementById("contact")
+          .scrollIntoView({ behavior: "smooth" });
+      }
 
-    // Modal toggle functions
-    document.getElementById("btn-virtual").addEventListener("click", () => {
-      document.getElementById("contactModal").classList.add("show");
+      // Modal toggle functions with debug logs
+      document.getElementById("btn-virtual").addEventListener("click", () => {
+        console.log("Virtual Employee button clicked");
+        document.getElementById("contactModal").classList.add("show");
+      });
+      document.getElementById("btn-audit").addEventListener("click", () => {
+        console.log("Audit button clicked");
+        document.getElementById("contactModal").classList.add("show");
+      });
+      function closeModal() {
+        document.getElementById("contactModal").classList.remove("show");
+      }
     });
-    document.getElementById("btn-audit").addEventListener("click", () => {
-      document.getElementById("contactModal").classList.add("show");
-    });
-    function closeModal() {
-      document.getElementById("contactModal").classList.remove("show");
-    }
   </script>
 </body>
 </html>
