@@ -47,13 +47,13 @@
     class="relative py-20 px-4 bg-white text-center flex items-center justify-center min-h-screen overflow-hidden"
     id="hero"
   >
-    <!-- Floating Logo (no purple circle, positioned above title) -->
-    <div class="relative z-10 mb-4">
+    <!-- Floating Logo (centered above title) -->
+    <div class="flex justify-center mb-4 z-10">
       <!-- Replace 'logo.png' with your actual logo path -->
       <img
         src="logo.png"
         alt="Logo"
-        class="w-16 h-16 object-contain mx-auto"
+        class="w-16 h-16 object-contain"
         onerror="this.onerror=null; this.src='https://via.placeholder.com/60';"
       />
     </div>
@@ -671,8 +671,8 @@
   <!-- =========================
        MODAL CONTACT FORM
   ========================= -->
-  <div id="contactModal" class="modal" onclick="closeModal()">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative" onclick="event.stopPropagation();">
+  <div id="contactModal" class="modal">
+    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative">
       <button
         class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
         onclick="closeModal()"
@@ -750,6 +750,13 @@
       function closeModal() {
         document.getElementById("contactModal").classList.remove("show");
       }
+
+      // Close modal on outside click
+      document.getElementById("contactModal").addEventListener("click", (event) => {
+        if (event.target === document.getElementById("contactModal")) {
+          closeModal();
+        }
+      });
     });
   </script>
 </body>
