@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" class="">
 <head>
+<link rel="icon" href="favicon.png" type="image/png" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>BOTUVO - AI Virtual Employee Agency</title>
-<!-- Tailwind CSS CDN -->
+<!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 <style>
   body {
     font-family: 'Inter', sans-serif;
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 264 91% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 264 100% 70%;
+  }
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+  .modal.show {
+    display: flex;
   }
 </style>
 </head>
@@ -19,27 +40,29 @@
 <!-- =========================
      HERO SECTION
 ========================= -->
-<section class="relative py-20 px-4 bg-white text-center text-[hsl(var(--foreground))] overflow-hidden">
+<section class="relative py-20 px-4 bg-white text-center flex items-center justify-center min-h-screen overflow-hidden" id="hero">
   <!-- Floating Logo -->
   <div class="absolute inset-0 flex items-center justify-center z-10">
-    <div class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg">
-      <img src="/logo.png" alt="BOTUVO Logo" class="w-16 h-16 object-contain" />
+    <div class="w-24 h-24 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center shadow-lg -mt-12">
+      <img src="https://via.placeholder.com/60" alt="Logo" class="w-16 h-16 object-contain" />
     </div>
   </div>
   <!-- Content -->
-  <div class="relative z-0 max-w-4xl mx-auto pt-32">
-    <!-- Small descriptive text -->
-    <p class="text-sm mb-2 text-[hsla(0,0%,0%,0.6)]">We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.</p>
+  <div class="relative z-0 max-w-4xl mx-auto pt-16">
     <!-- Main Title -->
     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[hsl(var(--primary))]">BOTUVO</h1>
-    <!-- Small description -->
-    <p class="mb-6 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">From initial discovery to ongoing optimization, we ensure your AI virtual employee is perfectly tailored to your business needs.</p>
+    <!-- Subtitle -->
+    <h2 class="text-xl mb-4 text-gray-700">Your AI Virtual Employee Agency</h2>
+    <!-- Supporting Text (below subtitle) -->
+    <p class="mb-6 max-w-2xl mx-auto text-lg text-[hsla(0,0%,0%,0.7)]">
+      We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.
+    </p>
     <!-- Buttons -->
     <div class="flex justify-center space-x-4 mb-8">
       <button id="btn-virtual" class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white">Get Your Virtual Employee</button>
       <button id="btn-audit" class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold">Free Chatbot Audit</button>
     </div>
-    <!-- Info items -->
+    <!-- Info Items -->
     <div class="flex justify-center space-x-8 text-sm text-[hsla(0,0%,0%,0.7)]">
       <div>10% profits to charity</div>
       <div>24/7 AI support</div>
@@ -51,26 +74,25 @@
 <!-- =========================
      CTA Section
 ========================= -->
-<section class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4">
+<section class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4" id="cta">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-3xl md:text-4xl font-bold mb-4">Book a free <span class="text-white">strategy call</span></h2>
     <p class="mb-8 max-w-2xl mx-auto text-lg">Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder. Our AI virtual employees are designed to seamlessly integrate with your existing operations, providing 24/7 support while maintaining the human touch your customers expect.</p>
     <button class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition" onclick="scrollToContact()">Get Started Today</button>
   </div>
 </section>
-
 <!-- =========================
-     OUR SERVICES
+     OUR SERVICES (6 cards)
 ========================= -->
-<section class="py-20 bg-white px-4">
+<section class="py-20 bg-white px-4" id="services">
   <div class="max-w-6xl mx-auto mb-12 text-center">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
   </div>
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <!-- Service Card -->
+    <!-- Service 1 -->
     <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Support -->
+        <!-- Icon SVG -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M18 8a6 6 0 0 0-12 0v4a6 6 0 0 0 12 0V8z" />
           <path d="M12 14v4" />
@@ -82,7 +104,7 @@
     <!-- Service 2 -->
     <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Target -->
+        <!-- Icon SVG -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="6" />
@@ -95,7 +117,7 @@
     <!-- Service 3 -->
     <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Calendar -->
+        <!-- Icon SVG -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
           <line x1="16" y1="2" x2="16" y2="6" />
@@ -105,13 +127,88 @@
       <h3 class="text-xl font-semibold mb-2">Appointment Booking</h3>
       <p>Seamless scheduling systems that handle bookings, confirmations, and reminders automatically.</p>
     </div>
+    <!-- Service 4 -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon SVG -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">E-commerce Assistance</h3>
+      <p>Help customers find products, answer questions, and complete purchases with AI support.</p>
+    </div>
+    <!-- Service 5 -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon SVG -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 4v16m8-8H4" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Custom API Actions</h3>
+      <p>Integrate your custom APIs with AI chatbots for tailored solutions.</p>
+    </div>
+    <!-- Service 6 -->
+    <div class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon SVG -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4V4z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">CRM Integration</h3>
+      <p>Seamlessly sync customer data and interactions with your existing CRM systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     5-STEP PROCESS
+========================= -->
+<section class="py-20 bg-[hsl(var(--background))]" id="process">
+  <div class="max-w-6xl mx-auto mb-12 text-center px-4">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Our 5-Step Process</h2>
+  </div>
+  <div class="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto px-4">
+    <!-- Step 1 -->
+    <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1">
+      <div class="absolute top-0 right-0 bg-[hsl(var(--primary)))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4">1</div>
+      <h3 class="text-xl font-semibold mb-2">Discovery</h3>
+      <p>We analyze your business needs, understand your customers, and identify the best AI solutions for your specific requirements.</p>
+    </div>
+    <!-- Step 2 -->
+    <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1">
+      <div class="absolute top-0 right-0 bg-[hsl(var(--primary)))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4">2</div>
+      <h3 class="text-xl font-semibold mb-2">Setup</h3>
+      <p>Configure your AI virtual employee, set up infrastructure, and initialize parameters for optimal performance.</p>
+    </div>
+    <!-- Step 3 -->
+    <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1">
+      <div class="absolute top-0 right-0 bg-[hsl(var(--primary)))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4">3</div>
+      <h3 class="text-xl font-semibold mb-2">Development & Testing</h3>
+      <p>Our team develops and rigorously tests your AI chatbot to ensure it meets your business standards and customer expectations.</p>
+    </div>
+    <!-- Step 4 -->
+    <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1">
+      <div class="absolute top-0 right-0 bg-[hsl(var(--primary)))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4">4</div>
+      <h3 class="text-xl font-semibold mb-2">Integration</h3>
+      <p>Seamlessly integrate your virtual employee into existing systems, websites, and communication channels.</p>
+    </div>
+    <!-- Step 5 -->
+    <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1">
+      <div class="absolute top-0 right-0 bg-[hsl(var(--primary)))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4">5</div>
+      <h3 class="text-xl font-semibold mb-2">Ongoing Optimization</h3>
+      <p>Continuous monitoring, updates, and improvements to keep your AI virtual employee effective and up-to-date.</p>
+    </div>
   </div>
 </section>
 
 <!-- =========================
      KEY BENEFITS
 ========================= -->
-<section class="py-20 bg-[hsl(var(--background))] px-4">
+<section class="py-20 bg-[hsl(var(--background))]" id="benefits">
   <div class="max-w-4xl mx-auto mb-12 text-center">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Key <span class="text-[hsl(var(--primary)))]">Benefits</span></h2>
   </div>
@@ -119,7 +216,7 @@
     <!-- Benefit 1 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Clock -->
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" />
           <polyline points="12 6 12 12 16 14" />
@@ -127,12 +224,12 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
       <p>Automate repetitive tasks and free up your team to focus on high-value activities that drive growth.</p>
-      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">Save 80% of response time</small>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">Save 80% of response time</div>
     </div>
     <!-- Benefit 2 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Thumbs Up -->
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M14 9V5a3 3 0 0 0-6 0v4" />
           <path d="M5 15h4l3 5v-5h4" />
@@ -140,19 +237,60 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
       <p>Provide instant, accurate responses 24/7, improving customer satisfaction and loyalty.</p>
-      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">95% customer satisfaction</small>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">95% customer satisfaction</div>
     </div>
     <!-- Benefit 3 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
       <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Trending Up -->
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M3 17l6-6 4 4 8-8" />
         </svg>
       </div>
       <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
       <p>Guide prospects through your sales funnel with personalized interactions that convert.</p>
-      <small class="mt-2 text-[hsla(0,0%,0%,0.6)]">3x conversion increase</small>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">3x conversion increase</div>
+    </div>
+    <!-- Benefit 4 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
+      <p>Streamline processes and reduce operational costs while scaling your business effortlessly.</p>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">60% cost reduction</div>
+    </div>
+    <!-- Benefit 5 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Rich Data Collection</h3>
+      <p>Gather valuable insights about customer behavior and preferences to inform decisions.</p>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">Real-time analytics</div>
+    </div>
+    <!-- Benefit 6 -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
+      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v4l3 3" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Scalable Growth</h3>
+      <p>Effortlessly scale your customer service and sales operations as your business grows.</p>
+      <div class="mt-2 text-[hsla(0,0%,0%,0.6)] bg-[hsl(var(--primary))] text-white px-2 py-1 rounded-full text-sm">Unlimited capacity</div>
     </div>
   </div>
 </section>
@@ -168,8 +306,8 @@
   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
     <!-- Card 1 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Shield -->
+      <div class="w-16 h-16 bg-[hsl(var(--primary)))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M12 2l7 4v6c0 5-3 9-7 11s-7-4-7-11V6l7-4z" />
         </svg>
@@ -179,8 +317,8 @@
     </div>
     <!-- Card 2 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Dollar Sign -->
+      <div class="w-16 h-16 bg-[hsl(var(--primary)))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M12 1v22" />
           <path d="M6 12h12" />
@@ -191,8 +329,8 @@
     </div>
     <!-- Card 3 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Headphones -->
+      <div class="w-16 h-16 bg-[hsl(var(--primary)))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M4 12v-4a8 8 0 0 1 16 0v4" />
           <path d="M4 12a8 8 0 0 0 16 0" />
@@ -203,8 +341,8 @@
     </div>
     <!-- Card 4 -->
     <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4">
-        <!-- Icon: Shield -->
+      <div class="w-16 h-16 bg-[hsl(var(--primary)))] rounded-full flex items-center justify-center mb-4">
+        <!-- Icon -->
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M12 2l7 4v6c0 5-3 9-7 11s-7-4-7-11V6l7-4z" />
         </svg>
@@ -223,7 +361,7 @@
 <!-- =========================
      CONTACT FORM
 ========================= -->
-<section class="py-20 bg-[hsl(var(--background))]" id="contact-section">
+<section class="py-20 bg-[hsl(var(--background))]" id="contact">
   <div class="max-w-4xl mx-auto text-center mb-8 px-4">
     <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to <span class="text-[hsl(var(--primary)))]">Get Started</span>?</h2>
     <p class="text-lg mb-4">Let's discuss how BOTUVO can transform your business with AI virtual employees. Get in touch for a free consultation.</p>
@@ -248,7 +386,7 @@
     <!-- Logo & Description -->
     <div class="col-span-1 md:col-span-2">
       <div class="flex items-center mb-4">
-        <img src="/logo.png" alt="BOTUVO" class="w-12 h-12 mr-3" />
+        <img src="https://via.placeholder.com/60" alt="Logo" class="w-12 h-12 mr-3" />
         <h3 class="text-2xl font-bold">BOTUVO</h3>
       </div>
       <p class="max-w-md">UK-based AI agency creating virtual employees that transform how businesses interact with customers. Making AI accessible, secure, and human-centric.</p>
@@ -277,12 +415,29 @@
   </div>
   <div class="border-t border-[hsla(0,0%,100%,0.2)] mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm">
     <p>&copy; 2024 BOTUVO. All rights reserved.</p>
-    <div class="flex space-x-4 mt-2 md:mt-0 text-[hsla(0,0%,100%,0.7)]">
+    <div class="flex space-x-4 mt-2 md:mt-0 text-[hsla(0,0%,0%,0.7)]">
       <span>🇬🇧 UK-Based Agency</span>
       <span>❤️ 10% to Charity</span>
     </div>
   </div>
 </footer>
+
+<!-- =========================
+     MODAL CONTACT FORM
+========================= -->
+<div id="contactModal" class="modal">
+  <div class="bg-white p-8 rounded-lg max-w-xl w-full relative">
+    <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-800" onclick="closeModal()">✕</button>
+    <h3 class="text-2xl font-semibold mb-4 text-center">Send us a Message</h3>
+    <form class="flex flex-col gap-4" action="https://formspree.io/f/mjkwvgvr" method="POST" id="modal-form">
+      <input class="p-3 rounded" type="text" name="name" placeholder="Your Name" required />
+      <input class="p-3 rounded" type="text" name="company" placeholder="Company Name" />
+      <input class="p-3 rounded" type="email" name="email" placeholder="Your Email" required />
+      <textarea class="p-3 rounded" rows="5" name="message" placeholder="Tell us about your project..." required></textarea>
+      <button class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition" type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
 
 <!-- =========================
      SCRIPTS
@@ -291,18 +446,21 @@
 <script>
   lucide.createIcons();
 
-  // Scroll to contact form
+  // Scroll to contact section
   function scrollToContact() {
-    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Modal contact form popup
+  // Modal toggle functions
   document.getElementById('btn-virtual').addEventListener('click', () => {
-    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contactModal').classList.add('show');
   });
   document.getElementById('btn-audit').addEventListener('click', () => {
-    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contactModal').classList.add('show');
   });
+  function closeModal() {
+    document.getElementById('contactModal').classList.remove('show');
+  }
 </script>
 </body>
 </html>
