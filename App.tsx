@@ -1,9 +1,16 @@
-console.log('App mounted');
+console.log('App.tsx mounted');
 
-const Index = () => (
-  <div style={{ padding: '20px', backgroundColor: '#eee' }}>
-    <h1>Test Content</h1>
-  </div>
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import IndexPage from './pages/Index';
+import NotFoundPage from './pages/NotFound';
+
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<IndexPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </BrowserRouter>
 );
 
-export default Index;
+export default App;
