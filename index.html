@@ -1,905 +1,466 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 <head>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOTUVO - AI Virtual Employee Agency</title>
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTUVO – AI Virtual Employee Agency</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    /* ---------- RESET ---------- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#FDFCFF;color:#111;line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+    /* ---------- VARIABLES ---------- */
+    :root{
+      --p:#6D28D9;   /* main purple */
+      --pd:#9333EA;  /* lighter purple */
+      --pl:#F5F2FF;  /* pale purple */
+      --w:#fff;
+      --g:#F9FAFB;
+      --txt:#111;
+      --mute:#6b7280;
     }
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-      --primary: 264 91% 58%;
-      --primary-foreground: 0 0% 100%;
-      --primary-glow: 264 100% 70%;
+
+    /* ---------- HELPERS ---------- */
+    .container{width:90%;max-width:1200px;margin:0 auto}
+    .btn{
+      display:inline-block;background:var(--p);color:#fff;padding:14px 32px;border-radius:12px;font-weight:600;
+      box-shadow:0 4px 20px -5px rgba(109,40,217,.6);transition:all .3s ease;
     }
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px -5px rgba(109,40,217,.8)}
+    .btn-outline{
+      border:2px solid var(--p);color:var(--p);padding:14px 32px;border-radius:12px;font-weight:600;transition:all .3s ease;
     }
-    .modal.show {
-      display: flex;
+    .btn-outline:hover{background:var(--p);color:#fff}
+
+    /* ---------- SECTIONS ---------- */
+    header{position:fixed;top:0;left:0;right:0;background:#fff;z-index:50;border-bottom:1px solid var(--pl);}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--p)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a:hover{color:var(--p)}
+
+    .hero{padding:10rem 0 6rem;text-align:center;background:linear-gradient(to bottom,#FDFCFF,var(--pl))}
+    .hero h1{font-family:'Sora',sans-serif;font-size:clamp(3rem,8vw,6rem);font-weight:800;
+              background:linear-gradient(to right,var(--p),var(--pd));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero h2{font-size:clamp(1.25rem,3vw,2rem);font-weight:600;margin:1rem 0 2rem;color:var(--txt)}
+    .hero p{max-width:600px;margin:0 auto 2rem;font-size:1.125rem;color:var(--mute)}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:3rem}
+    .stats{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
+    .stat{text-align:center}
+    .stat .num{font-size:2rem;font-weight:700;color:var(--p)}
+    .stat .lbl{font-size:.875rem;color:var(--mute)}
+
+    .cta-strip{background:linear-gradient(to right,var(--p),var(--pd));color:#fff;padding:4rem 0;text-align:center}
+    .cta-strip h2{font-family:'Sora',sans-serif;font-size:2rem;margin-bottom:1rem}
+    .cta-strip p{max-width:600px;margin:0 auto 2rem;opacity:90%}
+
+    .section{padding:6rem 0}
+    .section-head{text-align:center;margin-bottom:4rem}
+    .section-head h2{font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:700;margin-bottom:1rem}
+    .section-head span{color:var(--p)}
+    .section-head p{max-width:600px;margin:0 auto;color:var(--mute)}
+
+    .grid3{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .grid5{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+    .card2{background:#fff;border:1px solid var(--pl);border-radius:16px;padding:2rem;position:relative;transition:all .3s ease}
+    .card2:hover{transform:translateY(-4px);box-shadow:0 12px 30px -10px rgba(109,40,217,.15)}
+    .icon{width:64px;height:64px;background:linear-gradient(to bottom right,var(--p),var(--pd));border-radius:16px;display:grid;place-items:center;margin:0 auto 1rem}
+    .icon svg{width:32px;height:32px;color:#fff}
+    .card2 h3{font-weight:600;margin-bottom:.5rem}
+    .card2 p{font-size:.95rem;color:var(--mute)}
+
+    .pricing{background:linear-gradient(to bottom,#FDFCFF,var(--pl))}
+    .pricing-cards{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .price-card{background:#fff;border:1px solid var(--pl);border-radius:16px;padding:2rem;display:flex;flex-direction:align-items:center;text-align:center;position:relative}
+    .price-card.featured{border:2px solid var(--p)}
+    .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:700}
+    .price-card h3{font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+    .price-card .price{font-size:2rem;font-weight:700;color:var(--p)}
+    .price-card .sub{font-size:.875rem;color:var(--mute)}
+    .price-card ul{list-style:none;margin:1.5rem 0;font-size:.9rem;text-align:left}
+    .price-card li{display:flex;align-items:start;margin-bottom:.5rem}
+    .price-card li svg{width:16px;height:16px;color:var(--p);margin-right:.5rem;flex-shrink:0}
+    .price-card .note{font-size:.75rem;color:var(--mute);margin-bottom:1.5rem}
+    .price-card button{margin-top:auto}
+
+    .inner{background:#fff;border:1px solid var(--pl);border-radius:16px;padding:2rem;margin-top:3rem}
+    .inner h3{font-size:1.25rem;font-weight:700;margin-bottom:.5rem}
+    .inner a{display:inline-flex;align-items:center;background:var(--p);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.875rem;font-weight:600;margin-top:1rem}
+    .inner a svg{width:16px;height:16px;margin-left:.5rem}
+
+    .contact{background:linear-gradient(to bottom,#FDFCFF,var(--pl))}
+    form{background:#fff;border:1px solid var(--pl);border-radius:16px;padding:2rem;display:grid;gap:1rem}
+    input,textarea{width:100%;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;font-size:1rem}
+    input:focus,textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 2px rgba(109,40,217,.2)}
+    footer{background:#111;color:#fff;padding:3rem 0 2rem}
+    footer h4{font-weight:600;margin-bottom:.5rem}
+    footer ul{list-style:none;font-size:.875rem;color:#d1d5db}
+    footer li{margin-bottom:.25rem}
+    footer a:hover{color:#fff}
+    .foot-bottom{border-top:1px solid #374151;margin-top:2rem;padding-top:1rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:.75rem;color:#9ca3af}
+    .socials{display:flex;gap:1rem}
+    .socials svg{width:20px;height:20px;color:#d1d5db}
+    .socials a:hover svg{color:#fff}
+
+    /* ---------- ANIMATIONS ---------- */
+    .reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}
+    .reveal-visible{opacity:1;transform:translateY(0)}
+
+    /* ---------- CURSOR (desktop only) ---------- */
+    @media (min-width: 768px){
+      #cursor{position:fixed;width:32px;height:32px;background:var(--p);border-radius:50%;mix-blend-mode:difference;pointer-events:none;transform:translate(-50%,-50%);transition:transform .08s ease;z-index:9999}
     }
   </style>
 </head>
-<body class="bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
 
-  <!-- =========================
-       HERO SECTION
-  ========================= -->
-  <section
-    class="py-20 px-4 bg-white text-center flex flex-col items-center justify-center min-h-screen overflow-hidden"
-    id="hero"
-  >
-    <!-- Floating Logo (centered above title) -->
-    <div class="w-full flex justify-center mb-6">
-      <!-- Replace 'logo.png' with your actual logo path -->
-      <img
-        src="logo.png"
-        alt="Logo"
-        class="w-20 h-20 object-contain mx-auto"
-        onerror="this.onerror=null; this.src='https://via.placeholder.com/80?text=B';"
-      />
-    </div>
-    <!-- Content -->
-    <div class="max-w-4xl mx-auto pt-4 text-center">
-      <!-- Main Title -->
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
-        BOTUVO
-      </h1>
-      <!-- Subtitle -->
-      <h2 class="text-2xl md:text-3xl mb-4 text-gray-700 font-semibold">Your AI Virtual Employee Agency</h2>
-      <!-- Supporting Text (below subtitle) -->
-      <p class="mb-6 max-w-2xl mx-auto text-xl text-[hsla(0,0%,0%,0.7)]">
-        We create virtual employees that seamlessly integrate into your business
-        operations, handling everything from customer support to sales assistance.
-      </p>
-      <!-- Buttons -->
-      <div class="flex justify-center space-x-4 mb-8">
-        <button
-          id="btn-virtual"
-          class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white"
-        >
-          Get Your Virtual Employee
-        </button>
-        <button
-          id="btn-audit"
-          class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold"
-        >
-          Free Chatbot Audit
-        </button>
-      </div>
-      <!-- Info Items (updated to match image style) -->
-      <div class="flex justify-center space-x-8 md:space-x-12 text-center">
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">10%</div>
-          <div class="text-sm text-gray-600">Profits to Charity</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">24/7</div>
-          <div class="text-sm text-gray-600">AI Support</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">100%</div>
-          <div class="text-sm text-gray-600">Human Centric</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<body>
+  <!-- animated cursor -->
+  <div id="cursor" class="hidden md:block"></div>
 
-  <!-- =========================
-       CTA Section
-  ========================= -->
-  <section
-    class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4"
-    id="cta"
-  >
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Book a free <span class="text-white">strategy call</span>
-      </h2>
-      <p class="mb-8 max-w-2xl mx-auto text-lg">
-        Ready to elevate your business with AI? Contact us today and discover how
-        BOTUVO can help you work smarter, not harder. Our AI virtual employees are
-        designed to seamlessly integrate with your existing operations, providing
-        24/7 support while maintaining the human touch your customers expect.
-      </p>
-      <button
-        class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition"
-        onclick="scrollToContact()"
-      >
-        Get Started Today
-      </button>
-    </div>
-  </section>
-
-  <!-- =========================
-       OUR SERVICES (6 cards)
-  ========================= -->
-  <section class="py-20 bg-white px-4" id="services">
-    <div class="max-w-6xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Our <span class="text-[hsl(var(--primary))]">Services</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Service 1 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="headset" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Customer Support</h3>
-        <p>
-          AI-powered support agents that handle inquiries 24/7, providing instant,
-          accurate responses to your customers.
-        </p>
-      </div>
-      <!-- Service 2 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="target" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Lead Generation</h3>
-        <p>
-          Engage visitors and convert them into leads with intelligent chatbots
-          that qualify prospects automatically.
-        </p>
-      </div>
-      <!-- Service 3 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="calendar" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Appointment Booking</h3>
-        <p>
-          Seamless scheduling systems that handle bookings, confirmations, and
-          reminders automatically.
-        </p>
-      </div>
-      <!-- Service 4 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="shopping-cart" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">E-commerce Assistance</h3>
-        <p>
-          Help customers find products, answer questions, and complete purchases
-          with AI support.
-        </p>
-      </div>
-      <!-- Service 5 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="code" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Custom API Actions</h3>
-        <p>Integrate your custom APIs with AI chatbots for tailored solutions.</p>
-      </div>
-      <!-- Service 6 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="database" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">CRM Integration</h3>
-        <p>
-          Seamlessly sync customer data and interactions with your existing CRM
-          systems.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       5-STEP PROCESS
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="process">
-    <div class="max-w-6xl mx-auto mb-12 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Our 5-Step <span class="text-[hsl(var(--primary))]">Process</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        From initial discovery to ongoing optimization, we ensure your AI virtual employee is perfectly tailored to your business needs.
-      </p>
-    </div>
-    <div class="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto px-4">
-      <!-- Step 1 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          1
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Discovery</h3>
-        <p>
-          We analyze your business needs, understand your customers, and identify
-          the best AI solutions for your specific requirements.
-        </p>
-      </div>
-      <!-- Step 2 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          2
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Setup</h3>
-        <p>
-          Configure your AI virtual employee, set up infrastructure, and initialize
-          parameters for optimal performance.
-        </p>
-      </div>
-      <!-- Step 3 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          3
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Development & Testing</h3>
-        <p>
-          Our team develops and rigorously tests your AI chatbot to ensure it meets
-          your business standards and customer expectations.
-        </p>
-      </div>
-      <!-- Step 4 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          4
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Integration</h3>
-        <p>
-          Seamlessly integrate your virtual employee into existing systems,
-          websites, and communication channels.
-        </p>
-      </div>
-      <!-- Step 5 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          5
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Ongoing Optimization</h3>
-        <p>
-          Continuous monitoring, updates, and improvements to keep your AI virtual
-          employee effective and up-to-date.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       KEY BENEFITS
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="benefits">
-    <div class="max-w-4xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Key <span class="text-[hsl(var(--primary))]">Benefits</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        Transform your business operations with AI that delivers measurable results and exceptional customer experiences.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-      <!-- Benefit 1 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="clock" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
-        <p>
-          Automate repetitive tasks and free up your team to focus on high-value
-          activities that drive growth.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Save 80% of response time
-        </div>
-      </div>
-      <!-- Benefit 2 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="users-check" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
-        <p>
-          Provide instant, accurate responses 24/7, improving customer satisfaction
-          and loyalty.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          95% customer satisfaction
-        </div>
-      </div>
-      <!-- Benefit 3 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
-        <p>
-          Guide prospects through your sales funnel with personalized interactions
-          that convert.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          3x conversion increase
-        </div>
-      </div>
-      <!-- Benefit 4 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="bar-chart" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
-        <p>
-          Streamline processes and reduce operational costs while scaling your
-          business effortlessly.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          60% cost reduction
-        </div>
-      </div>
-      <!-- Benefit 5 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="database" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Rich Data Collection</h3>
-        <p>
-          Gather valuable insights about customer behavior and preferences to inform
-          decisions.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Real-time analytics
-        </div>
-      </div>
-      <!-- Benefit 6 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="arrow-up-right" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Scalable Growth</h3>
-        <p>
-          Effortlessly scale your customer service and sales operations as your
-          business grows.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Unlimited capacity
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       PRICING PLANS & INNER CIRCLE CLUB
-  ========================= -->
-  <section class="py-20 bg-white px-4" id="pricing">
-    <div class="max-w-6xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Pricing <span class="text-[hsl(var(--primary))]">Plans</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        Choose the plan that best fits your business needs. All plans include our core AI virtual employee features with varying levels of customization and support.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Initiate (Standard) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border border-gray-200"
-      >
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Initiate</h3>
-        <p class="text-xl mb-2">$1497 one-time</p>
-        <p class="text-xl mb-4">+ $297/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ Basic Chatbot Scripts (FAQs, lead capture)</li>
-          <li>✅ Simple Analytics (Query volume, response rate)</li>
-          <li>✅ 48 Hr support</li>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">BOTUVO</div>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <p class="italic mb-2">Ideal for: Small Ecom sites</p>
-        <p class="mb-4">Why? Quick wins, faster lead conversions.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
-      </div>
-
-      <!-- Elevate (Plus) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border-2 border-[hsl(var(--primary))] relative"
-      >
-        <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Elevate</h3>
-        <p class="text-xl mb-2">$2497 one-time</p>
-        <p class="text-xl mb-4">+ $597/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ All Initiate features</li>
-          <li>✅ Custom branding and scripting</li>
-          <li>✅ Integrations (CRM, Stripe, Shopify, Calendly etc.)</li>
-          <li>✅ Advanced analytics and conversion tracking</li>
-          <li>✅ Priority support and training</li>
-          <li>✅ Multi-language support</li>
-        </ul>
-        <p class="italic mb-2">Ideal for: Growing business scaling leads/support</p>
-        <p class="mb-4">Why? The perfect balance of features and cost - Maximize ROI and support growth.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
-      </div>
-
-      <!-- Innovate (Premium) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border border-gray-200"
-      >
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Innovate</h3>
-        <p class="text-xl mb-2">$3997 one-time</p>
-        <p class="text-xl mb-4">+ $897/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ All Elevate features</li>
-          <li>✅ Multiple integrations & Custom APIs</li>
-          <li>✅ Premium analytics and predictive insights</li>
-          <li>✅ Dedicated support and ongoing optimisation</li>
-        </ul>
-        <p class="italic mb-2">Ideal for: Large scale businesses with complex needs</p>
-        <p class="mb-4">Why? High margin, long-term value for enterprise clients.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
-      </div>
+      </nav>
     </div>
+  </header>
 
-    <!-- Inner Circle Club Section (Below Pricing) -->
-    <div class="max-w-6xl mx-auto mt-12 p-6 bg-white rounded-lg shadow text-left border border-gray-200">
-      <h2 class="text-3xl font-bold mb-4">Exclusive: BOTUVO Inner Circle Club</h2>
-      <p class="mb-4">Limited to Elevate/Innovate Members – Beta Perks for Early Adopters. Apply now for 30% off monthly fees + more! Vetted Applicants Only.</p>
-      <ul class="pl-6 mb-4 space-y-2">
-        <li>✅ 30% Monthly Discount (First 6 Months) – Save on Plus/Premium (selective for high-value clients).</li>
-        <li>✅ Direct Founder Access – Priority 1:1 chats/calls with me (Iqbal Rahman) for personalized advice.</li>
-        <li>✅ Case Study Feature – Co-create success stories for mutual exposure on our site/LinkedIn.</li>
-        <li>✅ Priority White-Labelling – Fast customization with your branding.</li>
-        <li>✅ Quarterly Strategy Sessions – Group Zoom + private Slack hub for anonymized peer learning on automations/growth.</li>
-        <li>✅ Automation Growth Blueprint – Customized 12-month roadmap + 1-hour call (with upsell audit).</li>
-        <li>✅ Exclusive Resources & Referrals – Monthly tip sheet + 1 free month per referral.</li>
-        <li>✅ Beta Feedback Access – Input on new features to shape BOTUVO.</li>
-      </ul>
-      <p class="font-bold mb-4">Vetted Applicants only. Ideal for SaaS/Real Estate Partners Ready to Scale.</p>
-      <a 
-        href="https://docs.google.com/forms/d/e/1FAIpQLSc7cgkQD9e-1nPqQOJqzhIERuKAI8ctnJUkq6jFbHMD2zb9HA/viewform?usp=header" 
-        target="_blank"
-        class="inline-block bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-      >
-        Apply Now
-      </a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <img src="logo.png" onerror="this.src='https://via.placeholder.com/96?text=B'" alt="BOTUVO" class="w-24 h-24 mx-auto mb-6 drop-shadow-lg">
+      <h1>BOTUVO</h1>
+      <h2>Your AI Virtual Employee Agency</h2>
+      <p>We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.</p>
+      <div class="hero-btns">
+        <button class="btn" onclick="scrollToContact()">Get Your Virtual Employee</button>
+        <button class="btn-outline" onclick="scrollToContact()">Free Chatbot Audit</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">10%</div><div class="lbl">Profits to Charity</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="lbl">AI Support</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Human Centric</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- =========================
-       WHY CHOOSE US
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))] px-4" id="why-choose-us">
-    <div class="max-w-6xl mx-auto mb-16 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">
-        Why Choose <span class="text-[hsl(var(--primary))]">BOTUVO</span>?
-      </h2>
-      <p class="text-lg text-[hsla(0,0%,0%,0.6)] max-w-2xl mx-auto mb-8">
-        We stand out in the AI industry through our commitment to quality,
-        transparency, and making AI truly work for your business.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
-      <!-- Card 1 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="shield" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Tailored & Secure Solutions</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Every AI solution is custom-built for your brand and secured with
-          enterprise-grade protection.
-        </p>
-      </div>
-      <!-- Card 2 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="dollar-sign" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Ethical Pricing</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Transparent, fair pricing with no hidden costs. Plus, 10% of profits go
-          to charity.
-        </p>
-      </div>
-      <!-- Card 3 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="life-buoy" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Continuous Support</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Ongoing optimization, updates, and dedicated support to keep your AI
-          performing at its best.
-        </p>
-      </div>
-      <!-- Card 4 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="palette" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Brand-Specific Implementation</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Your AI reflects your brand voice, values, and customer experience
-          standards perfectly.
-        </p>
-      </div>
-    </div>
-    <!-- Mission Statement -->
-    <div
-      class="mt-16 bg-[hsla(264,91%,58%,0.1)] p-8 rounded-2xl border border-[hsla(0,0%,0%,0.1)] text-center max-w-3xl mx-auto"
-    >
-      <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
-      <p>
-        Make AI accessible, human-centric, transparent, and secure for businesses
-        of all sizes. We believe in using technology to empower people, not replace
-        them, while giving back to the community through our charitable
-        commitments.
-      </p>
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <div class="container">
+      <h2>Book a free <span style="color:#FDE047">strategy call</span></h2>
+      <p>Ready to elevate your business with AI? Contact us today and discover how BOTUVO can help you work smarter, not harder.</p>
+      <button class="btn" onclick="scrollToContact()" style="background:#fff;color:var(--p)">Get Started Today</button>
     </div>
   </section>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="wWbvHrDPDPqsnX1dBfo0f";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
 
-  <!-- =========================
-       CONTACT FORM
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="contact">
-    <div class="max-w-4xl mx-auto text-center mb-8 px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Ready to <span class="text-[hsl(var(--primary))]">Get Started</span>?
-      </h2>
-      <p class="text-lg mb-4">
-        Let's discuss how BOTUVO can transform your business with AI virtual
-        employees. Get in touch for a free consultation.
-      </p>
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our <span>Services</span></h2>
+        <p>We create virtual employees that seamlessly integrate into your business operations.</p>
+      </div>
+      <div class="grid3">
+        <div class="card2"><div class="icon"><i data-lucide="headset"></i></div><h3>Customer Support</h3><p>AI-powered support agents that handle inquiries 24/7, providing instant, accurate responses.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="target"></i></div><h3>Lead Generation</h3><p>Engage visitors and convert them into leads with intelligent chatbots that qualify prospects.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="calendar"></i></div><h3>Appointment Booking</h3><p>Seamless scheduling that handles bookings, confirmations, and reminders automatically.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="shopping-cart"></i></div><h3>E-commerce Assistance</h3><p>Help customers find products, answer questions, and complete purchases.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="code"></i></div><h3>Custom API Actions</h3><p>Integrate your custom APIs with AI chatbots for tailored solutions.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="database"></i></div><h3>CRM Integration</h3><p>Sync customer data and interactions with your existing CRM systems.</p></div>
+      </div>
     </div>
-    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-gray-800">
-      <h3 class="text-xl text-center mb-4">Send us a Message</h3>
-      <form
-        class="flex flex-col gap-4"
-        action="https://formspree.io/f/mjkwvgvr"
-        method="POST"
-        id="contact-form"
-      >
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-        />
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="company"
-          placeholder="Company Name"
-        />
-        <input
-          class="p-3 rounded"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-        <textarea
-          class="p-3 rounded"
-          rows="5"
-          name="message"
-          placeholder="Tell us about your project..."
-          required
-        ></textarea>
-        <button
-          class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition"
-          type="submit"
-        >
-          Send Message
-        </button>
+  </section>
+
+  <!-- 5-STEP PROCESS -->
+  <section id="process" class="section" style="background:var(--g)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our 5-Step <span>Process</span></h2>
+        <p>From discovery to ongoing optimisation — perfectly tailored AI employees.</p>
+      </div>
+      <div class="grid5">
+        <div class="card2"><div class="absolute -top-3 -right-3 w-8 h-8 bg-[#9333EA] text-white rounded-full grid place-items-center text-sm font-bold">1</div><h3>Discovery</h3><p>Analyse your needs and identify the best AI solutions.</p></div>
+        <div class="card2"><div class="absolute -top-3 -right-3 w-8 h-8 bg-[#9333EA] text-white rounded-full grid place-items-center text-sm font-bold">2</div><h3>Setup</h3><p>Configure infrastructure and initialise parameters.</p></div>
+        <div class="card2"><div class="absolute -top-3 -right-3 w-8 h-8 bg-[#9333EA] text-white rounded-full grid place-items-center text-sm font-bold">3</div><h3>Development</h3><p>Build and rigorously test your AI chatbot.</p></div>
+        <div class="card2"><div class="absolute -top-3 -right-3 w-8 h-8 bg-[#9333EA] text-white rounded-full grid place-items-center text-sm font-bold">4</div><h3>Integration</h3><p>Connect to your site, CRM, and communication channels.</p></div>
+        <div class="card2"><div class="absolute -top-3 -right-3 w-8 h-8 bg-[#9333EA] text-white rounded-full grid place-items-center text-sm font-bold">5</div><h3>Optimisation</h3><p>Continuous monitoring, updates, and improvements.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Key <span>Benefits</span></h2>
+        <p>Measurable results and exceptional customer experiences.</p>
+      </div>
+      <div class="grid3">
+        <div class="card2"><div class="icon"><i data-lucide="clock"></i></div><h3>Time Savings</h3><p>Automate repetitive tasks and free up your team to focus on growth.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">Save 80 % response time</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="users"></i></div><h3>Improved Customer Resolution</h3><p>Provide instant, accurate responses 24/7, improving satisfaction.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">95 % satisfaction</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="trending-up"></i></div><h3>Higher Conversions</h3><p>Guide prospects through your sales funnel with personalised interactions.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">3× conversion increase</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="bar-chart"></i></div><h3>Operational Efficiency</h3><p>Streamline processes and reduce operational costs while you scale.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">60 % cost reduction</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="database"></i></div><h3>Rich Data Collection</h3><p>Gather valuable insights about customer behaviour and preferences.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">Real-time analytics</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="arrow-up-right"></i></div><h3>Scalable Growth</h3><p>Effortlessly scale your customer service and sales operations.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">Unlimited capacity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section pricing">
+    <div class="container">
+      <div class="section-head">
+        <h2>Pricing <span>Plans</span></h2>
+        <p>Transparent monthly pricing — no hidden fees.</p>
+      </div>
+      <div class="pricing-cards">
+        <!-- Initiate -->
+        <div class="price-card">
+          <h3>Initiate</h3>
+          <div class="price">$499</div>
+          <div class="sub">per month</div>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>AI-powered voice, text & web chat</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>2 000 minutes included</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>24/7 smart responses</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Conversational lead capture</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Dedicated phone & text number</span></li>
+          </ul>
+          <p class="note">Ideal for small e-com sites after quick wins.</p>
+          <button class="btn" onclick="scrollToContact()">Get Started</button>
+        </div>
+
+        <!-- Elevate -->
+        <div class="price-card featured">
+          <span class="badge">Best Value</span>
+          <h3>Elevate</h3>
+          <div class="price">$5 000</div>
+          <div class="sub">per month</div>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>21 739 conversations included</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Multi-channel responsiveness</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Enhanced routing & booking</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Custom CRM integration</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Priority support</span></li>
+          </ul>
+          <p class="note">Perfect balance of features & cost for growing teams.</p>
+          <button class="btn" onclick="scrollToContact()">Get Started</button>
+        </div>
+
+        <!-- Innovate -->
+        <div class="price-card">
+          <h3>Innovate</h3>
+          <div class="price">$25 000</div>
+          <div class="sub">per month</div>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>131 579 conversations included</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Hyper-personalised AI</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Adaptive learning</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Predictive insights</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Enterprise onboarding</span></li>
+          </ul>
+          <p class="note">Enterprise-grade for complex, high-volume operations.</p>
+          <buttonp><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">60 % cost reduction</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="database"></i></div><h3>Rich Data Collection</h3><p>Gather valuable insights about customer behaviour and preferences.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">Real-time analytics</span></div>
+        <div class="card2"><div class="icon"><i data-lucide="arrow-up-right"></i></div><h3>Scalable Growth</h3><p>Effortlessly scale your customer service and sales operations.</p><span style="display:inline-block;background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;margin-top:.5rem">Unlimited capacity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section" style="background:var(--g)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Pricing <span>Plans</span></h2>
+        <p>Transparent monthly pricing — no hidden fees.</p>
+      </div>
+      <div class="grid3">
+        <div class="card2" style="border:1px solid var(--g1)">
+          <h3>Initiate</h3>
+          <p class="price">$499 <span>/mo</span></p>
+          <ul>
+            <li>AI-powered voice, text & web chat</li>
+            <li>2 000 minutes included</li>
+            <li>24/7 smart responses</li>
+            <li>Conversational lead capture</li>
+            <li>Dedicated phone & text number</li>
+          </ul>
+          <button class="btn" onclick="scrollToContact()">Get Started</button>
+        </div>
+        <div class="card2" style="border:2px solid var(--p);position:relative">
+          <span style="position:absolute;top:-.75rem;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:700">Best Value</span>
+          <h3>Elevate</h3>
+          <p class="price">$5 000 <span>/mo</span></p>
+          <ul>
+            <li>21 739 conversations included</li>
+            <li>Multi-channel responsiveness</li>
+            <li>Enhanced routing & booking</li>
+            <li>Custom CRM integration</li>
+            <li>Priority support & training</li>
+          </ul>
+          <button class="btn" onclick="scrollToContact()">Get Started</button>
+        </div>
+        <div class="card2" style="border:1px solid var(--g1)">
+          <h3>Innovate</h3>
+          <p class="price">$25 000 <span>/mo</span></p>
+          <ul>
+            <li>131 579 conversations included</li>
+            <li>Hyper-personalised AI</li>
+            <li>Adaptive learning</li>
+            <li>Predictive insights</li>
+            <li>Enterprise onboarding</li>
+          </ul>
+          <button class="btn" onclick="scrollToContact()">Contact Sales</button>
+        </div>
+      </div>
+
+      <!-- Inner Circle Club -->
+      <div class="card2" style="margin-top:3rem">
+        <h3>🎆 Inner Circle Club <small>(Elevate / Innovate only)</small></h3>
+        <p>Limited beta perks for early adopters — vetted applicants only.</p>
+        <div class="grid2" style="margin-top:1rem">
+          <ul>
+            <li>30 % monthly discount (first 6 mo)</li>
+            <li>Direct founder access (1:1 calls / Slack)</li>
+            <li>Case-study feature & co-marketing</li>
+            <li>Priority white-labelling</li>
+          </ul>
+          <ul>
+            <li>Quarterly strategy sessions & peer hub</li>
+            <li>12-month automation growth blueprint</li>
+            <li>Exclusive tip-sheets & referral rewards</li>
+            <li>Beta feedback influence on new features</li>
+          </ul>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7cgkQD9e-1nPqQOJqzhIERuKAI8ctnJUkq6jFbHMD2zb9HA/viewform" target="_blank" class="btn" style="margin-top:1rem">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why Choose <span>BOTUVO</span>?</h2>
+        <p>Quality, transparency & AI that truly works for you.</p>
+      </div>
+      <div class="grid4">
+        <div class="card2"><div class="icon"><i data-lucide="shield"></i></div><h3>Tailored & Secure</h3><p>Custom-built for your brand, enterprise-grade protection.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="dollar-sign"></i></div><h3>Ethical Pricing</h3><p>Transparent costs — 10 % profits to charity.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="life-buoy"></i></div><h3>Continuous Support</h3><p>Ongoing optimisation, updates & dedicated help.</p></div>
+        <div class="card2"><div class="icon"><i data-lucide="palette"></i></div><h3>Brand-Specific</h3><p>Your voice, values & customer experience.</p></div>
+      </div>
+      <div class="card2" style="max-width:700px;margin:3rem auto 0;text-align:center;background:var(--pl)">
+        <h3>Our Mission</h3>
+        <p>Make AI accessible, human-centric, transparent & secure for businesses of all sizes — empowering people, not replacing them, while giving back to the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="background:var(--g)">
+    <div class="container" style="max-width:700px;text-align:center">
+      <h2>Ready to <span>Get Started</span>?</h2>
+      <p>Book a free strategy call or drop us a message — we’ll respond within 24 h.</p>
+      <form action="https://formspree.io/f/mjkwvgvr" method="POST" class="form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="company" placeholder="Company Name">
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="4" placeholder="Tell us about your project…" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
       </form>
+      <p style="margin-top:1rem;font-size:.875rem;color:var(--g7)">Or email us directly: <a href="mailto:iqbal@botuvo.co.uk" class="underline">iqbal@botuvo.co.uk</a></p>
     </div>
   </section>
-<!-- =========================
-       FOOTER
-  ========================= -->
-  <footer class="bg-[hsl(var(--foreground))] text-[hsl(var(--background))] py-12">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-      <!-- Description (no logo) -->
-      <div class="col-span-1 md:col-span-2">
-        <div class="flex items-center mb-4">
-          <h3 class="text-2xl font-bold">BOTUVO</h3>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>BOTUVO</h3>
+          <p>AI virtual employees that transform how businesses interact with customers — accessible, secure & human-centric.</p>
         </div>
-        <p class="max-w-md">
-          An AI agency creating virtual employees that transform how
-          businesses interact with customers. Making AI accessible, secure, and
-          human-centric.
-        </p>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Customer Support</a></li>
+            <li><a href="#services">Lead Generation</a></li>
+            <li><a href="#services">Appointment Booking</a></li>
+            <li><a href="#services">E-commerce Assistance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why">About Us</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="privacy-policy.pdf" download>Privacy Policy</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- Services (Clickable to scroll to #services) -->
-      <div>
-        <h4 class="font-semibold mb-2 cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Services</h4>
-        <ul class="space-y-2 list-none">
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Customer Support</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Lead Generation</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Appointment Booking</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">E-commerce Assistance</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Custom API Actions</li>
-        </ul>
-      </div>
-      <!-- Company -->
-      <div>
-        <h4 class="font-semibold mb-2">Company</h4>
-        <ul class="space-y-2 list-none">
-          <li class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">About Us</li>
-          <li class="cursor-pointer" onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'});">Our Process</li>
-          <li class="cursor-pointer" onclick="document.getElementById('footer-contact-modal').classList.add('show');">Contact</li>
-          <li><a href="privacy-policy.pdf" download class="hover:underline">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div
-      class="border-t border-[hsla(0,0%,100%,0.2)] mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm max-w-6xl mx-auto px-4"
-    >
-      <p>&copy; 2024 BOTUVO. All rights reserved.</p>
-      <div class="flex space-x-4 mt-2 md:mt-0">
-        <a href="https://www.linkedin.com/company/botuvo/" class="text-white hover:text-gray-300">
-          <i data-lucide="linkedin" class="w-5 h-5"></i>
-        </a>
-        <a href="https://x.com/BOTUVOAI" class="text-white hover:text-gray-300">
-          <i data-lucide="twitter" class="w-5 h-5"></i>
-        </a>
-      </div>
-      <div class="flex space-x-4 mt-2 md:mt-0 text-[hsla(0,0%,100%,0.7)]">
-        <span>🇬🇧 UK-Based Agency</span>
-        <span>❤️ 10% to Charity</span>
+      <div class="footer-bottom">
+        <p>&copy; 2024 BOTUVO. All rights reserved.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/botuvo/" target="_blank"><i data-lucide="linkedin"></i></a>
+          <a href="https://x.com/BOTUVOAI" target="_blank"><i data-lucide="twitter"></i></a>
+        </div>
+        <div>
+          <span>🇬🇧 UK-Based Agency</span>
+          <span>❤️ 10 % to Charity</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- =========================
-       EXISTING MODAL (for hero buttons)
-  ========================= -->
-  <div id="contactModal" class="modal">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative">
-      <button
-        class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-        onclick="document.getElementById('contactModal').classList.remove('show');"
-      >
-        ✕
-      </button>
-      <h3 class="text-2xl font-semibold mb-4 text-center">Send us a Message</h3>
-      <form
-        class="flex flex-col gap-4"
-        action="https://formspree.io/f/mjkwvgvr"
-        method="POST"
-        id="modal-form"
-      >
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-        />
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="company"
-          placeholder="Company Name"
-        />
-        <input
-          class="p-3 rounded"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-        <textarea
-          class="p-3 rounded"
-          rows="5"
-          name="message"
-          placeholder="Tell us about your project..."
-          required
-        ></textarea>
-        <button
-          class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition"
-          type="submit"
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
-  </div>
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
 
-  <!-- =========================
-       NEW MODAL for Footer Contact Popup
-  ========================= -->
-  <div id="footer-contact-modal" class="modal">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative text-center">
-      <button
-        class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-        onclick="document.getElementById('footer-contact-modal').classList.remove('show');"
-      >
-        ✕
-      </button>
-      <p class="text-lg">
-        Have any questions? Ask our AI bot or feel free to get in contact via email: iqbal@botuvo.co.uk
-      </p>
-    </div>
-  </div>
-
-  <!-- =========================
-       SCRIPTS
-  ========================= -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script defer>
-    // Global functions for better scope access
-    function scrollToContact() {
-      document
-        .getElementById("contact")
-        .scrollIntoView({ behavior: "smooth" });
+    // smooth scroll helper
+    function scrollToContact(){
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     }
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove("show");
+    // reveal on scroll
+    const revealEls=document.querySelectorAll('.reveal');
+    const revealObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('reveal-visible');
+      });
+    },{threshold:.2});
+    revealEls.forEach(el=>revealObserver.observe(el));
+
+    // cursor trail (desktop only)
+    const cursor=document.getElementById('cursor');
+    if(window.innerWidth>=768){
+      document.addEventListener('mousemove',e=>{
+        cursor.style.left=e.clientX+'px';
+        cursor.style.top=e.clientY+'px';
+      });
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-
-      // Existing modal toggle for hero buttons
-      document.getElementById("btn-virtual").addEventListener("click", () => {
-        console.log("Virtual Employee button clicked");
-        document.getElementById("contactModal").classList.add("show");
-      });
-      document.getElementById("btn-audit").addEventListener("click", () => {
-        console.log("Audit button clicked");
-        document.getElementById("contactModal").classList.add("show");
-      });
-
-      // Close existing modal on outside click
-      document.getElementById("contactModal").addEventListener("click", (event) => {
-        if (event.target === document.getElementById("contactModal")) {
-          closeModal("contactModal");
-        }
-      });
-
-      // Close new footer modal on outside click
-      document.getElementById("footer-contact-modal").addEventListener("click", (event) => {
-        if (event.target === document.getElementById("footer-contact-modal")) {
-          closeModal("footer-contact-modal");
-        }
-      });
-
-      // Close modals on Esc key
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeModal("contactModal");
-          closeModal("footer-contact-modal");
-        }
-      });
-    });
   </script>
 </body>
 </html>
-
-
