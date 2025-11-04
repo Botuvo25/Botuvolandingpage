@@ -1,904 +1,1106 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 <head>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOTUVO - AI Virtual Employee Agency</title>
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-    rel="stylesheet"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTUVO - AI Chatbot Solutions | Automate Customer Support & Lead Generation</title>
+  <meta name="description" content="Transform your business with BOTUVO's intelligent AI chatbots. Automate customer support, boost lead generation, and scale effortlessly. Get your virtual employee today.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+    /* Design System Variables */
     :root {
       --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-      --primary: 264 91% 58%;
+      --foreground: 240 10% 15%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 15%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 15%;
+      --primary: 262 52% 47%;
       --primary-foreground: 0 0% 100%;
-      --primary-glow: 264 100% 70%;
+      --primary-light: 262 47% 57%;
+      --primary-dark: 262 57% 37%;
+      --secondary: 217 91% 60%;
+      --secondary-foreground: 0 0% 100%;
+      --muted: 240 5% 96%;
+      --muted-foreground: 240 4% 46%;
+      --accent: 217 91% 60%;
+      --accent-foreground: 0 0% 100%;
+      --destructive: 0 84% 60%;
+      --destructive-foreground: 0 0% 100%;
+      --border: 240 6% 90%;
+      --input: 240 6% 90%;
+      --ring: 262 52% 47%;
+      --radius: 0.75rem;
     }
-    /* Modal styles */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-scale-in {
+      animation: scaleIn 0.4s ease-out;
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+      color: white;
+      box-shadow: 0 4px 15px hsla(262, 52%, 47%, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px hsla(262, 52%, 47%, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: hsl(var(--primary));
+      border: 2px solid hsl(var(--primary));
+    }
+
+    .btn-secondary:hover {
+      background: hsl(var(--primary));
+      color: white;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px hsla(262, 52%, 47%, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-badge {
+      background: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+      color: hsl(var(--primary));
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Services Section */
+    .section {
+      padding: 5rem 1rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 1.125rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .icon-purple { background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); }
+    .icon-blue { background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); }
+    .icon-green { background: hsla(142, 71%, 45%, 0.1); color: hsl(142, 71%, 45%); }
+    .icon-orange { background: hsla(25, 95%, 53%, 0.1); color: hsl(25, 95%, 53%); }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Process Section */
+    .process-scroll {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .process-card {
+      min-width: 280px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .process-number {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: hsl(var(--primary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      margin-bottom: 3rem;
+    }
+
+    .pricing-card {
+      position: relative;
+      border: 2px solid hsl(var(--border));
+    }
+
+    .pricing-card.featured {
+      border-color: hsl(var(--primary));
+      transform: scale(1.05);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: hsl(var(--primary));
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .pricing-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: hsl(var(--primary));
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-monthly {
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pricing-features li:before {
+      content: "✓";
+      color: hsl(var(--primary));
+      font-weight: 700;
+    }
+
+    /* Inner Circle */
+    .inner-circle {
+      background: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+      color: white;
+      padding: 3rem;
+      border-radius: var(--radius);
+      margin-top: 3rem;
+    }
+
+    .inner-circle h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .perk-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .perk-item:before {
+      content: "★";
+      color: hsl(var(--secondary));
+      font-size: 1.25rem;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid hsl(var(--border));
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: hsl(var(--primary));
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background: hsl(240, 10%, 15%);
+      color: white;
+      padding: 4rem 1rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: hsl(var(--primary));
+      transform: translateY(-3px);
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
       align-items: center;
       justify-content: center;
-      z-index: 50;
+      padding: 1rem;
     }
+
     .modal.show {
       display: flex;
     }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: scaleIn 0.3s ease-out;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: hsl(var(--muted-foreground));
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: hsl(var(--muted));
+      color: hsl(var(--foreground));
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .process-scroll {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
-<body class="bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
+<body>
 
-  <!-- =========================
-       HERO SECTION
-  ========================= -->
-  <section
-    class="py-20 px-4 bg-white text-center flex flex-col items-center justify-center min-h-screen overflow-hidden"
-    id="hero"
-  >
-    <!-- Floating Logo (centered above title) -->
-    <div class="w-full flex justify-center mb-6">
-      <!-- Replace 'logo.png' with your actual logo path -->
-      <img
-        src="logo.png"
-        alt="Logo"
-        class="w-20 h-20 object-contain mx-auto"
-        onerror="this.onerror=null; this.src='https://via.placeholder.com/80?text=B';"
-      />
-    </div>
-    <!-- Content -->
-    <div class="max-w-4xl mx-auto pt-4 text-center">
-      <!-- Main Title -->
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-[hsl(var(--primary))] uppercase tracking-wide">
-        BOTUVO
-      </h1>
-      <!-- Subtitle -->
-      <h2 class="text-2xl md:text-3xl mb-4 text-gray-700 font-semibold">Your AI Virtual Employee Agency</h2>
-      <!-- Supporting Text (below subtitle) -->
-      <p class="mb-6 max-w-2xl mx-auto text-xl text-[hsla(0,0%,0%,0.7)]">
-        We create virtual employees that seamlessly integrate into your business
-        operations, handling everything from customer support to sales assistance.
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title animate-fade-in">BOTUVO</h1>
+      <h2 class="hero-subtitle animate-fade-in">Your Virtual Employee, Perfected</h2>
+      <p class="hero-description animate-fade-in" style="color: hsl(var(--foreground));">
+        Transform customer interactions into seamless experiences with AI-powered chatbots that work 24/7, 
+        handling support, lead generation, and sales—so your team can focus on what truly matters.
       </p>
-      <!-- Buttons -->
-      <div class="flex justify-center space-x-4 mb-8">
-        <button
-          id="btn-virtual"
-          class="bg-[hsl(var(--primary))] hover:shadow-lg transition px-6 py-3 rounded-lg font-semibold text-white"
-        >
+      
+      <div class="hero-buttons animate-scale-in">
+        <button class="btn btn-primary" onclick="openModal('contactModal')">
           Get Your Virtual Employee
         </button>
-        <button
-          id="btn-audit"
-          class="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-white transition px-6 py-3 rounded-lg font-semibold"
-        >
+        <button class="btn btn-secondary" onclick="openModal('contactModal')">
           Free Chatbot Audit
         </button>
       </div>
-      <!-- Info Items (updated to match image style) -->
-      <div class="flex justify-center space-x-8 md:space-x-12 text-center">
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">10%</div>
-          <div class="text-sm text-gray-600">Profits to Charity</div>
+      
+      <div class="hero-stats animate-fade-in">
+        <div class="stat-badge">🌍 10% to Charity</div>
+        <div class="stat-badge">⚡ 24/7 Support</div>
+        <div class="stat-badge">❤️ 100% Human-Centric</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Scale Your Business?</h2>
+      <p style="font-size: 1.125rem; margin-bottom: 2rem;">
+        Join hundreds of businesses already leveraging AI to deliver exceptional customer experiences.
+      </p>
+      <button class="btn btn-secondary" onclick="scrollToContact()">Start Your Free Audit</button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section" style="background: hsl(var(--muted));">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">
+        Comprehensive AI chatbot solutions tailored to your business needs
+      </p>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="service-icon icon-purple">💬</div>
+          <h3 class="service-title">24/7 Customer Support</h3>
+          <p>Instant responses to customer queries, reducing wait times and improving satisfaction with always-on AI support.</p>
         </div>
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">24/7</div>
-          <div class="text-sm text-gray-600">AI Support</div>
+        
+        <div class="card">
+          <div class="service-icon icon-blue">🎯</div>
+          <h3 class="service-title">Lead Generation</h3>
+          <p>Capture and qualify leads automatically, ensuring no opportunity slips through while your team focuses on closing deals.</p>
         </div>
-        <div>
-          <div class="text-2xl font-bold text-[hsl(var(--primary))]">100%</div>
-          <div class="text-sm text-gray-600">Human Centric</div>
+        
+        <div class="card">
+          <div class="service-icon icon-green">📅</div>
+          <h3 class="service-title">Appointment Scheduling</h3>
+          <p>Seamlessly book meetings and manage calendars without the back-and-forth, integrated with your existing tools.</p>
+        </div>
+        
+        <div class="card">
+          <div class="service-icon icon-orange">🛒</div>
+          <h3 class="service-title">E-commerce Assistance</h3>
+          <p>Guide customers through their purchase journey, answer product questions, and reduce cart abandonment rates.</p>
+        </div>
+        
+        <div class="card">
+          <div class="service-icon icon-purple">🔌</div>
+          <h3 class="service-title">Custom API Integrations</h3>
+          <p>Connect your chatbot to existing systems, CRMs, and databases for a unified customer experience.</p>
+        </div>
+        
+        <div class="card">
+          <div class="service-icon icon-blue">📊</div>
+          <h3 class="service-title">CRM Synchronization</h3>
+          <p>Automatically sync conversations and data with your CRM, keeping your team informed and organized.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================
-       CTA Section
-  ========================= -->
-  <section
-    class="py-16 bg-[hsl(var(--primary))] text-center text-white px-4"
-    id="cta"
-  >
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Book a free <span class="text-white">strategy call</span>
-      </h2>
-      <p class="mb-8 max-w-2xl mx-auto text-lg">
-        Ready to elevate your business with AI? Contact us today and discover how
-        BOTUVO can help you work smarter, not harder. Our AI virtual employees are
-        designed to seamlessly integrate with your existing operations, providing
-        24/7 support while maintaining the human touch your customers expect.
+  <!-- Process Section -->
+  <section id="process" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Process</h2>
+      <p class="section-subtitle">
+        From concept to deployment in 5 simple steps
       </p>
-      <button
-        class="bg-white text-[hsl(var(--primary))] font-semibold px-8 py-4 rounded-lg hover:shadow-lg transition"
-        onclick="scrollToContact()"
-      >
-        Get Started Today
-      </button>
-    </div>
-  </section>
-
-  <!-- =========================
-       OUR SERVICES (6 cards)
-  ========================= -->
-  <section class="py-20 bg-white px-4" id="services">
-    <div class="max-w-6xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Our <span class="text-[hsl(var(--primary))]">Services</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        We create virtual employees that seamlessly integrate into your business operations, handling everything from customer support to sales assistance.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Service 1 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="headset" class="w-8 h-8 text-white"></i>
+      
+      <div class="process-scroll">
+        <div class="card process-card">
+          <div class="process-number">1</div>
+          <h3 class="service-title">Discovery</h3>
+          <p>We learn about your business goals, pain points, and customer journey to design the perfect chatbot strategy.</p>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Customer Support</h3>
-        <p>
-          AI-powered support agents that handle inquiries 24/7, providing instant,
-          accurate responses to your customers.
-        </p>
-      </div>
-      <!-- Service 2 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="target" class="w-8 h-8 text-white"></i>
+        
+        <div class="card process-card">
+          <div class="process-number">2</div>
+          <h3 class="service-title">Setup & Design</h3>
+          <p>Configure your chatbot's personality, branding, and conversation flows to match your brand voice perfectly.</p>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Lead Generation</h3>
-        <p>
-          Engage visitors and convert them into leads with intelligent chatbots
-          that qualify prospects automatically.
-        </p>
-      </div>
-      <!-- Service 3 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="calendar" class="w-8 h-8 text-white"></i>
+        
+        <div class="card process-card">
+          <div class="process-number">3</div>
+          <h3 class="service-title">Development & Testing</h3>
+          <p>Build and rigorously test your chatbot with real scenarios to ensure flawless performance before launch.</p>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Appointment Booking</h3>
-        <p>
-          Seamless scheduling systems that handle bookings, confirmations, and
-          reminders automatically.
-        </p>
-      </div>
-      <!-- Service 4 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="shopping-cart" class="w-8 h-8 text-white"></i>
+        
+        <div class="card process-card">
+          <div class="process-number">4</div>
+          <h3 class="service-title">Integration & Launch</h3>
+          <p>Seamlessly integrate with your website, social media, and business tools, then launch to your customers.</p>
         </div>
-        <h3 class="text-xl font-semibold mb-2">E-commerce Assistance</h3>
-        <p>
-          Help customers find products, answer questions, and complete purchases
-          with AI support.
-        </p>
-      </div>
-      <!-- Service 5 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="code" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Custom API Actions</h3>
-        <p>Integrate your custom APIs with AI chatbots for tailored solutions.</p>
-      </div>
-      <!-- Service 6 -->
-      <div
-        class="bg-[hsl(var(--background))] p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="database" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">CRM Integration</h3>
-        <p>
-          Seamlessly sync customer data and interactions with your existing CRM
-          systems.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       5-STEP PROCESS
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="process">
-    <div class="max-w-6xl mx-auto mb-12 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Our 5-Step <span class="text-[hsl(var(--primary))]">Process</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        From initial discovery to ongoing optimization, we ensure your AI virtual employee is perfectly tailored to your business needs.
-      </p>
-    </div>
-    <div class="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto px-4">
-      <!-- Step 1 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          1
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Discovery</h3>
-        <p>
-          We analyze your business needs, understand your customers, and identify
-          the best AI solutions for your specific requirements.
-        </p>
-      </div>
-      <!-- Step 2 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          2
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Setup</h3>
-        <p>
-          Configure your AI virtual employee, set up infrastructure, and initialize
-          parameters for optimal performance.
-        </p>
-      </div>
-      <!-- Step 3 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          3
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Development & Testing</h3>
-        <p>
-          Our team develops and rigorously tests your AI chatbot to ensure it meets
-          your business standards and customer expectations.
-        </p>
-      </div>
-      <!-- Step 4 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          4
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Integration</h3>
-        <p>
-          Seamlessly integrate your virtual employee into existing systems,
-          websites, and communication channels.
-        </p>
-      </div>
-      <!-- Step 5 -->
-      <div
-        class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex-1"
-      >
-        <div
-          class="absolute top-0 right-0 bg-[hsl(var(--primary))] text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm -mt-4 -mr-4 shadow"
-        >
-          5
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Ongoing Optimization</h3>
-        <p>
-          Continuous monitoring, updates, and improvements to keep your AI virtual
-          employee effective and up-to-date.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       KEY BENEFITS
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="benefits">
-    <div class="max-w-4xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Key <span class="text-[hsl(var(--primary))]">Benefits</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        Transform your business operations with AI that delivers measurable results and exceptional customer experiences.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-      <!-- Benefit 1 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="clock" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Time Savings</h3>
-        <p>
-          Automate repetitive tasks and free up your team to focus on high-value
-          activities that drive growth.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Save 80% of response time
-        </div>
-      </div>
-      <!-- Benefit 2 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="users-check" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Improved Customer Resolution</h3>
-        <p>
-          Provide instant, accurate responses 24/7, improving customer satisfaction
-          and loyalty.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          95% customer satisfaction
-        </div>
-      </div>
-      <!-- Benefit 3 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Higher Conversions</h3>
-        <p>
-          Guide prospects through your sales funnel with personalized interactions
-          that convert.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          3x conversion increase
-        </div>
-      </div>
-      <!-- Benefit 4 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="bar-chart" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Operational Efficiency</h3>
-        <p>
-          Streamline processes and reduce operational costs while scaling your
-          business effortlessly.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          60% cost reduction
-        </div>
-      </div>
-      <!-- Benefit 5 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="database" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Rich Data Collection</h3>
-        <p>
-          Gather valuable insights about customer behavior and preferences to inform
-          decisions.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Real-time analytics
-        </div>
-      </div>
-      <!-- Benefit 6 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="arrow-up-right" class="w-8 h-8 text-white"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">Scalable Growth</h3>
-        <p>
-          Effortlessly scale your customer service and sales operations as your
-          business grows.
-        </p>
-        <div
-          class="mt-2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm"
-        >
-          Unlimited capacity
+        
+        <div class="card process-card">
+          <div class="process-number">5</div>
+          <h3 class="service-title">Ongoing Optimization</h3>
+          <p>Continuously monitor, analyze, and improve your chatbot's performance based on real user interactions.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================
-       PRICING PLANS & INNER CIRCLE CLUB
-  ========================= -->
-  <section class="py-20 bg-white px-4" id="pricing">
-    <div class="max-w-6xl mx-auto mb-12 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Pricing <span class="text-[hsl(var(--primary))]">Plans</span>
-      </h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto mb-8">
-        Choose the plan that best fits your business needs. All plans include our core AI virtual employee features with varying levels of customization and support.
+  <!-- Benefits Section -->
+  <section class="section" style="background: hsl(var(--muted));">
+    <div class="container">
+      <h2 class="section-title">Key Benefits</h2>
+      <p class="section-subtitle">
+        Why businesses choose BOTUVO for their AI automation
       </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Initiate (Standard) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border border-gray-200"
-      >
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Initiate</h3>
-        <p class="text-xl mb-2">$1497 one-time</p>
-        <p class="text-xl mb-4">+ $297/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ Basic Chatbot Scripts (FAQs, lead capture)</li>
-          <li>✅ Simple Analytics (Query volume, response rate)</li>
-          <li>✅ 48 Hr support</li>
-        </ul>
-        <p class="italic mb-2">Ideal for: Small Ecom sites</p>
-        <p class="mb-4">Why? Quick wins, faster lead conversions.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
+      
+      <div class="grid">
+        <div class="card">
+          <div style="display: inline-block; background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Save 80% Response Time</div>
+          <h3 class="service-title">Instant Response Times</h3>
+          <p>Eliminate customer wait times with instant AI responses, ensuring satisfaction and reducing support ticket volume.</p>
+        </div>
+        
+        <div class="card">
+          <div style="display: inline-block; background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">95% Resolution Rate</div>
+          <h3 class="service-title">High Resolution Rates</h3>
+          <p>Our AI chatbots resolve 95% of common queries automatically, freeing your team for complex issues.</p>
+        </div>
+        
+        <div class="card">
+          <div style="display: inline-block; background: hsla(142, 71%, 45%, 0.1); color: hsl(142, 71%, 45%); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">35% More Conversions</div>
+          <h3 class="service-title">Increased Conversions</h3>
+          <p>Engage visitors at the perfect moment, answer objections, and guide them to conversion with intelligent prompts.</p>
+        </div>
+        
+        <div class="card">
+          <div style="display: inline-block; background: hsla(25, 95%, 53%, 0.1); color: hsl(25, 95%, 53%); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">60% Cost Reduction</div>
+          <h3 class="service-title">Cost Efficiency</h3>
+          <p>Reduce support costs by up to 60% while improving service quality and customer satisfaction scores.</p>
+        </div>
+        
+        <div class="card">
+          <div style="display: inline-block; background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Actionable Insights</div>
+          <h3 class="service-title">Data-Driven Insights</h3>
+          <p>Gain deep insights into customer behavior, pain points, and opportunities with comprehensive analytics.</p>
+        </div>
+        
+        <div class="card">
+          <div style="display: inline-block; background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Unlimited Scale</div>
+          <h3 class="service-title">Infinite Scalability</h3>
+          <p>Handle thousands of conversations simultaneously without additional staffing or infrastructure costs.</p>
+        </div>
       </div>
-
-      <!-- Elevate (Plus) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border-2 border-[hsl(var(--primary))] relative"
-      >
-        <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(var(--primary))] text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Elevate</h3>
-        <p class="text-xl mb-2">$2497 one-time</p>
-        <p class="text-xl mb-4">+ $597/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ All Initiate features</li>
-          <li>✅ Custom branding and scripting</li>
-          <li>✅ Integrations (CRM, Stripe, Shopify, Calendly etc.)</li>
-          <li>✅ Advanced analytics and conversion tracking</li>
-          <li>✅ Priority support and training</li>
-          <li>✅ Multi-language support</li>
-        </ul>
-        <p class="italic mb-2">Ideal for: Growing business scaling leads/support</p>
-        <p class="mb-4">Why? The perfect balance of features and cost - Maximize ROI and support growth.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
-      </div>
-
-      <!-- Innovate (Premium) Card -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center border border-gray-200"
-      >
-        <h3 class="text-2xl font-bold mb-4 text-purple-600">Innovate</h3>
-        <p class="text-xl mb-2">$3997 one-time</p>
-        <p class="text-xl mb-4">+ $897/month</p>
-        <ul class="text-left mb-4 space-y-2">
-          <li>✅ All Elevate features</li>
-          <li>✅ Multiple integrations & Custom APIs</li>
-          <li>✅ Premium analytics and predictive insights</li>
-          <li>✅ Dedicated support and ongoing optimisation</li>
-        </ul>
-        <p class="italic mb-2">Ideal for: Large scale businesses with complex needs</p>
-        <p class="mb-4">Why? High margin, long-term value for enterprise clients.</p>
-        <button 
-          class="bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-          onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
-        >
-          Get Started
-        </button>
-      </div>
-    </div>
-
-    <!-- Inner Circle Club Section (Below Pricing) -->
-    <div class="max-w-6xl mx-auto mt-12 p-6 bg-white rounded-lg shadow text-left border border-gray-200">
-      <h2 class="text-3xl font-bold mb-4">Exclusive: BOTUVO Inner Circle Club</h2>
-      <p class="mb-4">Limited to Elevate/Innovate Members – Beta Perks for Early Adopters. Apply now for 30% off monthly fees + more! Vetted Applicants Only.</p>
-      <ul class="pl-6 mb-4 space-y-2">
-        <li>✅ 30% Monthly Discount (First 6 Months) – Save on Plus/Premium (selective for high-value clients).</li>
-        <li>✅ Direct Founder Access – Priority 1:1 chats/calls with me (Iqbal Rahman) for personalized advice.</li>
-        <li>✅ Case Study Feature – Co-create success stories for mutual exposure on our site/LinkedIn.</li>
-        <li>✅ Priority White-Labelling – Fast customization with your branding.</li>
-        <li>✅ Quarterly Strategy Sessions – Group Zoom + private Slack hub for anonymized peer learning on automations/growth.</li>
-        <li>✅ Automation Growth Blueprint – Customized 12-month roadmap + 1-hour call (with upsell audit).</li>
-        <li>✅ Exclusive Resources & Referrals – Monthly tip sheet + 1 free month per referral.</li>
-        <li>✅ Beta Feedback Access – Input on new features to shape BOTUVO.</li>
-      </ul>
-      <p class="font-bold mb-4">Vetted Applicants only. Ideal for SaaS/Real Estate Partners Ready to Scale.</p>
-      <a 
-        href="https://docs.google.com/forms/d/e/1FAIpQLSc7cgkQD9e-1nPqQOJqzhIERuKAI8ctnJUkq6jFbHMD2zb9HA/viewform?usp=header" 
-        target="_blank"
-        class="inline-block bg-[hsl(var(--primary))] text-white px-6 py-2 rounded font-semibold hover:shadow-lg transition"
-      >
-        Apply Now
-      </a>
     </div>
   </section>
 
-  <!-- =========================
-       WHY CHOOSE US
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))] px-4" id="why-choose-us">
-    <div class="max-w-6xl mx-auto mb-16 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6">
-        Why Choose <span class="text-[hsl(var(--primary))]">BOTUVO</span>?
-      </h2>
-      <p class="text-lg text-[hsla(0,0%,0%,0.6)] max-w-2xl mx-auto mb-8">
-        We stand out in the AI industry through our commitment to quality,
-        transparency, and making AI truly work for your business.
+  <!-- Pricing Section -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2 class="section-title">Pricing Plans</h2>
+      <p class="section-subtitle">
+        Flexible plans to match your business size and goals
       </p>
-    </div>
-    <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
-      <!-- Card 1 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="shield" class="w-8 h-8 text-white"></i>
+      
+      <div class="pricing-grid">
+        <!-- Initiate Plan -->
+        <div class="card pricing-card">
+          <h3 class="pricing-title">Initiate</h3>
+          <div class="pricing-price">$297/month</div>
+          <div class="pricing-monthly" style="font-size: 0.875rem;">One-time setup fee: $1,500</div>
+          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem;">Perfect for small businesses getting started with AI automation</p>
+          
+          <ul class="pricing-features">
+            <li>Basic conversational scripts</li>
+            <li>Single platform integration</li>
+            <li>Email support</li>
+            <li>Monthly analytics report</li>
+            <li>Up to 1,000 conversations/month</li>
+            <li>Standard response speed</li>
+          </ul>
+          
+          <button class="btn btn-primary" style="width: 100%;" onclick="scrollToContact()">Get Started</button>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Tailored & Secure Solutions</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Every AI solution is custom-built for your brand and secured with
-          enterprise-grade protection.
-        </p>
-      </div>
-      <!-- Card 2 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="dollar-sign" class="w-8 h-8 text-white"></i>
+        
+        <!-- Elevate Plan -->
+        <div class="card pricing-card featured">
+          <div class="featured-badge">Best Value</div>
+          <h3 class="pricing-title">Elevate</h3>
+          <div class="pricing-price">$597/month</div>
+          <div class="pricing-monthly" style="font-size: 0.875rem;">One-time setup fee: $2,500</div>
+          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem;">Ideal for growing businesses ready to scale their customer engagement</p>
+          
+          <ul class="pricing-features">
+            <li>Advanced AI flows & personalization</li>
+            <li>Multi-platform integration (3 platforms)</li>
+            <li>Priority support + dedicated Slack channel</li>
+            <li>Real-time analytics dashboard</li>
+            <li>Up to 5,000 conversations/month</li>
+            <li>Multi-language support (3 languages)</li>
+            <li>CRM integration included</li>
+            <li>A/B testing capabilities</li>
+          </ul>
+          
+          <button class="btn btn-primary" style="width: 100%;" onclick="scrollToContact()">Get Started</button>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Ethical Pricing</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Transparent, fair pricing with no hidden costs. Plus, 10% of profits go
-          to charity.
-        </p>
-      </div>
-      <!-- Card 3 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="life-buoy" class="w-8 h-8 text-white"></i>
+        
+        <!-- Innovate Plan -->
+        <div class="card pricing-card">
+          <h3 class="pricing-title">Innovate</h3>
+          <div class="pricing-price">$897/month</div>
+          <div class="pricing-monthly" style="font-size: 0.875rem;">One-time setup fee: $4,000</div>
+          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem;">Enterprise solution for maximum customization and performance</p>
+          
+          <ul class="pricing-features">
+            <li>Fully custom AI personality & flows</li>
+            <li>Unlimited platform integrations</li>
+            <li>White-glove 24/7 support + account manager</li>
+            <li>Advanced predictive analytics & reporting</li>
+            <li>Unlimited conversations</li>
+            <li>Unlimited languages</li>
+            <li>Multiple custom API integrations</li>
+            <li>Advanced security & compliance</li>
+            <li>Quarterly strategy reviews</li>
+            <li>Custom training & workshops</li>
+          </ul>
+          
+          <button class="btn btn-primary" style="width: 100%;" onclick="scrollToContact()">Get Started</button>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Continuous Support</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Ongoing optimization, updates, and dedicated support to keep your AI
-          performing at its best.
-        </p>
       </div>
-      <!-- Card 4 -->
-      <div
-        class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition flex flex-col items-center text-center"
-      >
-        <div
-          class="w-16 h-16 bg-[hsl(var(--primary))] rounded-full flex items-center justify-center mb-4"
-        >
-          <i data-lucide="palette" class="w-8 h-8 text-white"></i>
+      
+      <!-- Inner Circle Club -->
+      <div class="inner-circle">
+        <h3>🌟 Inner Circle Club</h3>
+        <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+          Join our exclusive community of forward-thinking businesses and unlock premium benefits
+        </p>
+        
+        <div class="perks-grid">
+          <div class="perk-item">30% discount on any plan</div>
+          <div class="perk-item">Direct access to founders</div>
+          <div class="perk-item">Featured case study spotlight</div>
+          <div class="perk-item">White-label partnership options</div>
+          <div class="perk-item">Quarterly strategy calls</div>
+          <div class="perk-item">Early access to new features</div>
+          <div class="perk-item">Exclusive referral gifts</div>
+          <div class="perk-item">Beta testing opportunities</div>
         </div>
-        <h3 class="text-xl font-semibold mb-2">Brand-Specific Implementation</h3>
-        <p class="text-[hsla(0,0%,0%,0.6)]">
-          Your AI reflects your brand voice, values, and customer experience
-          standards perfectly.
-        </p>
+        
+        <a href="https://forms.gle/your-form-id" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 1rem;">Apply to Join</a>
       </div>
-    </div>
-    <!-- Mission Statement -->
-    <div
-      class="mt-16 bg-[hsla(264,91%,58%,0.1)] p-8 rounded-2xl border border-[hsla(0,0%,0%,0.1)] text-center max-w-3xl mx-auto"
-    >
-      <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
-      <p>
-        Make AI accessible, human-centric, transparent, and secure for businesses
-        of all sizes. We believe in using technology to empower people, not replace
-        them, while giving back to the community through our charitable
-        commitments.
-      </p>
     </div>
   </section>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="wWbvHrDPDPqsnX1dBfo0f";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
 
-  <!-- =========================
-       CONTACT FORM
-  ========================= -->
-  <section class="py-20 bg-[hsl(var(--background))]" id="contact">
-    <div class="max-w-4xl mx-auto text-center mb-8 px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        Ready to <span class="text-[hsl(var(--primary))]">Get Started</span>?
-      </h2>
-      <p class="text-lg mb-4">
-        Let's discuss how BOTUVO can transform your business with AI virtual
-        employees. Get in touch for a free consultation.
-      </p>
+  <!-- Why Choose Us Section -->
+  <section class="section" style="background: hsl(var(--muted));">
+    <div class="container">
+      <h2 class="section-title">Why Choose BOTUVO?</h2>
+      
+      <div class="grid">
+        <div class="card">
+          <h3 class="service-title">🔒 Tailored & Secure</h3>
+          <p>Every chatbot is custom-built for your business needs with enterprise-grade security and data protection.</p>
+        </div>
+        
+        <div class="card">
+          <h3 class="service-title">🌍 Ethical Pricing</h3>
+          <p>We commit 10% of all profits to charitable causes, making every chatbot interaction a force for good.</p>
+        </div>
+        
+        <div class="card">
+          <h3 class="service-title">🚀 Continuous Support</h3>
+          <p>Our team monitors, optimizes, and updates your chatbot continuously to ensure peak performance.</p>
+        </div>
+        
+        <div class="card">
+          <h3 class="service-title">🎨 Brand-Specific</h3>
+          <p>Your chatbot speaks in your brand voice, understands your products, and aligns with your values perfectly.</p>
+        </div>
+      </div>
+      
+      <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))); color: white;">
+        <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Our Mission</h3>
+        <p style="font-size: 1.125rem;">
+          At BOTUVO, we believe AI should empower, not replace, human connection. We create chatbots that handle the 
+          repetitive work, freeing your team to build meaningful relationships with customers. Every solution we build 
+          is designed with ethics, empathy, and excellence at its core.
+        </p>
+      </div>
     </div>
-    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-gray-800">
-      <h3 class="text-xl text-center mb-4">Send us a Message</h3>
-      <form
-        class="flex flex-col gap-4"
-        action="https://formspree.io/f/mjkwvgvr"
-        method="POST"
-        id="contact-form"
-      >
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-        />
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="company"
-          placeholder="Company Name"
-        />
-        <input
-          class="p-3 rounded"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-        <textarea
-          class="p-3 rounded"
-          rows="5"
-          name="message"
-          placeholder="Tell us about your project..."
-          required
-        ></textarea>
-        <button
-          class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition"
-          type="submit"
-        >
-          Send Message
-        </button>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get Started Today</h2>
+      <p class="section-subtitle">
+        Let's discuss how BOTUVO can transform your customer experience
+      </p>
+      
+      <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Company Name *</label>
+          <input type="text" id="company" name="company" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Tell us about your needs *</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
       </form>
     </div>
   </section>
-<!-- =========================
-       FOOTER
-  ========================= -->
-  <footer class="bg-[hsl(var(--foreground))] text-[hsl(var(--background))] py-12">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-      <!-- Description (no logo) -->
-      <div class="col-span-1 md:col-span-2">
-        <div class="flex items-center mb-4">
-          <h3 class="text-2xl font-bold">BOTUVO</h3>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">BOTUVO</div>
+          <p style="color: rgba(255, 255, 255, 0.8);">
+            Your AI-powered virtual employee, working 24/7 to transform customer experiences and drive business growth.
+          </p>
         </div>
-        <p class="max-w-md">
-          An AI agency creating virtual employees that transform how
-          businesses interact with customers. Making AI accessible, secure, and
-          human-centric.
-        </p>
+        
+        <div>
+          <div class="footer-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Customer Support</a></li>
+            <li><a href="#services">Lead Generation</a></li>
+            <li><a href="#services">Appointment Scheduling</a></li>
+            <li><a href="#services">E-commerce Assistance</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="footer-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">About Us</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#" onclick="openModal('footer-contact-modal'); return false;">Contact</a></li>
+            <li><a href="/privacy-policy.pdf" download>Privacy Policy</a></li>
+          </ul>
+        </div>
       </div>
-      <!-- Services (Clickable to scroll to #services) -->
-      <div>
-        <h4 class="font-semibold mb-2 cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Services</h4>
-        <ul class="space-y-2 list-none">
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Customer Support</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Lead Generation</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Appointment Booking</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">E-commerce Assistance</li>
-          <li class="cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'});">Custom API Actions</li>
-        </ul>
-      </div>
-      <!-- Company -->
-      <div>
-        <h4 class="font-semibold mb-2">Company</h4>
-        <ul class="space-y-2 list-none">
-          <li class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">About Us</li>
-          <li class="cursor-pointer" onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'});">Our Process</li>
-          <li class="cursor-pointer" onclick="document.getElementById('footer-contact-modal').classList.add('show');">Contact</li>
-          <li><a href="privacy-policy.pdf" download class="hover:underline">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div
-      class="border-t border-[hsla(0,0%,100%,0.2)] mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm max-w-6xl mx-auto px-4"
-    >
-      <p>&copy; 2024 BOTUVO. All rights reserved.</p>
-      <div class="flex space-x-4 mt-2 md:mt-0">
-        <a href="https://www.linkedin.com/company/botuvo/" class="text-white hover:text-gray-300">
-          <i data-lucide="linkedin" class="w-5 h-5"></i>
-        </a>
-        <a href="https://x.com/BOTUVOAI" class="text-white hover:text-gray-300">
-          <i data-lucide="twitter" class="w-5 h-5"></i>
-        </a>
-      </div>
-      <div class="flex space-x-4 mt-2 md:mt-0 text-[hsla(0,0%,100%,0.7)]">
-        <span>🇬🇧 UK-Based Agency</span>
-        <span>❤️ 10% to Charity</span>
+      
+      <div class="footer-bottom">
+        <div>© 2024 BOTUVO. All rights reserved.</div>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/botuvo" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          <a href="https://x.com/botuvo" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span>🇬🇧 UK-Based</span>
+          <span>❤️ 10% to Charity</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- =========================
-       EXISTING MODAL (for hero buttons)
-  ========================= -->
+  <!-- Contact Modal -->
   <div id="contactModal" class="modal">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative">
-      <button
-        class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-        onclick="document.getElementById('contactModal').classList.remove('show');"
-      >
-        ✕
-      </button>
-      <h3 class="text-2xl font-semibold mb-4 text-center">Send us a Message</h3>
-      <form
-        class="flex flex-col gap-4"
-        action="https://formspree.io/f/mjkwvgvr"
-        method="POST"
-        id="modal-form"
-      >
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-        />
-        <input
-          class="p-3 rounded"
-          type="text"
-          name="company"
-          placeholder="Company Name"
-        />
-        <input
-          class="p-3 rounded"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-        <textarea
-          class="p-3 rounded"
-          rows="5"
-          name="message"
-          placeholder="Tell us about your project..."
-          required
-        ></textarea>
-        <button
-          class="bg-[hsl(var(--primary))] text-white font-semibold px-6 py-3 rounded hover:shadow-lg transition"
-          type="submit"
-        >
-          Send Message
-        </button>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
+      <h2 style="margin-bottom: 1rem;">Get Your Virtual Employee</h2>
+      <p style="color: hsl(var(--muted-foreground)); margin-bottom: 2rem;">
+        Fill out the form below and we'll get back to you within 24 hours to discuss your chatbot needs.
+      </p>
+      
+      <form action="https://formspree.io/f/mjkwvgvr" method="POST">
+        <div class="form-group">
+          <label for="modal-name">Your Name *</label>
+          <input type="text" id="modal-name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="modal-company">Company Name *</label>
+          <input type="text" id="modal-company" name="company" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="modal-email">Email Address *</label>
+          <input type="email" id="modal-email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="modal-message">Tell us about your needs *</label>
+          <textarea id="modal-message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
       </form>
     </div>
   </div>
 
-  <!-- =========================
-       NEW MODAL for Footer Contact Popup
-  ========================= -->
+  <!-- Footer Contact Modal -->
   <div id="footer-contact-modal" class="modal">
-    <div class="bg-white p-8 rounded-lg max-w-xl w-full relative text-center">
-      <button
-        class="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-        onclick="document.getElementById('footer-contact-modal').classList.remove('show');"
-      >
-        ✕
-      </button>
-      <p class="text-lg">
-        Have any questions? Ask our AI bot or feel free to get in contact via email: iqbal@botuvo.co.uk
-      </p>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('footer-contact-modal')">&times;</button>
+      <h2 style="margin-bottom: 1rem;">Contact Us</h2>
+      <p style="margin-bottom: 1rem;">We'd love to hear from you! Get in touch with us through:</p>
+      <ul style="list-style: none; margin-bottom: 2rem;">
+        <li style="margin-bottom: 0.5rem;">📧 Email: hello@botuvo.com</li>
+        <li style="margin-bottom: 0.5rem;">💬 Use our AI chatbot in the bottom right corner</li>
+        <li>📋 Fill out the <a href="#contact" onclick="closeModal('footer-contact-modal'); scrollToContact();" style="color: hsl(var(--primary));">contact form</a></li>
+      </ul>
     </div>
   </div>
 
-  <!-- =========================
-       SCRIPTS
-  ========================= -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script defer>
-    // Global functions for better scope access
+  <!-- JavaScript -->
+  <script>
+    // Smooth scroll to contact
     function scrollToContact() {
-      document
-        .getElementById("contact")
-        .scrollIntoView({ behavior: "smooth" });
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove("show");
+    // Modal functions
+    function openModal(id) {
+      document.getElementById(id).classList.add('show');
+      document.body.style.overflow = 'hidden';
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
 
-      // Existing modal toggle for hero buttons
-      document.getElementById("btn-virtual").addEventListener("click", () => {
-        console.log("Virtual Employee button clicked");
-        document.getElementById("contactModal").classList.add("show");
-      });
-      document.getElementById("btn-audit").addEventListener("click", () => {
-        console.log("Audit button clicked");
-        document.getElementById("contactModal").classList.add("show");
-      });
+    // Close modal on outside click
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal(event.target.id);
+      }
+    });
 
-      // Close existing modal on outside click
-      document.getElementById("contactModal").addEventListener("click", (event) => {
-        if (event.target === document.getElementById("contactModal")) {
-          closeModal("contactModal");
+    // Close modal on ESC key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('.modal.show').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
+
+    // Chatbase Widget
+    (function() {
+      window.embeddedChatbotConfig = {
+        chatbotId: "your-chatbot-id", // REPLACE WITH YOUR ACTUAL CHATBASE CHATBOT ID
+        domain: "www.chatbase.co"
+      };
+      
+      var script = document.createElement('script');
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.setAttribute('chatbotId', 'your-chatbot-id'); // REPLACE WITH YOUR ACTUAL CHATBASE CHATBOT ID
+      script.setAttribute('domain', 'www.chatbase.co');
+      script.defer = true;
+      document.body.appendChild(script);
+    })();
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
       });
+    }, observerOptions);
 
-      // Close new footer modal on outside click
-      document.getElementById("footer-contact-modal").addEventListener("click", (event) => {
-        if (event.target === document.getElementById("footer-contact-modal")) {
-          closeModal("footer-contact-modal");
-        }
-      });
-
-      // Close modals on Esc key
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeModal("contactModal");
-          closeModal("footer-contact-modal");
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Observe all cards for animation
+      document.querySelectorAll('.card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
       });
     });
   </script>
+
 </body>
 </html>
-
