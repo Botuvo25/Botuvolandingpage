@@ -1065,22 +1065,7 @@
         });
       }
     });
-
-    // Chatbase Widget
-    (function() {
-      window.embeddedChatbotConfig = {
-        chatbotId: "your-chatbot-id", // REPLACE WITH YOUR ACTUAL CHATBASE CHATBOT ID
-        domain: "www.chatbase.co"
-      };
-      
-      var script = document.createElement('script');
-      script.src = "https://www.chatbase.co/embed.min.js";
-      script.setAttribute('chatbotId', 'your-chatbot-id'); // REPLACE WITH YOUR ACTUAL CHATBASE CHATBOT ID
-      script.setAttribute('domain', 'www.chatbase.co');
-      script.defer = true;
-      document.body.appendChild(script);
-    })();
-
+    
     // Animation on scroll
     const observerOptions = {
       threshold: 0.1,
