@@ -766,6 +766,139 @@
     </div>
   </section>
 
+  <!-- ROI Calculator Section -->
+<section class="section" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; padding: 4rem 1rem;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white; font-weight: 800;">How Much Revenue Are You Losing?</h2>
+    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">
+      Calculate your lost revenue from missed calls and no-shows in 60 seconds.
+    </p>
+    
+    <button id="toggle-calculator" style="background: white; color: #7c3aed; padding: 1rem 3rem; font-size: 1.125rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">
+      Calculate My ROI →
+    </button>
+    
+    <div id="calculator-widget" style="display: none; margin-top: 3rem; background: white; color: #1e293b; border-radius: 20px; padding: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      
+      <form id="roi-form-inline" style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #334155;">How many calls do you miss per day?</label>
+          <select id="missed-calls-inline" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+            <option value="">Select...</option>
+            <option value="5">0-10 calls</option>
+            <option value="15">10-20 calls</option>
+            <option value="25">20-30 calls</option>
+            <option value="35">30-40 calls</option>
+            <option value="45">40+ calls</option>
+          </select>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #334155;">What's your average appointment value? (£)</label>
+          <input type="number" id="avg-value-inline" value="165" min="50" max="1000" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #334155;">What's your current no-show rate?</label>
+          <select id="no-show-rate-inline" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+            <option value="">Select...</option>
+            <option value="5">5%</option>
+            <option value="10">10%</option>
+            <option value="15">15%</option>
+            <option value="20">20%</option>
+            <option value="25">25%+</option>
+          </select>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #334155;">How many appointments do you do per month?</label>
+          <input type="number" id="monthly-appointments-inline" value="200" min="50" max="1000" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border: none; border-radius: 10px; font-size: 1.125rem; font-weight: 600; cursor: pointer;">Calculate</button>
+      </form>
+      
+      <div id="results-inline" style="display: none; padding: 2rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border-radius: 15px;">
+        <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; text-align: center;">Your Results:</h3>
+        
+        <div style="margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">Current Lost Revenue:</div>
+          <div style="font-size: 2.5rem; font-weight: 800;">£<span id="total-lost-inline">-</span>/month</div>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">With BOTUVO AI Receptionist:</div>
+          <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700;">+£<span id="total-additional-inline">-</span>/month</div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center;">
+          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">Your ROI:</div>
+          <div style="font-size: 3rem; font-weight: 800;"><span id="roi-percent-inline">-</span>%</div>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <a href="https://calendly.com/your-link" style="display: inline-block; padding: 1rem 2rem; background: white; color: #7c3aed; text-decoration: none; border-radius: 10px; font-weight: 600;">
+            Book Your Free Demo →
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('toggle-calculator').addEventListener('click', function() {
+    const widget = document.getElementById('calculator-widget');
+    if (widget.style.display === 'none') {
+      widget.style.display = 'block';
+      this.textContent = 'Hide Calculator ↑';
+      widget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      widget.style.display = 'none';
+      this.textContent = 'Calculate My ROI →';
+    }
+  });
+  
+  document.getElementById('roi-form-inline').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const missedCallsPerDay = parseInt(document.getElementById('missed-calls-inline').value);
+    const avgValue = parseInt(document.getElementById('avg-value-inline').value);
+    const noShowRate = parseInt(document.getElementById('no-show-rate-inline').value);
+    const monthlyAppointments = parseInt(document.getElementById('monthly-appointments-inline').value);
+    
+    const missedCallsPerMonth = missedCallsPerDay * 20;
+    const lostAppointments = Math.round(missedCallsPerMonth * 0.1);
+    const missedRevenue = lostAppointments * avgValue;
+    
+    const noShows = Math.round(monthlyAppointments * (noShowRate / 100));
+    const noShowRevenue = noShows * avgValue;
+    
+    const totalLost = missedRevenue + noShowRevenue;
+    
+    const capturedCalls = Math.round(missedCallsPerMonth * 0.7);
+    const newAppointments = Math.round(capturedCalls * 0.1);
+    const capturedRevenue = newAppointments * avgValue;
+    
+    const reducedNoShows = Math.round(noShows * 0.5);
+    const recoveredRevenue = reducedNoShows * avgValue;
+    
+    const totalAdditional = capturedRevenue + recoveredRevenue;
+    
+    const yearRevenue = totalAdditional * 12;
+    const investment = 9664; // Year 1 Growth plan: £2,500 setup + £597/mo × 12
+    const roi = Math.round(((yearRevenue - investment) / investment) * 100);
+    
+    document.getElementById('total-lost-inline').textContent = totalLost.toLocaleString();
+    document.getElementById('total-additional-inline').textContent = totalAdditional.toLocaleString();
+    document.getElementById('roi-percent-inline').textContent = roi.toLocaleString();
+    
+    document.getElementById('results-inline').style.display = 'block';
+    document.getElementById('results-inline').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+  
   <!-- Pricing Section -->
   <section id="pricing" class="section">
     <div class="container">
@@ -1138,4 +1271,5 @@
 
 </body>
 </html>
+
 
