@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/roi-calculator.html", "destination": "/roi-calculator.html" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }
