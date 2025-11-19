@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Practice ROI Calculator | BOTUVO</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 3rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    
+    .subtitle {
+      color: #64748b;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #7c3aed;
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .results {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      color: white;
+      border-radius: 15px;
+      display: none;
+    }
+    
+    .results.show {
+      display: block;
+    }
+    
+    .result-section {
+      margin-bottom: 2rem;
+    }
+    
+    .result-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 0.5rem;
+    }
+    
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 1.125rem;
+    }
+    
+    .result-item strong {
+      font-weight: 700;
+    }
+    
+    .highlight {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-top: 1rem;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+    }
+    
+    .cta-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: #7c3aed;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Healthcare Practice ROI Calculator</h1>
+    <p class="subtitle">Calculate how much revenue you're losing to missed calls and no-shows</p>
+    
+    <form id="roi-form">
+      <div class="form-group">
+        <label for="missed-calls">How many calls do you miss per day?</label>
+        <select id="missed-calls" required>
+          <option value="">Select...</option>
+          <option value="5">0-10 calls</option>
+          <option value="15">10-20 calls</option>
+          <option value="25">20-30 calls</option>
+          <option value="35">30-40 calls</option>
+          <option value="45">40+ calls</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="avg-value">What's your average appointment value? (£)</label>
+        <input type="number" id="avg-value" value="165" min="50" max="1000" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="no-show-rate">What's your current no-show rate?</label>
+        <select id="no-show-rate" required>
+          <option value="">Select...</option>
+          <option value="5">5%</option>
+          <option value="10">10%</option>
+          <option value="15">15%</option>
+          <option value="20">20%</option>
+          <option value="25">25%+</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="monthly-appointments">How many appointments do you do per month?</label>
+        <input type="number" id="monthly-appointments" value="200" min="50" max="1000" required>
+      </div>
+      
+      <button type="submit" class="btn">Calculate My ROI</button>
+    </form>
+    
+    <div id="results" class="results">
+      <div class="result-section">
+        <h3>📉 Your Current Lost Revenue:</h3>
+        <div class="result-item">
+          <span>Missed calls per month:</span>
+          <strong id="missed-per-month">-</strong>
+        </div>
+        <div class="result-item">
+          <span>Lost appointments (10% conversion):</span>
+          <strong id="lost-appointments">-</strong>
+        </div>
+        <div class="result-item">
+          <span>Revenue lost from missed calls:</span>
+          <strong id="missed-revenue">-</strong>
+        </div>
+        <div class="result-item">
+          <span>No-shows per month:</span>
+          <strong id="no-shows">-</strong>
+        </div>
+        <div class="result-item">
+          <span>Revenue lost from no-shows:</span>
+          <strong id="no-show-revenue">-</strong>
+        </div>
+        <div class="highlight">
+          TOTAL LOST REVENUE: <span id="total-lost">-</span>
+        </div>
+      </div>
+      
+      <div class="result-section">
+        <h3>📈 With BOTUVO AI Receptionist:</h3>
+        <div class="result-item">
+          <span>Missed calls captured (70%):</span>
+          <strong id="captured-calls">-</strong>
+        </div>
+        <div class="result-item">
+          <span>New appointments booked:</span>
+          <strong id="new-appointments">-</strong>
+        </div>
+        <div class="result-item">
+          <span>New revenue from captured calls:</span>
+          <strong id="captured-revenue">-</strong>
+        </div>
+        <div class="result-item">
+          <span>No-shows reduced by 50%:</span>
+          <strong id="reduced-no-shows">-</strong>
+        </div>
+        <div class="result-item">
+          <span>Recovered revenue from reminders:</span>
+          <strong id="recovered-revenue">-</strong>
+        </div>
+        <div class="highlight">
+          TOTAL ADDITIONAL REVENUE: <span id="total-additional">-</span>
+        </div>
+      </div>
+      
+      <div class="result-section">
+        <h3>💰 Your ROI:</h3>
+        <div class="result-item">
+          <span>Investment (Year 1 - Growth Plan):</span>
+          <strong>£9,664</strong>
+        </div>
+        <div class="result-item">
+          <span>Revenue increase (Year 1):</span>
+          <strong id="year-revenue">-</strong>
+        </div>
+        <div class="highlight">
+          ROI: <span id="roi-percent">-</span>
+        </div>
+        <div class="result-item">
+          <span>Payback period:</span>
+          <strong id="payback">-</strong>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <a href="https://app.lemcal.com/@iqbal-botuvo" class="cta-btn">Book Your Free Demo →</a>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('roi-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const missedCallsPerDay = parseInt(document.getElementById('missed-calls').value);
+      const avgValue = parseInt(document.getElementById('avg-value').value);
+      const noShowRate = parseInt(document.getElementById('no-show-rate').value);
+      const monthlyAppointments = parseInt(document.getElementById('monthly-appointments').value);
+      
+      const missedCallsPerMonth = missedCallsPerDay * 20;
+      const lostAppointments = Math.round(missedCallsPerMonth * 0.1);
+      const missedRevenue = lostAppointments * avgValue;
+      
+      const noShows = Math.round(monthlyAppointments * (noShowRate / 100));
+      const noShowRevenue = noShows * avgValue;
+      
+      const totalLost = missedRevenue + noShowRevenue;
+      
+      const capturedCalls = Math.round(missedCallsPerMonth * 0.7);
+      const newAppointments = Math.round(capturedCalls * 0.1);
+      const capturedRevenue = newAppointments * avgValue;
+      
+      const reducedNoShows = Math.round(noShows * 0.5);
+      const recoveredRevenue = reducedNoShows * avgValue;
+      
+      const totalAdditional = capturedRevenue + recoveredRevenue;
+      
+      const yearRevenue = totalAdditional * 12;
+      const investment = 9664; // Year 1 Growth plan: £2,500 setup + (£597 × 12)
+      const roi = Math.round(((yearRevenue - investment) / investment) * 100);
+      const payback = Math.round((investment / totalAdditional) * 30);
+      
+      document.getElementById('missed-per-month').textContent = missedCallsPerMonth.toLocaleString();
+      document.getElementById('lost-appointments').textContent = lostAppointments.toLocaleString();
+      document.getElementById('missed-revenue').textContent = '£' + missedRevenue.toLocaleString();
+      document.getElementById('no-shows').textContent = noShows.toLocaleString();
+      document.getElementById('no-show-revenue').textContent = '£' + noShowRevenue.toLocaleString();
+      document.getElementById('total-lost').textContent = '£' + totalLost.toLocaleString() + '/month';
+      
+      document.getElementById('captured-calls').textContent = capturedCalls.toLocaleString();
+      document.getElementById('new-appointments').textContent = newAppointments.toLocaleString();
+      document.getElementById('captured-revenue').textContent = '£' + capturedRevenue.toLocaleString();
+      document.getElementById('reduced-no-shows').textContent = reducedNoShows.toLocaleString();
+      document.getElementById('recovered-revenue').textContent = '£' + recoveredRevenue.toLocaleString();
+      document.getElementById('total-additional').textContent = '£' + totalAdditional.toLocaleString() + '/month';
+      
+      document.getElementById('year-revenue').textContent = '£' + yearRevenue.toLocaleString();
+      document.getElementById('roi-percent').textContent = roi.toLocaleString() + '%';
+      document.getElementById('payback').textContent = payback + ' days';
+      
+      document.getElementById('results').classList.add('show');
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
