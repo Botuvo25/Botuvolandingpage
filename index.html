@@ -604,9 +604,9 @@
       <button class="btn btn-primary" onclick="openModal('contactModal')">
         Book a Free Demo
       </button>
-     <button class="btn btn-secondary" onclick="window.location.href='/roi-calculator.html'">
-  Calculate Your ROI
-    </button>
+      <button class="btn btn-secondary" onclick="document.getElementById('calculator-widget').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => { if(document.getElementById('calculator-widget').style.display === 'none') { document.getElementById('toggle-calculator').click(); } }, 600);">
+        Calculate Your ROI
+      </button>
     </div>
     
     <div class="hero-stats animate-fade-in">
@@ -616,7 +616,6 @@
     </div>
   </div>
 </section>
-  
 
 
   <!-- CTA Section -->
@@ -1345,6 +1344,7 @@
 
 </body>
 </html>
+
 
 
 
