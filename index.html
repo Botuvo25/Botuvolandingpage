@@ -838,7 +838,8 @@
   </div>
 </section>
   
-  <!-- ROI Calculator Section -->
+
+<!-- ROI Calculator Section -->
 <section class="section" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; padding: 4rem 1rem;">
   <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white; font-weight: 800;">How Much Revenue Are You Losing?</h2>
@@ -850,7 +851,7 @@
       Calculate My ROI →
     </button>
     
-    <div id="calculator-widget" style="display: none; margin-top: 3rem; background: white; color: #1e293b; border-radius: 20px; padding: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div id="calculator-widget" style="display: none; margin-top: 3rem; background: white; color: #1e293b; border-radius: 20px; padding: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
       
       <form id="roi-form-inline" style="margin-bottom: 2rem;">
         <div style="margin-bottom: 1.5rem;">
@@ -887,29 +888,92 @@
           <input type="number" id="monthly-appointments-inline" value="200" min="50" max="1000" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
         </div>
         
-        <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border: none; border-radius: 10px; font-size: 1.125rem; font-weight: 600; cursor: pointer;">Calculate</button>
+        <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border: none; border-radius: 10px; font-size: 1.125rem; font-weight: 600; cursor: pointer;">Calculate My ROI</button>
       </form>
       
       <div id="results-inline" style="display: none; padding: 2rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; border-radius: 15px;">
-        <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; text-align: center;">Your Results:</h3>
         
-        <div style="margin-bottom: 1.5rem; text-align: center;">
-          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">Current Lost Revenue:</div>
-          <div style="font-size: 2.5rem; font-weight: 800;">£<span id="total-lost-inline">-</span>/month</div>
+        <!-- Section 1: Current Lost Revenue -->
+        <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.3);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📉 Your Current Lost Revenue:</h3>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Missed calls per month:</span>
+            <strong id="missed-per-month">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Lost appointments (10% conversion):</span>
+            <strong id="lost-appointments">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Revenue lost from missed calls:</span>
+            <strong id="missed-revenue">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>No-shows per month:</span>
+            <strong id="no-shows">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Revenue lost from no-shows:</span>
+            <strong id="no-show-revenue">-</strong>
+          </div>
+          <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center;">
+            <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">TOTAL LOST REVENUE:</div>
+            <div style="font-size: 2.5rem; font-weight: 800;"><span id="total-lost-inline">-</span></div>
+          </div>
         </div>
         
-        <div style="margin-bottom: 1.5rem; text-align: center;">
-          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">With BOTUVO AI Receptionist:</div>
-          <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700;">+£<span id="total-additional-inline">-</span>/month</div>
+        <!-- Section 2: With BOTUVO -->
+        <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.3);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📈 With BOTUVO AI Receptionist:</h3>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Missed calls captured (70%):</span>
+            <strong id="captured-calls">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>New appointments booked:</span>
+            <strong id="new-appointments">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>New revenue from captured calls:</span>
+            <strong id="captured-revenue">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>No-shows reduced by 50%:</span>
+            <strong id="reduced-no-shows">-</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Recovered revenue from reminders:</span>
+            <strong id="recovered-revenue">-</strong>
+          </div>
+          <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center;">
+            <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">TOTAL ADDITIONAL REVENUE:</div>
+            <div style="font-size: 2.5rem; font-weight: 800; color: #FFD700;"><span id="total-additional-inline">-</span></div>
+          </div>
         </div>
         
-        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center;">
-          <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">Your ROI:</div>
-          <div style="font-size: 3rem; font-weight: 800;"><span id="roi-percent-inline">-</span>%</div>
+        <!-- Section 3: ROI -->
+        <div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">💰 Your ROI:</h3>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Investment (Year 1 - Growth Plan):</span>
+            <strong>£9,664</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 1.125rem;">
+            <span>Revenue increase (Year 1):</span>
+            <strong id="year-revenue">-</strong>
+          </div>
+          <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(255,255,255,0.2); border-radius: 10px; text-align: center;">
+            <div style="font-size: 1.125rem; margin-bottom: 0.5rem;">ROI:</div>
+            <div style="font-size: 3rem; font-weight: 800;"><span id="roi-percent-inline">-</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 1.125rem;">
+            <span>Payback period:</span>
+            <strong id="payback">-</strong>
+          </div>
         </div>
         
         <div style="margin-top: 2rem; text-align: center;">
-          <a href="https://calendly.com/your-link" style="display: inline-block; padding: 1rem 2rem; background: white; color: #7c3aed; text-decoration: none; border-radius: 10px; font-weight: 600;">
+          <a href="https://app.lemcal.com/@iqbal-botuvo" style="display: inline-block; padding: 1rem 2rem; background: white; color: #7c3aed; text-decoration: none; border-radius: 10px; font-weight: 600;">
             Book Your Free Demo →
           </a>
         </div>
@@ -940,6 +1004,7 @@
     const noShowRate = parseInt(document.getElementById('no-show-rate-inline').value);
     const monthlyAppointments = parseInt(document.getElementById('monthly-appointments-inline').value);
     
+    // Calculate lost revenue
     const missedCallsPerMonth = missedCallsPerDay * 20;
     const lostAppointments = Math.round(missedCallsPerMonth * 0.1);
     const missedRevenue = lostAppointments * avgValue;
@@ -949,6 +1014,7 @@
     
     const totalLost = missedRevenue + noShowRevenue;
     
+    // Calculate with BOTUVO
     const capturedCalls = Math.round(missedCallsPerMonth * 0.7);
     const newAppointments = Math.round(capturedCalls * 0.1);
     const capturedRevenue = newAppointments * avgValue;
@@ -958,13 +1024,30 @@
     
     const totalAdditional = capturedRevenue + recoveredRevenue;
     
+    // Calculate ROI
     const yearRevenue = totalAdditional * 12;
-    const investment = 9664; // Year 1 Growth plan: £2,500 setup + £597/mo × 12
+    const investment = 9664; // £2,500 setup + (£597 × 12)
     const roi = Math.round(((yearRevenue - investment) / investment) * 100);
+    const payback = Math.round((investment / totalAdditional) * 30);
     
-    document.getElementById('total-lost-inline').textContent = totalLost.toLocaleString();
-    document.getElementById('total-additional-inline').textContent = totalAdditional.toLocaleString();
-    document.getElementById('roi-percent-inline').textContent = roi.toLocaleString();
+    // Update DOM
+    document.getElementById('missed-per-month').textContent = missedCallsPerMonth.toLocaleString();
+    document.getElementById('lost-appointments').textContent = lostAppointments.toLocaleString();
+    document.getElementById('missed-revenue').textContent = '£' + missedRevenue.toLocaleString();
+    document.getElementById('no-shows').textContent = noShows.toLocaleString();
+    document.getElementById('no-show-revenue').textContent = '£' + noShowRevenue.toLocaleString();
+    document.getElementById('total-lost-inline').textContent = '£' + totalLost.toLocaleString() + '/month';
+    
+    document.getElementById('captured-calls').textContent = capturedCalls.toLocaleString();
+    document.getElementById('new-appointments').textContent = newAppointments.toLocaleString();
+    document.getElementById('captured-revenue').textContent = '£' + capturedRevenue.toLocaleString();
+    document.getElementById('reduced-no-shows').textContent = reducedNoShows.toLocaleString();
+    document.getElementById('recovered-revenue').textContent = '£' + recoveredRevenue.toLocaleString();
+    document.getElementById('total-additional-inline').textContent = '£' + totalAdditional.toLocaleString() + '/month';
+    
+    document.getElementById('year-revenue').textContent = '£' + yearRevenue.toLocaleString();
+    document.getElementById('roi-percent-inline').textContent = roi.toLocaleString() + '%';
+    document.getElementById('payback').textContent = payback + ' days';
     
     document.getElementById('results-inline').style.display = 'block';
     document.getElementById('results-inline').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1343,6 +1426,7 @@
 
 </body>
 </html>
+
 
 
 
