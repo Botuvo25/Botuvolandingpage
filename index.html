@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOTUVO - AI Receptionists for Healthcare | Never Miss Another Appointment</title>
+  <title>BOTUVO - AI Chat & Voice Assistants for Healthcare Practices | Never Miss Another Patient Inquiry</title>
   <meta name="description" content="AI receptionists for dental practices, aesthetic clinics, and chiropractic offices. Capture missed calls 24/7, book appointments instantly, and reduce no-shows by 50%.">
   <link rel="icon" type="image/svg+xml" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -324,12 +324,30 @@
       transform: scale(1.05);
     }
 
+    .pricing-card.bespoke {
+      border-color: hsl(45, 100%, 51%);
+      background: linear-gradient(135deg, #fff9e6 0%, #fffef7 100%);
+    }
+
     .featured-badge {
       position: absolute;
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
       background: hsl(var(--primary));
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .bespoke-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f59e0b, #d97706);
       color: white;
       padding: 0.25rem 1rem;
       border-radius: 50px;
@@ -576,7 +594,8 @@
         grid-template-columns: 1fr;
       }
       
-      .pricing-card.featured {
+      .pricing-card.featured,
+      .pricing-card.bespoke {
         transform: scale(1);
       }
     }
@@ -593,8 +612,11 @@
 <section class="hero">
   <div class="container">
     <h1 class="hero-title animate-fade-in">BOTUVO</h1>
-    <h2 class="hero-subtitle animate-fade-in">Never Miss Another Appointment</h2>
+    <h2 class="hero-subtitle animate-fade-in">AI Chat & Voice Assistants for Healthcare Practices</h2>
     <p class="hero-description animate-fade-in" style="color: hsl(var(--foreground));">
+      Never Miss Another Patient Inquiry - Website or Phone
+    </p>
+    <p class="hero-description animate-fade-in" style="margin-top: 1rem;">
       AI receptionists for dental practices, aesthetic clinics, and chiropractic offices 
       that answer questions, book appointments 24/7, and capture every missed call—
       so your front desk can focus on patients, not phones.
@@ -1123,6 +1145,43 @@
           
           <button class="btn btn-primary" style="width: 100%;" onclick="scrollToContact()">Book a Demo</button>
         </div>
+
+        <!-- BESPOKE Plan -->
+        <div class="card pricing-card bespoke">
+          <div class="bespoke-badge">BESPOKE 🏆</div>
+          <h3 class="pricing-title">BESPOKE</h3>
+          <div class="pricing-price">Starting at £1,500/month</div>
+          <div class="pricing-monthly" style="font-size: 0.875rem;"> 📌 + £8,000 setup</div>
+          <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem;">Custom solution for large practices & hospital networks</p>
+          
+          <ul class="pricing-features">
+            <li>Everything in Enterprise</li>
+            <li>Custom website design + build</li>
+            <li>Custom backend system development</li>
+            <li>Bespoke voice AI training (not white-label)</li>
+            <li>Complete practice management system</li>
+            <li>Advanced analytics dashboard</li>
+            <li>Dedicated dev team</li>
+          </ul>
+          
+          <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #92400e;">Perfect for:</p>
+            <ul style="color: #92400e; font-size: 0.875rem;">
+              <li>Large practices (5+ locations)</li>
+              <li>Clinic groups & hospital networks</li>
+              <li>Practices wanting complete digital transformation</li>
+              <li>Complex/legacy system integrations</li>
+            </ul>
+          </div>
+          
+          <div style="margin-bottom: 1.5rem; padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px; text-align: center;">
+            <p style="color: #92400e; font-size: 0.875rem; font-weight: 600;">
+              Note: Each Bespoke project is quoted individually based on scope.
+            </p>
+          </div>
+          
+          <button class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, #f59e0b, #d97706);" onclick="scrollToContact()">Get Custom Quote</button>
+        </div>
       </div>
       
       <!-- Inner Circle Club -->
@@ -1426,15 +1485,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
