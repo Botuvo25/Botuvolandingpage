@@ -349,6 +349,73 @@
       line-height: 1.6;
     }
 
+    /* FAQ Section Styles */
+    .faq-section {
+      background: hsl(var(--muted));
+      padding: 5rem 1rem;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    .faq-question:hover {
+      background: hsl(var(--muted));
+    }
+
+    .faq-question.active {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+      color: white;
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.8;
+    }
+
+    .faq-answer.active {
+      padding: 1.5rem;
+      max-height: 500px;
+    }
+
+    .faq-arrow {
+      transition: transform 0.3s ease;
+      font-size: 1.25rem;
+    }
+
+    .faq-question.active .faq-arrow {
+      transform: rotate(180deg);
+    }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .process-grid {
@@ -374,9 +441,9 @@
 <section class="hero">
   <div class="container">
     <h1 class="hero-title animate-fade-in">BOTUVO</h1>
-    <h2 class="hero-subtitle animate-fade-in">AI Chat & Voice Assistants for Healthcare Practices</h2>
+    <h2 class="hero-subtitle animate-fade-in">Never Miss Another Patient Inquiry - Website or Phone</h2>
     <p class="hero-description animate-fade-in" style="color: hsl(var(--foreground));">
-      Never Miss Another Patient Inquiry - Website or Phone
+      AI Chat & Voice Assistants for Healthcare Practices
     </p>
     <p class="hero-description animate-fade-in" style="margin-top: 1rem;">
       AI receptionists for dental practices, aesthetic clinics, and chiropractic offices 
@@ -388,8 +455,8 @@
       <button class="btn btn-primary" onclick="openModal('contactModal')">
         Book a Free Demo
       </button>
-      <button class="btn btn-secondary" onclick="scrollToContact()">
-        Get Started
+      <button class="btn btn-secondary" onclick="scrollToCalculator()">
+        Calculate My ROI
       </button>
     </div>
     
@@ -412,98 +479,8 @@
   </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="section" style="background: hsl(var(--muted));">
-  <div class="container">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">
-      Comprehensive AI receptionist solutions built specifically for healthcare practices
-    </p>
-    
-    <div class="grid">
-      <div class="card">
-        <div class="service-icon icon-purple">📅</div>
-        <h3 class="service-title">24/7 Appointment Booking</h3>
-        <p>Patients can book appointments instantly, even when your practice is closed. No more missed opportunities or phone tag.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-blue">📞</div>
-        <h3 class="service-title">Missed Call Capture</h3>
-        <p>Capture every call that comes in after hours or when your front desk is busy with patients. Never lose revenue to voicemail again.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-green">🔔</div>
-        <h3 class="service-title">Appointment Reminders</h3>
-        <p>Automated SMS and email reminders reduce no-shows by 50%, saving thousands per month in wasted appointment slots.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-orange">💬</div>
-        <h3 class="service-title">Pricing & FAQ Automation</h3>
-        <p>Answer common questions about procedures, pricing, insurance, and aftercare instantly—without tying up your staff.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-purple">📊</div>
-        <h3 class="service-title">CRM Integration</h3>
-        <p>Seamlessly sync with your practice management software and keep everything organized.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-blue">💬</div>
-        <h3 class="service-title">24/7 Patient Support</h3>
-        <p>Instant responses to patient inquiries about office hours, directions, insurance acceptance, and general questions.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Process Section - Updated to grid layout -->
-<section id="process" class="process-section">
-  <div class="container">
-    <h2>Our Process</h2>
-    <p class="subtitle">From first call to go-live in 2-3 weeks</p>
-    
-    <div class="process-grid">
-      
-      <div class="process-card">
-        <div class="step-number">1</div>
-        <h3>Discovery Call</h3>
-        <p>10-minute chat to understand your practice, current pain points, and what you need covered (website inquiries, phone calls, or both).</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">2</div>
-        <h3>Custom Proposal</h3>
-        <p>We send over a tailored proposal with pricing, timeline, and ROI projections based on your practice size and needs.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">3</div>
-        <h3>Onboarding & Setup</h3>
-        <p>Our team builds your AI receptionist, trains it on your services, and integrates it with your booking system. Takes 2-3 weeks.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">4</div>
-        <h3>Testing & Training</h3>
-        <p>We test every scenario, train your team on the dashboard, and make sure everything works perfectly before going live.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">5</div>
-        <h3>Go Live</h3>
-        <p>Your AI goes live. We monitor performance for the first 2 weeks, make adjustments, and provide ongoing support.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Benefits Section -->
-<section class="section" style="background: hsl(var(--muted));">
+<!-- Key Benefits Section -->
+<section id="benefits" class="section" style="background: hsl(var(--muted));">
   <div class="container">
     <h2 class="section-title">Key Benefits</h2>
     <p class="section-subtitle">
@@ -620,7 +597,355 @@
     </div>
   </div>
 </section>
-  
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-section">
+  <div class="container">
+    <h2>Why Choose BOTUVO?</h2>
+    <p class="subtitle">We're not just another AI chatbot. We're your complete patient inquiry solution.</p>
+    
+    <div class="benefits-grid">
+      
+      <div class="benefit-card">
+        <div class="icon">🤖</div>
+        <h3>Natural Conversations</h3>
+        <p>Our AI doesn't sound like a robot. It handles complex questions, understands context, and responds naturally - just like your best receptionist.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="icon">⚡</div>
+        <h3>Live in 2-3 Weeks</h3>
+        <p>No 6-month implementations. We get you up and running in 2-3 weeks with full training, testing, and support. Fast setup, zero hassle.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="icon">💰</div>
+        <h3>ROI in 30 Days</h3>
+        <p>Most practices capture £8-15k/month in missed revenue from our AI. Your setup fee pays for itself in the first month.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="icon">🏥</div>
+        <h3>Healthcare-Specific</h3>
+        <p>Built specifically for dentists, GPs, physiotherapists, and healthcare practices. We understand your workflows, booking systems, and compliance needs.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="icon">🔗</div>
+        <h3>Seamless Integrations</h3>
+        <p>Connects with your existing booking system, CRM, and practice management software. No ripping out your current setup.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="icon">📊</div>
+        <h3>Full Transparency</h3>
+        <p>Real-time dashboard shows every inquiry, every booking, and exactly how much revenue your AI is capturing. No black box.</p>
+      </div>
+
+    </div>
+    
+    <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))); color: white;">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Our Mission</h3>
+      <p style="font-size: 1.125rem;">
+        At BOTUVO, we believe AI should empower, not replace, human connection. We create AI receptionists that handle the 
+        repetitive work, freeing your team to build meaningful relationships with patients. Every solution we build 
+        is designed with ethics, empathy, and excellence at its core.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Section Styles -->
+<style>
+.why-choose-section {
+  padding: 80px 20px;
+  background: hsl(var(--muted));
+}
+
+.why-choose-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.why-choose-section .subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.benefit-card .icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.benefit-card p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<!-- ROI Calculator Section -->
+<section id="roi-calculator" class="roi-calculator-section">
+  <div class="container">
+    <div class="roi-calculator-container">
+      <h1 style="font-size: 2.5rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; font-weight: 800;">Healthcare Practice ROI Calculator</h1>
+      <p class="subtitle" style="color: #64748b; font-size: 1.125rem; margin-bottom: 2rem;">Calculate how much revenue you're losing to missed calls and no-shows</p>
+      
+      <form id="roi-form">
+        <div class="roi-form-group">
+          <label for="missed-calls">How many calls do you miss per day?</label>
+          <select id="missed-calls" required>
+            <option value="">Select...</option>
+            <option value="5">0-10 calls</option>
+            <option value="15">10-20 calls</option>
+            <option value="25">20-30 calls</option>
+            <option value="35">30-40 calls</option>
+            <option value="45">40+ calls</option>
+          </select>
+        </div>
+        
+        <div class="roi-form-group">
+          <label for="avg-value">What's your average appointment value? (£)</label>
+          <input type="number" id="avg-value" value="165" min="50" max="1000" required>
+        </div>
+        
+        <div class="roi-form-group">
+          <label for="no-show-rate">What's your current no-show rate?</label>
+          <select id="no-show-rate" required>
+            <option value="">Select...</option>
+            <option value="5">5%</option>
+            <option value="10">10%</option>
+            <option value="15">15%</option>
+            <option value="20">20%</option>
+            <option value="25">25%+</option>
+          </select>
+        </div>
+        
+        <div class="roi-form-group">
+          <label for="monthly-appointments">How many appointments do you do per month?</label>
+          <input type="number" id="monthly-appointments" value="200" min="50" max="1000" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); border-radius: 10px; font-size: 1.125rem; font-weight: 600;">Calculate My ROI</button>
+      </form>
+      
+      <div id="roi-results" class="roi-results">
+        <div class="roi-result-section">
+          <h3>📉 Your Current Lost Revenue:</h3>
+          <div class="roi-result-item">
+            <span>Missed calls per month:</span>
+            <strong id="missed-per-month">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>Lost appointments (10% conversion):</span>
+            <strong id="lost-appointments">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>Revenue lost from missed calls:</span>
+            <strong id="missed-revenue">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>No-shows per month:</span>
+            <strong id="no-shows">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>Revenue lost from no-shows:</span>
+            <strong id="no-show-revenue">-</strong>
+          </div>
+          <div class="roi-highlight">
+            TOTAL LOST REVENUE: <span id="total-lost">-</span>
+          </div>
+        </div>
+        
+        <div class="roi-result-section">
+          <h3>📈 With BOTUVO AI Receptionist:</h3>
+          <div class="roi-result-item">
+            <span>Missed calls captured (70%):</span>
+            <strong id="captured-calls">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>New appointments booked:</span>
+            <strong id="new-appointments">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>New revenue from captured calls:</span>
+            <strong id="captured-revenue">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>No-shows reduced by 50%:</span>
+            <strong id="reduced-no-shows">-</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>Recovered revenue from reminders:</span>
+            <strong id="recovered-revenue">-</strong>
+          </div>
+          <div class="roi-highlight">
+            TOTAL ADDITIONAL REVENUE: <span id="total-additional">-</span>
+          </div>
+        </div>
+        
+        <div class="roi-result-section">
+          <h3>💰 Your ROI:</h3>
+          <div class="roi-result-item">
+            <span>Investment (Year 1 - Growth Plan):</span>
+            <strong>£9,664</strong>
+          </div>
+          <div class="roi-result-item">
+            <span>Revenue increase (Year 1):</span>
+            <strong id="year-revenue">-</strong>
+          </div>
+          <div class="roi-highlight">
+            ROI: <span id="roi-percent">-</span>
+          </div>
+          <div class="roi-result-item">
+            <span>Payback period:</span>
+            <strong id="payback">-</strong>
+          </div>
+        </div>
+        
+        <div class="roi-cta-section">
+          <a href="https://calendly.com/your-link" class="roi-cta-btn">Book Your Free Demo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section" style="background: hsl(var(--muted));">
+  <div class="container">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">
+      Comprehensive AI receptionist solutions built specifically for healthcare practices
+    </p>
+    
+    <div class="grid">
+      <div class="card">
+        <div class="service-icon icon-purple">📅</div>
+        <h3 class="service-title">24/7 Appointment Booking</h3>
+        <p>Patients can book appointments instantly, even when your practice is closed. No more missed opportunities or phone tag.</p>
+      </div>
+      
+      <div class="card">
+        <div class="service-icon icon-blue">📞</div>
+        <h3 class="service-title">Missed Call Capture</h3>
+        <p>Capture every call that comes in after hours or when your front desk is busy with patients. Never lose revenue to voicemail again.</p>
+      </div>
+      
+      <div class="card">
+        <div class="service-icon icon-green">🔔</div>
+        <h3 class="service-title">Appointment Reminders</h3>
+        <p>Automated SMS and email reminders reduce no-shows by 50%, saving thousands per month in wasted appointment slots.</p>
+      </div>
+      
+      <div class="card">
+        <div class="service-icon icon-orange">💬</div>
+        <h3 class="service-title">Pricing & FAQ Automation</h3>
+        <p>Answer common questions about procedures, pricing, insurance, and aftercare instantly—without tying up your staff.</p>
+      </div>
+      
+      <div class="card">
+        <div class="service-icon icon-purple">📊</div>
+        <h3 class="service-title">CRM Integration</h3>
+        <p>Seamlessly sync with your practice management software and keep everything organized.</p>
+      </div>
+      
+      <div class="card">
+        <div class="service-icon icon-blue">💬</div>
+        <h3 class="service-title">24/7 Patient Support</h3>
+        <p>Instant responses to patient inquiries about office hours, directions, insurance acceptance, and general questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section id="process" class="process-section">
+  <div class="container">
+    <h2>Our Process</h2>
+    <p class="subtitle">From first call to go-live in 2-3 weeks</p>
+    
+    <div class="process-grid">
+      
+      <div class="process-card">
+        <div class="step-number">1</div>
+        <h3>Discovery Call</h3>
+        <p>10-minute chat to understand your practice, current pain points, and what you need covered (website inquiries, phone calls, or both).</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-number">2</div>
+        <h3>Custom Proposal</h3>
+        <p>We send over a tailored proposal with pricing, timeline, and ROI projections based on your practice size and needs.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-number">3</div>
+        <h3>Onboarding & Setup</h3>
+        <p>Our team builds your AI receptionist, trains it on your services, and integrates it with your booking system. Takes 2-3 weeks.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-number">4</div>
+        <h3>Testing & Training</h3>
+        <p>We test every scenario, train your team on the dashboard, and make sure everything works perfectly before going live.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="step-number">5</div>
+        <h3>Go Live</h3>
+        <p>Your AI goes live. We monitor performance for the first 2 weeks, make adjustments, and provide ongoing support.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Pricing Section -->
 <section id="pricing" class="pricing-section">
   <div class="container">
@@ -773,32 +1098,333 @@
     </div>
     
     <p class="pricing-note">All plans include: 2-3 week setup, unlimited updates, 24/7 AI operation, and cancel anytime.</p>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Transform Your Practice?</h2>
+    <p style="font-size: 1.125rem; margin-bottom: 2rem;">
+      Join the growing number of healthcare practices using AI to capture every patient inquiry and grow their revenue.
+    </p>
+    <button class="btn btn-secondary" onclick="scrollToContact()">Book Your Free Demo Today</button>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">
+      Everything you need to know about BOTUVO AI Receptionist
+    </p>
     
-    <!-- Inner Circle Club -->
-    <div class="inner-circle">
-      <h3>🌟 Inner Circle Club</h3>
-      <p style="font-size: 1.125rem; margin-bottom: 1rem;">
-        Join our exclusive community of forward-thinking healthcare practices and unlock premium benefits
-      </p>
+    <div class="faq-container">
       
-      <div class="perks-grid">
-        <div class="perk-item">30% discount on any plan</div>
-        <div class="perk-item">Direct access to founders</div>
-        <div class="perk-item">Featured case study spotlight</div>
-        <div class="perk-item">White-label partnership options</div>
-        <div class="perk-item">Quarterly strategy calls</div>
-        <div class="perk-item">Early access to new features</div>
-        <div class="perk-item">Exclusive referral gifts</div>
-        <div class="perk-item">Beta testing opportunities</div>
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          How does the AI receptionist work?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Our AI handles website chat and phone calls 24/7. When a patient inquires, the AI:</p>
+          <p>→ Answers their questions</p>
+          <p>→ Checks availability</p>
+          <p>→ Books appointments automatically</p>
+          <p>It sounds human, integrates with your calendar, and captures inquiries you'd normally miss.</p>
+        </div>
       </div>
-      
-      <a href="https://forms.gle/your-form-id" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 1rem;">Apply to Join</a>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          How much does it cost?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Plans start at £297/month. Most practices choose our Growth plan (£597/month) which includes website chat + phone AI.</p>
+          <p><strong>Setup:</strong> £2,500 → £1,500 if you sign before January 1st.</p>
+          <p>No long-term contracts. Cancel anytime with 30 days notice.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does it take to go live?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>2-3 weeks from signup to launch.</p>
+          <p>We handle everything: setup, integration, AI training, and testing. You just review and approve.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          Will it work with my practice management software?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>We integrate with most UK practice management systems (Dentally, SOE, R4, and others) via API.</p>
+          <p>If you use a custom system, we'll work with you to find a solution.</p>
+          <p><strong>Want to check if yours is compatible?</strong> Ask our AI below 👇</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          What if the AI makes a mistake or books the wrong time?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>The AI is highly accurate, but you stay in control:</p>
+          <p>→ Set it to auto-confirm bookings (if you trust it fully)</p>
+          <p>→ OR set it to request approval (you review bookings first)</p>
+          <p>Most practices start with approval mode, then switch to auto-confirm after 2-3 weeks.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I know if this will work for my practice?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Most UK dental, GP, and physio practices miss 25-30 patient inquiries per month (website visitors who don't book, calls that go unanswered, after-hours inquiries).</p>
+          <p>That's £6-12k/month in lost revenue.</p>
+          <p><strong>Use our free calculator below</strong> to see exactly how much YOUR practice is missing 👇</p>
+          <p>Then book a 10-min demo to see the AI in action.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Add these pricing styles to the head section -->
+<!-- Contact Form Section -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title">Get Started Today</h2>
+    <p class="section-subtitle">
+      Let's discuss how BOTUVO can transform your practice
+    </p>
+    
+    <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="company">Practice/Clinic Name *</label>
+        <input type="text" id="company" name="company" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="practice-type">Practice Type *</label>
+        <select id="practice-type" name="practice-type" required>
+          <option value="">Select your practice type</option>
+          <option value="dental">Dental Practice</option>
+          <option value="aesthetic">Aesthetic Clinic</option>
+          <option value="chiropractic">Chiropractic Office</option>
+          <option value="physiotherapy">Physiotherapy Clinic</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="missed-calls">How many calls do you miss per day? *</label>
+        <select id="missed-calls" name="missed-calls" required>
+          <option value="">Select an option</option>
+          <option value="0-10">0-10 calls</option>
+          <option value="10-20">10-20 calls</option>
+          <option value="20-30">20-30 calls</option>
+          <option value="30+">30+ calls</option>
+          <option value="not-sure">Not sure</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">What's your biggest challenge? *</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Book My Free Demo</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-title">BOTUVO</div>
+        <p style="color: rgba(255, 255, 255, 0.8);">
+          Your AI-powered receptionist, working 24/7 to capture every patient inquiry and grow your practice.
+        </p>
+      </div>
+      
+      <div>
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Appointment Booking</a></li>
+          <li><a href="#services">Missed Call Capture</a></li>
+          <li><a href="#services">Appointment Reminders</a></li>
+          <li><a href="#services">Patient Support</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">About Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#" onclick="openModal('footer-contact-modal'); return false;">Contact</a></li>
+          <li><a href="/privacy-policy.pdf" download>Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>© 2025 BOTUVO. All rights reserved.</div>
+      <div class="social-links">
+        <a href="https://linkedin.com/company/botuvo" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://x.com/botuvo" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span>🇬🇧 UK-Based</span>
+        <span>❤️ 10% to Charity</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Add these styles -->
 <style>
+/* ROI Calculator Styles */
+.roi-calculator-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 5rem 1rem;
+}
+
+.roi-calculator-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 3rem;
+}
+
+.roi-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.roi-form-group label {
+  display: block;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.roi-form-group input,
+.roi-form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.roi-form-group input:focus,
+.roi-form-group select:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+.roi-results {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  border-radius: 15px;
+  display: none;
+}
+
+.roi-results.show {
+  display: block;
+}
+
+.roi-result-section {
+  margin-bottom: 2rem;
+}
+
+.roi-result-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.5rem;
+}
+
+.roi-result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+.roi-result-item strong {
+  font-weight: 700;
+}
+
+.roi-highlight {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+.roi-cta-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.roi-cta-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: white;
+  color: #7c3aed;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.roi-cta-btn:hover {
+  transform: translateY(-2px);
+}
+
 /* Enhanced "Perfect For" Section Styling */
 .perfect-for-section {
   margin: 1.5rem 0;
@@ -884,6 +1510,11 @@
   text-align: center;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  height: auto;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .pricing-card:hover {
@@ -989,6 +1620,7 @@
   transition: all 0.3s ease;
   border: none;
   margin-bottom: 16px;
+  margin-top: auto;
 }
 
 .cta-button.primary {
@@ -1030,414 +1662,6 @@
   margin: 0 auto;
 }
 
-/* Inner Circle */
-.inner-circle {
-  background: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
-  color: white;
-  padding: 3rem;
-  border-radius: var(--radius);
-  margin-top: 3rem;
-}
-
-.inner-circle h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.perks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.perk-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.perk-item:before {
-  content: "★";
-  color: hsl(var(--secondary));
-  font-size: 1.25rem;
-}
-
-/* Responsive for tablets */
-@media (max-width: 1200px) {
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .pricing-card.featured {
-    transform: scale(1);
-  }
-
-  .perfect-for-section {
-    margin: 1rem 0;
-    padding: 0.75rem;
-  }
-
-  .perfect-for-title {
-    font-size: 0.85rem;
-  }
-
-  .perfect-for-list {
-    font-size: 0.8rem;
-  }
-}
-</style>
-
-
-  
- <style>
-   
-.inner-circle {
-  background: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
-  color: white;
-  padding: 3rem;
-  border-radius: var(--radius);
-  margin-top: 3rem;
-}
-
-.inner-circle h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.perks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.perk-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.perk-item:before {
-  content: "★";
-  color: hsl(var(--secondary));
-  font-size: 1.25rem;
-}
-
-/* Responsive for tablets */
-@media (max-width: 1200px) {
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .pricing-card.featured {
-    transform: scale(1);
-  }
-}
-</style>
-
-  <!-- Why Choose Us Section - Updated to 6 cards -->
-<section class="why-choose-section">
-  <div class="container">
-    <h2>Why Choose BOTUVO?</h2>
-    <p class="subtitle">We're not just another AI chatbot. We're your complete patient inquiry solution.</p>
-    
-    <div class="benefits-grid">
-      
-      <div class="benefit-card">
-        <div class="icon">🤖</div>
-        <h3>Natural Conversations</h3>
-        <p>Our AI doesn't sound like a robot. It handles complex questions, understands context, and responds naturally - just like your best receptionist.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">⚡</div>
-        <h3>Live in 2-3 Weeks</h3>
-        <p>No 6-month implementations. We get you up and running in 2-3 weeks with full training, testing, and support. Fast setup, zero hassle.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">💰</div>
-        <h3>ROI in 30 Days</h3>
-        <p>Most practices capture £8-15k/month in missed revenue from our AI. Your setup fee pays for itself in the first month.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">🏥</div>
-        <h3>Healthcare-Specific</h3>
-        <p>Built specifically for dentists, GPs, physiotherapists, and healthcare practices. We understand your workflows, booking systems, and compliance needs.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">🔗</div>
-        <h3>Seamless Integrations</h3>
-        <p>Connects with your existing booking system, CRM, and practice management software. No ripping out your current setup.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">📊</div>
-        <h3>Full Transparency</h3>
-        <p>Real-time dashboard shows every inquiry, every booking, and exactly how much revenue your AI is capturing. No black box.</p>
-      </div>
-
-    </div>
-    
-    <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))); color: white;">
-      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Our Mission</h3>
-      <p style="font-size: 1.125rem;">
-        At BOTUVO, we believe AI should empower, not replace, human connection. We create AI receptionists that handle the 
-        repetitive work, freeing your team to build meaningful relationships with patients. Every solution we build 
-        is designed with ethics, empathy, and excellence at its core.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Add Why Choose Section styles -->
-<style>
-/* Why Choose Section Styles */
-.why-choose-section {
-  padding: 80px 20px;
-  background: hsl(var(--muted));
-}
-
-.why-choose-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-.why-choose-section .subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin-bottom: 60px;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.benefit-card {
-  background: white;
-  border-radius: 12px;
-  padding: 40px 32px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-}
-
-.benefit-card .icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.benefit-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  color: #1f2937;
-}
-
-.benefit-card p {
-  font-size: 0.95rem;
-  color: #6b7280;
-  line-height: 1.7;
-}
-
-/* Responsive for tablets */
-@media (max-width: 1024px) {
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .benefits-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-
-<!-- Contact Form Section -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2 class="section-title">Get Started Today</h2>
-    <p class="section-subtitle">
-      Let's discuss how BOTUVO can transform your practice
-    </p>
-    
-    <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
-      <div class="form-group">
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="company">Practice/Clinic Name *</label>
-        <input type="text" id="company" name="company" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="phone">Phone Number *</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="practice-type">Practice Type *</label>
-        <select id="practice-type" name="practice-type" required>
-          <option value="">Select your practice type</option>
-          <option value="dental">Dental Practice</option>
-          <option value="aesthetic">Aesthetic Clinic</option>
-          <option value="chiropractic">Chiropractic Office</option>
-          <option value="physiotherapy">Physiotherapy Clinic</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="missed-calls">How many calls do you miss per day? *</label>
-        <select id="missed-calls" name="missed-calls" required>
-          <option value="">Select an option</option>
-          <option value="0-10">0-10 calls</option>
-          <option value="10-20">10-20 calls</option>
-          <option value="20-30">20-30 calls</option>
-          <option value="30+">30+ calls</option>
-          <option value="not-sure">Not sure</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="message">What's your biggest challenge? *</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary" style="width: 100%;">Book My Free Demo</button>
-    </form>
-  </div>
-</section>
-
-<!-- Add Contact Form styles -->
-<style>
-/* Contact Form Styles */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid hsl(var(--border));
-  border-radius: var(--radius);
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: hsl(var(--primary));
-}
-
-.form-group textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-</style>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-title">BOTUVO</div>
-        <p style="color: rgba(255, 255, 255, 0.8);">
-          Your AI-powered receptionist, working 24/7 to capture every patient inquiry and grow your practice.
-        </p>
-      </div>
-      
-      <div>
-        <div class="footer-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Appointment Booking</a></li>
-          <li><a href="#services">Missed Call Capture</a></li>
-          <li><a href="#services">Appointment Reminders</a></li>
-          <li><a href="#services">Patient Support</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <div class="footer-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">About Us</a></li>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="#" onclick="openModal('footer-contact-modal'); return false;">Contact</a></li>
-          <li><a href="/privacy-policy.pdf" download>Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <div>© 2025 BOTUVO. All rights reserved.</div>
-      <div class="social-links">
-        <a href="https://linkedin.com/company/botuvo" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        <a href="https://x.com/botuvo" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <span>🇬🇧 UK-Based</span>
-        <span>❤️ 10% to Charity</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Add Footer styles -->
-<style>
 /* Footer Styles */
 .footer {
   background: hsl(240, 10%, 15%);
@@ -1509,8 +1733,83 @@
   transform: translateY(-3px);
 }
 
-/* Responsive footer */
+/* Contact Form Styles */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid hsl(var(--border));
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Responsive for tablets */
+@media (max-width: 1200px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive for mobile */
 @media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .perfect-for-section {
+    margin: 1rem 0;
+    padding: 0.75rem;
+  }
+
+  .perfect-for-title {
+    font-size: 0.85rem;
+  }
+
+  .perfect-for-list {
+    font-size: 0.8rem;
+  }
+  
   .footer-bottom {
     flex-direction: column;
     text-align: center;
@@ -1652,6 +1951,11 @@ function scrollToContact() {
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
 
+// Smooth scroll to ROI calculator
+function scrollToCalculator() {
+  document.getElementById('roi-calculator').scrollIntoView({ behavior: 'smooth' });
+}
+
 // Modal functions
 function openModal(id) {
   document.getElementById(id).classList.add('show');
@@ -1680,27 +1984,14 @@ document.addEventListener('keydown', function(event) {
 });
 
 // ROI Calculator
-document.getElementById('toggle-calculator').addEventListener('click', function() {
-  const widget = document.getElementById('calculator-widget');
-  if (widget.style.display === 'none') {
-    widget.style.display = 'block';
-    this.textContent = 'Hide Calculator ↑';
-    widget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } else {
-    widget.style.display = 'none';
-    this.textContent = 'Calculate My ROI →';
-  }
-});
-
-document.getElementById('roi-form-inline').addEventListener('submit', function(e) {
+document.getElementById('roi-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  const missedCallsPerDay = parseInt(document.getElementById('missed-calls-inline').value);
-  const avgValue = parseInt(document.getElementById('avg-value-inline').value);
-  const noShowRate = parseInt(document.getElementById('no-show-rate-inline').value);
-  const monthlyAppointments = parseInt(document.getElementById('monthly-appointments-inline').value);
+  const missedCallsPerDay = parseInt(document.getElementById('missed-calls').value);
+  const avgValue = parseInt(document.getElementById('avg-value').value);
+  const noShowRate = parseInt(document.getElementById('no-show-rate').value);
+  const monthlyAppointments = parseInt(document.getElementById('monthly-appointments').value);
   
-  // Calculate lost revenue
   const missedCallsPerMonth = missedCallsPerDay * 20;
   const lostAppointments = Math.round(missedCallsPerMonth * 0.1);
   const missedRevenue = lostAppointments * avgValue;
@@ -1710,7 +2001,6 @@ document.getElementById('roi-form-inline').addEventListener('submit', function(e
   
   const totalLost = missedRevenue + noShowRevenue;
   
-  // Calculate with BOTUVO
   const capturedCalls = Math.round(missedCallsPerMonth * 0.7);
   const newAppointments = Math.round(capturedCalls * 0.1);
   const capturedRevenue = newAppointments * avgValue;
@@ -1720,33 +2010,49 @@ document.getElementById('roi-form-inline').addEventListener('submit', function(e
   
   const totalAdditional = capturedRevenue + recoveredRevenue;
   
-  // Calculate ROI
   const yearRevenue = totalAdditional * 12;
-  const investment = 9664; // £2,500 setup + (£597 × 12)
+  const investment = 9664; // Year 1 Growth plan: £2,500 setup + (£597 × 12)
   const roi = Math.round(((yearRevenue - investment) / investment) * 100);
   const payback = Math.round((investment / totalAdditional) * 30);
   
-  // Update DOM
   document.getElementById('missed-per-month').textContent = missedCallsPerMonth.toLocaleString();
   document.getElementById('lost-appointments').textContent = lostAppointments.toLocaleString();
   document.getElementById('missed-revenue').textContent = '£' + missedRevenue.toLocaleString();
   document.getElementById('no-shows').textContent = noShows.toLocaleString();
   document.getElementById('no-show-revenue').textContent = '£' + noShowRevenue.toLocaleString();
-  document.getElementById('total-lost-inline').textContent = '£' + totalLost.toLocaleString() + '/month';
+  document.getElementById('total-lost').textContent = '£' + totalLost.toLocaleString() + '/month';
   
   document.getElementById('captured-calls').textContent = capturedCalls.toLocaleString();
   document.getElementById('new-appointments').textContent = newAppointments.toLocaleString();
   document.getElementById('captured-revenue').textContent = '£' + capturedRevenue.toLocaleString();
   document.getElementById('reduced-no-shows').textContent = reducedNoShows.toLocaleString();
   document.getElementById('recovered-revenue').textContent = '£' + recoveredRevenue.toLocaleString();
-  document.getElementById('total-additional-inline').textContent = '£' + totalAdditional.toLocaleString() + '/month';
+  document.getElementById('total-additional').textContent = '£' + totalAdditional.toLocaleString() + '/month';
   
   document.getElementById('year-revenue').textContent = '£' + yearRevenue.toLocaleString();
-  document.getElementById('roi-percent-inline').textContent = roi.toLocaleString() + '%';
+  document.getElementById('roi-percent').textContent = roi.toLocaleString() + '%';
   document.getElementById('payback').textContent = payback + ' days';
   
-  document.getElementById('results-inline').style.display = 'block';
-  document.getElementById('results-inline').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  document.getElementById('roi-results').classList.add('show');
+  document.getElementById('roi-results').scrollIntoView({ behavior: 'smooth' });
+});
+
+// FAQ Accordion functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', function() {
+    const faqItem = this.parentElement;
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+      faqItem.classList.add('active');
+    }
+  });
 });
 
 // Animation on scroll
@@ -1777,5 +2083,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-
-
