@@ -2000,7 +2000,7 @@ document.getElementById('roi-form').addEventListener('submit', function(e) {
   const totalAdditional = capturedRevenue + recoveredRevenue;
   
   const yearRevenue = totalAdditional * 12;
-  const investment = 9664; // Year 1 Growth plan: £2,500 setup + (£597 × 12)
+  const investment = 9664;
   const roi = Math.round(((yearRevenue - investment) / investment) * 100);
   const payback = Math.round((investment / totalAdditional) * 30);
   
@@ -2026,27 +2026,6 @@ document.getElementById('roi-form').addEventListener('submit', function(e) {
   document.getElementById('roi-results').scrollIntoView({ behavior: 'smooth' });
 });
 
-// FAQ Accordion functionality
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', function() {
-      const faqItem = this.closest('.faq-item');
-      const faqAnswer = faqItem.querySelector('.faq-answer');
-      const isActive = faqItem.classList.contains('active');
-      
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Open clicked item if it wasn't active
-      if (!isActive) {
-        faqItem.classList.add('active');
-      }
-    });
-  });
-});
-
 // Animation on scroll
 const observerOptions = {
   threshold: 0.1,
@@ -2062,7 +2041,31 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, observerOptions);
 
+// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+  
+  // FAQ Accordion functionality
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const faqItem = this.closest('.faq-item');
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+  
   // Observe all cards for animation
   document.querySelectorAll('.card, .process-card, .pricing-card, .benefit-card').forEach(card => {
     card.style.opacity = '0';
@@ -2070,11 +2073,13 @@ document.addEventListener('DOMContentLoaded', function() {
     card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(card);
   });
+  
 });
 </script>
-
+  
 </body>
 </html>
+
 
 
 
