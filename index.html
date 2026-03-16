@@ -3,1192 +3,1023 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOTUVO - AI Chat & Voice Assistants for Healthcare Practices | Never Miss Another Patient Inquiry</title>
-  <meta name="description" content="AI receptionists for dental practices, aesthetic clinics, and chiropractic offices. Capture missed calls 24/7, book appointments instantly, and reduce no-shows by 50%.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.png">
+  <title>BOTUVO | AI Lead Reactivation for Estate Agents</title>
+  <meta name="description" content="Turn dormant valuations, cold buyer enquiries, and expired listings into booked appointments. AI-powered lead reactivation for UK estate agents.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%233B82F6'/><text y='.9em' font-size='72' x='50%' text-anchor='middle' font-family='serif' font-weight='bold' fill='white'>B</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
   <style>
-    /* Design System Variables */
     :root {
-      --background: 0 0% 100%;
-      --foreground: 240 10% 15%;
-      --card: 0 0% 100%;
-      --card-foreground: 240 10% 15%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 240 10% 15%;
-      --primary: 262 52% 47%;
-      --primary-foreground: 0 0% 100%;
-      --primary-light: 262 47% 57%;
-      --primary-dark: 262 57% 37%;
-      --secondary: 217 91% 60%;
-      --secondary-foreground: 0 0% 100%;
-      --muted: 240 5% 96%;
-      --muted-foreground: 240 4% 46%;
-      --accent: 217 91% 60%;
-      --accent-foreground: 0 0% 100%;
-      --destructive: 0 84% 60%;
-      --destructive-foreground: 0 0% 100%;
-      --border: 240 6% 90%;
-      --input: 240 6% 90%;
-      --ring: 262 52% 47%;
-      --radius: 0.75rem;
-      --bespoke-gold: 45 100% 51%;
-      --bespoke-orange: 25 95% 53%;
+      --navy: #0F172A;
+      --navy-mid: #1E293B;
+      --navy-light: #334155;
+      --blue: #3B82F6;
+      --blue-bright: #60A5FA;
+      --blue-dim: rgba(59,130,246,0.12);
+      --white: #F8FAFC;
+      --white-dim: rgba(248,250,252,0.65);
+      --white-faint: rgba(248,250,252,0.05);
+      --border: rgba(248,250,252,0.08);
+      --radius: 12px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: hsl(var(--background));
-      color: hsl(var(--foreground));
-      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
     }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-out;
-    }
-
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .animate-scale-in {
-      animation: scaleIn 0.4s ease-out;
-    }
-
-    /* Utility Classes */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
       text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: none;
-      font-size: 1rem;
+    }
+    .nav-logo span { color: var(--blue); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--blue-bright) !important;
+      transform: translateY(-1px) !important;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-      color: white;
-      box-shadow: 0 4px 15px hsla(262, 52%, 47%, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px hsla(262, 52%, 47%, 0.4);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: hsl(var(--primary));
-      border: 2px solid hsl(var(--primary));
-    }
-
-    .btn-secondary:hover {
-      background: hsl(var(--primary));
-      color: white;
-    }
-
-    .card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px hsla(262, 52%, 47%, 0.2);
-    }
-
-    /* Hero Section */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1rem;
-      background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-logo {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 2rem;
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(248,250,252,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(248,250,252,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 10%, transparent 80%);
+      pointer-events: none;
     }
 
-    .hero-title {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
+    .hero-glow {
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 65%);
+      pointer-events: none;
     }
 
-    .hero-subtitle {
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 700;
-      color: hsl(var(--foreground));
-      margin-bottom: 1rem;
+    .hero-glow-2 {
+      position: absolute;
+      bottom: 0; left: -15%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .hero-description {
-      font-size: 1.25rem;
-      color: hsl(var(--muted-foreground));
-      max-width: 800px;
-      margin: 0 auto 2rem;
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-buttons {
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--blue-dim);
+      border: 1px solid rgba(59,130,246,0.28);
+      color: var(--blue-bright);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--blue-bright);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+      max-width: 860px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue-bright);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--white-dim);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
       display: flex;
-      gap: 1rem;
-      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
       flex-wrap: wrap;
-      margin-bottom: 3rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.9rem 2.1rem;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      background: var(--blue-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59,130,246,0.35);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--white-dim);
+      padding: 0.9rem 2.1rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover {
+      color: var(--white);
+      border-color: rgba(248,250,252,0.22);
+      transform: translateY(-2px);
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: rgba(248,250,252,0.35);
+      font-weight: 300;
     }
 
     .hero-stats {
       display: flex;
-      gap: 2rem;
-      justify-content: center;
+      gap: 3.5rem;
+      margin-top: 4.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
 
-    .stat-badge {
-      background: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+    }
+    .stat-num span { color: var(--blue-bright); }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      margin-top: 0.2rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ── SHARED ── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
       font-weight: 600;
-      color: hsl(var(--primary));
-    }
-
-    /* CTA Section */
-    .cta-section {
-      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
-      color: white;
-      padding: 4rem 1rem;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Services Section */
-    .section {
-      padding: 5rem 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 0.9rem;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
       font-weight: 800;
-      text-align: center;
+      letter-spacing: -0.025em;
       margin-bottom: 1rem;
-      color: hsl(var(--foreground));
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: hsl(var(--muted-foreground));
-      max-width: 600px;
-      margin: 0 auto 3rem;
-      font-size: 1.125rem;
+    .section-sub {
+      color: var(--white-dim);
+      font-size: 1rem;
+      max-width: 540px;
+      font-weight: 300;
+      line-height: 1.8;
     }
 
-    .grid {
+    /* ── PROBLEM ── */
+    #problem {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-header { margin-bottom: 3.5rem; }
+
+    .problem-grid {
       display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .problem-card {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .problem-card:hover { border-color: rgba(59,130,246,0.28); transform: translateY(-4px); }
+    .problem-card:hover::before { opacity: 1; }
+
+    .problem-icon {
+      width: 42px; height: 42px;
+      background: var(--blue-dim);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+    }
+    .problem-icon svg {
+      width: 19px; height: 19px;
+      stroke: var(--blue-bright); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    .icon-purple { background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); }
-    .icon-blue { background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); }
-    .icon-green { background: hsla(142, 71%, 45%, 0.1); color: hsl(142, 71%, 45%); }
-    .icon-orange { background: hsla(25, 95%, 53%, 0.1); color: hsl(25, 95%, 53%); }
-    .icon-gold { background: hsla(45, 100%, 51%, 0.1); color: hsl(45, 100%, 51%); }
-    .icon-teal { background: hsla(174, 72%, 40%, 0.1); color: hsl(174, 72%, 40%); }
-    .icon-red { background: hsla(0, 84%, 60%, 0.1); color: hsl(0, 84%, 60%); }
-    .icon-indigo { background: hsla(262, 83%, 58%, 0.1); color: hsl(262, 83%, 58%); }
+    .problem-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .problem-card p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.75; font-weight: 300; }
 
-    .service-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Process Section - Updated to grid layout */
-    .process-section {
-      padding: 80px 20px;
-      background: hsl(var(--muted));
-    }
-
-    .process-section h2 {
+    .problem-callout {
+      background: var(--blue-dim);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-top: 1.5rem;
     }
+    .problem-callout strong { color: var(--white); }
 
-    .process-section .subtitle {
-      text-align: center;
-      color: hsl(var(--muted-foreground));
-      margin-bottom: 60px;
-      font-size: 1.1rem;
-    }
+    /* ── HOW IT WORKS ── */
+    .how-header { margin-bottom: 4rem; }
 
-    .process-grid {
+    .steps {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .process-card {
-      background: white;
-      border-radius: 12px;
-      padding: 32px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       position: relative;
     }
 
-    .process-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: calc(16.67% + 1rem);
+      right: calc(16.67% + 1rem);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
     }
 
-    .step-number {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+    .step { position: relative; }
+
+    .step-num {
+      width: 54px; height: 54px;
+      background: var(--navy-mid);
+      border: 1px solid rgba(59,130,246,0.35);
       border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      color: var(--blue-bright);
+      margin-bottom: 2rem;
+      position: relative; z-index: 1;
+    }
+
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .step p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.78; font-weight: 300; }
+
+    .step-footer {
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--white-dim);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── ROI ── */
+    #roi {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roi-header { margin-bottom: 3rem; }
+
+    .roi-table-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+
+    thead tr { background: var(--navy-light); }
+    thead th {
+      padding: 1.2rem 2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      text-align: left;
+    }
+    thead th:first-child { color: var(--white-dim); }
+    thead th:not(:first-child) { color: var(--blue-bright); }
+
+    tbody tr { border-top: 1px solid var(--border); transition: background 0.2s; }
+    tbody tr:hover { background: var(--white-faint); }
+
+    tbody td { padding: 1.1rem 2rem; font-size: 0.93rem; color: var(--white-dim); }
+    tbody td:first-child { font-weight: 500; color: var(--white); }
+
+    tbody tr.roi-row-highlight {
+      background: rgba(59,130,246,0.08);
+      border-top: 1px solid rgba(59,130,246,0.25);
+    }
+    tbody tr.roi-row-highlight td {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.2rem;
+      color: var(--white); padding: 1.4rem 2rem;
+    }
+    tbody tr.roi-row-highlight td:not(:first-child) { color: var(--blue-bright); }
+
+    .roi-banner {
+      background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(59,130,246,0.04));
+      border: 1px solid rgba(59,130,246,0.22);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--white-dim); font-size: 1rem;
+    }
+    .roi-banner strong { color: var(--white); }
+
+    /* ── PRICING ── */
+    .pricing-header { margin-bottom: 3rem; }
+
+    .pricing-card {
+      max-width: 620px;
+      background: var(--navy-mid);
+      border: 1px solid rgba(59,130,246,0.28);
+      border-radius: 16px;
+      padding: 0 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-bright), var(--blue));
+    }
+
+    .pricing-row {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0 auto 20px;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 2rem;
+    }
+    .pricing-row:last-child { border-bottom: none; }
+
+    .pricing-row-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
+    .pricing-row-desc { font-size: 0.82rem; color: var(--white-dim); font-weight: 300; }
+
+    .pricing-amount {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.5rem;
+      color: var(--white); white-space: nowrap; text-align: right;
+    }
+    .pricing-amount small {
+      font-size: 0.72rem; color: var(--white-dim);
+      font-weight: 300; display: block; margin-top: 0.1rem;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .process-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #1f2937;
+    .pricing-note-text {
+      color: var(--white-dim); font-size: 0.9rem;
+      font-weight: 300; line-height: 1.8; margin-bottom: 2rem;
+      max-width: 540px;
     }
 
-    .process-card p {
-      font-size: 0.95rem;
-      color: #6b7280;
-      line-height: 1.6;
+    /* ── FAQ ── */
+    #faq {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    /* FAQ Section Styles */
-    
-.faq-section {
-  background: hsl(var(--muted));
-  padding: 5rem 1rem;
-}
+    .faq-header { margin-bottom: 3rem; }
+    .faq-list { max-width: 720px; }
 
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+    .faq-item { border-bottom: 1px solid var(--border); }
 
-.faq-item {
-  background: white;
-  border-radius: var(--radius);
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 2rem; padding: 1.4rem 0;
+      cursor: pointer; background: none; border: none;
+      color: var(--white); font-family: 'Syne', sans-serif;
+      font-size: 0.97rem; font-weight: 600; text-align: left; width: 100%;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--blue-bright); }
 
-.faq-question {
-  padding: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s ease;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: hsl(var(--foreground));
-}
+    .faq-icon {
+      width: 22px; height: 22px;
+      border: 1px solid rgba(248,250,252,0.18);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; transition: transform 0.3s, background 0.3s, border-color 0.3s;
+      color: var(--white-dim);
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background: var(--blue-dim);
+      border-color: var(--blue-bright);
+      color: var(--blue-bright);
+    }
 
-.faq-question:hover {
-  background: hsl(var(--muted));
-}
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding-bottom: 1.5rem;
+      color: var(--white-dim); font-size: 0.92rem;
+      line-height: 1.82; font-weight: 300;
+    }
+    .faq-item.active .faq-answer { max-height: 300px; }
 
-.faq-item.active .faq-question {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-  color: white;
-}
+    /* ── CONTACT ── */
+    #contact { position: relative; overflow: hidden; }
+    #contact::before {
+      content: '';
+      position: absolute; bottom: -20%; left: -10%;
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.faq-answer {
-  padding: 0 1.5rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  color: hsl(var(--muted-foreground));
-  line-height: 1.8;
-}
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem; align-items: start;
+      position: relative; z-index: 1;
+    }
 
-.faq-item.active .faq-answer {
-  padding: 1.5rem;
-  max-height: 500px;
-}
+    .contact-left h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .contact-left p {
+      color: var(--white-dim); font-size: 0.97rem;
+      line-height: 1.8; font-weight: 300; margin-bottom: 2rem;
+    }
 
-.faq-arrow {
-  transition: transform 0.3s ease;
-  font-size: 1.25rem;
-}
+    .contact-detail {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--white-dim); font-size: 0.88rem;
+      margin-bottom: 0.75rem; text-decoration: none; transition: color 0.2s;
+    }
+    .contact-detail:hover { color: var(--blue-bright); }
 
-.faq-item.active .faq-question .faq-arrow {
-  transform: rotate(180deg);
-}
-    
+    .contact-detail-icon {
+      width: 32px; height: 32px;
+      background: var(--blue-dim); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-detail-icon svg {
+      width: 14px; height: 14px;
+      stroke: var(--blue-bright); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
 
-    /* Smooth Scrolling */
-    html {
-      scroll-behavior: smooth;
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-group label {
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--white-dim); letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none; width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(248,250,252,0.2); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(59,130,246,0.5);
+      background: var(--navy-light);
+    }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group select option { background: var(--navy-mid); color: var(--white); }
+    .form-group textarea { min-height: 125px; resize: vertical; line-height: 1.65; }
+
+    .form-submit { display: flex; flex-direction: column; gap: 0.7rem; }
+    .form-submit .btn-primary { width: 100%; text-align: center; }
+
+    .form-disclaimer {
+      font-size: 0.75rem; color: rgba(248,250,252,0.28);
+      text-align: center; line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.2rem; color: var(--white);
+    }
+    .footer-logo span { color: var(--blue); }
+    .footer-copy { font-size: 0.8rem; color: rgba(248,250,252,0.28); }
+    .footer-email a {
+      font-size: 0.83rem; color: var(--white-dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-email a:hover { color: var(--blue-bright); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-up.d1 { transition-delay: 0.08s; }
+    .fade-up.d2 { transition-delay: 0.16s; }
+    .fade-up.d3 { transition-delay: 0.24s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 920px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 2rem; }
+      .steps::before { display: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      thead th, tbody td { padding: 0.9rem 1.2rem; font-size: 0.85rem; }
+      tbody tr.roi-row-highlight td { font-size: 1rem; }
+    }
+
+    @media (max-width: 660px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .hero { padding: 6.5rem 1.25rem 4rem; }
+      .hero-stats { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .pricing-card { padding: 0 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Hero Section -->
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="#">BOTU<span>VO</span></a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#roi">ROI</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <h1 class="hero-title animate-fade-in">BOTUVO</h1>
-    <h2 class="hero-subtitle animate-fade-in">Never Miss Another Patient Inquiry - Website or Phone</h2>
-    <p class="hero-description animate-fade-in" style="color: hsl(var(--foreground));">
-      AI Chat & Voice Assistants for Healthcare Practices
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      AI-Powered Lead Reactivation &nbsp;·&nbsp; UK Estate Agents
+    </div>
+
+    <h1>Your Dead Leads Are Worth <em>Thousands.</em> We Wake Them Up.</h1>
+
+    <p class="hero-sub">
+      BOTUVO helps estate agents turn dormant valuations, cold buyer enquiries, and expired listings into booked appointments — using AI-powered calling technology.
     </p>
-    <p class="hero-description animate-fade-in" style="margin-top: 1rem;">
-      AI receptionists for dental practices, aesthetic clinics, and chiropractic offices 
-      that answer questions, book appointments 24/7, and capture every missed call—
-      so your front desk can focus on patients, not phones.
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a 10-Minute Call &rarr;</a>
+      <a href="#roi" class="btn-ghost">See the Numbers</a>
+    </div>
+
+    <p class="hero-note">No long contracts &nbsp;&middot;&nbsp; Performance-based pricing &nbsp;&middot;&nbsp; One reactivated instruction covers the entire cost.</p>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num"><span>5–10</span>%</div>
+        <div class="stat-label">Appointment booking rate<br>from dormant leads</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5 <span>days</span></div>
+        <div class="stat-label">From lead list to<br>first calls made</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>£14k</span>+</div>
+        <div class="stat-label">Moderate revenue from<br>100 reactivated leads</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>Zero</span></div>
+        <div class="stat-label">CRM integrations,<br>software installs required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-header fade-up">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Your Database Is a Goldmine<br>You're Ignoring</h2>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card fade-up d1">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 2 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/><line x1="17" y1="0" x2="17" y2="8"/><line x1="21" y1="4" x2="13" y2="4"/></svg>
+        </div>
+        <h3>Valuations That Never Listed</h3>
+        <p>You visited the property, gave your pitch, sent the valuation — and never heard back. That vendor's circumstances have changed. They might be ready now.</p>
+      </div>
+
+      <div class="problem-card fade-up d2">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Buyers Who Went Cold</h3>
+        <p>They registered, viewed a property or two, then disappeared. Some bought elsewhere. Many are still looking. You just stopped calling.</p>
+      </div>
+
+      <div class="problem-card fade-up d3">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Withdrawn &amp; Expired Listings</h3>
+        <p>Properties that didn't sell and vendors who lost motivation. The market has moved. Their situation has changed. They need a reason to re-engage.</p>
+      </div>
+    </div>
+
+    <div class="problem-callout fade-up">
+      <strong>These leads already cost you money to acquire.</strong> Every day they sit untouched, you're losing revenue you've already paid for.
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="how-header fade-up">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three Steps. No Disruption<br>to Your Team.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step fade-up d1">
+        <div class="step-num">01</div>
+        <h3>You Send Us Your Dormant Leads</h3>
+        <p>Export a list of 50–100 old leads from your CRM or system — cold valuations, inactive buyers, expired listings. A simple spreadsheet is all we need.</p>
+      </div>
+
+      <div class="step fade-up d2">
+        <div class="step-num">02</div>
+        <h3>Our AI Agent Calls Every Lead</h3>
+        <p>Our AI calling system contacts each lead using professional, agency-approved scripting. Every call is recorded for quality assurance. Your brand, your tone, our technology.</p>
+      </div>
+
+      <div class="step fade-up d3">
+        <div class="step-num">03</div>
+        <h3>Qualified Appointments Hit Your Diary</h3>
+        <p>Interested leads are booked directly into your agents' calendars. You get a full report — who's interested, who's not, and who to revisit later.</p>
+      </div>
+    </div>
+
+    <p class="step-footer fade-up">
+      No CRM integration required. No software to install. No training needed from your team. We handle everything.
     </p>
-    
-    <div class="hero-buttons animate-scale-in">
-      <button class="btn btn-primary" onclick="openModal('contactModal')">
-        Book a Free Demo
-      </button>
-      <button class="btn btn-secondary" onclick="scrollToCalculator()">
-        Calculate My ROI
-      </button>
+  </div>
+</section>
+
+<!-- ROI -->
+<section id="roi">
+  <div class="container">
+    <div class="roi-header fade-up">
+      <div class="section-label">The Numbers</div>
+      <h2 class="section-title">The Maths Speaks for Itself</h2>
+      <p class="section-sub">One reactivated instruction covers the entire cost. Everything beyond that is profit.</p>
     </div>
-    
-    <div class="hero-stats animate-fade-in">
-      <div class="stat-badge">📞 Capture Missed Calls 24/7</div>
-      <div class="stat-badge">📅 Book Appointments Instantly</div>
-      <div class="stat-badge">📉 Reduce No-Shows by 50%</div>
+
+    <div class="roi-table-wrap fade-up">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Conservative</th>
+            <th>Moderate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dormant leads contacted</td>
+            <td>100</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Appointments booked (5–10%)</td>
+            <td>5</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Instructions won (30–40%)</td>
+            <td>2</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Average commission per sale</td>
+            <td>£4,000</td>
+            <td>£4,000</td>
+          </tr>
+          <tr>
+            <td>Revenue generated</td>
+            <td>£8,000</td>
+            <td>£16,000</td>
+          </tr>
+          <tr>
+            <td>Your total cost (setup + month 1)</td>
+            <td>£1,700</td>
+            <td>£1,700</td>
+          </tr>
+          <tr class="roi-row-highlight">
+            <td>Net ROI in month 1</td>
+            <td>£6,300+</td>
+            <td>£14,300+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="roi-banner fade-up">
+      <strong>You've already paid to acquire these leads.</strong> We just make them profitable again.
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section">
+<!-- PRICING -->
+<section id="pricing">
   <div class="container">
-    <h2>Capture £10k+/Month in Missed Revenue</h2>
-    <p style="font-size: 1.125rem; margin-bottom: 2rem;">
-      Join dental practices, aesthetic clinics, and chiropractic offices already using AI to capture every patient inquiry.
+    <div class="pricing-header fade-up">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Pilot Pricing</h2>
+      <p class="section-sub">Performance-aligned. You only pay for results beyond the platform cost.</p>
+    </div>
+
+    <div class="pricing-card fade-up">
+      <div class="pricing-row">
+        <div>
+          <div class="pricing-row-title">Setup Fee</div>
+          <div class="pricing-row-desc">System build, scripting, and configuration</div>
+        </div>
+        <div class="pricing-amount">£1,500 <small>one-time</small></div>
+      </div>
+
+      <div class="pricing-row">
+        <div>
+          <div class="pricing-row-title">Monthly Platform Fee</div>
+          <div class="pricing-row-desc">Hosting, maintenance, and ongoing optimisation</div>
+        </div>
+        <div class="pricing-amount">£200 <small>per month</small></div>
+      </div>
+
+      <div class="pricing-row">
+        <div>
+          <div class="pricing-row-title">Performance Fee</div>
+          <div class="pricing-row-desc">You only pay when it works</div>
+        </div>
+        <div class="pricing-amount">£75 <small>per qualified appointment</small></div>
+      </div>
+    </div>
+
+    <p class="pricing-note-text fade-up">
+      No long-term contracts. Start with a pilot of 50–100 leads. See the results before you scale.
     </p>
-    <button class="btn btn-secondary" onclick="scrollToContact()">Book Your Free Demo</button>
+
+    <a href="#contact" class="btn-primary fade-up">Book a 10-Minute Call &rarr;</a>
   </div>
 </section>
 
-<!-- Key Benefits Section -->
-<section id="benefits" class="section" style="background: hsl(var(--muted));">
+<!-- FAQ -->
+<section id="faq">
   <div class="container">
-    <h2 class="section-title">Key Benefits</h2>
-    <p class="section-subtitle">
-      Why healthcare practices choose BOTUVO for their patient engagement
-    </p>
-    
-    <div class="grid">
-      <div class="card">
-        <div style="display: inline-block; background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">30-50 More Appointments/Month</div>
-        <h3 class="service-title">Capture More Appointments</h3>
-        <p>Most practices miss 20-30 calls per day. Our AI receptionist captures those missed calls and turns them into booked appointments—adding £6-10k/month in new revenue.</p>
-      </div>
-      
-      <div class="card">
-        <div style="display: inline-block; background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">50% Fewer No-Shows</div>
-        <h3 class="service-title">Reduce No-Shows by Half</h3>
-        <p>Automated appointment reminders via email cut no-show rates in half. For a practice doing 200 appointments/month, that's £15-20k/month recovered.</p>
-      </div>
-      
-      <div class="card">
-        <div style="display: inline-block; background: hsla(142, 71%, 45%, 0.1); color: hsl(142, 71%, 45%); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">15+ Hours/Week Saved</div>
-        <h3 class="service-title">Free Up Your Front Desk</h3>
-        <p>Your receptionist spends 15+ hours/week answering the same questions about pricing and procedures. Let the AI handle it—instantly, 24/7.</p>
-      </div>
-      
-      <div class="card">
-        <div style="display: inline-block; background: hsla(25, 95%, 53%, 0.1); color: hsl(25, 95%, 53%); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Work While You Sleep</div>
-        <h3 class="service-title">Capture After-Hours Leads</h3>
-        <p>60% of patient inquiries come in after hours. Capture those leads automatically and wake up to a full booking calendar.</p>
-      </div>
-      
-      <div class="card">
-        <div style="display: inline-block; background: hsla(262, 52%, 47%, 0.1); color: hsl(var(--primary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">£7k/Year vs £30k/Year</div>
-        <h3 class="service-title">Cost-Effective Growth</h3>
-        <p>Hiring a full-time receptionist costs £2,000-2,500/month (£25-30k/year). Our AI receptionist costs £597/month and works 24/7 without sick days, holidays, or benefits</p>
-      </div>
-      
-      <div class="card">
-        <div style="display: inline-block; background: hsla(217, 91%, 60%, 0.1); color: hsl(var(--secondary)); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem;">Seamless Integration</div>
-        <h3 class="service-title">Works With Your Tools</h3>
-        <p>Sync seamlessly with your practice management software (Dentally, DentalTap, Carestack) and calendar systems. No tech headaches.</p>
-      </div>
+    <div class="faq-header fade-up">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
     </div>
-  </div>
-</section>
 
-<!-- What You Could Achieve Section -->
-<section class="section" style="background: hsl(var(--muted));">
-  <div class="container">
-    <h2 class="section-title">What Could Your Practice Achieve?</h2>
-    <p class="section-subtitle">
-      Based on industry benchmarks, here's what practices like yours typically see within 60 days
-    </p>
-    
-    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      
-      <!-- Card 1: Missing 20 Calls/Day -->
-      <div class="card" style="padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: hsl(var(--primary));">If You're Missing 20 Calls/Day</h3>
-        <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1rem;">
-          Typical results after 60 days:
-        </p>
-        <ul style="color: hsl(var(--foreground)); margin-bottom: 1.5rem; line-height: 1.8;">
-          <li>✅ Capture 280 calls/month (70% capture rate)</li>
-          <li>✅ Book 28 additional appointments</li>
-          <li>✅ Add <strong>£4,620/month</strong> in revenue</li>
-        </ul>
-        <div style="padding: 1rem; background: hsla(262, 52%, 47%, 0.1); border-radius: 10px; text-align: center; font-weight: 700; color: hsl(var(--primary));">
-          ROI: 10x your investment
-        </div>
-        <p style="margin-top: 1rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
-          <strong>Investment:</strong> £597/month (Growth Plan)
-        </p>
-      </div>
-      
-      <!-- Card 2: 20% No-Show Rate -->
-      <div class="card" style="padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: hsl(var(--secondary));">If You Have a 20% No-Show Rate</h3>
-        <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1rem;">
-          With automated reminders:
-        </p>
-        <ul style="color: hsl(var(--foreground)); margin-bottom: 1.5rem; line-height: 1.8;">
-          <li>✅ Reduce no-shows by 50%</li>
-          <li>✅ Recover 20 appointments/month</li>
-          <li>✅ Add <strong>£3,300/month</strong> in revenue</li>
-        </ul>
-        <div style="padding: 1rem; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; text-align: center; font-weight: 700; color: hsl(var(--secondary));">
-          Payback period: 18 days
-        </div>
-        <p style="margin-top: 1rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
-          <strong>Investment:</strong> £597/month (Growth Plan)
-        </p>
-      </div>
-      
-      <!-- Card 3: Combined Impact -->
-      <div class="card" style="padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: hsl(142, 71%, 45%);">Combined Impact</h3>
-        <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1rem;">
-          Missed call capture + no-show reduction:
-        </p>
-        <ul style="color: hsl(var(--foreground)); margin-bottom: 1.5rem; line-height: 1.8;">
-          <li>✅ 48 additional appointments/month</li>
-          <li>✅ <strong>£7,920/month</strong> in new revenue</li>
-          <li>✅ 15 hours/week freed up for staff</li>
-        </ul>
-        <div style="padding: 1rem; background: hsla(142, 71%, 45%, 0.1); border-radius: 10px; text-align: center; font-weight: 700; color: hsl(142, 71%, 45%);">
-          First-year impact: £95,040
-        </div>
-        <p style="margin-top: 1rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
-          <strong>Investment:</strong> £597/month (Growth Plan)
-        </p>
-      </div>
-      
-    </div>
-  </div>
-</section>
+    <div class="faq-list fade-up">
 
-<!-- Why Choose Us Section -->
-<section class="why-choose-section">
-  <div class="container">
-    <h2>Why Choose BOTUVO?</h2>
-    <p class="subtitle">We're not just another AI chatbot. We're your complete patient inquiry solution.</p>
-    
-    <div class="benefits-grid">
-      
-      <div class="benefit-card">
-        <div class="icon">🤖</div>
-        <h3>Natural Conversations</h3>
-        <p>Our AI doesn't sound like a robot. It handles complex questions, understands context, and responds naturally - just like your best receptionist.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">⚡</div>
-        <h3>Live in 2-3 Weeks</h3>
-        <p>No 6-month implementations. We get you up and running in 2-3 weeks with full training, testing, and support. Fast setup, zero hassle.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">💰</div>
-        <h3>ROI in 30 Days</h3>
-        <p>Most practices capture £8-15k/month in missed revenue from our AI. Your setup fee pays for itself in the first month.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">🏥</div>
-        <h3>Healthcare-Specific</h3>
-        <p>Built specifically for dentists, GPs, physiotherapists, and healthcare practices. We understand your workflows, booking systems, and compliance needs.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">🔗</div>
-        <h3>Seamless Integrations</h3>
-        <p>Connects with your existing booking system, CRM, and practice management software. No ripping out your current setup.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="icon">📊</div>
-        <h3>Full Transparency</h3>
-        <p>Real-time dashboard shows every inquiry, every booking, and exactly how much revenue your AI is capturing. No black box.</p>
-      </div>
-
-    </div>
-    
-    <div class="card" style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))); color: white;">
-      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Our Mission</h3>
-      <p style="font-size: 1.125rem;">
-        At BOTUVO, we believe AI should empower, not replace, human connection. We create AI receptionists that handle the 
-        repetitive work, freeing your team to build meaningful relationships with patients. Every solution we build 
-        is designed with ethics, empathy, and excellence at its core.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Section Styles -->
-<style>
-.why-choose-section {
-  padding: 80px 20px;
-  background: hsl(var(--muted));
-}
-
-.why-choose-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-.why-choose-section .subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin-bottom: 60px;
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.benefit-card {
-  background: white;
-  border-radius: 12px;
-  padding: 40px 32px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-}
-
-.benefit-card .icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-}
-
-.benefit-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  color: #1f2937;
-}
-
-.benefit-card p {
-  font-size: 0.95rem;
-  color: #6b7280;
-  line-height: 1.7;
-}
-
-@media (max-width: 1024px) {
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .benefits-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-<!-- ROI Calculator Section -->
-<section id="roi-calculator" class="roi-calculator-section">
-  <div class="container">
-    <div class="roi-calculator-container">
-      <h1 style="font-size: 2.5rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; font-weight: 800;">Healthcare Practice ROI Calculator</h1>
-      <p class="subtitle" style="color: #64748b; font-size: 1.125rem; margin-bottom: 2rem;">Calculate how much revenue you're losing to missed calls and no-shows</p>
-      
-      <form id="roi-form">
-        <div class="roi-form-group">
-          <label for="missed-calls">How many calls do you miss per day?</label>
-          <select id="missed-calls" required>
-            <option value="">Select...</option>
-            <option value="5">0-10 calls</option>
-            <option value="15">10-20 calls</option>
-            <option value="25">20-30 calls</option>
-            <option value="35">30-40 calls</option>
-            <option value="45">40+ calls</option>
-          </select>
-        </div>
-        
-        <div class="roi-form-group">
-          <label for="avg-value">What's your average appointment value? (£)</label>
-          <input type="number" id="avg-value" value="165" min="50" max="1000" required>
-        </div>
-        
-        <div class="roi-form-group">
-          <label for="no-show-rate">What's your current no-show rate?</label>
-          <select id="no-show-rate" required>
-            <option value="">Select...</option>
-            <option value="5">5%</option>
-            <option value="10">10%</option>
-            <option value="15">15%</option>
-            <option value="20">20%</option>
-            <option value="25">25%+</option>
-          </select>
-        </div>
-        
-        <div class="roi-form-group">
-          <label for="monthly-appointments">How many appointments do you do per month?</label>
-          <input type="number" id="monthly-appointments" value="200" min="50" max="1000" required>
-        </div>
-        
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); border-radius: 10px; font-size: 1.125rem; font-weight: 600;">Calculate My ROI</button>
-      </form>
-      
-      <div id="roi-results" class="roi-results">
-        <div class="roi-result-section">
-          <h3>📉 Your Current Lost Revenue:</h3>
-          <div class="roi-result-item">
-            <span>Missed calls per month:</span>
-            <strong id="missed-per-month">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>Lost appointments (10% conversion):</span>
-            <strong id="lost-appointments">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>Revenue lost from missed calls:</span>
-            <strong id="missed-revenue">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>No-shows per month:</span>
-            <strong id="no-shows">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>Revenue lost from no-shows:</span>
-            <strong id="no-show-revenue">-</strong>
-          </div>
-          <div class="roi-highlight">
-            TOTAL LOST REVENUE: <span id="total-lost">-</span>
-          </div>
-        </div>
-        
-        <div class="roi-result-section">
-          <h3>📈 With BOTUVO AI Receptionist:</h3>
-          <div class="roi-result-item">
-            <span>Missed calls captured (70%):</span>
-            <strong id="captured-calls">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>New appointments booked:</span>
-            <strong id="new-appointments">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>New revenue from captured calls:</span>
-            <strong id="captured-revenue">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>No-shows reduced by 50%:</span>
-            <strong id="reduced-no-shows">-</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>Recovered revenue from reminders:</span>
-            <strong id="recovered-revenue">-</strong>
-          </div>
-          <div class="roi-highlight">
-            TOTAL ADDITIONAL REVENUE: <span id="total-additional">-</span>
-          </div>
-        </div>
-        
-        <div class="roi-result-section">
-          <h3>💰 Your ROI:</h3>
-          <div class="roi-result-item">
-            <span>Investment (Year 1 - Growth Plan):</span>
-            <strong>£9,664</strong>
-          </div>
-          <div class="roi-result-item">
-            <span>Revenue increase (Year 1):</span>
-            <strong id="year-revenue">-</strong>
-          </div>
-          <div class="roi-highlight">
-            ROI: <span id="roi-percent">-</span>
-          </div>
-          <div class="roi-result-item">
-            <span>Payback period:</span>
-            <strong id="payback">-</strong>
-          </div>
-        </div>
-        
-        <div class="roi-cta-section">
-          <a href="https://app.lemcal.com/@iqbal-botuvo" class="roi-cta-btn">Book Your Free Demo →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="section" style="background: hsl(var(--muted));">
-  <div class="container">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">
-      Comprehensive AI receptionist solutions built specifically for healthcare practices
-    </p>
-    
-    <div class="grid">
-      <div class="card">
-        <div class="service-icon icon-purple">📅</div>
-        <h3 class="service-title">24/7 Appointment Booking</h3>
-        <p>Patients can book appointments instantly, even when your practice is closed. No more missed opportunities or phone tag.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-blue">📞</div>
-        <h3 class="service-title">Missed Call Capture</h3>
-        <p>Capture every call that comes in after hours or when your front desk is busy with patients. Never lose revenue to voicemail again.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-green">🔔</div>
-        <h3 class="service-title">Appointment Reminders</h3>
-        <p>Automated SMS and email reminders reduce no-shows by 50%, saving thousands per month in wasted appointment slots.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-orange">💬</div>
-        <h3 class="service-title">Pricing & FAQ Automation</h3>
-        <p>Answer common questions about procedures, pricing, insurance, and aftercare instantly—without tying up your staff.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-purple">📊</div>
-        <h3 class="service-title">CRM Integration</h3>
-        <p>Seamlessly sync with your practice management software and keep everything organized.</p>
-      </div>
-      
-      <div class="card">
-        <div class="service-icon icon-blue">💬</div>
-        <h3 class="service-title">24/7 Patient Support</h3>
-        <p>Instant responses to patient inquiries about office hours, directions, insurance acceptance, and general questions.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Process Section -->
-<section id="process" class="process-section">
-  <div class="container">
-    <h2>Our Process</h2>
-    <p class="subtitle">From first call to go-live in 2-3 weeks</p>
-    
-    <div class="process-grid">
-      
-      <div class="process-card">
-        <div class="step-number">1</div>
-        <h3>Discovery Call</h3>
-        <p>10-minute chat to understand your practice, current pain points, and what you need covered (website inquiries, phone calls, or both).</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">2</div>
-        <h3>Custom Proposal</h3>
-        <p>We send over a tailored proposal with pricing, timeline, and ROI projections based on your practice size and needs.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">3</div>
-        <h3>Onboarding & Setup</h3>
-        <p>Our team builds your AI receptionist, trains it on your services, and integrates it with your booking system. Takes 2-3 weeks.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">4</div>
-        <h3>Testing & Training</h3>
-        <p>We test every scenario, train your team on the dashboard, and make sure everything works perfectly before going live.</p>
-      </div>
-
-      <div class="process-card">
-        <div class="step-number">5</div>
-        <h3>Go Live</h3>
-        <p>Your AI goes live. We monitor performance for the first 2 weeks, make adjustments, and provide ongoing support.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Pricing Section -->
-<section id="pricing" class="pricing-section">
-  <div class="container">
-    <h2>Simple, Transparent Pricing</h2>
-    <p class="subtitle">Choose your coverage. No hidden fees. Cancel anytime.</p>
-    
-    <div class="pricing-grid">
-      
-      <!-- STARTER -->
-      <div class="pricing-card">
-        <div class="plan-badge">Perfect for Testing</div>
-        <h3>Starter</h3>
-        <div class="price">
-          <span class="amount">£297</span>
-          <span class="period">/month</span>
-        </div>
-        <div class="setup-fee">📌 one time setup fee: £1,500</div>
-        
-        <ul class="features">
-          <li>✅ Website chatbot only</li>
-          <li>✅ AI trained on your services</li>
-          <li>✅ Booking system integration</li>
-          <li>✅ Analytics dashboard</li>
-          <li>✅ Email support</li>
-          <li>❌ Phone AI</li>
-          <li>❌ Multi-location support</li>
-        </ul>
-        
-        <div class="perfect-for-section">
-          <p class="perfect-for-title">🎯 Perfect for:</p>
-          <ul class="perfect-for-list">
-            <li>Single-location practices</li>
-            <li>Practices testing AI for first time</li>
-            <li>Small teams (1-2 receptionists)</li>
-            <li>Budget-conscious practices</li>
-            <li>Basic website inquiry capture needed</li>
-          </ul>
-        </div>
-        
-        <button class="cta-button secondary" onclick="scrollToContact()">Get Started</button>
-      </div>
-
-      <!-- GROWTH (MOST POPULAR) -->
-      <div class="pricing-card featured">
-        <div class="plan-badge popular">Most Popular</div>
-        <h3>Growth</h3>
-        <div class="price">
-          <span class="amount">£597</span>
-          <span class="period">/month</span>
-        </div>
-        <div class="setup-fee">📌 one time setup fee: £2,500</div>
-        
-        <ul class="features">
-          <li>✅ Website chatbot</li>
-          <li>✅ Phone AI receptionist</li>
-          <li>✅ AI trained on your services</li>
-          <li>✅ Booking system integration</li>
-          <li>✅ Advanced analytics</li>
-          <li>✅ Priority support</li>
-          <li>✅ Custom voice training</li>
-          <li>✅ Unlimited interactions</li>
-        </ul>
-        
-        <div class="perfect-for-section">
-          <p class="perfect-for-title">🎯 Perfect for:</p>
-          <ul class="perfect-for-list">
-            <li>Growing practices (2+ receptionists)</li>
-            <li>Practices wanting both web + phone coverage</li>
-            <li>Busy practices missing 20+ calls/day</li>
-            <li>Practices ready to scale patient acquisition</li>
-            <li>Teams wanting advanced features</li>
-          </ul>
-        </div>
-        
-        <button class="cta-button primary" onclick="scrollToContact()">Get Started</button>
-      </div>
-
-      <!-- ENTERPRISE -->
-      <div class="pricing-card">
-        <div class="plan-badge">For Multi-Location</div>
-        <h3>Enterprise</h3>
-        <div class="price">
-          <span class="amount">£897</span>
-          <span class="period">/month</span>
-        </div>
-        <div class="setup-fee">📌 one time setup fee: £4,000</div>
-        
-        <ul class="features">
-          <li>✅ Everything in Growth</li>
-          <li>✅ Multi-location support (2-5 locations)</li>
-          <li>✅ Advanced integrations</li>
-          <li>✅ Dedicated account manager</li>
-          <li>✅ White-glove onboarding</li>
-          <li>✅ Custom reporting</li>
-          <li>✅ API access</li>
-        </ul>
-        
-        <div class="perfect-for-section">
-          <p class="perfect-for-title">🎯 Perfect for:</p>
-          <ul class="perfect-for-list">
-            <li>Multi-location practices (2-5 locations)</li>
-            <li>Clinic groups expanding rapidly</li>
-            <li>Practices needing dedicated support</li>
-            <li>Teams requiring custom integrations</li>
-            <li>Organizations with complex workflows</li>
-          </ul>
-        </div>
-        
-        <button class="cta-button secondary" onclick="scrollToContact()">Get Started</button>
-      </div>
-
-      <!-- BESPOKE -->
-      <div class="pricing-card bespoke">
-        <div class="plan-badge premium">BESPOKE 🏆</div>
-        <h3>BESPOKE</h3>
-        <div class="price">
-          <span class="amount">Starting at £1,500/month</span>
-        </div>
-        <div class="setup-fee">📌 one time setup fee: £8,000</div>
-        
-        <ul class="features">
-          <li>✅ Everything in Enterprise</li>
-          <li>✅ Custom website design + build</li>
-          <li>✅ Custom backend system development</li>
-          <li>✅ Bespoke voice AI training (not white-label)</li>
-          <li>✅ Complete practice management system</li>
-          <li>✅ Advanced analytics dashboard</li>
-          <li>✅ Dedicated dev team</li>
-        </ul>
-        
-        <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px; border-left: 4px solid #f59e0b;">
-          <p style="font-weight: 600; margin-bottom: 0.5rem; color: #92400e;">🎯 Perfect for:</p>
-          <ul style="color: #92400e; font-size: 0.875rem; margin: 0; padding-left: 1.2rem;">
-            <li>Large practices (5+ locations)</li>
-            <li>Clinic groups & hospital networks</li>
-            <li>Practices wanting complete digital transformation</li>
-            <li>Complex/legacy system integrations</li>
-          </ul>
-        </div>
-        
-        <div style="margin-bottom: 1.5rem; padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px; text-align: center;">
-          <p style="color: #92400e; font-size: 0.875rem; font-weight: 600;">
-            Note: Each Bespoke project is quoted individually based on scope.
-          </p>
-        </div>
-        
-        <button class="cta-button premium" onclick="scrollToContact()">Get Custom Quote</button>
-      </div>
-
-    </div>
-    
-    <p class="pricing-note">All plans include: 2-3 week setup, unlimited updates, 24/7 AI operation, and cancel anytime.</p>
-  </div>
-</section>
-
-<!-- Final CTA Section -->
-<section class="cta-section">
-  <div class="container">
-    <h2>Ready to Transform Your Practice?</h2>
-    <p style="font-size: 1.125rem; margin-bottom: 2rem;">
-      Join the growing number of healthcare practices using AI to capture every patient inquiry and grow their revenue.
-    </p>
-    <button class="btn btn-secondary" onclick="scrollToContact()">Book Your Free Demo Today</button>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section id="faq" class="faq-section">
-  <div class="container">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <p class="section-subtitle">
-      Everything you need to know about BOTUVO AI Receptionist
-    </p>
-    
-    <div class="faq-container">
-      
-      <!-- FAQ 1 -->
       <div class="faq-item">
         <button class="faq-question">
-          How does the AI receptionist work?
-          <span class="faq-arrow">▼</span>
+          What if the leads are really old?
+          <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Our AI handles website chat and phone calls 24/7. When a patient inquires, the AI:</p>
-          <p>→ Answers their questions</p>
-          <p>→ Checks availability</p>
-          <p>→ Books appointments automatically</p>
-          <p>It sounds human, integrates with your calendar, and captures inquiries you'd normally miss.</p>
+          <div class="faq-answer-inner">
+            That's the point. Circumstances change — people's financial situations shift, markets move, motivation returns. Leads from 12–24 months ago are often more ready now than when they first enquired.
+          </div>
         </div>
       </div>
 
-      <!-- FAQ 2 -->
       <div class="faq-item">
         <button class="faq-question">
-          How much does it cost?
-          <span class="faq-arrow">▼</span>
+          Is this GDPR compliant?
+          <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Plans start at £297/month. Most practices choose our Growth plan (£597/month) which includes website chat + phone AI.</p>
-          <p><strong>Setup:</strong> £2,500 → £1,500 if you sign up to our Growth plan before January 1st.</p>
-          <p>No long-term contracts. Cancel anytime with 30 days notice.</p>
+          <div class="faq-answer-inner">
+            Yes. These are people who already provided their contact details to your agency when they enquired. This is follow-up communication from your firm, not cold outreach. Every call is recorded and scripted to match your agency's branding.
+          </div>
         </div>
       </div>
 
-      <!-- FAQ 3 -->
       <div class="faq-item">
         <button class="faq-question">
-          How long does it take to go live?
-          <span class="faq-arrow">▼</span>
+          What if it doesn't work?
+          <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>2-3 weeks from signup to launch.</p>
-          <p>We handle everything: setup, integration, AI training, and testing. You just review and approve.</p>
+          <div class="faq-answer-inner">
+            The performance pricing model means you only pay per qualified appointment booked beyond the platform fee. We start with a small pilot specifically to prove the numbers before scaling. Your risk is minimal.
+          </div>
         </div>
       </div>
 
-      <!-- FAQ 4 -->
       <div class="faq-item">
         <button class="faq-question">
-          Will it work with my practice management software?
-          <span class="faq-arrow">▼</span>
+          Do we need to change our CRM or install anything?
+          <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>We integrate with most UK practice management systems (Dentally, SOE, R4, and others) via API.</p>
-          <p>If you use a custom system, we'll work with you to find a solution.</p>
-          <p><strong>Want to check if yours is compatible?</strong> Ask our AI below 👇</p>
+          <div class="faq-answer-inner">
+            No. You send us a spreadsheet of leads. We send you booked appointments. No integrations, no software installs, no training required.
+          </div>
         </div>
       </div>
 
-      <!-- FAQ 5 -->
       <div class="faq-item">
         <button class="faq-question">
-          What if the AI makes a mistake or books the wrong time?
-          <span class="faq-arrow">▼</span>
+          How quickly can we start?
+          <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>The AI is highly accurate, but you stay in control:</p>
-          <p>→ Set it to auto-confirm bookings (if you trust it fully)</p>
-          <p>→ OR set it to request approval (you review bookings first)</p>
-          <p>Most practices start with approval mode, then switch to auto-confirm after 2-3 weeks.</p>
-        </div>
-      </div>
-
-      <!-- FAQ 6 -->
-      <div class="faq-item">
-        <button class="faq-question">
-          How do I know if this will work for my practice?
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-          <p>Most UK dental, GP, and physio practices miss 25-30 patient inquiries per month (website visitors who don't book, calls that go unanswered, after-hours inquiries).</p>
-          <p>That's £6-12k/month in lost revenue.</p>
-          <p><strong>Use our free calculator</strong> to see exactly how much YOUR practice is missing 👇</p>
-          <p>Then book a 10-min demo to see the AI in action.</p>
+          <div class="faq-answer-inner">
+            From receiving your lead list, the system is configured and calling within 5 business days.
+          </div>
         </div>
       </div>
 
@@ -1196,892 +1027,114 @@
   </div>
 </section>
 
-<!-- Contact Form Section -->
-<section id="contact" class="section">
+<!-- CONTACT -->
+<section id="contact">
   <div class="container">
-    <h2 class="section-title">Get Started Today</h2>
-    <p class="section-subtitle">
-      Let's discuss how BOTUVO can transform your practice
-    </p>
-    
-    <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
-      <div class="form-group">
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" required>
+    <div class="contact-inner">
+      <div class="contact-left fade-up">
+        <div class="section-label">Get Started</div>
+        <h2>Ready to Turn Dead Leads Into Revenue?</h2>
+        <p>We're running a limited number of pilots this quarter. Book a 10-minute call to see if your database qualifies.</p>
+
+        <a href="mailto:iqbal@botuvo.co.uk" class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          iqbal@botuvo.co.uk
+        </a>
       </div>
-      
-      <div class="form-group">
-        <label for="company">Practice/Clinic Name *</label>
-        <input type="text" id="company" name="company" required>
+
+      <div class="fade-up d1">
+        <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="agency">Agency Name *</label>
+              <input type="text" id="agency" name="agency" placeholder="Smith & Co." required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="jane@smithco.co.uk" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="07700 000000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="leads">How many dormant leads do you have? *</label>
+            <select id="leads" name="leads" required>
+              <option value="" disabled selected>Select a range...</option>
+              <option value="under-50">Under 50</option>
+              <option value="50-100">50–100</option>
+              <option value="100-250">100–250</option>
+              <option value="250-500">250–500</option>
+              <option value="500+">500+</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your biggest challenge *</label>
+            <textarea id="message" name="message" placeholder="e.g. We have hundreds of old valuations that never listed and want to know if any are still interested..." required></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Book My 10-Minute Call &rarr;</button>
+            <p class="form-disclaimer">We'll respond within one business day to schedule your call.</p>
+          </div>
+        </form>
       </div>
-      
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="phone">Phone Number *</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="practice-type">Practice Type *</label>
-        <select id="practice-type" name="practice-type" required>
-          <option value="">Select your practice type</option>
-          <option value="dental">Dental Practice</option>
-          <option value="aesthetic">Aesthetic Clinic</option>
-          <option value="chiropractic">Chiropractic Office</option>
-          <option value="physiotherapy">Physiotherapy Clinic</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="missed-calls">How many calls do you miss per day? *</label>
-        <select id="missed-calls" name="missed-calls" required>
-          <option value="">Select an option</option>
-          <option value="0-10">0-10 calls</option>
-          <option value="10-20">10-20 calls</option>
-          <option value="20-30">20-30 calls</option>
-          <option value="30+">30+ calls</option>
-          <option value="not-sure">Not sure</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="message">What's your biggest challenge? *</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary" style="width: 100%;">Book My Free Demo</button>
-    </form>
+    </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-title">BOTUVO</div>
-        <p style="color: rgba(255, 255, 255, 0.8);">
-          Your AI-powered receptionist, working 24/7 to capture every patient inquiry and grow your practice.
-        </p>
-      </div>
-      
-      <div>
-        <div class="footer-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Appointment Booking</a></li>
-          <li><a href="#services">Missed Call Capture</a></li>
-          <li><a href="#services">Appointment Reminders</a></li>
-          <li><a href="#services">Patient Support</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <div class="footer-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">About Us</a></li>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="#" onclick="openModal('footer-contact-modal'); return false;">Contact</a></li>
-          <li><a href="/privacy-policy.pdf" download>Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <div>© 2025 BOTUVO. All rights reserved.</div>
-      <div class="social-links">
-        <a href="https://linkedin.com/company/botuvo" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        <a href="https://x.com/botuvo" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <span>🇬🇧 UK-Based</span>
-        <span>❤️ 10% to Charity</span>
-      </div>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">BOTU<span>VO</span></div>
+    <div class="footer-copy">© 2025 BOTUVO. All rights reserved.</div>
+    <div class="footer-email"><a href="mailto:iqbal@botuvo.co.uk">iqbal@botuvo.co.uk</a></div>
   </div>
 </footer>
 
-<!-- Add these styles -->
-<style>
-/* ROI Calculator Styles */
-.roi-calculator-section {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 5rem 1rem;
-}
-
-.roi-calculator-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  padding: 3rem;
-}
-
-.roi-form-group {
-  margin-bottom: 1.5rem;
-}
-
-.roi-form-group label {
-  display: block;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 0.5rem;
-}
-
-.roi-form-group input,
-.roi-form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.roi-form-group input:focus,
-.roi-form-group select:focus {
-  outline: none;
-  border-color: #7c3aed;
-}
-
-.roi-results {
-  margin-top: 2rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-  color: white;
-  border-radius: 15px;
-  display: none;
-}
-
-.roi-results.show {
-  display: block;
-}
-
-.roi-result-section {
-  margin-bottom: 2rem;
-}
-
-.roi-result-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid rgba(255,255,255,0.3);
-  padding-bottom: 0.5rem;
-}
-
-.roi-result-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-  font-size: 1.125rem;
-}
-
-.roi-result-item strong {
-  font-weight: 700;
-}
-
-.roi-highlight {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-top: 1rem;
-  text-align: center;
-  padding: 1rem;
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-}
-
-.roi-cta-section {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.roi-cta-btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: white;
-  color: #7c3aed;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: transform 0.2s;
-}
-
-.roi-cta-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* Enhanced "Perfect For" Section Styling */
-.perfect-for-section {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: rgba(59, 130, 246, 0.05);
-  border-radius: 8px;
-  border-left: 4px solid #3b82f6;
-}
-
-.pricing-card.featured .perfect-for-section {
-  background: rgba(59, 130, 246, 0.08);
-  border-left-color: #2563eb;
-}
-
-.pricing-card.bespoke .perfect-for-section {
-  background: rgba(245, 158, 11, 0.1);
-  border-left-color: #f59e0b;
-}
-
-.perfect-for-title {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  font-size: 0.9rem;
-  color: #1e40af;
-}
-
-.pricing-card.featured .perfect-for-title {
-  color: #1d4ed8;
-}
-
-.pricing-card.bespoke .perfect-for-title {
-  color: #92400e;
-}
-
-.perfect-for-list {
-  margin: 0;
-  padding-left: 1.2rem;
-  color: #374151;
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.pricing-card.bespoke .perfect-for-list {
-  color: #78350f;
-}
-
-.perfect-for-list li {
-  margin-bottom: 0.25rem;
-}
-
-/* Pricing Section Styles */
-.pricing-section {
-  padding: 80px 20px;
-  background: white;
-}
-
-.pricing-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-.pricing-section .subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin-bottom: 60px;
-  font-size: 1.1rem;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1400px;
-  margin: 0 auto 40px;
-}
-
-.pricing-card {
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 32px 24px;
-  text-align: center;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  height: auto;
-  min-height: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-  border-color: #667eea;
-}
-
-/* Featured card (Growth) */
-.pricing-card.featured {
-  border: 3px solid #667eea;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
-  transform: scale(1.02);
-}
-
-.pricing-card.featured:hover {
-  transform: scale(1.05) translateY(-8px);
-}
-
-/* Bespoke card */
-.pricing-card.bespoke {
-  border: 3px solid #f59e0b;
-  background: linear-gradient(135deg, #fff9e6 0%, #fef3c7 100%);
-}
-
-.pricing-card.bespoke:hover {
-  border-color: #d97706;
-}
-
-.plan-badge {
-  background: #e0e7ff;
-  color: #4338ca;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: inline-block;
-  margin-bottom: 16px;
-}
-
-.plan-badge.popular {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.plan-badge.premium {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: white;
-}
-
-.pricing-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  color: #1f2937;
-}
-
-.price {
-  margin-bottom: 8px;
-}
-
-.price .amount {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-.price .period {
-  font-size: 1.2rem;
-  color: #6b7280;
-}
-
-.setup-fee {
-  color: #6b7280;
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
-  text-align: left;
-}
-
-.features li {
-  padding: 10px 0;
-  font-size: 0.95rem;
-  color: #374151;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.features li:last-child {
-  border-bottom: none;
-}
-
-.cta-button {
-  width: 100%;
-  padding: 14px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  margin-bottom: 16px;
-  margin-top: auto;
-}
-
-.cta-button.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.cta-button.primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-.cta-button.secondary {
-  background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
-}
-
-.cta-button.secondary:hover {
-  background: #667eea;
-  color: white;
-}
-
-.cta-button.premium {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: white;
-}
-
-.cta-button.premium:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
-}
-
-.pricing-note {
-  text-align: center;
-  color: #6b7280;
-  font-size: 0.9rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Footer Styles */
-.footer {
-  background: hsl(240, 10%, 15%);
-  color: white;
-  padding: 4rem 1rem 2rem;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: white;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.social-links a:hover {
-  background: hsl(var(--primary));
-  transform: translateY(-3px);
-}
-
-/* Contact Form Styles */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid hsl(var(--border));
-  border-radius: var(--radius);
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: hsl(var(--primary));
-}
-
-.form-group textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-/* Responsive for tablets */
-@media (max-width: 1200px) {
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .pricing-card.featured {
-    transform: scale(1);
-  }
-  
-  .benefits-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .perfect-for-section {
-    margin: 1rem 0;
-    padding: 0.75rem;
-  }
-
-  .perfect-for-title {
-    font-size: 0.85rem;
-  }
-
-  .perfect-for-list {
-    font-size: 0.8rem;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-</style>
-
-<!-- Contact Modal -->
-<div id="contactModal" class="modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
-    <h2 style="margin-bottom: 1rem;">Book Your Free Demo</h2>
-    <p style="color: hsl(var(--muted-foreground)); margin-bottom: 2rem;">
-      Fill out the form below and we'll get back to you within 24 hours to schedule your personalized demo.
-    </p>
-    
-    <form action="https://formspree.io/f/mjkwvgvr" method="POST">
-      <div class="form-group">
-        <label for="modal-name">Your Name *</label>
-        <input type="text" id="modal-name" name="name" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="modal-company">Practice/Clinic Name *</label>
-        <input type="text" id="modal-company" name="company" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="modal-email">Email Address *</label>
-        <input type="email" id="modal-email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="modal-phone">Phone Number *</label>
-        <input type="tel" id="modal-phone" name="phone" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="modal-practice-type">Practice Type *</label>
-        <select id="modal-practice-type" name="practice-type" required>
-          <option value="">Select your practice type</option>
-          <option value="dental">Dental Practice</option>
-          <option value="aesthetic">Aesthetic Clinic</option>
-          <option value="chiropractic">Chiropractic Office</option>
-          <option value="physiotherapy">Physiotherapy Clinic</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="modal-message">What's your biggest challenge? *</label>
-        <textarea id="modal-message" name="message" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary" style="width: 100%;">Book My Free Demo</button>
-    </form>
-  </div>
-</div>
-
-<!-- Chatbase Script -->
 <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="wWbvHrDPDPqsnX1dBfo0f";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-
-<!-- Footer Contact Modal -->
-<div id="footer-contact-modal" class="modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('footer-contact-modal')">&times;</button>
-    <h2 style="margin-bottom: 1rem;">Contact Us</h2>
-    <p style="margin-bottom: 1rem;">We'd love to hear from you! Get in touch with us through:</p>
-    <ul style="list-style: none; margin-bottom: 2rem;">
-      <li style="margin-bottom: 0.5rem;">💬 Use our AI chatbot in the bottom right corner</li>
-      <li>📋 Fill out the <a href="#contact" onclick="closeModal('footer-contact-modal'); scrollToContact();" style="color: hsl(var(--primary));">contact form</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Add Modal styles -->
-<style>
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius);
-  max-width: 600px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  animation: scaleIn 0.3s ease-out;
-}
-
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: hsl(var(--muted-foreground));
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-
-.modal-close:hover {
-  background: hsl(var(--muted));
-  color: hsl(var(--foreground));
-}
-</style>
-
-<!-- JavaScript -->
-<script>
-// Smooth scroll to contact
-function scrollToContact() {
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-}
-
-// Smooth scroll to ROI calculator
-function scrollToCalculator() {
-  document.getElementById('roi-calculator').scrollIntoView({ behavior: 'smooth' });
-}
-
-// Modal functions
-function openModal(id) {
-  document.getElementById(id).classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(id) {
-  document.getElementById(id).classList.remove('show');
-  document.body.style.overflow = 'auto';
-}
-
-// Close modal on outside click
-document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('modal')) {
-    closeModal(event.target.id);
-  }
-});
-
-// Close modal on ESC key
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    document.querySelectorAll('.modal.show').forEach(modal => {
-      closeModal(modal.id);
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('active');
+      document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+      if (!isOpen) item.classList.add('active');
     });
-  }
-});
-
-// ROI Calculator
-document.getElementById('roi-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const missedCallsPerDay = parseInt(document.getElementById('missed-calls').value);
-  const avgValue = parseInt(document.getElementById('avg-value').value);
-  const noShowRate = parseInt(document.getElementById('no-show-rate').value);
-  const monthlyAppointments = parseInt(document.getElementById('monthly-appointments').value);
-  
-  const missedCallsPerMonth = missedCallsPerDay * 20;
-  const lostAppointments = Math.round(missedCallsPerMonth * 0.1);
-  const missedRevenue = lostAppointments * avgValue;
-  
-  const noShows = Math.round(monthlyAppointments * (noShowRate / 100));
-  const noShowRevenue = noShows * avgValue;
-  
-  const totalLost = missedRevenue + noShowRevenue;
-  
-  const capturedCalls = Math.round(missedCallsPerMonth * 0.7);
-  const newAppointments = Math.round(capturedCalls * 0.1);
-  const capturedRevenue = newAppointments * avgValue;
-  
-  const reducedNoShows = Math.round(noShows * 0.5);
-  const recoveredRevenue = reducedNoShows * avgValue;
-  
-  const totalAdditional = capturedRevenue + recoveredRevenue;
-  
-  const yearRevenue = totalAdditional * 12;
-  const investment = 9664;
-  const roi = Math.round(((yearRevenue - investment) / investment) * 100);
-  const payback = Math.round((investment / totalAdditional) * 30);
-  
-  document.getElementById('missed-per-month').textContent = missedCallsPerMonth.toLocaleString();
-  document.getElementById('lost-appointments').textContent = lostAppointments.toLocaleString();
-  document.getElementById('missed-revenue').textContent = '£' + missedRevenue.toLocaleString();
-  document.getElementById('no-shows').textContent = noShows.toLocaleString();
-  document.getElementById('no-show-revenue').textContent = '£' + noShowRevenue.toLocaleString();
-  document.getElementById('total-lost').textContent = '£' + totalLost.toLocaleString() + '/month';
-  
-  document.getElementById('captured-calls').textContent = capturedCalls.toLocaleString();
-  document.getElementById('new-appointments').textContent = newAppointments.toLocaleString();
-  document.getElementById('captured-revenue').textContent = '£' + capturedRevenue.toLocaleString();
-  document.getElementById('reduced-no-shows').textContent = reducedNoShows.toLocaleString();
-  document.getElementById('recovered-revenue').textContent = '£' + recoveredRevenue.toLocaleString();
-  document.getElementById('total-additional').textContent = '£' + totalAdditional.toLocaleString() + '/month';
-  
-  document.getElementById('year-revenue').textContent = '£' + yearRevenue.toLocaleString();
-  document.getElementById('roi-percent').textContent = roi.toLocaleString() + '%';
-  document.getElementById('payback').textContent = payback + ' days';
-  
-  document.getElementById('roi-results').classList.add('show');
-  document.getElementById('roi-results').scrollIntoView({ behavior: 'smooth' });
-});
-
-// Animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
   });
-}, observerOptions);
 
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // FAQ Accordion functionality
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const faqItem = this.closest('.faq-item');
-      const isActive = faqItem.classList.contains('active');
-      
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Open clicked item if it wasn't active
-      if (!isActive) {
-        faqItem.classList.add('active');
+  // Scroll-triggered fade-up animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-  });
-  
-  // Observe all cards for animation
-  document.querySelectorAll('.card, .process-card, .pricing-card, .benefit-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(card);
-  });
-  
-});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav scroll state
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(15,23,42,0.97)'
+      : 'rgba(15,23,42,0.85)';
+  }, { passive: true });
 </script>
-  
+
 </body>
 </html>
-
-
-
-
-
-
