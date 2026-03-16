@@ -679,15 +679,18 @@
     .footer-email a:hover { color: var(--blue-bright); }
 
     /* ── ANIMATIONS ── */
-    .fade-up {
+    /* Elements visible by default — JS enhances with animation */
+    .fade-up { opacity: 1; transform: none; }
+
+    .js-loaded .fade-up {
       opacity: 0; transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .js-loaded .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-up.d1 { transition-delay: 0.08s; }
-    .fade-up.d2 { transition-delay: 0.16s; }
-    .fade-up.d3 { transition-delay: 0.24s; }
+    .js-loaded .fade-up.d1 { transition-delay: 0.08s; }
+    .js-loaded .fade-up.d2 { transition-delay: 0.16s; }
+    .js-loaded .fade-up.d3 { transition-delay: 0.24s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 920px) {
@@ -1115,6 +1118,10 @@
     });
   });
 
+
+  // Mark document as JS-loaded so animations activate
+  document.documentElement.classList.add('js-loaded');
+
   // Scroll-triggered fade-up animations
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1123,4 +1130,18 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav scroll state
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(15,23,42,0.97)'
+      : 'rgba(15,23,42,0.85)';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
