@@ -678,19 +678,9 @@
     }
     .footer-email a:hover { color: var(--blue-bright); }
 
-    /* ── ANIMATIONS ── */
-    /* Elements visible by default — JS enhances with animation */
+    /* ── ANIMATIONS — disabled for reliability ── */
     .fade-up { opacity: 1; transform: none; }
-
-    .js-loaded .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .js-loaded .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    .js-loaded .fade-up.d1 { transition-delay: 0.08s; }
-    .js-loaded .fade-up.d2 { transition-delay: 0.16s; }
-    .js-loaded .fade-up.d3 { transition-delay: 0.24s; }
+    .fade-up.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 920px) {
@@ -1039,11 +1029,11 @@
         <h2>Ready to Turn Dead Leads Into Revenue?</h2>
         <p>We're running a limited number of pilots this quarter. Book a 10-minute call to see if your database qualifies.</p>
 
-        <a href="/cdn-cgi/l/email-protection#7910081b1815391b160d0c0f16571a16570c12" class="contact-detail">
+        <a href="mailto:iqbal@botuvo.co.uk" class="contact-detail">
           <div class="contact-detail-icon">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <span class="__cf_email__" data-cfemail="d8b1a9bab9b498bab7acadaeb7f6bbb7f6adb3">[email&#160;protected]</span>
+          iqbal@botuvo.co.uk
         </a>
       </div>
 
@@ -1103,7 +1093,7 @@
   <div class="footer-inner">
     <div class="footer-logo">BOTU<span>VO</span></div>
     <div class="footer-copy">© 2025 BOTUVO. All rights reserved.</div>
-    <div class="footer-email"><a href="/cdn-cgi/l/email-protection#83eaf2e1e2efc3e1ecf7f6f5ecade0ecadf6e8"><span class="__cf_email__" data-cfemail="056c7467646945676a7170736a2b666a2b706e">[email&#160;protected]</span></a></div>
+    <div class="footer-email"><a href="mailto:iqbal@botuvo.co.uk">iqbal@botuvo.co.uk</a></div>
   </div>
 </footer>
 
@@ -1119,20 +1109,7 @@
   });
 
 
-  // Mark document as JS-loaded so animations activate
-  document.documentElement.classList.add('js-loaded');
-
-  // Scroll-triggered fade-up animations
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  // Animations removed for reliability
 
   // Nav scroll state
   const nav = document.getElementById('main-nav');
