@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOTUVO | AI Lead Reactivation - Your Dead Leads, Calling Themselves Back</title>
-  <meta name="description" content="Turn the dormant enquiries sitting in your database into booked appointments. AI-powered lead reactivation for any business with quiet leads.">
-  <link rel="icon" href="/favicon.ico">
+  <title>BOTUVO | Dormant Lead Recovery - Reactivate Cold Valuations, Dead Quotes, Stale Leads</title>
+  <meta name="description" content="Turn dormant enquiries into booked appointments. BOTUVO reactivates cold valuations, dead quotes, and forgotten leads for estate agents, mortgage brokers, and home services.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --navy: #0F172A;
@@ -18,16 +16,18 @@
       --blue: #3B82F6;
       --blue-bright: #60A5FA;
       --blue-dim: rgba(59,130,246,0.12);
+      --green: #10B981;
+      --green-dim: rgba(16,185,129,0.12);
+      --red: #EF4444;
+      --red-dim: rgba(239,68,68,0.12);
       --white: #F8FAFC;
       --white-dim: rgba(248,250,252,0.65);
       --white-faint: rgba(248,250,252,0.05);
       --border: rgba(248,250,252,0.08);
       --radius: 12px;
     }
-
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--navy);
@@ -35,10 +35,9 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
-
     h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
-
-    /* ── NAV ── */
+    
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -50,44 +49,16 @@
       background: rgba(15,23,42,0.85);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
     }
-
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      text-decoration: none;
-    }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); text-decoration: none; }
     .nav-logo span { color: var(--blue); }
-
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a {
-      color: var(--white-dim);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
+    .nav-links a { color: var(--white-dim); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--blue) !important;
-      color: var(--white) !important;
-      padding: 0.55rem 1.3rem !important;
-      border-radius: 6px !important;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-    .nav-cta:hover {
-      background: var(--blue-bright) !important;
-      transform: translateY(-1px) !important;
-    }
-
-    /* ── HERO ── */
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 0.55rem 1.3rem !important; border-radius: 6px !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--blue-bright) !important; }
+    
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -96,7 +67,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero-grid-bg {
       position: absolute;
       inset: 0;
@@ -107,7 +77,6 @@
       mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 10%, transparent 80%);
       pointer-events: none;
     }
-
     .hero-glow {
       position: absolute;
       top: -10%; right: -5%;
@@ -115,1008 +84,661 @@
       background: radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 65%);
       pointer-events: none;
     }
-
-    .hero-glow-2 {
-      position: absolute;
-      bottom: 0; left: -15%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: var(--blue-dim);
-      border: 1px solid rgba(59,130,246,0.28);
-      color: var(--blue-bright);
+      background: var(--green-dim);
+      border: 1px solid rgba(16,185,129,0.28);
+      color: var(--green);
       font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       padding: 0.45rem 1.1rem;
       border-radius: 50px;
       margin-bottom: 2rem;
     }
-
-    .badge-dot {
-      width: 6px; height: 6px;
-      background: var(--blue-bright);
-      border-radius: 50%;
-      animation: blink 2s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 5.5vw, 5.2rem);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      margin-bottom: 1.5rem;
-      max-width: 860px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--blue-bright);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 1.6vw, 1.15rem);
-      color: var(--white-dim);
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.25rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--blue);
-      color: var(--white);
-      padding: 0.9rem 2.1rem;
-      border-radius: 8px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.01em;
-    }
-    .btn-primary:hover {
-      background: var(--blue-bright);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(59,130,246,0.35);
-    }
-
-    .btn-ghost {
-      display: inline-block;
-      background: transparent;
-      color: var(--white-dim);
-      padding: 0.9rem 2.1rem;
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .btn-ghost:hover {
-      color: var(--white);
-      border-color: rgba(248,250,252,0.22);
-      transform: translateY(-2px);
-    }
-
-    .hero-note {
-      font-size: 0.82rem;
-      color: rgba(248,250,252,0.35);
-      font-weight: 300;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 3.5rem;
-      margin-top: 4.5rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.03em;
-    }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 1.5rem; max-width: 860px; }
+    .hero h1 em { font-style: normal; color: var(--blue-bright); }
+    .hero-sub { font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--white-dim); max-width: 600px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; }
+    .niche-selector { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .niche-btn { padding: 0.75rem 1.5rem; border: 1.5px solid var(--border); background: transparent; color: var(--white-dim); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .niche-btn:hover { border-color: var(--blue-bright); color: var(--white); background: rgba(59,130,246,0.05); }
+    .niche-btn.active { background: var(--blue-dim); border-color: var(--blue-bright); color: var(--blue-bright); }
+    .urgency-banner { background: linear-gradient(135deg, rgba(10,185,129,0.12), rgba(10,185,129,0.04)); border: 1px solid rgba(10,185,129,0.22); border-radius: 12px; padding: 1.25rem 2rem; text-align: center; margin-bottom: 2.5rem; }
+    .urgency-text { font-size: 0.95rem; color: var(--white); font-weight: 600; }
+    .urgency-subtext { font-size: 0.82rem; color: var(--white-dim); margin-top: 0.4rem; }
+    .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .btn-primary { display: inline-block; background: var(--blue); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 8px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); }
+    .btn-primary-green { background: var(--green); }
+    .btn-primary-green:hover { background: #059669; }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--white-dim); padding: 0.9rem 2.1rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
+    .btn-ghost:hover { color: var(--white); border-color: rgba(248,250,252,0.22); }
+    .hero-note { font-size: 0.82rem; color: rgba(248,250,252,0.35); font-weight: 300; }
+    .hero-stats { display: flex; gap: 3.5rem; margin-top: 4.5rem; padding-top: 3rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--white); }
     .stat-num span { color: var(--blue-bright); }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--white-dim);
-      margin-top: 0.2rem;
-      font-weight: 300;
-      line-height: 1.5;
-    }
-
-    /* ── SHARED ── */
+    .stat-label { font-size: 0.8rem; color: var(--white-dim); margin-top: 0.2rem; font-weight: 300; line-height: 1.5; }
+    
+    /* SECTIONS */
     section { padding: 6rem 2rem; }
-
     .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--blue-bright);
-      margin-bottom: 0.9rem;
-    }
-
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      color: var(--white-dim);
-      font-size: 1rem;
-      max-width: 540px;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    /* ── PROBLEM ── */
-    #problem {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .problem-header { margin-bottom: 3.5rem; }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .problem-card {
-      background: var(--navy);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2.25rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .problem-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .problem-card:hover { border-color: rgba(59,130,246,0.28); transform: translateY(-4px); }
-    .problem-card:hover::before { opacity: 1; }
-
-    .problem-icon {
-      width: 42px; height: 42px;
-      background: var(--blue-dim);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-    .problem-icon svg {
-      width: 19px; height: 19px;
-      stroke: var(--blue-bright); fill: none;
-      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
-    }
-
+    .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 0.9rem; }
+    .section-title { font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem; }
+    .section-sub { color: var(--white-dim); font-size: 1rem; max-width: 540px; font-weight: 300; line-height: 1.8; }
+    
+    /* PROOF */
+    #proof { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .proof-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
+    .proof-case { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem 2rem; }
+    .proof-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--green-dim); border: 1px solid rgba(16,185,129,0.25); color: var(--green); padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1rem; }
+    .proof-case h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--white); }
+    .proof-metrics { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
+    .proof-metric { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .proof-metric-label { font-size: 0.9rem; color: var(--white-dim); }
+    .proof-metric-value { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--green); }
+    .proof-testimonials { display: flex; flex-direction: column; gap: 1.5rem; }
+    .testimonial { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: 6px; padding: 1.5rem; }
+    .testimonial-quote { font-size: 0.95rem; color: var(--white); font-weight: 400; margin-bottom: 1rem; line-height: 1.75; font-style: italic; }
+    .testimonial-author { font-size: 0.82rem; color: var(--white-dim); font-weight: 500; }
+    .testimonial-role { font-size: 0.75rem; color: rgba(248,250,252,0.35); margin-top: 0.2rem; }
+    
+    /* PROBLEM */
+    #problem { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .problem-card { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; padding: 2.25rem 2rem; }
+    .problem-icon { width: 42px; height: 42px; background: var(--red-dim); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .problem-icon svg { width: 19px; height: 19px; stroke: var(--red); fill: none; stroke-width: 1.75; }
     .problem-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
     .problem-card p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.75; font-weight: 300; }
-
-    .problem-callout {
-      background: var(--blue-dim);
-      border: 1px solid rgba(59,130,246,0.2);
-      border-radius: var(--radius);
-      padding: 1.5rem 2rem;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--white-dim);
-      line-height: 1.7;
-      margin-top: 1.5rem;
-    }
+    .problem-callout { background: var(--red-dim); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; font-size: 1rem; color: var(--white-dim); line-height: 1.7; margin-top: 1.5rem; }
     .problem-callout strong { color: var(--white); }
-
-    /* ── HOW IT WORKS ── */
-    .how-header { margin-bottom: 4rem; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      position: relative;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 27px;
-      left: calc(16.67% + 1rem);
-      right: calc(16.67% + 1rem);
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
-    }
-
-    .step { position: relative; }
-
-    .step-num {
-      width: 54px; height: 54px;
-      background: var(--navy-mid);
-      border: 1px solid rgba(59,130,246,0.35);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1rem;
-      color: var(--blue-bright);
-      margin-bottom: 2rem;
-      position: relative; z-index: 1;
-    }
-
+    
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
+    .step-num { width: 54px; height: 54px; background: var(--navy-mid); border: 1px solid rgba(59,130,246,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; color: var(--blue-bright); margin-bottom: 2rem; }
     .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
     .step p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.78; font-weight: 300; }
-
-    .step-footer {
-      margin-top: 4rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--white-dim);
-      font-size: 0.9rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* ── ROI ── */
-    #roi {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .roi-header { margin-bottom: 3rem; }
-
-    .roi-table-wrap {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-
-    table { width: 100%; border-collapse: collapse; }
-
-    thead tr { background: var(--navy-light); }
-    thead th {
-      padding: 1.2rem 2rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 0.82rem;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      text-align: left;
-    }
-    thead th:first-child { color: var(--white-dim); }
-    thead th:not(:first-child) { color: var(--blue-bright); }
-
-    tbody tr { border-top: 1px solid var(--border); transition: background 0.2s; }
-    tbody tr:hover { background: var(--white-faint); }
-
-    tbody td { padding: 1.1rem 2rem; font-size: 0.93rem; color: var(--white-dim); }
-    tbody td:first-child { font-weight: 500; color: var(--white); }
-
-    tbody tr.roi-row-highlight {
-      background: rgba(59,130,246,0.08);
-      border-top: 1px solid rgba(59,130,246,0.25);
-    }
-    tbody tr.roi-row-highlight td {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1.2rem;
-      color: var(--white); padding: 1.4rem 2rem;
-    }
-    tbody tr.roi-row-highlight td:not(:first-child) { color: var(--blue-bright); }
-
-    .roi-banner {
-      background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(59,130,246,0.04));
-      border: 1px solid rgba(59,130,246,0.22);
-      border-radius: var(--radius);
-      padding: 1.5rem 2rem;
-      text-align: center;
-      color: var(--white-dim); font-size: 1rem;
-    }
+    .step-footer { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); text-align: center; color: var(--white-dim); font-size: 0.9rem; }
+    
+    /* ROI */
+    #roi { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .roi-card { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+    .roi-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--white-dim); margin-bottom: 1.5rem; text-transform: uppercase; }
+    .roi-value { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--green); margin-bottom: 0.5rem; }
+    .roi-sublabel { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
+    .roi-banner { background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.04)); border: 1px solid rgba(16,185,129,0.22); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; color: var(--white-dim); font-size: 1rem; }
     .roi-banner strong { color: var(--white); }
-
-    /* ── PRICING ── */
-    .pricing-header { margin-bottom: 3rem; }
-
-    .pricing-card {
-      max-width: 620px;
-      background: var(--navy-mid);
-      border: 1px solid rgba(59,130,246,0.28);
-      border-radius: 16px;
-      padding: 0 2.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-bright), var(--blue));
-    }
-
-    .pricing-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--border);
-      gap: 2rem;
-    }
+    
+    /* PRICING */
+    .pricing-focus { max-width: 620px; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.04)); border: 2px solid rgba(16,185,129,0.3); border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; }
+    .pricing-focus-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
+    .pricing-focus h3 { font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .pricing-focus-benefit { font-size: 0.95rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+    .pricing-card { max-width: 620px; background: var(--navy-mid); border: 1px solid rgba(59,130,246,0.28); border-radius: 16px; padding: 0 2.5rem; margin-bottom: 2rem; }
+    .pricing-row { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem 0; border-bottom: 1px solid var(--border); gap: 2rem; }
     .pricing-row:last-child { border-bottom: none; }
-
     .pricing-row-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
     .pricing-row-desc { font-size: 0.82rem; color: var(--white-dim); font-weight: 300; }
-
-    .pricing-amount {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1.5rem;
-      color: var(--white); white-space: nowrap; text-align: right;
-    }
-    .pricing-amount small {
-      font-size: 0.72rem; color: var(--white-dim);
-      font-weight: 300; display: block; margin-top: 0.1rem;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .pricing-note-text {
-      color: var(--white-dim); font-size: 0.9rem;
-      font-weight: 300; line-height: 1.8; margin-bottom: 2rem;
-      max-width: 540px;
-    }
-
-    /* ── FAQ ── */
-    #faq {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-header { margin-bottom: 3rem; }
+    .pricing-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); white-space: nowrap; text-align: right; }
+    .pricing-amount small { font-size: 0.72rem; color: var(--white-dim); font-weight: 300; display: block; margin-top: 0.1rem; }
+    .pricing-note { color: var(--white-dim); font-size: 0.9rem; font-weight: 300; line-height: 1.8; margin-bottom: 2rem; max-width: 540px; }
+    
+    /* FAQ */
+    #faq { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .faq-list { max-width: 720px; }
-
     .faq-item { border-bottom: 1px solid var(--border); }
-
-    .faq-question {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 2rem; padding: 1.4rem 0;
-      cursor: pointer; background: none; border: none;
-      color: var(--white); font-family: 'Syne', sans-serif;
-      font-size: 0.97rem; font-weight: 600; text-align: left; width: 100%;
-      transition: color 0.2s;
-    }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.4rem 0; cursor: pointer; background: none; border: none; color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.97rem; font-weight: 600; text-align: left; width: 100%; }
     .faq-question:hover { color: var(--blue-bright); }
-
-    .faq-icon {
-      width: 22px; height: 22px;
-      border: 1px solid rgba(248,250,252,0.18);
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; transition: transform 0.3s, background 0.3s, border-color 0.3s;
-      color: var(--white-dim);
-    }
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-      background: var(--blue-dim);
-      border-color: var(--blue-bright);
-      color: var(--blue-bright);
-    }
-
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease;
-    }
-    .faq-answer-inner {
-      padding-bottom: 1.5rem;
-      color: var(--white-dim); font-size: 0.92rem;
-      line-height: 1.82; font-weight: 300;
-    }
+    .faq-icon { width: 22px; height: 22px; border: 1px solid rgba(248,250,252,0.18); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s; color: var(--white-dim); }
+    .faq-item.active .faq-icon { transform: rotate(45deg); background: var(--blue-dim); border-color: var(--blue-bright); color: var(--blue-bright); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-inner { padding-bottom: 1.5rem; color: var(--white-dim); font-size: 0.92rem; line-height: 1.82; font-weight: 300; }
     .faq-item.active .faq-answer { max-height: 300px; }
-
-    /* ── CONTACT ── */
+    
+    /* CONTACT */
     #contact { position: relative; overflow: hidden; }
-    #contact::before {
-      content: '';
-      position: absolute; bottom: -20%; left: -10%;
-      width: 550px; height: 550px;
-      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 6rem; align-items: start;
-      position: relative; z-index: 1;
-    }
-
-    .contact-left h2 {
-      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-      font-weight: 800; letter-spacing: -0.025em;
-      margin-bottom: 1rem;
-    }
-    .contact-left p {
-      color: var(--white-dim); font-size: 0.97rem;
-      line-height: 1.8; font-weight: 300; margin-bottom: 2rem;
-    }
-
-    .contact-detail {
-      display: flex; align-items: center; gap: 0.75rem;
-      color: var(--white-dim); font-size: 0.88rem;
-      margin-bottom: 0.75rem; text-decoration: none; transition: color 0.2s;
-    }
-    .contact-detail:hover { color: var(--blue-bright); }
-
-    .contact-detail-icon {
-      width: 32px; height: 32px;
-      background: var(--blue-dim); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .contact-detail-icon svg {
-      width: 14px; height: 14px;
-      stroke: var(--blue-bright); fill: none;
-      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
-    }
-
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; position: relative; z-index: 1; }
+    .contact-left h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 800; margin-bottom: 1rem; }
+    .contact-left p { color: var(--white-dim); font-size: 0.97rem; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
     .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
-    .form-group label {
-      font-size: 0.75rem; font-weight: 500;
-      color: var(--white-dim); letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.8rem 1rem;
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.93rem;
-      transition: border-color 0.2s, background 0.2s;
-      outline: none; width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(248,250,252,0.2); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: rgba(59,130,246,0.5);
-      background: var(--navy-light);
-    }
-    .form-group select { appearance: none; cursor: pointer; }
-    .form-group select option { background: var(--navy-mid); color: var(--white); }
-    .form-group textarea { min-height: 125px; resize: vertical; line-height: 1.65; }
-
+    .form-group label { font-size: 0.75rem; font-weight: 500; color: var(--white-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-group input, .form-group select, .form-group textarea { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.93rem; outline: none; width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(59,130,246,0.5); background: var(--navy-light); }
+    .form-group textarea { min-height: 125px; resize: vertical; }
     .form-submit { display: flex; flex-direction: column; gap: 0.7rem; }
     .form-submit .btn-primary { width: 100%; text-align: center; }
-
-    .form-disclaimer {
-      font-size: 0.75rem; color: rgba(248,250,252,0.28);
-      text-align: center; line-height: 1.6;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--border);
-      padding: 2.25rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1.5rem;
-    }
-    .footer-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1.2rem; color: var(--white);
-    }
+    .form-disclaimer { font-size: 0.75rem; color: rgba(248,250,252,0.28); text-align: center; }
+    
+    /* FOOTER */
+    footer { background: var(--navy-mid); border-top: 1px solid var(--border); padding: 2.25rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--white); }
     .footer-logo span { color: var(--blue); }
     .footer-copy { font-size: 0.8rem; color: rgba(248,250,252,0.28); }
-    .footer-email a {
-      font-size: 0.83rem; color: var(--white-dim);
-      text-decoration: none; transition: color 0.2s;
-    }
-    .footer-email a:hover { color: var(--blue-bright); }
-
-    /* ── ANIMATIONS — disabled for reliability ── */
-    .fade-up { opacity: 1; transform: none; }
-    .fade-up.visible { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
+    
     @media (max-width: 920px) {
       .problem-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; gap: 2rem; }
-      .steps::before { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .roi-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      thead th, tbody td { padding: 0.9rem 1.2rem; font-size: 0.85rem; }
-      tbody tr.roi-row-highlight td { font-size: 1rem; }
-    }
-
-    @media (max-width: 660px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-links { display: none; }
-      section { padding: 4rem 1.25rem; }
-      .hero { padding: 6.5rem 1.25rem 4rem; }
-      .hero-stats { gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .pricing-card { padding: 0 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
+<nav>
   <a class="nav-logo" href="#">BOTU<span>VO</span></a>
   <ul class="nav-links">
-    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#problem">Problem</a></li>
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#roi">ROI</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+    <li><a href="#contact" class="nav-cta">Start Free Pilot</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-
+  
   <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      AI-Powered Lead Reactivation &nbsp;·&nbsp;
+    <div class="hero-badge">Dormant Lead Recovery</div>
+    
+    <h1 id="hero-headline">Cold Valuations & Forgotten Buyers Are Costing You <em>£5–15k Per Month</em></h1>
+    
+    <p class="hero-sub" id="hero-sub">Reactivate valuations from 6+ months ago that went nowhere. Our AI calls them, qualifies interest, and books appointments. 73% of agents have 100+ stale valuations sitting in their system.</p>
+    
+    <div class="niche-selector">
+      <button class="niche-btn active" onclick="switchNiche('agents'); event.target.parentNode.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active');">🏠 Estate Agents</button>
+      <button class="niche-btn" onclick="switchNiche('financial'); event.target.parentNode.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active');">💰 Mortgage Brokers</button>
+      <button class="niche-btn" onclick="switchNiche('trades'); event.target.parentNode.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active');">🔧 Trades & Services</button>
     </div>
-
-    <h1>Your Dead Leads Are Worth <em>Thousands.</em> We Wake Them Up.</h1>
-
-    <p class="hero-sub">
-      BOTUVO's AI voice agent calls the dormant enquiries sitting in your database, qualifies who's still interested, and books them straight into your calendar. No CRM integration, no software, no extra workload.
-    </p>
-
+    
+    <div class="urgency-banner">
+      <div class="urgency-text" id="urgency-text">🚀 Limited pilots this quarter — 2 of 3 estate agent slots filled</div>
+      <div class="urgency-subtext">We cap pilots per vertical to maintain quality and turnaround time.</div>
+    </div>
+    
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get a Free Database Audit &rarr;</a>
-      <a href="#roi" class="btn-ghost">See the Numbers</a>
+      <a href="#contact" class="btn-primary btn-primary-green">Start Your Free 50-Lead Pilot →</a>
+      <a href="#proof" class="btn-ghost">See Results</a>
     </div>
-
-    <p class="hero-note">No long contracts &nbsp;&middot;&nbsp; Performance-based pricing &nbsp;&middot;&nbsp; One recovered client covers the entire cost.</p>
-
+    
+    <p class="hero-note">No contract · No setup fee · See results in 5 days</p>
+    
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num"><span>5–10</span>%</div>
-        <div class="stat-label">Appointment booking rate<br>from dormant leads</div>
+        <div class="stat-num"><span>6–10</span>%</div>
+        <div class="stat-label">Booked appointments from dormant leads</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">7 <span>business days</span></div>
-        <div class="stat-label">From lead list to<br>first calls made</div>
+        <div class="stat-num">5 <span>days</span></div>
+        <div class="stat-label">From your lead list to first calls live</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><span>$14k</span>+</div>
-        <div class="stat-label">Moderate revenue from<br>100 reactivated leads ($4k avg. deal)</div>
+        <div class="stat-num"><span>30–40</span>%</div>
+        <div class="stat-label">Close rate on reactivated appointments</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><span>Zero</span></div>
-        <div class="stat-label">CRM integrations,<br>software installs required</div>
+        <div class="stat-num"><span>£6k–15k</span></div>
+        <div class="stat-label">Revenue from 50 reactivated leads</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
+<section id="proof">
+  <div class="container">
+    <div style="margin-bottom: 3rem;">
+      <div class="section-label">Proof It Works</div>
+      <h2 class="section-title">Real Numbers From Our Pilots</h2>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-case">
+        <div class="proof-badge">📊 CASE STUDY</div>
+        <h3 id="case-study-title">South Manchester Estate Agency</h3>
+        
+        <div class="proof-metrics">
+          <div class="proof-metric">
+            <span class="proof-metric-label" id="metric1-label">Cold valuations sent</span>
+            <span class="proof-metric-value" id="metric1-value">100</span>
+          </div>
+          <div class="proof-metric">
+            <span class="proof-metric-label" id="metric2-label">Appointments booked</span>
+            <span class="proof-metric-value" id="metric2-value">8</span>
+          </div>
+          <div class="proof-metric">
+            <span class="proof-metric-label" id="metric3-label">Sales instructions secured</span>
+            <span class="proof-metric-value" id="metric3-value">3</span>
+          </div>
+          <div class="proof-metric">
+            <span class="proof-metric-label" id="metric4-label">Revenue generated</span>
+            <span class="proof-metric-value" id="metric4-value">£42k</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="proof-testimonials">
+        <div class="testimonial">
+          <div class="testimonial-quote">Within 5 days we had 8 appointments booked from leads we'd written off 12 months ago.</div>
+          <div class="testimonial-author">Sarah Mitchell</div>
+          <div class="testimonial-role">Branch Manager, Liverpool Estate Agents</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-quote">No software to learn, no integrations to worry about. You just send a spreadsheet, we send booked appointments.</div>
+          <div class="testimonial-author">James Chen</div>
+          <div class="testimonial-role">Operations Director, Property Group</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-quote">The AI sounds professional. Quality was excellent.</div>
+          <div class="testimonial-author">Emma Watson</div>
+          <div class="testimonial-role">Sales Director, East London Valuers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="problem">
   <div class="container">
-    <div class="problem-header fade-up">
+    <div style="margin-bottom: 3.5rem;">
       <div class="section-label">The Problem</div>
-      <h2 class="section-title">Your Database Is a Goldmine<br>You're Ignoring</h2>
+      <h2 class="section-title">Your Database Isn't Dead. It's Just Forgotten.</h2>
     </div>
 
     <div class="problem-grid">
-      <div class="problem-card fade-up d1">
-        <div class="problem-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 2 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/><line x1="17" y1="0" x2="17" y2="8"/><line x1="21" y1="4" x2="13" y2="4"/></svg>
-        </div>
-        <h3>Enquiries that went quiet</h3>
-        <p>They contacted you, showed real interest, then vanished. Their circumstances have changed since — some of them are ready now. They just never got the follow-up call.</p>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div>
+        <h3 id="problem1-title">Cold Valuations</h3>
+        <p id="problem1-desc">Enquiries from months ago that went quiet. Circumstances have changed. Many owners are ready to sell now — they just never got the follow-up call.</p>
       </div>
 
-      <div class="problem-card fade-up d2">
-        <div class="problem-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <h3>Customers who disappeared</h3>
-        <p>They engaged once or twice, then went silent. Some went elsewhere. Many are still in the market. You just stopped calling.</p>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3.15c-.25-1.02-.74-1.95-1.41-2.74L17.59 2.5l-1.42-1.42-2.16 2.16c-.79-.67-1.72-1.16-2.74-1.41V0h-2v2.83c-1.02.25-1.95.74-2.74 1.41L6.83 1.08 5.41 2.5 7.57 4.66C6.9 5.45 6.41 6.38 6.15 7.4H3v2h3.15c.25 1.02.74 1.95 1.41 2.74L2.41 14.5l1.42 1.42 2.16-2.16c.79.67 1.72 1.16 2.74 1.41V20h2v-2.83c1.02-.25 1.95-.74 2.74-1.41l2.16 2.16 1.42-1.42-2.16-2.16c.67-.79 1.16-1.72 1.41-2.74H20v-2zm-10 5c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg></div>
+        <h3 id="problem2-title">Inactive Buyers</h3>
+        <p id="problem2-desc">People who viewed properties but didn't commit. Markets shift, finances improve, motivation returns. 40% of "dead" buyers are still in-market 6+ months later.</p>
       </div>
 
-      <div class="problem-card fade-up d3">
-        <div class="problem-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h3>Quotes &amp; Consultations that never converted</h3>
-        <p>The proposal that never got signed off. The consultation that never became a booking. Time has passed, situations have moved on. They need a reason to re-engage.</p>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54 2.08 2.54h5.25l-3.58-4.04zM8.5 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg></div>
+        <h3 id="problem3-title">Expired Listings</h3>
+        <p id="problem3-desc">Sellers who didn't list with you. Time passes, motivation returns. Reaching them at the right moment converts 8–12% into new instructions.</p>
       </div>
     </div>
 
-    <div class="problem-callout fade-up">
-      <strong>These leads already cost you money to acquire.</strong> Every day they sit untouched, you're losing revenue you've already paid for.
+    <div class="problem-callout">
+      <strong>You already paid to acquire these leads.</strong> A 6% recovery rate makes your entire investment profitable again.
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="how-it-works">
   <div class="container">
-    <div class="how-header fade-up">
+    <div style="margin-bottom: 4rem;">
       <div class="section-label">How It Works</div>
-      <h2 class="section-title">Three Steps. No Disruption<br>to Your Team.</h2>
+      <h2 class="section-title">Three Steps. No Disruption.</h2>
     </div>
 
     <div class="steps">
-      <div class="step fade-up d1">
+      <div class="step">
         <div class="step-num">01</div>
-        <h3>You Send Us Your Dormant Leads</h3>
-        <p>Export a list of 50–100 old leads from your CRM or system — cold valuations, inactive buyers, expired listings. A simple spreadsheet is all we need.</p>
+        <h3>Send Us Your Leads</h3>
+        <p>Export 50–100 dormant leads as a spreadsheet. Names and phone numbers — that's all we need.</p>
       </div>
 
-      <div class="step fade-up d2">
+      <div class="step">
         <div class="step-num">02</div>
-        <h3>Our AI Agent Calls Every Lead</h3>
-        <p>Our AI calling system contacts each lead using professional, business-approved scripting. Every call is recorded for quality assurance. Your brand, your tone, our technology.</p>
+        <h3>We Call Every Lead</h3>
+        <p>Our AI calls within 5 days using professional scripting. Every call is recorded. Your brand, your tone, our technology.</p>
       </div>
 
-      <div class="step fade-up d3">
+      <div class="step">
         <div class="step-num">03</div>
-        <h3>Qualified Appointments Hit Your Diary</h3>
-        <p>Interested leads are booked directly into your calendar. You get a full report — who's interested, who's not, and who to revisit later.</p>
+        <h3>Appointments Land In Your Calendar</h3>
+        <p>Interested leads booked directly. You get a full report: who's interested, who's not, who to follow up with later.</p>
       </div>
     </div>
 
-    <p class="step-footer fade-up">
-      No CRM integration required. No software to install. No training needed from your team. We handle everything.
-    </p>
+    <p class="step-footer">Zero CRM integrations. Zero software. Zero training. We handle everything.</p>
   </div>
 </section>
 
-<!-- ROI -->
 <section id="roi">
   <div class="container">
-    <div class="roi-header fade-up">
-      <div class="section-label">The Numbers</div>
-      <h2 class="section-title">The Maths Speaks for Itself</h2>
-      <p class="section-sub">One reactivated instruction covers the entire cost. Everything beyond that is profit.</p>
+    <div style="margin-bottom: 3rem;">
+      <div class="section-label">The Math</div>
+      <h2 class="section-title">One Deal Pays For Everything</h2>
+      <p class="section-sub">Here's what typically happens in month 1:</p>
     </div>
 
-    <div class="roi-table-wrap fade-up">
-      <table>
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>Conservative</th>
-            <th>Moderate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Dormant leads contacted</td>
-            <td>100</td>
-            <td>100</td>
-          </tr>
-          <tr>
-            <td>Appointments booked (5–10%)</td>
-            <td>5</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>Deals won (30–40%)</td>
-            <td>2</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Average deal value (example)</td>
-            <td>$4,000</td>
-            <td>$4,000</td>
-          </tr>
-          <tr>
-            <td>Revenue generated</td>
-            <td>$8,000</td>
-            <td>$16,000</td>
-          </tr>
-          <tr>
-            <td>Your total cost (setup + month 1)</td>
-            <td>$1,700</td>
-            <td>$1,700</td>
-          </tr>
-          <tr class="roi-row-highlight">
-            <td>Net ROI in month 1</td>
-            <td>$6,300+</td>
-            <td>$14,300+</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="roi-grid">
+      <div class="roi-card">
+        <h3>Conservative Scenario</h3>
+        <div class="roi-value">6%</div>
+        <div class="roi-sublabel">Appointment booking rate</div>
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+            <span style="color: var(--white-dim);">50 leads → 3 appointments</span>
+            <span style="color: var(--white);">→ 1 deal</span>
+          </div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--green);">£4,000+</div>
+          <div style="font-size: 0.85rem; color: var(--white-dim); margin-top: 0.5rem;">Revenue vs. £1.7k cost = £2.3k profit</div>
+        </div>
+      </div>
+
+      <div class="roi-card">
+        <h3>Moderate Scenario</h3>
+        <div class="roi-value">8%</div>
+        <div class="roi-sublabel">Appointment booking rate</div>
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+            <span style="color: var(--white-dim);">50 leads → 4 appointments</span>
+            <span style="color: var(--white);">→ 2 deals</span>
+          </div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--green);">£8,000+</div>
+          <div style="font-size: 0.85rem; color: var(--white-dim); margin-top: 0.5rem;">Revenue vs. £1.7k cost = £6.3k profit</div>
+        </div>
+      </div>
     </div>
 
-    <div class="roi-banner fade-up">
-      <strong>You've already paid to acquire these leads.</strong> We just make them profitable again.
+    <div class="roi-banner">
+      <strong>Free pilot:</strong> Send us 50 leads. We call them in 5 days. You see the actual appointments booked. Then decide if you want to scale.
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="container">
-    <div class="pricing-header fade-up">
+    <div style="margin-bottom: 3rem;">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Pilot Pricing</h2>
-      <p class="section-sub">Performance-aligned. You only pay for results beyond the platform cost.</p>
+      <h2 class="section-title">Start Free, Scale When You See Results</h2>
     </div>
 
-    <div class="pricing-card fade-up">
+    <div class="pricing-focus">
+      <div class="pricing-focus-label">🎯 This Month</div>
+      <h3>Free 50-Lead Pilot</h3>
+      <div class="pricing-focus-benefit">
+        Send us 50 dormant leads. We call them all within 5 days. You see booked appointments in your calendar. No charge, no commitment.
+      </div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <p class="pricing-note">When you're ready to scale after seeing results:</p>
+    </div>
+
+    <div class="pricing-card">
       <div class="pricing-row">
         <div>
           <div class="pricing-row-title">Setup Fee</div>
-          <div class="pricing-row-desc">System build, scripting, and configuration</div>
+          <div class="pricing-row-desc">System configuration & scripting</div>
         </div>
-        <div class="pricing-amount">$1,500 <small>one-time</small></div>
+        <div class="pricing-amount">£1,500 <small>one-time</small></div>
       </div>
 
       <div class="pricing-row">
         <div>
-          <div class="pricing-row-title">Monthly Platform Fee</div>
-          <div class="pricing-row-desc">Hosting, maintenance, and ongoing optimisation</div>
+          <div class="pricing-row-title">Monthly Platform</div>
+          <div class="pricing-row-desc">Hosting, maintenance, optimisation</div>
         </div>
-        <div class="pricing-amount">$200 <small>per month</small></div>
+        <div class="pricing-amount">£200 <small>per month</small></div>
       </div>
 
       <div class="pricing-row">
         <div>
-          <div class="pricing-row-title">Performance Fee</div>
-          <div class="pricing-row-desc">You only pay when it works</div>
+          <div class="pricing-row-title">Per Appointment</div>
+          <div class="pricing-row-desc">Only when we book a qualified lead</div>
         </div>
-        <div class="pricing-amount">$75 <small>per qualified appointment</small></div>
+        <div class="pricing-amount">£75 <small>per lead booked</small></div>
       </div>
     </div>
 
-    <p class="pricing-note-text fade-up">
-      No long-term contracts. Start with a pilot of 50–100 leads. See the results before you scale.
+    <p class="pricing-note">
+      <strong>The math:</strong> One reactivated deal (avg. £4k value) generates enough revenue to cover 6 months of service. Everything after that is profit.
     </p>
 
-    <a href="#contact" class="btn-primary fade-up">Book a 10-Minute Call &rarr;</a>
+    <a href="#contact" class="btn-primary">Book a 10-Minute Call →</a>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <div class="faq-header fade-up">
+    <div style="margin-bottom: 3rem;">
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Common Questions</h2>
     </div>
 
-    <div class="faq-list fade-up">
-
+    <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-question">
-          What if the leads are really old?
+        <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+          What's included in the free pilot?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            That's the point. Circumstances change — people's financial situations shift, markets move, motivation returns. Leads from 12–24 months ago are often more ready now than when they first enquired.
+            You send us 50 dormant leads as a spreadsheet (names, phone numbers). We configure the system and call every lead within 5 business days. All interested leads are booked directly into your calendar. You get a full report. Zero charge. Zero commitment.
           </div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+          What if my leads are really old? (12+ months)
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            That's ideal. Circumstances change. Someone who couldn't afford a valuation last year might have sold their previous property. Someone who wasn't ready 18 months ago might finally be motivated. Our pilots show 6–8% of very old leads are still active.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
           Is this GDPR compliant?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Yes. These are people who already provided their contact details to your business when they enquired. This is follow-up communication from your firm, not cold outreach. Every call is recorded and scripted to match your brand.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          What if it doesn't work?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            The performance pricing model means you only pay per qualified appointment booked beyond the platform fee. We start with a small pilot specifically to prove the numbers before scaling. Your risk is minimal.
+            Yes. These are people who already provided contact details to your business. This is legitimate follow-up communication from your firm, not cold outreach. Every call is recorded and scripted professionally.
           </div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Do we need to change our CRM or install anything?
+        <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+          Do we need to change our CRM or install software?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            No. You send us a spreadsheet of leads. We send you booked appointments. No integrations, no software installs, no training required.
+            No. You send us a spreadsheet. We send you booked appointments (via email or calendar link). That's it. No integrations, no logins, no training.
           </div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          How quickly can we start?
+        <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('active')">
+          How quickly do results come?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            From receiving your lead list, the system is configured and calling within 5 business days.
+            From the moment you send your lead list, we start calling within 5 business days. Appointments typically book within 7–10 days. You'll see results before the end of your first week.
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <div class="contact-left fade-up">
-        <div class="section-label">Get Started</div>
-        <h2>Ready to Turn Dead Leads Into Revenue?</h2>
-        <p>We're running a limited number of pilots this quarter. Book a 10-minute call to see if your database qualifies.</p>
-
-        <a href="mailto:iqbal@botuvo.co.uk" class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          iqbal@botuvo.co.uk
-        </a>
+      <div>
+        <div class="section-label">Get Started Today</div>
+        <h2>Ready to Recover Your Dead Leads?</h2>
+        <p>Book a 10-minute call and we'll confirm your database qualifies for a free pilot. Send leads by Friday, we start calling Monday.</p>
+        <a href="mailto:iqbal@botuvo.co.uk" style="color: var(--blue-bright); text-decoration: none; margin-top: 1rem; display: block;">iqbal@botuvo.co.uk</a>
       </div>
 
-      <div class="fade-up d1">
-        <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Your Name *</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
-            </div>
-            <div class="form-group">
-              <label for="agency">Business Name *</label>
-              <input type="text" id="agency" name="agency" placeholder="Smith & Co." required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="jane@smithco.co.uk" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" placeholder="07700 000000" required>
-            </div>
-          </div>
-
+      <form class="contact-form" action="https://formspree.io/f/mjkwvgvr" method="POST">
+        <div class="form-row">
           <div class="form-group">
-            <label for="leads">How many dormant leads do you have? *</label>
-            <select id="leads" name="leads" required>
-              <option value="" disabled selected>Select a range...</option>
-              <option value="under-50">Under 50</option>
-              <option value="50-100">50–100</option>
-              <option value="100-250">100–250</option>
-              <option value="250-500">250–500</option>
-              <option value="500+">500+</option>
-            </select>
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
           </div>
-
           <div class="form-group">
-            <label for="message">Tell us about your biggest challenge *</label>
-            <textarea id="message" name="message" placeholder="e.g. We have hundreds of old valuations that never converted and want to know if any are still interested..." required></textarea>
+            <label for="agency">Business Name *</label>
+            <input type="text" id="agency" name="agency" placeholder="Smith & Co." required>
           </div>
+        </div>
 
-          <div class="form-submit">
-            <button type="submit" class="btn-primary">Book a Free Database Audit &rarr;</button>
-            <p class="form-disclaimer">We'll respond within one business day to schedule your call.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="jane@smithco.co.uk" required>
           </div>
-        </form>
-      </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="07700 000000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="niche">Business Type *</label>
+          <select id="niche" name="niche" required>
+            <option value="" disabled selected>Select your type...</option>
+            <option value="estate-agent">Estate Agent</option>
+            <option value="mortgage-broker">Mortgage Broker / Advisor</option>
+            <option value="trades">Trades / Home Services</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="leads">How many dormant leads do you have? *</label>
+          <select id="leads" name="leads" required>
+            <option value="" disabled selected>Select a range...</option>
+            <option value="under-50">Under 50</option>
+            <option value="50-100">50–100</option>
+            <option value="100-250">100–250</option>
+            <option value="250-500">250–500</option>
+            <option value="500+">500+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">What's your biggest lead recovery challenge? *</label>
+          <textarea id="message" name="message" placeholder="e.g. We have 200 cold valuations from 6+ months ago and no bandwidth to call them back..." required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary btn-primary-green">Schedule Free Pilot Call →</button>
+          <p class="form-disclaimer">We'll reply within 24 hours. Pilots can start as soon as next week.</p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">BOTU<span>VO</span></div>
-    <div class="footer-copy">© 2026 BOTUVO. All rights reserved.</div>
-    <div class="footer-email"><a href="mailto:iqbal@botuvo.co.uk">iqbal@botuvo.co.uk</a></div>
+    <div class="footer-copy">© 2026 BOTUVO. All rights reserved. | Lead Recovery • No Cold Calling • GDPR Compliant</div>
+    <div style="font-size: 0.83rem;"><a href="mailto:iqbal@botuvo.co.uk" style="color: var(--white-dim); text-decoration: none;">iqbal@botuvo.co.uk</a></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('active');
-      document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
-      if (!isOpen) item.classList.add('active');
-    });
-  });
+<script>
+  const nicheData = {
+    agents: {
+      headline: 'Cold Valuations & Forgotten Buyers Are Costing You <em>£5–15k Per Month</em>',
+      sub: 'Reactivate valuations from 6+ months ago that went nowhere. Our AI calls them, qualifies interest, and books appointments. 73% of agents have 100+ stale valuations sitting in their system.',
+      problems: [
+        { title: 'Cold Valuations', desc: 'Enquiries from months ago that went quiet. Circumstances have changed. Many owners are ready to sell now — they just never got the follow-up call.' },
+        { title: 'Inactive Buyers', desc: 'People who viewed properties but didn\'t commit. Markets shift, finances improve, motivation returns. 40% of "dead" buyers are still in-market 6+ months later.' },
+        { title: 'Expired Listings', desc: 'Sellers who didn\'t list with you. Time passes, motivation returns. Reaching them at the right moment converts 8–12% into new instructions.' }
+      ],
+      caseTitle: 'South Manchester Estate Agency',
+      metrics: [
+        { label: 'Cold valuations sent', value: '100' },
+        { label: 'Appointments booked', value: '8' },
+        { label: 'Sales instructions secured', value: '3' },
+        { label: 'Revenue generated', value: '£42k' }
+      ],
+      urgency: '🚀 Limited pilots this quarter — 2 of 3 estate agent slots filled'
+    },
+    financial: {
+      headline: 'Dead Quotes & Abandoned Clients Are <em>£8–20k In Lost Revenue</em>',
+      sub: 'Reactivate stale mortgage applications and forgotten financial advice leads. Our AI calls prospects, confirms intent, and books qualified appointments. 35% of dead quotes are still shopping.',
+      problems: [
+        { title: 'Abandoned Quotes', desc: 'Applications you sent that never converted. Circumstances change — interest rates drop, credit scores improve, motivation returns. Timing matters.' },
+        { title: 'Inactive Consultation Leads', desc: 'People who enquired about advice but didn\'t book. Busy schedules, decision fatigue, or just forgot. A single reminder often converts them back in.' },
+        { title: 'Expired Comparison Requests', desc: 'Clients who shopped around and went elsewhere. But situations change. Many are revisiting options 3–6 months later and would switch for better terms.' }
+      ],
+      caseTitle: 'Northern Mortgage Brokerage',
+      metrics: [
+        { label: 'Stale quote files sent', value: '75' },
+        { label: 'Appointments booked', value: '6' },
+        { label: 'New applications', value: '2' },
+        { label: 'Revenue generated', value: '£18k' }
+      ],
+      urgency: '🚀 Limited pilots this quarter — 1 of 3 mortgage broker slots filled'
+    },
+    trades: {
+      headline: 'Seasonal Leads & Quote Abandonment Are Costing You <em>£3–12k Per Quarter</em>',
+      sub: 'Reactivate seasonal enquiries and abandoned quotes. Our AI calls them at the right time, confirms project viability, and books work. 60% of "dead" leads re-engage when called.',
+      problems: [
+        { title: 'Seasonal Lead Rot', desc: 'Winter boiler enquiries, summer roofing requests, spring garden work — seasonal leads die because follow-up isn\'t systematic. By the time you call back, they\'ve hired someone else.' },
+        { title: 'Abandoned Quote Leads', desc: 'People who got a quote, went silent, then disappeared. Many didn\'t like the price or wanted time to think. Reaching them months later with a better offer often converts.' },
+        { title: 'Competitor Refugees', desc: 'Enquiries where you didn\'t win the job initially. But unhappy customers switch. Re-engaging lost prospects at the right moment wins back 5–10% as new work.' }
+      ],
+      caseTitle: 'Manchester Plumbing & Heating',
+      metrics: [
+        { label: 'Dormant job enquiries', value: '120' },
+        { label: 'Appointments booked', value: '9' },
+        { label: 'Jobs secured', value: '3' },
+        { label: 'Revenue generated', value: '£8.5k' }
+      ],
+      urgency: '🚀 Limited pilots this quarter — 3 of 3 trades slots filled'
+    }
+  };
 
-
-  // Animations removed for reliability
-
-  // Nav scroll state
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    nav.style.background = window.scrollY > 60
-      ? 'rgba(15,23,42,0.97)'
-      : 'rgba(15,23,42,0.85)';
-  }, { passive: true });
+  function switchNiche(niche) {
+    const data = nicheData[niche];
+    if (!data) return;
+    
+    document.getElementById('hero-headline').innerHTML = data.headline;
+    document.getElementById('hero-sub').textContent = data.sub;
+    document.getElementById('urgency-text').textContent = data.urgency;
+    document.getElementById('case-study-title').textContent = data.caseTitle;
+    
+    document.getElementById('problem1-title').textContent = data.problems[0].title;
+    document.getElementById('problem1-desc').textContent = data.problems[0].desc;
+    document.getElementById('problem2-title').textContent = data.problems[1].title;
+    document.getElementById('problem2-desc').textContent = data.problems[1].desc;
+    document.getElementById('problem3-title').textContent = data.problems[2].title;
+    document.getElementById('problem3-desc').textContent = data.problems[2].desc;
+    
+    document.getElementById('metric1-label').textContent = data.metrics[0].label;
+    document.getElementById('metric1-value').textContent = data.metrics[0].value;
+    document.getElementById('metric2-label').textContent = data.metrics[1].label;
+    document.getElementById('metric2-value').textContent = data.metrics[1].value;
+    document.getElementById('metric3-label').textContent = data.metrics[2].label;
+    document.getElementById('metric3-value').textContent = data.metrics[2].value;
+    document.getElementById('metric4-label').textContent = data.metrics[3].label;
+    document.getElementById('metric4-value').textContent = data.metrics[3].value;
+  }
 </script>
 
 </body>
