@@ -10,435 +10,454 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ground:#F2F3EF;--ink:#0F1712;--ink-2:#45514A;--step:#E4E7E0;
-  --field:#0D2A1F;--field-ink:#EAF2EC;--field-2:#B9CDBF;
-  --accent:#1FB86A;--accent-ink:#0F1712;--lost:#C3C8C0;
-  --m:clamp(20px,3.2vw,48px);--gap:clamp(120px,14vw,200px);
+  --dark:#0B1A13;--dark-2:#13281E;--dark-3:#1B3528;
+  --paper:#F4F5F1;--paper-2:#E5E8E1;
+  --ink:#0B1A13;--ink-2:#4A5A51;
+  --on-dark:#EEF3EF;--on-dark-2:#93AA9D;
+  --green:#38E07B;--green-2:#2BC468;--lost:#56685D;
+  --m:clamp(20px,3.2vw,48px);
+  --gap:clamp(112px,13vw,200px);
   --f:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--ground);color:var(--ink);font-family:var(--f);font-size:18px;line-height:1.55;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-img,svg{display:block;max-width:100%}
-::selection{background:var(--accent);color:var(--ink)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.wrap{padding-inline:var(--m);max-width:1600px;margin-inline:auto}
-h1,h2,h3{font-weight:800;font-stretch:115%;letter-spacing:-0.035em;line-height:0.95}
-h2{font-size:clamp(36px,6.2vw,92px);max-width:16ch}
-h2.wide{max-width:none;margin-bottom:clamp(40px,4.4vw,64px)}
-h3{font-size:clamp(22px,1.9vw,28px);letter-spacing:-0.015em;line-height:1.15;font-stretch:105%}
-p{max-width:58ch}
-.lead{font-size:clamp(19px,1.6vw,24px);line-height:1.45;max-width:40ch}
-.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;font-size:18px;text-decoration:none;padding:18px 28px;border:0;border-radius:0;cursor:pointer;transition:transform .18s ease,background-color .18s ease}
-.btn-main{background:var(--accent);color:var(--accent-ink)}
-.btn-main:hover{background:#27CC78;transform:translateY(-2px)}
-.btn-main:active{transform:translateY(1px)}
-.btn-plain{background:transparent;color:inherit;padding-inline:4px;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
-.btn-plain:hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+::selection{background:var(--green);color:var(--dark)}
+.wrap{padding-inline:var(--m);max-width:1680px;margin-inline:auto}
+h1,h2,h3{font-weight:800;letter-spacing:-0.035em;line-height:0.94}
+h2{font-size:clamp(38px,6.6vw,104px);font-stretch:112%}
+h3{font-size:clamp(22px,1.9vw,28px);font-stretch:108%;letter-spacing:-0.015em;line-height:1.12}
+p{max-width:60ch}
+.lead{font-size:clamp(19px,1.55vw,23px);line-height:1.45;max-width:42ch}
+.dark{background:var(--dark);color:var(--on-dark)}
+.dark .soft{color:var(--on-dark-2)}
+
+/* buttons */
+.btn{display:inline-flex;justify-content:center;align-items:center;font:inherit;font-weight:750;font-size:18px;text-decoration:none;padding:19px 30px;border:0;border-radius:0;cursor:pointer;transition:transform .18s ease,background-color .18s ease,color .18s ease}
+.btn:active{transform:translateY(1px)}
+.btn-green{background:var(--green);color:var(--dark)}
+.btn-green:hover{background:#5CEB95;transform:translateY(-2px)}
+.btn-dark{background:var(--dark);color:var(--on-dark)}
+.btn-dark:hover{background:var(--dark-3);transform:translateY(-2px)}
+.link{font-weight:700;text-underline-offset:7px;text-decoration-thickness:2px}
+.link:hover{text-decoration-color:var(--green)}
 
 /* nav */
-.top{position:sticky;top:0;z-index:20;background:var(--ground)}
-html{scroll-padding-top:84px}
+.top{position:sticky;top:0;z-index:30;background:var(--dark);color:var(--on-dark)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
 .word{font-weight:900;font-stretch:125%;letter-spacing:-0.02em;font-size:24px;text-decoration:none}
 .nav ul{display:flex;gap:32px;list-style:none;font-size:17px}
-.nav ul a{text-decoration:none}
-.nav ul a:hover{text-decoration:underline;text-underline-offset:6px}
+.nav ul a{text-decoration:none;color:var(--on-dark-2);transition:color .15s}
+.nav ul a:hover{color:var(--on-dark)}
 .nav .btn{padding:12px 20px;font-size:16px}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1fr 1.05fr;column-gap:clamp(32px,5vw,80px);align-items:start;padding-top:clamp(32px,4vw,64px);padding-bottom:clamp(40px,5vw,72px)}
-.hero h1{grid-column:1/-1;font-size:clamp(40px,8vw,136px);max-width:14ch;margin-bottom:clamp(32px,3.4vw,48px)}
-.hero .lead{margin-top:0}
-.hero .acts{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;margin-top:40px}
-.facts{list-style:none;display:grid;gap:4px;margin-top:clamp(48px,6vw,96px)}
-.facts li{background:var(--step);padding:18px 22px;display:flex;align-items:baseline;gap:16px;font-size:17px}
-.facts strong{white-space:nowrap;font-size:clamp(28px,2.6vw,40px);font-weight:800;font-stretch:115%;letter-spacing:-0.03em;min-width:4.2ch;line-height:1}
+.hero{padding-top:clamp(40px,5vw,80px);padding-bottom:clamp(56px,6vw,96px)}
+.hero h1{font-size:clamp(40px,9.2vw,160px);font-stretch:118%;line-height:0.9;letter-spacing:-0.045em}
+.hero h1 .l2{display:block;color:var(--green)}
+.hero-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);margin-top:clamp(40px,4.4vw,72px);align-items:start}
+.hero .acts{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;margin-top:36px}
+.facts{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:56px}
+.facts li{background:var(--dark-2);padding:18px 18px 20px;font-size:15px;color:var(--on-dark-2);line-height:1.35}
+.facts strong{display:block;white-space:nowrap;color:var(--on-dark);font-size:clamp(24px,2.1vw,34px);font-stretch:115%;font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
 
-/* interface fragments */
-[data-ui]{font-stretch:100%;letter-spacing:0}
-.board{background:#fff;padding:22px 22px 10px}
-.board-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;font-size:15px;color:var(--ink-2)}
-.board-head strong{font-size:20px;color:var(--ink)}
-.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid #EDEFEA}
-.row b{font-weight:650;font-size:17px;display:block}
-.row span.sub{font-size:14px;color:var(--ink-2)}
-.chip{font-size:14px;font-weight:650;padding:6px 10px;white-space:nowrap;transition:background-color .5s ease,color .5s ease}
-.chip.lost{background:var(--step);color:var(--ink-2)}
-.chip.talk{background:#FFF1C9;color:#5A4300}
-.chip.booked{background:var(--accent);color:var(--ink)}
-.caption{font-size:15px;color:var(--ink-2);margin-top:14px}
-.hero-ui .caption{margin-top:12px}
-.tally{display:flex;gap:28px;padding:16px 0 12px;font-size:15px;color:var(--ink-2)}
-.tally strong{display:block;font-size:30px;color:var(--ink);font-stretch:110%;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+/* lead wall */
+[data-ui]{letter-spacing:0}
+.wall{background:var(--dark-2);padding:clamp(18px,2vw,28px)}
+.wall-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:16px;font-size:15px;color:var(--on-dark-2)}
+.wall-head strong{color:var(--on-dark);font-size:20px;font-stretch:108%}
+.lr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid #21402F}
+.lr b{display:block;font-weight:700;font-size:clamp(17px,1.4vw,21px);font-stretch:105%}
+.lr span.sub{font-size:14px;color:var(--on-dark-2)}
+.st{font-size:14px;font-weight:700;padding:7px 11px;white-space:nowrap;transition:background-color .45s ease,color .45s ease}
+.st.lost{background:#22392D;color:var(--on-dark-2)}
+.st.talk{background:#F1D36B;color:#2A2100}
+.st.booked{background:var(--green);color:var(--dark)}
+.wall-tally{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:14px}
+.wall-tally div{background:var(--dark-3);padding:14px 16px;font-size:14px;color:var(--on-dark-2)}
+.wall-tally strong{display:block;font-size:clamp(30px,2.8vw,44px);color:var(--on-dark);font-stretch:115%;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.wall-tally .g strong{color:var(--green)}
+.cap{font-size:15px;margin-top:12px}
+.dark .cap{color:var(--on-dark-2)}
+.cap-l{color:var(--ink-2)}
 
-/* problem */
-section{padding-top:var(--gap)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
-.split .copy p+p{margin-top:24px}
-.days{margin-top:8px}
-.days-grid{display:grid;grid-template-columns:repeat(14,1fr);gap:6px;align-items:end}
-.d{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
-.d i{display:block;width:100%;background:var(--ink);transform-origin:bottom}
-.d.call i{background:var(--ink)}
-.d.drop i{background:var(--lost)}
-.d.text i{background:var(--accent)}
-.d.win i{background:var(--accent)}
-.days-key{display:grid;grid-template-columns:7fr 7fr;gap:6px;margin-top:18px;font-size:15px}
-.days-key div{padding:14px 16px}
-.days-key .k1{background:var(--step)}
-.days-key .k2{background:var(--field);color:var(--field-ink)}
-.days-key strong{display:block;font-size:19px;margin-bottom:2px}
+/* the fortnight */
+.fort-head h2,.faq-grid h2,.book-grid h2{font-size:clamp(36px,4.7vw,76px)}
+.fort{padding-top:var(--gap)}
+.fort-head{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,96px);align-items:end}
+.fort-head .lead{margin-bottom:6px}
+.band{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:4px;margin-top:clamp(48px,5vw,80px)}
+.day{min-height:clamp(220px,24vw,360px);padding:14px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper-2);position:relative;overflow:hidden}
+.day .n{font-size:clamp(26px,3vw,48px);font-weight:800;font-stretch:112%;letter-spacing:-0.03em;line-height:1;position:relative}
+.day .w{font-size:clamp(13px,1vw,15px);font-weight:650;line-height:1.25;position:relative}
+.day::before{content:"";position:absolute;inset:0;background:var(--fill,transparent);transform-origin:bottom;transform:scaleY(var(--h,1));transition:transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
+.day.call{--fill:var(--dark);color:var(--on-dark)}
+.day.call .w{color:var(--on-dark-2)}
+.day.lostd{--fill:#C7CDC5}
+.day.txt{--fill:#BDF2D2}
+.day.win{--fill:var(--green)}
+.band-key{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:4px;margin-top:12px;font-size:16px}
+.band-key div:first-child{grid-column:1/8}
+.band-key div:last-child{grid-column:8/15}
+.band-key strong{display:block;font-size:20px;font-stretch:108%}
 
 /* how */
-.how ol{list-style:none;display:grid;gap:40px}
-.how li h3{margin-bottom:10px}
-.thread{background:var(--field);color:var(--field-ink);padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:12px}
-.thread .who{font-size:15px;color:var(--field-2);padding-bottom:6px}
-.msg{max-width:82%;padding:12px 16px;font-size:16px;line-height:1.45}
-.msg.ai{background:#1B4434;align-self:flex-start}
-.msg.me{background:var(--field-ink);color:var(--ink);align-self:flex-end}
-.thread .done{margin-top:8px;align-self:flex-start;background:var(--accent);color:var(--ink);font-weight:650;font-size:15px;padding:8px 12px}
-.how .caption{color:var(--ink-2)}
+.how{padding-top:var(--gap)}
+.how-grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(32px,6vw,112px);align-items:start;margin-top:clamp(48px,5vw,80px)}
+.phone{background:var(--dark);color:var(--on-dark);padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:12px}
+.phone .who{display:flex;justify-content:space-between;font-size:15px;color:var(--on-dark-2);padding-bottom:8px}
+.phone .who b{color:var(--on-dark)}
+.msg{max-width:84%;padding:13px 16px;font-size:17px;line-height:1.42}
+.msg.ai{background:var(--dark-3);align-self:flex-start}
+.msg.me{background:var(--on-dark);color:var(--ink);align-self:flex-end}
+.phone .done{align-self:flex-start;background:var(--green);color:var(--dark);font-weight:700;font-size:15px;padding:9px 13px;margin-top:6px}
+.steps{list-style:none;display:grid;gap:4px}
+.steps li{background:var(--paper-2);padding:clamp(24px,2.6vw,40px)}
+.steps li:last-child{background:var(--green)}
+.steps h3{font-size:clamp(26px,2.5vw,38px);font-stretch:115%;letter-spacing:-0.03em;margin-bottom:12px}
+.steps p{font-size:18px}
 
 /* calculator */
-.calc{background:var(--step);margin-top:var(--gap);padding-block:clamp(64px,8vw,120px)}
-.calc .split{align-items:stretch}
-.calc label{display:block;font-weight:650;margin-top:36px;font-size:18px}
-.calc .field{display:flex;align-items:center;gap:18px;margin-top:14px}
-.calc input[type=range]{flex:1;accent-color:var(--field);height:36px}
-.calc input[type=number]{width:140px;font:inherit;font-size:22px;font-weight:700;padding:10px 12px;border:2px solid var(--ink);background:#fff;border-radius:0;font-variant-numeric:tabular-nums}
-.out{background:var(--field);color:var(--field-ink);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:36px}
-.big{font-size:clamp(48px,6vw,96px);font-weight:800;font-stretch:115%;letter-spacing:-0.035em;line-height:0.95;font-variant-numeric:tabular-nums}
-.out p{color:var(--field-ink)}
-.out .row2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.out .row2 strong{display:block;font-size:clamp(26px,2.4vw,36px);font-stretch:110%;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
-.out .note{font-size:15px;color:var(--field-2)}
+.calc{margin-top:var(--gap);padding-block:clamp(80px,9vw,140px)}
+.nw{white-space:nowrap}
+.say{font-size:clamp(28px,3.4vw,52px);font-weight:700;font-stretch:108%;letter-spacing:-0.025em;line-height:1.3;max-width:30ch;margin-top:clamp(32px,4vw,56px)}
+.say input{font:inherit;color:var(--green);background:transparent;border:0;border-bottom:4px solid var(--green);width:4.6ch;padding:0 2px;text-align:center;border-radius:0;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.say input.wide{width:5.4ch}
+.say input::-webkit-outer-spin-button,.say input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.sliders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px);margin-top:32px;max-width:900px}
+.sliders label{font-size:15px;color:var(--on-dark-2);display:block;margin-bottom:6px}
+.sliders input{width:100%;accent-color:var(--green);height:32px}
+.money{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,96px);align-items:end;margin-top:clamp(56px,6vw,96px)}
+.huge{font-size:clamp(56px,12.5vw,210px);font-weight:800;font-stretch:112%;letter-spacing:-0.05em;line-height:0.85;color:var(--green);font-variant-numeric:tabular-nums;max-width:none}
+.money .under{font-size:clamp(18px,1.5vw,22px);margin-top:14px;color:var(--on-dark)}
+.money dl{display:grid;gap:4px}
+.money dl div{background:var(--dark-2);padding:20px 22px}
+.money dt{font-size:15px;color:var(--on-dark-2)}
+.money dd{font-size:clamp(26px,2.4vw,38px);font-weight:800;font-stretch:112%;letter-spacing:-0.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.money .note{font-size:15px;color:var(--on-dark-2);margin-top:28px;grid-column:1/-1;max-width:70ch}
 
 /* pricing */
-.price{background:var(--field);color:var(--field-ink);padding-block:clamp(80px,10vw,150px);margin-top:0}
-.price h2{max-width:13ch}
-.price .split{margin-top:56px}
-.terms{list-style:none;display:grid;gap:22px;font-size:20px}
-.terms li strong{display:block;font-size:24px;font-stretch:110%}
-.terms li span{color:var(--field-2)}
-.founding{background:var(--accent);color:var(--ink);padding:clamp(28px,3.5vw,48px)}
-.founding h3{font-size:clamp(28px,2.6vw,40px);line-height:1.05;letter-spacing:-0.03em;font-stretch:115%}
-.founding p{margin-top:16px}
-.founding .btn{margin-top:28px;background:var(--ink);color:var(--ground)}
-.founding .btn:hover{transform:translateY(-2px)}
-.qual{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.qual div{background:#143A2C;padding:22px}
-.qual strong{display:block;font-size:22px;font-stretch:110%;margin-bottom:6px}
-.qual span{color:var(--field-2);font-size:16px}
+.price{background:var(--green);color:var(--dark);padding-block:clamp(80px,9vw,140px)}
+.price-grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(32px,5vw,96px);align-items:start}
+.sixty{font-size:clamp(150px,30vw,500px);font-weight:900;font-stretch:115%;letter-spacing:-0.06em;line-height:0.78;max-width:none;margin-left:-0.04em}
+.price h2{font-size:clamp(34px,4.6vw,72px);margin-top:28px}
+.terms{list-style:none;display:grid;gap:4px}
+.terms li{background:#2CC769;padding:20px 22px;font-size:17px}
+.terms strong{display:block;font-size:clamp(21px,1.8vw,26px);font-stretch:110%;letter-spacing:-0.015em}
+.founding{background:var(--dark);color:var(--on-dark);padding:clamp(24px,3vw,40px);margin-top:4px}
+.founding h3{font-size:clamp(26px,2.1vw,34px);font-stretch:115%;letter-spacing:-0.03em;line-height:1.02}
+.founding p{margin-top:14px;color:var(--on-dark)}
+.founding .btn{margin-top:24px}
+.qual{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:clamp(48px,5vw,80px)}
+.qual div{border-top:6px solid var(--dark);padding-top:16px;font-size:17px}
+.qual strong{display:block;font-size:clamp(24px,2.2vw,32px);font-stretch:112%;letter-spacing:-0.025em;line-height:1.05;margin-bottom:6px}
 
 /* who */
-.sectors{display:flex;flex-wrap:wrap;gap:6px 0;font-size:clamp(28px,4vw,60px);font-weight:800;font-stretch:115%;letter-spacing:-0.03em;line-height:1.1;max-width:none;color:var(--ink-2)}
-.sectors span{margin-right:.45em}
-.sectors span::after{content:"·";margin-left:.45em;color:var(--accent)}
-.sectors span:last-child::after{content:""}
-.rules{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);margin-top:64px}
-.rules strong{display:block;font-size:22px;font-stretch:110%;margin-bottom:8px}
+.who-s{padding-top:var(--gap)}
+.sectors{list-style:none;margin-top:clamp(40px,4vw,64px);display:flex;flex-wrap:wrap;gap:6px}
+.sectors li{background:var(--paper-2);padding:clamp(14px,1.4vw,22px) clamp(18px,1.8vw,28px);font-size:clamp(22px,2.8vw,44px);font-weight:800;font-stretch:112%;letter-spacing:-0.03em;line-height:1;transition:background-color .2s,color .2s}
+.sectors li:hover{background:var(--dark);color:var(--green)}
+.rules{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,56px);margin-top:clamp(48px,5vw,80px)}
+.rules li{font-size:17px}
+.rules strong{display:block;font-size:clamp(22px,2vw,28px);font-stretch:110%;letter-spacing:-0.02em;line-height:1.1;margin-bottom:8px}
 
 /* trust */
-.trust ul{list-style:none;display:grid;gap:26px}
-.trust ul strong{display:block;font-size:21px;font-stretch:108%}
-.report{background:#fff;padding:24px}
-.report .rh{display:flex;justify-content:space-between;font-size:15px;color:var(--ink-2);padding-bottom:16px}
-.report .rh strong{color:var(--ink);font-size:19px}
-.bars{display:grid;gap:14px}
-.bar{display:grid;grid-template-columns:110px 1fr 56px;gap:12px;align-items:center;font-size:15px}
-.bar i{display:block;height:26px;background:var(--field);transform-origin:left}
-.bar.b2 i{background:#2F6B52}
-.bar.b3 i{background:var(--accent)}
-.bar em{font-style:normal;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
-.slots{margin-top:22px;display:grid;gap:8px}
-.slot{display:flex;justify-content:space-between;background:var(--ground);padding:12px 14px;font-size:15px}
-.slot b{font-weight:650}
+.trust{padding-top:var(--gap)}
+.trust-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start;margin-top:clamp(48px,5vw,80px)}
+.first{background:var(--dark);color:var(--on-dark);padding:clamp(24px,3.4vw,52px)}
+.first .who{font-size:15px;color:var(--on-dark-2);margin-bottom:18px;display:flex;justify-content:space-between}
+.bubble{background:var(--dark-3);padding:clamp(20px,2.4vw,32px);font-size:clamp(21px,2.2vw,32px);line-height:1.3;font-weight:600;font-stretch:104%;letter-spacing:-0.01em;max-width:none}
+.bubble mark{background:none;color:var(--green)}
+.first ul{list-style:none;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:4px}
+.first ul li{background:var(--dark-2);padding:14px 16px;font-size:15px;color:var(--on-dark-2)}
+.first ul strong{display:block;color:var(--on-dark);font-size:17px}
+.points{list-style:none;display:grid;gap:30px}
+.points strong{display:block;font-size:clamp(22px,2vw,28px);font-stretch:110%;letter-spacing:-0.02em;line-height:1.1;margin-bottom:6px}
 
 /* faq */
-.faq .list{display:grid;gap:8px}
-details{background:var(--step)}
-summary{cursor:pointer;list-style:none;padding:24px 26px;font-size:clamp(19px,1.6vw,23px);font-weight:700;font-stretch:105%;display:flex;justify-content:space-between;gap:20px}
+.faq{padding-top:var(--gap)}
+.faq-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.faq-grid h2{position:sticky;top:110px}
+.qs{display:grid;gap:4px}
+details{background:var(--paper-2)}
+summary{cursor:pointer;list-style:none;padding:24px 64px 24px 26px;font-size:clamp(19px,1.6vw,23px);font-weight:750;font-stretch:106%;position:relative;transition:background-color .15s}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-weight:400;font-size:28px;line-height:1;transition:transform .2s ease}
+summary::after{content:"+";position:absolute;right:26px;top:18px;font-size:30px;font-weight:400;transition:transform .2s}
 details[open] summary::after{transform:rotate(45deg)}
-summary:hover{background:#DADED6}
-details p{padding:0 26px 26px}
+summary:hover{background:#D9DDD5}
+details p{padding:0 26px 26px;font-size:18px}
 
-/* close */
-.close{padding-block:var(--gap)}
-.close .split{align-items:end}
-.close .acts{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center}
-footer{background:var(--ink);color:var(--ground);padding-top:72px;overflow:hidden}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:16px}
-.foot a{text-decoration:none}
-.foot a:hover{text-decoration:underline}
-.mega{font-weight:900;font-stretch:125%;letter-spacing:-0.05em;line-height:0.8;font-size:clamp(72px,20.4vw,330px);margin-top:48px;color:var(--ground)}
-
-
-/* booking form */
-.next{list-style:none;display:grid;gap:22px;margin-top:48px}
-.next strong{display:block;font-size:21px;font-stretch:108%}
-.direct{margin-top:40px}
-.direct a{font-weight:700;text-underline-offset:5px}
-.book{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--step);padding:clamp(24px,3vw,40px)}
+/* book */
+.book{margin-top:var(--gap);padding-block:clamp(80px,9vw,140px)}
+.book-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.next{list-style:none;display:grid;gap:4px;margin-top:40px}
+.next li{background:var(--dark-2);padding:18px 20px;color:var(--on-dark-2);font-size:16px}
+.next strong{display:block;color:var(--on-dark);font-size:20px;font-stretch:108%}
+.direct{margin-top:32px}
+form.req{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--paper);color:var(--ink);padding:clamp(24px,3vw,44px)}
 .f{display:flex;flex-direction:column;gap:8px}
 .f.full{grid-column:1/-1}
-.f label{font-weight:650;font-size:16px}
-.f input,.f select{font:inherit;font-size:17px;color:var(--ink);background:#fff;border:2px solid #C9CEC4;border-radius:0;padding:13px 14px;width:100%}
+.f label{font-weight:700;font-size:16px}
+.f input,.f select{font:inherit;font-size:17px;color:var(--ink);background:#fff;border:2px solid #C3C9C0;border-radius:0;padding:13px 14px;width:100%}
 .f input:focus,.f select:focus{outline:none;border-color:var(--ink)}
 .help{font-size:15px;color:var(--ink-2)}
 .form-foot{grid-column:1/-1}
-.form-foot .btn{width:100%;justify-content:center}
-.privacy{margin-top:16px;background:none}
-.privacy summary{font-size:15px;font-weight:650;padding:4px 0;color:var(--ink-2);display:inline-flex}
-.privacy summary::after{font-size:20px}
+.form-foot .btn{width:100%}
+.privacy{margin-top:14px;background:none}
+.privacy summary{font-size:15px;font-weight:650;padding:4px 30px 4px 0;color:var(--ink-2);display:inline-block}
+.privacy summary::after{right:0;top:0;font-size:20px}
 .privacy summary:hover{background:none}
 .privacy p{padding:6px 0 0;font-size:15px;color:var(--ink-2)}
-.close .split{align-items:start}
+
+/* footer */
+footer{padding-top:64px;overflow:hidden;border-top:4px solid var(--dark-2)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;font-size:16px;color:var(--on-dark-2)}
+.foot a{color:var(--on-dark);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.mega{font-weight:900;font-stretch:125%;letter-spacing:-0.05em;line-height:0.78;font-size:clamp(60px,17.2vw,280px);margin-top:48px;color:var(--green);max-width:none;white-space:nowrap}
 
 /* motion */
-.rise{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.rise.in{opacity:1;transform:none}
-.grow i{transform:scaleY(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.grow.in i{transform:none}
-.bars.grow i{transform:scaleX(0)}
-.bars.grow.in i{transform:none}
-.no-js .rise{opacity:1;transform:none}
+.js .rise{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rise.in{opacity:1;transform:none}
+.js .band .day{--h:0}
+.js .band.in .day{--h:1}
 @media (prefers-reduced-motion:reduce){
-  .rise,.grow i,.bars.grow i{opacity:1!important;transform:none!important;transition:none!important}
+  .js .rise{opacity:1;transform:none;transition:none}
+  .js .band .day{--h:1}
+  .day::before{transition:none}
   html{scroll-behavior:auto}
 }
 
 /* tablet */
-@media (max-width:1000px){
-  .hero,.split{grid-template-columns:1fr}
-  .hero-ui{margin-top:48px}
+@media (max-width:1040px){
+  .hero-grid,.fort-head,.how-grid,.money,.price-grid,.trust-grid,.faq-grid,.book-grid{grid-template-columns:1fr}
+  .faq-grid h2{position:static}
   .nav ul{display:none}
-  .qual,.rules{grid-template-columns:1fr}
+  .rules{grid-template-columns:1fr 1fr 1fr}
+  .band{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .band-key{grid-template-columns:1fr 1fr}
+  .band-key div:first-child,.band-key div:last-child{grid-column:auto}
+  .day{min-height:180px}
 }
 /* phone */
-@media (max-width:560px){
+@media (max-width:600px){
   body{font-size:17px}
-  .hero h1{font-size:10.2vw;font-stretch:100%}
-  h2{font-stretch:100%}
-  h2{font-size:clamp(34px,9.6vw,52px)}
-  .btn{width:100%;justify-content:center}
+  .hero h1{font-size:10.4vw;font-stretch:104%}
+  h2{font-size:clamp(32px,9.4vw,50px);font-stretch:102%}
+  .facts{grid-template-columns:1fr}
+  .btn{width:100%}
   .nav .btn{width:auto}
-  .facts li{gap:12px}
-  .hero .acts .btn-plain,.close .acts .btn-plain{width:auto}
-  .days-grid{gap:3px}
-  .d{font-size:11px}
-  .days-key{grid-template-columns:1fr}
-  .out .row2{grid-template-columns:1fr}
-  .book{grid-template-columns:1fr}
-  .calc input[type=number]{width:120px}
-  .tally{gap:18px}
-  .bar{grid-template-columns:86px 1fr 44px}
+  .hero .acts .link{width:auto}
+  .rules,.qual{grid-template-columns:1fr}
+  .first ul{grid-template-columns:1fr}
+  .sliders{grid-template-columns:1fr}
+  form.req{grid-template-columns:1fr}
+  .day{min-height:120px;padding:10px 6px}
+  .mega{font-size:16.2vw}
+  .day .w{display:none}
+  .day.lostd .w,.day.win .w{display:block;font-size:11px}
+  .band{gap:3px}
+  .lr{grid-template-columns:1fr}
+  .lr .st{justify-self:start}
 }
 </style>
 </head>
-<body class="no-js">
-<script>document.body.classList.remove('no-js')</script>
+<body>
+<script>document.documentElement.classList.add('js')</script>
 
 <header class="top"><div class="wrap nav">
   <a class="word" href="#top" aria-label="BOTUVO home">BOTUVO</a>
-  <nav aria-label="Main">
-    <ul>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#calculator">Your numbers</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">Questions</a></li>
-    </ul>
-  </nav>
-  <a class="btn btn-main" href="#book">Book a call</a>
+  <nav aria-label="Main"><ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#calculator">Your numbers</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">Questions</a></li>
+  </ul></nav>
+  <a class="btn btn-green" href="#book">Book a call</a>
 </div></header>
 
 <main id="top">
-  <div class="wrap hero">
-    <h1 class="rise">Lost leads, booked back in.</h1>
-    <div>
-      <p class="lead rise">BOTUVO is revenue recovery for UK businesses that sell big-ticket jobs. We text the enquiries your team stopped chasing and book them into your diary. You pay only for booked appointments.</p>
-      <div class="acts rise">
-        <a class="btn btn-main" href="#calculator">Work out what's in your CRM</a>
-        <a class="btn btn-plain" href="#book">Book a 30&#8209;minute call</a>
+
+<section class="dark hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <h1 id="hero-h" class="rise">Lost leads,<span class="l2">booked back in.</span></h1>
+    <div class="hero-grid">
+      <div>
+        <p class="lead rise">BOTUVO is revenue recovery for UK businesses that sell big-ticket jobs. We text the enquiries your team stopped chasing and book them into your diary. You pay only for booked appointments.</p>
+        <div class="acts rise">
+          <a class="btn btn-green" href="#calculator">Work out what's in your CRM</a>
+          <a class="link" href="#book">Book a 30&#8209;minute call</a>
+        </div>
+        <ul class="facts rise">
+          <li><strong>£60</strong>per booked appointment, nothing upfront</li>
+          <li><strong>14 days</strong>from your spreadsheet to live</li>
+          <li><strong>£0</strong>extra ad spend or extra staff</li>
+        </ul>
       </div>
-      <ul class="facts rise">
-        <li><strong>£60</strong>per booked appointment, nothing upfront</li>
-        <li><strong>14 days</strong>from your spreadsheet to live</li>
-        <li><strong>£0</strong>extra ad spend or extra staff</li>
-      </ul>
+      <figure class="rise">
+        <div class="wall" data-ui aria-label="Example lead list moving from lost to booked">
+          <div class="wall-head"><strong>Marked lost, last 60 days</strong><span>412 leads</span></div>
+          <div class="lr"><div><b>Sarah K.</b><span class="sub">Whole-house windows · enquired 3 Oct</span></div><span class="st lost" data-to="booked" data-label="Booked · Sat 11:00">Lost · no answer</span></div>
+          <div class="lr"><div><b>Dev P.</b><span class="sub">Air source heat pump · enquired 28 Sep</span></div><span class="st lost" data-to="talk" data-label="Replied · in conversation">Lost · no answer</span></div>
+          <div class="lr"><div><b>Joanne R.</b><span class="sub">Kitchen refit · quoted 19 Sep</span></div><span class="st lost" data-to="booked" data-label="Booked · Tue 14:00">Lost · quote not closed</span></div>
+          <div class="lr"><div><b>Mark T.</b><span class="sub">Solar and battery · enquired 11 Oct</span></div><span class="st lost" data-to="booked" data-label="Booked · Thu 10:00">Lost · no answer</span></div>
+          <div class="lr"><div><b>Priya S.</b><span class="sub">Bathroom · enquired 2 Oct</span></div><span class="st lost" data-to="talk" data-label="Replied · after Christmas">Lost · no answer</span></div>
+          <div class="lr"><div><b>Gary W.</b><span class="sub">New boiler · enquired 14 Oct</span></div><span class="st lost">Lost · no answer</span></div>
+          <div class="wall-tally">
+            <div><strong data-count="412">412</strong>texted</div>
+            <div><strong data-count="169">169</strong>replied</div>
+            <div class="g"><strong data-count="21">21</strong>booked</div>
+          </div>
+        </div>
+        <figcaption class="cap">Example: one lead list over the first two weeks.</figcaption>
+      </figure>
     </div>
-    <figure class="hero-ui rise">
-      <div class="board" data-ui aria-label="Example lead list moving from lost to booked">
-        <div class="board-head"><strong>Marked lost, last 60 days</strong><span>412 leads</span></div>
-        <div class="row"><div><b>Sarah K.</b><span class="sub">Whole-house windows · enquired 3 Oct</span></div><span class="chip lost" data-to="booked" data-label="Booked · Sat 11:00">Lost · no answer</span></div>
-        <div class="row"><div><b>Dev P.</b><span class="sub">Air source heat pump · enquired 28 Sep</span></div><span class="chip lost" data-to="talk" data-label="Replied · in conversation">Lost · no answer</span></div>
-        <div class="row"><div><b>Joanne R.</b><span class="sub">Kitchen refit · quoted 19 Sep</span></div><span class="chip lost" data-to="booked" data-label="Booked · Tue 14:00">Lost · quote not closed</span></div>
-        <div class="row"><div><b>Mark T.</b><span class="sub">Solar and battery · enquired 11 Oct</span></div><span class="chip lost" data-to="booked" data-label="Booked · Thu 10:00">Lost · no answer</span></div>
-        <div class="row"><div><b>Priya S.</b><span class="sub">Bathroom · enquired 2 Oct</span></div><span class="chip lost">Lost · no answer</span></div>
-        <div class="tally"><div><strong data-count="texted">0</strong>texted</div><div><strong data-count="replied">0</strong>replied</div><div><strong data-count="booked">0</strong>booked</div></div>
-      </div>
-      <figcaption class="caption">Example of how a lead list changes in the first two weeks.</figcaption>
-    </figure>
   </div>
+</section>
 
-  <section class="wrap" id="problem" aria-labelledby="problem-h">
-    <h2 id="problem-h" class="rise wide">Day eight, they're marked lost.</h2>
-    <div class="split">
-    <div class="copy">
-      <p class="lead rise">Your team rings each new enquiry five or six times over a week, then rightly moves on to fresh leads.</p>
-      <p class="rise">Plenty of the people who went quiet were busy, not gone. They picked you once, and you paid for that enquiry. BOTUVO picks up from day eight, in your name, by text, for as long as it takes.</p>
-    </div>
-    <figure class="days rise" aria-label="Two weeks of one lead: calls in week one, texts and a booking in week two">
-      <div class="days-grid grow" aria-hidden="true">
-        <div class="d call"><i style="height:120px"></i>1</div>
-        <div class="d call"><i style="height:96px"></i>2</div>
-        <div class="d call"><i style="height:72px"></i>3</div>
-        <div class="d call"><i style="height:50px"></i>4</div>
-        <div class="d call"><i style="height:30px"></i>5</div>
-        <div class="d call"><i style="height:16px"></i>6</div>
-        <div class="d drop"><i style="height:8px"></i>7</div>
-        <div class="d text"><i style="height:44px"></i>8</div>
-        <div class="d text"><i style="height:14px"></i>9</div>
-        <div class="d text"><i style="height:14px"></i>10</div>
-        <div class="d text"><i style="height:62px"></i>11</div>
-        <div class="d text"><i style="height:90px"></i>12</div>
-        <div class="d win"><i style="height:150px"></i>13</div>
-        <div class="d text"><i style="height:20px"></i>14</div>
-      </div>
-      <div class="days-key">
-        <div class="k1"><strong>Days 1 to 7</strong>Your team calls, fewer each day.</div>
-        <div class="k2"><strong>Day 8 onwards</strong>BOTUVO texts, follows up and books.</div>
-      </div>
-    </figure>
-    </div>
-  </section>
+<section class="wrap fort" id="problem" aria-labelledby="fort-h">
+  <div class="fort-head">
+    <h2 id="fort-h" class="rise">Day eight, they're marked lost.</h2>
+    <p class="lead rise">Your team rings each new enquiry five or six times over a week, then rightly moves on to fresh leads. Plenty of the people who went quiet were busy, not gone.</p>
+  </div>
+  <div class="band" aria-label="Fourteen days of one lead: your team calls for a week, then BOTUVO texts and books on day twelve">
+    <div class="day call"><span class="n">1</span><span class="w">Call</span></div>
+    <div class="day call"><span class="n">2</span><span class="w">Call</span></div>
+    <div class="day call"><span class="n">3</span><span class="w">Call</span></div>
+    <div class="day call"><span class="n">4</span><span class="w">Call</span></div>
+    <div class="day call"><span class="n">5</span><span class="w">Call</span></div>
+    <div class="day call"><span class="n">6</span><span class="w">Last try</span></div>
+    <div class="day lostd"><span class="n">7</span><span class="w">Marked lost</span></div>
+    <div class="day txt"><span class="n">8</span><span class="w">First text</span></div>
+    <div class="day txt"><span class="n">9</span><span class="w">Reply</span></div>
+    <div class="day txt"><span class="n">10</span><span class="w">Questions</span></div>
+    <div class="day txt"><span class="n">11</span><span class="w">Nudge</span></div>
+    <div class="day win"><span class="n">12</span><span class="w">Booked</span></div>
+    <div class="day txt"><span class="n">13</span><span class="w">Reminder</span></div>
+    <div class="day txt"><span class="n">14</span><span class="w">Survey</span></div>
+  </div>
+  <div class="band-key">
+    <div class="rise"><strong>Days 1 to 7: your team</strong>Calls, fewer each day, then on to fresh leads.</div>
+    <div class="rise"><strong>Day 8 onwards: BOTUVO</strong>Texts in your name, answers questions, books the survey.</div>
+  </div>
+</section>
 
-  <section class="wrap how" id="how" aria-labelledby="how-h">
-    <h2 id="how-h" class="rise wide">Your team just turns up.</h2>
-    <div class="split">
-    <div>
-      <ol>
-        <li class="rise"><h3>Send us your old leads</h3><p>A spreadsheet export from your CRM is fine. It takes under two hours of your time, start to finish.</p></li>
-        <li class="rise"><h3>We build your assistant</h3><p>It learns your products, your area, your tone and what a qualified appointment means to you. Live within 14 days.</p></li>
-        <li class="rise"><h3>It texts, qualifies and books</h3><p>Two-way conversations in your business's name. Appointments land in your diary with notes, and we reconfirm each one the day before.</p></li>
-      </ol>
-    </div>
+<section class="wrap how" id="how" aria-labelledby="how-h">
+  <h2 id="how-h" class="rise">Your team just turns up.</h2>
+  <div class="how-grid">
     <figure class="rise">
-      <div class="thread" data-ui aria-label="Example text conversation">
-        <div class="who">Northside Windows · text conversation</div>
+      <div class="phone" data-ui aria-label="Example text conversation">
+        <div class="who"><b>Northside Windows</b><span>Text messages</span></div>
         <p class="msg ai">Hi Sarah, it's the AI assistant at Northside Windows. You asked about replacing your windows a few weeks back. Is that still on your list? (Reply STOP to opt out)</p>
         <p class="msg me">Yes, just been mad busy. Still want them done before winter.</p>
         <p class="msg ai">Completely understand. Is it the whole house, and do you own the property?</p>
         <p class="msg me">Whole house, yes we own it.</p>
         <p class="msg ai">Great. One of the team can come out for a free survey. Thursday at 10am or Saturday at 11am?</p>
         <p class="msg me">Saturday's good.</p>
-        <p class="msg ai">Booked: Saturday 11:00, home survey with Northside Windows. We'll text a reminder on Friday.</p>
         <span class="done">Booked · homeowner · whole house · Sat 11:00</span>
       </div>
-      <figcaption class="caption">Example conversation.</figcaption>
+      <figcaption class="cap cap-l">Example conversation.</figcaption>
     </figure>
-    </div>
-  </section>
+    <ol class="steps">
+      <li class="rise"><h3>Send us your old leads</h3><p>A spreadsheet export from your CRM is fine. It takes under two hours of your time, start to finish.</p></li>
+      <li class="rise"><h3>We build your assistant</h3><p>It learns your products, your area, your tone and what a qualified appointment means to you. Live within 14 days.</p></li>
+      <li class="rise"><h3>It texts, qualifies, books</h3><p>Two-way conversations in your business's name. Appointments land in your diary with notes, reconfirmed the day before.</p></li>
+    </ol>
+  </div>
+</section>
 
-  <section class="calc" id="calculator" aria-labelledby="calc-h">
-    <div class="wrap">
-    <h2 id="calc-h" class="rise wide">What's sitting in your CRM?</h2>
-    <div class="split">
-      <div>
-        <p class="lead rise">Move the two numbers to match your business.</p>
-        <form id="calc-form" class="rise" onsubmit="return false">
-          <label for="leads">Leads your team stopped chasing in the last two months</label>
-          <div class="field"><input type="range" id="leads-r" min="100" max="5000" step="50" value="600" aria-label="Leads stopped chasing, slider"><input type="number" id="leads" min="0" step="10" value="600" inputmode="numeric"></div>
-          <label for="aov">Your average job value (£)</label>
-          <div class="field"><input type="range" id="aov-r" min="2000" max="30000" step="500" value="6000" aria-label="Average job value, slider"><input type="number" id="aov" min="0" step="100" value="6000" inputmode="numeric"></div>
-        </form>
+<section class="dark calc" id="calculator" aria-labelledby="calc-h">
+  <div class="wrap">
+    <h2 id="calc-h" class="rise">What's sitting in your CRM?</h2>
+    <form class="rise" id="calc-form" onsubmit="return false">
+      <p class="say">We stopped chasing <input id="leads" type="number" min="0" step="10" value="600" inputmode="numeric" aria-label="Leads your team stopped chasing in the last two months"> leads, and a job is worth about <span class="nw">£<input id="aov" class="wide" type="number" min="0" step="100" value="6000" inputmode="numeric" aria-label="Average job value in pounds">.</span></p>
+      <div class="sliders">
+        <div><label for="leads-r">Leads stopped chasing, last two months</label><input type="range" id="leads-r" min="100" max="5000" step="50" value="600"></div>
+        <div><label for="aov-r">Average job value</label><input type="range" id="aov-r" min="2000" max="30000" step="500" value="6000"></div>
       </div>
-      <div class="out rise" aria-live="polite">
-        <div>
-          <p>Appointments we'd expect to book</p>
-          <div class="big" id="o-appts">18 to 30</div>
-        </div>
-        <div class="row2">
-          <div><strong id="o-pipe">£108,000 to £180,000</strong>of jobs back in front of your team</div>
-          <div><strong id="o-pay">£1,080 to £1,800</strong>what you'd pay us, at £60 each</div>
-        </div>
-        <p class="note">Worked out at a 3 to 5% booking rate, which is what we plan on. Your real rate shows up in the free 14-day test.</p>
+    </form>
+    <div class="money" aria-live="polite">
+      <div class="rise">
+        <p class="huge" id="o-pipe">£180,000</p>
+        <p class="under">of jobs back in front of your team, at the top of the range.</p>
       </div>
+      <dl class="rise">
+        <div><dt>Appointments we'd expect to book</dt><dd id="o-appts">18 to 30</dd></div>
+        <div><dt>Value of those jobs</dt><dd id="o-range">£108,000 to £180,000</dd></div>
+        <div><dt>What you'd pay us, at £60 each</dt><dd id="o-pay">£1,080 to £1,800</dd></div>
+      </dl>
+      <p class="note">Worked out at a 3 to 5% booking rate, which is what we plan on. Your real rate shows up in the free 14-day test.</p>
     </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="price" id="pricing" aria-labelledby="price-h">
-    <div class="wrap">
-      <h2 id="price-h" class="rise">£60 per booked appointment.</h2>
-      <div class="split">
-        <ul class="terms">
-          <li class="rise"><strong>No setup fee</strong><span>We build it, buy the number and cover every text.</span></li>
-          <li class="rise"><strong>No retainer, no contract</strong><span>Either side can stop with 7 days' notice.</span></li>
-          <li class="rise"><strong>First invoice at day 30</strong><span>After your team has sat the appointments.</span></li>
-          <li class="rise"><strong>Never tied to your sale</strong><span>We book the appointment. Closing it is your team's job.</span></li>
-        </ul>
-        <div class="founding rise">
-          <h3>Free 14-day test, three places</h3>
-          <p>Send us 200 or more old leads. We work them free for 14 days. Keep going only if it's booking. In return, you let us write up the results.</p>
-          <a class="btn" href="#book" data-founding>Claim a founding place</a>
-        </div>
-      </div>
-      <div class="qual">
-        <div class="rise"><strong>The homeowner</strong><span>Or the person who decides and pays.</span></div>
-        <div class="rise"><strong>In your area</strong><span>Postcode checked against yours.</span></div>
-        <div class="rise"><strong>A real slot</strong><span>Accepted by text, reconfirmed the day before.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" id="who" aria-labelledby="who-h">
-    <h2 id="who-h" class="rise wide">Built for big-ticket jobs.</h2>
-    <p class="sectors rise" aria-label="Sectors"><span>Windows and doors</span><span>Kitchens</span><span>Bathrooms</span><span>Boilers and heating</span><span>Heat pumps</span><span>Solar and batteries</span><span>Roofing</span><span>Conservatories</span><span>Driveways</span></p>
-    <ul class="rules">
-      <li class="rise"><strong>You have a sales team</strong>People who go out and sit appointments, or take them by video.</li>
-      <li class="rise"><strong>Jobs of £2,000 or more</strong>So one booked appointment is worth far more than its fee.</li>
-      <li class="rise"><strong>Leads you collected yourself</strong>Through your website, your own ads, your showroom or your phone line.</li>
-    </ul>
-  </section>
-
-  <section class="wrap trust" id="trust" aria-labelledby="trust-h">
-    <h2 id="trust-h" class="rise wide">Your customers, handled properly.</h2>
-    <div class="split">
+<section class="price" id="pricing" aria-labelledby="price-h">
+  <div class="wrap price-grid">
     <div>
-      <ul>
-        <li class="rise"><strong>Only people who enquired with you</strong>We never use bought lists, comparison-site leads or cold numbers.</li>
-        <li class="rise"><strong>Honest from the first message</strong>Every text names your business, says it's an AI assistant and offers STOP. Opt-outs stop at once.</li>
-        <li class="rise"><strong>A person checks every conversation</strong>Read daily by a person in the UK. Hot leads and complaints go straight to your team.</li>
-        <li class="rise"><strong>Your data stays yours</strong>A data processing agreement is signed before we touch a single lead.</li>
+      <p class="sixty rise" aria-hidden="true">£60</p>
+      <h2 id="price-h" class="rise">Per booked appointment.</h2>
+    </div>
+    <div>
+      <ul class="terms">
+        <li class="rise"><strong>No setup fee</strong>We build it, buy the number and cover every text.</li>
+        <li class="rise"><strong>No retainer, no contract</strong>Either side can stop with 7 days' notice.</li>
+        <li class="rise"><strong>First invoice at day 30</strong>After your team has sat the appointments.</li>
+        <li class="rise"><strong>Never tied to your sale</strong>We book the appointment. Closing it is your team's job.</li>
       </ul>
-    </div>
-    <figure class="rise">
-      <div class="report" data-ui aria-label="Example weekly report">
-        <div class="rh"><strong>Weekly report</strong><span>Week 2</span></div>
-        <div class="bars grow">
-          <div class="bar"><span>Texted</span><i style="width:100%"></i><em>412</em></div>
-          <div class="bar b2"><span>Replied</span><i style="width:41%"></i><em>169</em></div>
-          <div class="bar b3"><span>Booked</span><i style="width:5%"></i><em>21</em></div>
-        </div>
-        <div class="slots">
-          <div class="slot"><b>Sarah K. · windows</b><span>Sat 11:00 · reconfirmed</span></div>
-          <div class="slot"><b>Joanne R. · kitchen</b><span>Tue 14:00 · reconfirmed</span></div>
-          <div class="slot"><b>Mark T. · solar</b><span>Thu 10:00 · reminder Wed</span></div>
-        </div>
+      <div class="founding rise">
+        <h3>Free 14-day test, three places</h3>
+        <p>Send us 200 or more old leads. We work them free for 14 days. Keep going only if it's booking. In return, you let us write up the results.</p>
+        <a class="btn btn-green" href="#book" data-founding>Claim a founding place</a>
       </div>
-      <figcaption class="caption">Example weekly report.</figcaption>
-    </figure>
     </div>
-  </section>
+  </div>
+  <div class="wrap qual">
+    <div class="rise"><strong>The homeowner</strong>Or the person who decides and pays.</div>
+    <div class="rise"><strong>In your area</strong>Postcode checked against yours.</div>
+    <div class="rise"><strong>A real slot</strong>Accepted by text, reconfirmed the day before.</div>
+  </div>
+</section>
 
-  <section class="wrap faq" id="faq" aria-labelledby="faq-h">
-    <h2 id="faq-h" class="rise wide">Questions owners ask.</h2>
-    <div class="list">
+<section class="wrap who-s" id="who" aria-labelledby="who-h">
+  <h2 id="who-h" class="rise">Built for big-ticket jobs.</h2>
+  <ul class="sectors rise" aria-label="Sectors we work with">
+    <li>Windows and doors</li><li>Kitchens</li><li>Bathrooms</li><li>Boilers and heating</li><li>Heat pumps</li><li>Solar and batteries</li><li>Roofing</li><li>Conservatories</li><li>Driveways</li>
+  </ul>
+  <ul class="rules">
+    <li class="rise"><strong>You have a sales team</strong>People who go out and sit appointments, or take them by video.</li>
+    <li class="rise"><strong>Jobs of £2,000 or more</strong>So one booked appointment is worth far more than its fee.</li>
+    <li class="rise"><strong>Leads you collected yourself</strong>Through your website, your own ads, your showroom or your phone line.</li>
+  </ul>
+</section>
+
+<section class="wrap trust" id="trust" aria-labelledby="trust-h">
+  <h2 id="trust-h" class="rise">Your customers, handled properly.</h2>
+  <div class="trust-grid">
+    <ul class="points">
+      <li class="rise"><strong>Only people who enquired with you</strong>We never use bought lists, comparison-site leads or cold numbers.</li>
+      <li class="rise"><strong>A person checks every conversation</strong>Read daily by a person in the UK. Hot leads and complaints go straight to your team.</li>
+      <li class="rise"><strong>Your data stays yours</strong>A data processing agreement is signed before we touch a single lead.</li>
+    </ul>
+    <figure class="rise">
+      <div class="first" data-ui aria-label="The first text every lead receives">
+        <div class="who"><span>Every conversation starts like this</span><span>Text message</span></div>
+        <p class="bubble">Hi Sarah, it's the <mark>AI assistant at Northside Windows</mark>. You asked about replacing your windows a few weeks back. Is that still on your list? <mark>(Reply STOP to opt out)</mark></p>
+        <ul>
+          <li><strong>Your business's name</strong>In every message</li>
+          <li><strong>Says it's an AI</strong>From the first line</li>
+          <li><strong>STOP works at once</strong>No questions asked</li>
+        </ul>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap faq" id="faq" aria-labelledby="faq-h">
+  <div class="faq-grid">
+    <h2 id="faq-h" class="rise">Questions owners ask.</h2>
+    <div class="qs">
       <details class="rise"><summary>Will it annoy my customers?</summary><p>It only texts people who enquired with you, it says who it is, and it stops the moment someone says no or STOP. If someone says "not yet", it asks when would be better and comes back then.</p></details>
       <details class="rise"><summary>Does it phone anyone?</summary><p>No. It texts only. Your team already tried calling, and most people would rather reply to a text in their own time.</p></details>
       <details class="rise"><summary>What counts as a qualified appointment?</summary><p>The homeowner or decision maker, in your area, booked into a real slot and reconfirmed the day before. We agree the details with you in writing before we start, and that's what we bill against.</p></details>
@@ -446,78 +465,79 @@ footer{background:var(--ink);color:var(--ground);padding-top:72px;overflow:hidde
       <details class="rise"><summary>What do you need from me?</summary><p>A 30-minute call, an export of your old leads (a spreadsheet is fine) and access to the diary we book into. Most of the work is ours.</p></details>
       <details class="rise"><summary>What if a customer doesn't show up?</summary><p>Tell us within 72 hours and you don't pay for it. If your rep cancels or can't make it, the appointment still counts.</p></details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="wrap close" id="book" aria-labelledby="book-h">
-    <div class="split">
-      <div>
-        <h2 id="book-h" class="rise">Book a 30&#8209;minute call.</h2>
-        <p class="lead rise" style="margin-top:32px">Iqbal, the founder, will go through your numbers with you and tell you straight whether this fits. If it doesn't, a no is fine.</p>
-        <ul class="next rise">
-          <li><strong>Within a working day</strong>Iqbal replies to book a time that suits you.</li>
-          <li><strong>On the call</strong>We work out what's sitting in your CRM, using your real numbers.</li>
-          <li><strong>If it fits</strong>You send an export of old leads and we're live within 14 days.</li>
-        </ul>
-        <p class="direct rise">Rather email? <a href="mailto:iqbal@botuvo.co.uk">iqbal@botuvo.co.uk</a></p>
-      </div>
-      <form class="book rise" action="https://formspree.io/f/mjkwvgvr" method="POST">
-        <input type="hidden" name="_subject" value="New BOTUVO call request">
-        <input type="hidden" name="founding_place" id="founding" value="no">
-        <div class="f"><label for="name">Your name</label><input id="name" name="name" required autocomplete="name"></div>
-        <div class="f"><label for="business">Business name</label><input id="business" name="business" required autocomplete="organization"></div>
-        <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-        <div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
-        <div class="f full"><label for="sell">What do you sell?</label>
-          <select id="sell" name="what_you_sell" required>
-            <option value="">Choose one</option>
-            <option>Windows and doors</option>
-            <option>Kitchens or bathrooms</option>
-            <option>Boilers, heating or heat pumps</option>
-            <option>Solar and batteries</option>
-            <option>Roofing, conservatories or driveways</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="f"><label for="leads-f">Roughly how many leads a month?</label>
-          <select id="leads-f" name="leads_per_month" required>
-            <option value="">Choose one</option>
-            <option>Under 200</option>
-            <option>200 to 500</option>
-            <option>500 to 1,000</option>
-            <option>Over 1,000</option>
-          </select>
-        </div>
-        <div class="f"><label for="aov-f">Average job value</label>
-          <select id="aov-f" name="average_job_value" required>
-            <option value="">Choose one</option>
-            <option>£2,000 to £5,000</option>
-            <option>£5,000 to £10,000</option>
-            <option>Over £10,000</option>
-          </select>
-        </div>
-        <div class="f full"><label for="source">Where do most of your leads come from?</label>
-          <select id="source" name="lead_source" required aria-describedby="source-help">
-            <option value="">Choose one</option>
-            <option>Our own website and ads</option>
-            <option>Showroom visits and phone calls</option>
-            <option>A lead supplier or comparison site</option>
-            <option>A mix of these</option>
-          </select>
-          <span class="help" id="source-help">We can only text leads you collected yourself.</span>
-        </div>
-        <div class="form-foot">
-          <button class="btn btn-main" type="submit">Request my call</button>
-          <details class="privacy">
-            <summary>How we use your details</summary>
-            <p>We use what you send only to arrange your call and reply to you. It's stored with our form provider, Formspree, and deleted within 12 months if we don't work together. Email iqbal@botuvo.co.uk to see or delete what we hold.</p>
-          </details>
-        </div>
-      </form>
+<section class="dark book" id="book" aria-labelledby="book-h">
+  <div class="wrap book-grid">
+    <div>
+      <h2 id="book-h" class="rise">Book a 30&#8209;minute call.</h2>
+      <p class="lead rise" style="margin-top:32px">Iqbal, the founder, will go through your numbers with you and tell you straight whether this fits. If it doesn't, a no is fine.</p>
+      <ul class="next rise">
+        <li><strong>Within a working day</strong>Iqbal replies to book a time that suits you.</li>
+        <li><strong>On the call</strong>We work out what's sitting in your CRM, with your real numbers.</li>
+        <li><strong>If it fits</strong>You send an export of old leads and we're live within 14 days.</li>
+      </ul>
+      <p class="direct rise">Rather email? <a class="link" href="mailto:iqbal@botuvo.co.uk">iqbal@botuvo.co.uk</a></p>
     </div>
-  </section>
+    <form class="req rise" action="https://formspree.io/f/mjkwvgvr" method="POST">
+      <input type="hidden" name="_subject" value="New BOTUVO call request">
+      <input type="hidden" name="founding_place" id="founding" value="no">
+      <div class="f"><label for="name">Your name</label><input id="name" name="name" required autocomplete="name"></div>
+      <div class="f"><label for="business">Business name</label><input id="business" name="business" required autocomplete="organization"></div>
+      <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+      <div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
+      <div class="f full"><label for="sell">What do you sell?</label>
+        <select id="sell" name="what_you_sell" required>
+          <option value="">Choose one</option>
+          <option>Windows and doors</option>
+          <option>Kitchens or bathrooms</option>
+          <option>Boilers, heating or heat pumps</option>
+          <option>Solar and batteries</option>
+          <option>Roofing, conservatories or driveways</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="f"><label for="leads-f">Roughly how many leads a month?</label>
+        <select id="leads-f" name="leads_per_month" required>
+          <option value="">Choose one</option>
+          <option>Under 200</option>
+          <option>200 to 500</option>
+          <option>500 to 1,000</option>
+          <option>Over 1,000</option>
+        </select>
+      </div>
+      <div class="f"><label for="aov-f">Average job value</label>
+        <select id="aov-f" name="average_job_value" required>
+          <option value="">Choose one</option>
+          <option>£2,000 to £5,000</option>
+          <option>£5,000 to £10,000</option>
+          <option>Over £10,000</option>
+        </select>
+      </div>
+      <div class="f full"><label for="source">Where do most of your leads come from?</label>
+        <select id="source" name="lead_source" required aria-describedby="source-help">
+          <option value="">Choose one</option>
+          <option>Our own website and ads</option>
+          <option>Showroom visits and phone calls</option>
+          <option>A lead supplier or comparison site</option>
+          <option>A mix of these</option>
+        </select>
+        <span class="help" id="source-help">We can only text leads you collected yourself.</span>
+      </div>
+      <div class="form-foot">
+        <button class="btn btn-dark" type="submit">Request my call</button>
+        <details class="privacy">
+          <summary>How we use your details</summary>
+          <p>We use what you send only to arrange your call and reply to you. It's stored with our form provider, Formspree, and deleted within 12 months if we don't work together. Email iqbal@botuvo.co.uk to see or delete what we hold.</p>
+        </details>
+      </div>
+    </form>
+  </div>
+</section>
 </main>
 
-<footer>
+<footer class="dark">
   <div class="wrap">
     <div class="foot">
       <span>Revenue recovery for the leads you already paid for.</span>
@@ -525,56 +545,64 @@ footer{background:var(--ink);color:var(--ground);padding-top:72px;overflow:hidde
       <span>© 2026 BOTUVO</span>
       <!-- TODO before launch: add "BOTUVO Ltd, company no. XXXXXXXX · ICO registration ZXXXXXXX" -->
     </div>
-    <div class="mega" aria-hidden="true">BOTUVO</div>
+    <p class="mega" aria-hidden="true">BOTUVO</p>
   </div>
 </footer>
 
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // entrances, staggered per section
-  var els = document.querySelectorAll('.rise, .grow');
+
+  // staggered entrances, and the fortnight band filling
+  var els = document.querySelectorAll('.rise, .band');
   if(!reduce && 'IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(!e.isIntersecting) return;
-        var el = e.target, sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
-        el.style.transitionDelay = Math.min(sib,6)*75 + 'ms';
+        var el=e.target;
+        if(el.classList.contains('band')){
+        } else {
+          var sibs=[].slice.call(el.parentElement.children).filter(function(c){return c.classList.contains('rise')});
+          el.style.transitionDelay=Math.min(Math.max(0,sibs.indexOf(el)),6)*80+'ms';
+        }
         el.classList.add('in'); io.unobserve(el);
       });
-    },{threshold:0.12, rootMargin:'0px 0px -5% 0px'});
-    els.forEach(function(el){ io.observe(el); });
-  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+    },{threshold:0.15,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  } else { els.forEach(function(el){el.classList.add('in')}); }
+  document.querySelectorAll('.band .day').forEach(function(d,i){ d.style.setProperty('--i', i); });
 
-  // hero: leads move from lost to booked
-  var chips = document.querySelectorAll('.hero-ui .chip[data-to]');
-  var counts = {texted:document.querySelector('[data-count=texted]'),replied:document.querySelector('[data-count=replied]'),booked:document.querySelector('[data-count=booked]')};
-  var target = {texted:412, replied:169, booked:21};
-  function setCounts(p){ for(var k in target){ counts[k].textContent = Math.round(target[k]*p); } }
-  function flip(){ chips.forEach(function(c){ c.className = 'chip ' + c.dataset.to; c.textContent = c.dataset.label; }); }
-  if(reduce){ setCounts(1); flip(); }
-  else {
-    var start = null, dur = 2600;
+  // hero lead wall: statuses flip, counters run
+  var chips=document.querySelectorAll('.wall .st[data-to]');
+  var nums=document.querySelectorAll('.wall [data-count]');
+  function flipAll(){ chips.forEach(function(c){c.className='st '+c.dataset.to;c.textContent=c.dataset.label;}); }
+  if(reduce){ flipAll(); }
+  else{
+    nums.forEach(function(n){n.textContent='0'});
     setTimeout(function(){
-      requestAnimationFrame(function step(t){ if(!start) start=t; var p=Math.min(1,(t-start)/dur); setCounts(1-Math.pow(1-p,3)); if(p<1) requestAnimationFrame(step); });
-      chips.forEach(function(c,i){ setTimeout(function(){ c.className='chip '+c.dataset.to; c.textContent=c.dataset.label; }, 700 + i*650); });
-    }, 600);
+      var t0=null,dur=2800;
+      requestAnimationFrame(function step(t){ if(!t0)t0=t; var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+        nums.forEach(function(n){ n.textContent=Math.round(+n.dataset.count*e); });
+        if(p<1) requestAnimationFrame(step); });
+      chips.forEach(function(c,i){ setTimeout(function(){ c.className='st '+c.dataset.to; c.textContent=c.dataset.label; }, 600+i*620); });
+    },700);
   }
 
   // calculator
-  var L=document.getElementById('leads'), Lr=document.getElementById('leads-r'), A=document.getElementById('aov'), Ar=document.getElementById('aov-r');
-  var fmt = function(n){ return '£' + Math.round(n).toLocaleString('en-GB'); };
+  var L=document.getElementById('leads'),Lr=document.getElementById('leads-r'),A=document.getElementById('aov'),Ar=document.getElementById('aov-r');
+  var fmt=function(n){return '£'+Math.round(n).toLocaleString('en-GB')};
   function calc(){
-    var l=Math.max(0, +L.value||0), a=Math.max(0, +A.value||0);
-    var lo=Math.round(l*0.03), hi=Math.round(l*0.05);
-    document.getElementById('o-appts').textContent = lo===hi ? lo : lo + ' to ' + hi;
-    document.getElementById('o-pipe').textContent = fmt(lo*a) + ' to ' + fmt(hi*a);
-    document.getElementById('o-pay').textContent = fmt(lo*60) + ' to ' + fmt(hi*60);
+    var l=Math.max(0,+L.value||0),a=Math.max(0,+A.value||0),lo=Math.round(l*0.03),hi=Math.round(l*0.05);
+    document.getElementById('o-pipe').textContent=fmt(hi*a);
+    document.getElementById('o-appts').textContent=lo===hi?lo:lo+' to '+hi;
+    document.getElementById('o-range').textContent=fmt(lo*a)+' to '+fmt(hi*a);
+    document.getElementById('o-pay').textContent=fmt(lo*60)+' to '+fmt(hi*60);
   }
   function pair(n,r){ n.addEventListener('input',function(){ r.value=n.value; calc(); }); r.addEventListener('input',function(){ n.value=r.value; calc(); }); }
   pair(L,Lr); pair(A,Ar); calc();
+
   var fl=document.querySelector('[data-founding]');
-  if(fl){ fl.addEventListener('click',function(){ document.getElementById('founding').value='yes'; }); }
+  if(fl) fl.addEventListener('click',function(){ document.getElementById('founding').value='yes'; });
 })();
 </script>
 </body>
